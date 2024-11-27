@@ -1,0 +1,127 @@
+.collection-loop__img-wrapper {
+  overflow: hidden;
+}
+
+.collection-loop__title {
+  font-family: var(--main-family);
+  font-style: var(--main-style);
+  font-weight: var(--main-weight);
+  letter-spacing: var(--main-spacing);
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size);
+}
+
+.collection-loop__product-count {
+  font-size: var(--font-size-sm);
+}
+
+/*.collection-loop__product-count {
+  font-family: var(--heading-family);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--heading-spacing);
+  font-size: var(--font-size);
+  font-style: italic;
+  line-height: 1.54;
+}
+
+@media (max-width: 767px) {
+  .collection-loop__product-count {
+    font-size: var(--font-size);
+  }
+}*/
+
+.collection-loop__item--square .box-ratio {
+  padding-bottom: 100% !important;
+}
+
+.collection-loop__item--square .box-ratio {
+  padding-bottom: 100% !important;
+}
+
+.collection-loop__item--square .box-ratio img {
+  object-fit: cover;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.collection-loop__item--square .collection-info {
+  padding-top: var(--space-6);
+}
+
+.collection-loop__item--vertical .box-ratio {
+  padding-bottom: 140% !important;
+}
+
+.collection-loop__item--vertical .box-ratio img {
+  object-fit: cover;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.collection-loop__item--vertical .collection-info {
+  padding-top: var(--space-6);
+}
+
+.collection-loop__item--horizontal .box-ratio {
+  padding-bottom: 71.4% !important;
+}
+
+.collection-loop__item--horizontal .box-ratio img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+/* Foodie Custom */
+@media (min-width: 1024px) {
+  .collection-loop__item:hover {
+    background-color: var(--secondary-bg);
+  }
+  .collection-loop__item.dropshadow--true:hover {
+    -webkit-box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+    -moz-box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+    box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+  }
+}
+
+/* ---- Collection list grid mobile ---- */
+@media screen and (max-width: 768px ) {
+  .section-collection-list .grid__wrapper {
+    grid-auto-flow: column;
+    -webkit-overflow-scrolling: touch;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0;
+    overflow-x: auto;
+    justify-content: flex-start;
+    /* -ms-overflow-style: none;
+    scrollbar-width: none; */
+    scrollbar-color: #ffd4
+  }
+  .section-collection-list .grid__wrapper .collection-loop__item {
+      width: 280px !important;
+  }
+  .section-collection-list .grid__wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .section-collection-list .grid__wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--text-color);
+  }
+}

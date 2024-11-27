@@ -1,0 +1,214 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "164149044837a86c50": {
+      "type": "rich-text",
+      "settings": {
+        "title": "Welcome",
+        "rich_text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+        "heading_size": 40,
+        "text_size": 24,
+        "page": "",
+        "alignment": "a-center",
+        "content_width": 60,
+        "section_padding": "both",
+        "color_scheme": "none"
+      }
+    },
+    "banner": {
+      "type": "banner-image",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "banner_height": 400
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "page_alignment": "a-left"
+      }
+    },
+    "1641490461c13a3bdb": {
+      "type": "image-with-text",
+      "settings": {
+        "iwt_layout": "image_left",
+        "iwt_heading": "Heading",
+        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+        "iwt_button": "Button",
+        "iwt_link": "",
+        "show_box_shadow": false,
+        "color_scheme": "1",
+        "iwt_section_height": 600,
+        "section_padding": "none"
+      }
+    },
+    "1641490467976bd7d5": {
+      "type": "image-with-text",
+      "settings": {
+        "iwt_layout": "image_right",
+        "iwt_heading": "Heading",
+        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+        "iwt_button": "Button",
+        "iwt_link": "",
+        "show_box_shadow": false,
+        "color_scheme": "1",
+        "iwt_section_height": 600,
+        "section_padding": "none"
+      }
+    },
+    "scrolling_text_Yd9Ezn": {
+      "type": "scrolling-text",
+      "blocks": {
+        "text_RkLaxn": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "icon_both_sides": false
+          }
+        },
+        "text_CNYWYt": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "icon_both_sides": false
+          }
+        },
+        "text_FfRihD": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "icon_both_sides": false
+          }
+        }
+      },
+      "block_order": [
+        "text_RkLaxn",
+        "text_CNYWYt",
+        "text_FfRihD"
+      ],
+      "settings": {
+        "text_size": 20,
+        "speed": 15,
+        "icon_height": 20,
+        "padding": 30,
+        "color": "#000",
+        "background": "#a18167"
+      }
+    },
+    "featured_blog_qEj8N3": {
+      "type": "featured-blog",
+      "settings": {
+        "title": "Featured Blog",
+        "blog": "news",
+        "items_per_page": 3,
+        "items_per_row": 3,
+        "text_align": "left",
+        "show_date": true,
+        "show_author": false,
+        "show_tags": false,
+        "show_comments": true,
+        "section_padding": "both"
+      }
+    },
+    "text_with_icons_F6gKBj": {
+      "type": "text-with-icons",
+      "blocks": {
+        "text_block_xhE8Am": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "link": "",
+            "title": "Heading",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_F6XL9c": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "link": "",
+            "title": "Heading",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_HAYY8W": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "link": "",
+            "title": "Heading",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_QMLtd9": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "link": "",
+            "title": "Heading",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_gchQBP": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "link": "",
+            "title": "Heading",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_h7eywx": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "link": "",
+            "title": "Heading",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_xhE8Am",
+        "text_block_F6XL9c",
+        "text_block_HAYY8W",
+        "text_block_QMLtd9",
+        "text_block_gchQBP",
+        "text_block_h7eywx"
+      ],
+      "settings": {
+        "title": "Text with Icons",
+        "text_align": "center",
+        "size": 20,
+        "color_scheme": "1",
+        "section_padding": "both"
+      }
+    }
+  },
+  "order": [
+    "164149044837a86c50",
+    "banner",
+    "main",
+    "1641490461c13a3bdb",
+    "1641490467976bd7d5",
+    "scrolling_text_Yd9Ezn",
+    "featured_blog_qEj8N3",
+    "text_with_icons_F6gKBj"
+  ]
+}

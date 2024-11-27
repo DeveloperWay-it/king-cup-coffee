@@ -1,0 +1,194 @@
+{%- liquid
+  assign icon_type = ''
+  assign icon_text = ''
+
+  assign has_padding = settings.product_grid_padding
+
+  assign has_dropshadow = settings.product_grid_dropshadow
+
+  if has_padding
+    assign item_padding = 'sm-px0 sm-py0 px6 py6'
+  else
+    assign item_padding = 'sm-px0 sm-py0 px0 py0'
+  endif
+
+  if product.available
+    for col in product.collections
+      if col.handle == 'new'
+        assign icon_type = 'new'
+        assign icon_text =  'products.general.new' | t
+      endif
+    endfor
+    if product.price < product.compare_at_price
+      assign icon_type = 'sale-item'
+      assign icon_text =  'products.general.sale' | t
+    endif
+  else
+    assign icon_type = 'sold-out'
+    assign icon_text =  'products.general.sold' | t
+  endif
+
+  if product.template_suffix == 'pre-order'
+    assign call_to_action = 'products.product.pre_order' | t
+  else
+    assign call_to_action = 'products.product.add_to_cart' | t
+  endif
+-%}
+
+<article
+  class="product-loop__item dropshadow--{{ has_dropshadow }} padding--{{ has_padding }} {{ carousel_slide }} {% unless carousel %}{{ items_per_row }}{% endunless %} relative product-loop__item--{{ settings.image_ratio }} grid__wrapper"
+  data-alpha="{{ product.title }}"
+  data-price="{{ product.price }}">
+
+
+  <!-- Image -->
+  <div class="product-image relative sm-span-12 span-3 auto {{ item_padding }}">
+    {% unless icon_type == '' %}
+      <div class="product-loop__badge-icon icon-type--{{ icon_type }} icn">{{ icon_text }}</div>
+    {% endunless %}
+
+    <div class="product-loop__img-wrapper relative">
+      <a href="{{ product.url | within: collection }}" tabindex="-1" title="{{ product.title | escape }} Image">
+        {%- if product.media.size < 1 -%}
+           <div class="demo-1 color-2 box-ratio" style="padding-bottom: 100%;">
+             {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+           </div>
+        {%- else -%}
+          {%- liquid
+            assign sm_render = 'calc(100vw / 2)'
+            assign md_render = 'calc(100vw / ' | append: grid_items | append: ')'
+            assign lg_render = 'calc(1600px / ' | append: grid_items | append: ')'
+          -%}
+
+          {%- if settings.product_grid_video -%}
+            {% render 'product-loop-video',
+              product: product %}
+          {%- endif -%}
+
+          {% render 'helper-image',
+             type: product.featured_media.preview_image,
+             sm_render: sm_render,
+             md_render: md_render,
+             lg_render: lg_render,
+             img_width: '100%',
+             width: 600,
+             img_height: lg_render %}
+
+          {% if settings.secondary_images_hover and product.media.size > 1 and product.media[1].media_type == 'image' %}
+            <div class="product-loop__img-wrapper--hidden">
+             {% render 'helper-image',
+                type: product.media[1],
+                sm_render: sm_render,
+                md_render: md_render,
+                lg_render: lg_render,
+                img_width: '100%',
+                width: 600,
+                img_height: lg_render %}
+            </div>
+          {% elsif settings.secondary_images_hover and product.media.size > 1 and product.media[1].media_type != 'image' %}
+            <div class="product-loop__img-wrapper--hidden">
+             {% render 'helper-image',
+                type: product.media[1].preview_image,
+                sm_render: sm_render,
+                md_render: md_render,
+                lg_render: lg_render,
+                img_width: '100%',
+                width: 600,
+                img_height: lg_render %}
+            </div>
+          {% endif %}
+        {%- endif -%}
+      </a>
+    </div>
+
+    <!-- Quickshop -->
+    {%- liquid
+      if routes.root_url == '/'
+        assign product_url = '/products/' | append: product.handle | append: '?section_id=quickshop'
+      else
+        assign product_url = routes.root_url | append: '/products/' | append: product.handle | append: '?section_id=quickshop'
+      endif
+
+      assign has_model = false
+      assign has_video = false
+      for media in product.media
+        if media.media_type == "video" or media.media_type == "external_video"
+          assign has_video = true
+          continue
+        endif
+        if media.media_type == "model"
+          assign has_model = true
+          continue
+        endif
+      endfor
+
+    -%}
+
+  </div><!-- /.product-image -->
+
+  <!-- Product -->
+  <div class="product-loop__info-wrapper pb1 sm-px0 a-left sm-a-center sm-span-12 span-9 auto">
+
+    <!-- Title -->
+    <p class="product-loop__title h4"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></p>
+
+    <!-- Sale price -->
+    {%- capture sale_price -%}
+      <p class="product-loop__price--savings savings">
+        {% if product.price_varies or product.compare_at_price_varies %}
+          {% assign savings = product.compare_at_price_max | money %}
+          {{ 'collections.general.save_to_html' | t: savings: savings }}
+        {% else %}
+          {% assign savings = product.compare_at_price | minus: product.price | money %}
+          ({{ 'collections.general.save' | t }} {{ savings | money }})
+        {% endif %}
+      </p>
+    {%- endcapture -%}
+
+
+    <div class="product-loop__price mt1 pb2 px0 sm-px0 sm-a-center a-left">
+      {%- if product.price_varies -%}
+        {{ 'products.general.from' | t }} {{ product.price_min | money }} - {{ product.price_max | money }}
+        {%- if product.price < product.compare_at_price -%}
+          {{ sale_price }}
+        {%- endif -%}
+      {% else %}
+        {{ product.price | money }}
+        {%- if product.price < product.compare_at_price -%}
+          {{ sale_price }}
+        {%- endif -%}
+      {% endif %}
+
+      {%- render 'product-unit-price', variant: product.selected_or_first_available_variant -%}
+    </div>
+    {%- if product.variants.size > 1 -%}
+      {% if product.available %}
+      <button class="quick-view-{{ product.id }} product-listing__quickview-trigger js-quickview-trigger no-js-hidden button-as-link"
+        type="button"
+        name="button"
+        aria-hidden="true"
+        data-quickview-alt="true"
+        data-product-url="{{ product_url }}"
+        data-has-model="{{ has_model }}"
+        data-has-video="{{ has_video }}">
+        {{ 'products.product.view_options' | t }}
+      </button>
+      {% endif %}
+    {%- else -%}
+      {% if product.available %}
+      <button class="quick-view-{{ product.id }} product-listing__quickview-trigger js-quickview-trigger no-js-hidden button-as-link"
+        type="button"
+        name="button"
+        aria-hidden="true"
+        data-quickview-alt="true"
+        data-quick-add
+        data-product-url="{{ product_url }}"
+        data-has-model="{{ has_model }}"
+        data-has-video="{{ has_video }}">
+          {{ call_to_action }}
+      </button>
+      {% endif %}
+    {%- endif -%}
+  </div><!-- /.product-loop__info-wrapper -->
+
+</article>

@@ -1,0 +1,141 @@
+/* Foodie Custom */
+.section-product-list h4 {
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: var(--heading-spacing);
+}
+
+.section-product-list ul.product--list_items li {
+  width: 100%;
+  margin: 0;
+  border-top: 1px solid var(--dotted-color);
+  padding: var(--space-4) 0;
+}
+
+.section-product-list ul.product--list_items li.product--item h3.product--item_title {
+  font-family: var(--main-family);
+  font-weight: var(--main-weight);
+  letter-spacing: var(--main-spacing);
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.section-product-list ul.product--list_items li.product--item .product--item_details {
+  display: none;
+}
+
+.section-product-list ul.product--list_items li.product--item.is-selected .product--item_details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: var(--space-2) 0 0 0;
+}
+
+.section-product-list ul.product--list_items li.product--item.is-selected .product--item_details p,
+.section-product-list ul.product--list_items li.product--item.is-selected .product--item_details a.product--selector {
+  margin-bottom: 0;
+}
+
+.product-loop__price--compare.was {
+  text-decoration: line-through;
+}
+
+.section-product-list ul.product--list_items li.product--item a.product--selector:hover{
+  text-decoration: underline;
+}
+
+.section-product-list ul.product--list_items li.product--item .product--item_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.section-product-list ul.product--list_items li.product--item .product-listing__quickview-trigger {
+  display: block;
+  position: static;
+  right: unset;
+  left: unset;
+  text-align: center;
+  margin: 0;
+  width: auto;
+  height: unset;
+  line-height: 1.6;
+  padding: 0;
+  background: unset;
+  color: unset;
+  text-transform: unset;
+  font-size: var(--font-size);
+  letter-spacing: var(--main-spacing);
+}
+
+@media (max-width:768px) {
+  .section-product-list ul.product--list_items li.product--item .product-listing__quickview-trigger {
+    margin: 0 auto;
+  }
+}
+.section-product-list ul.product--list_items li.product--item .product-listing__quickview-trigger:hover {
+  text-decoration: underline;
+  background: unset !important;
+  color: unset !important;
+}
+
+@media (min-width:768px) {
+  .section-product-list ul.product--list_items li a {
+    font-size: var(--font-size);
+  }
+}
+
+@media (max-width:767px) {
+  .section-product-list ul.product--list_items li a {
+    font-size: var(--font-size);
+  }
+}
+
+.section-product-list ul.product--list_items li a:hover #icon--right-arrow.stroke g {
+  stroke: var(--text-color-light);
+}
+
+.section-product-list .flickity-prev-next-button {
+  top: 30px;
+}
+.section-product-list .flickity-prev-next-button.previous {
+  left: 10px !important;
+  right: unset !important;
+}
+.section-product-list .flickity-prev-next-button.next {
+  left: 60px !important;
+  right: unset !important;
+}
+
+.section-product-list .product--carousel_image.is--fixed .box-ratio {
+  padding-bottom: var(--desktop-section-height) !important;
+}
+.section-product-list .product--carousel_image.is--fixed img {
+  height: var(--desktop-section-height) !important;
+  object-fit: cover;
+}
+.section-product-list .product--carousel_image.is--fixed .placeholder-image {
+  height: var(--desktop-section-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-product-list .product--carousel_image.is--fixed .placeholder-image svg {
+  height: 100%;
+  width: 100%;
+}
+@media screen and (max-width: 740px) {
+  .section-product-list .product--carousel_image.is--fixed .box-ratio {
+    padding-bottom: var(--mobile-section-height) !important;
+  }
+  .section-product-list .product--carousel_image.is--fixed img {
+    height: var(--mobile-section-height) !important;
+    object-fit: cover;
+  }
+  .section-product-list .product--carousel_image.is--fixed .placeholder-image {
+    height: var(--mobile-section-height);
+  }
+}

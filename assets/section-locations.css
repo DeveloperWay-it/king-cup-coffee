@@ -1,0 +1,109 @@
+/* Foodie Custom */
+.section-featured-locations h4 {
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: var(--heading-spacing);
+}
+
+.section-featured-locations ul.locations li {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  border-top: 1px solid var(--dotted-color);
+}
+
+.section-featured-locations ul.locations li a {
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: var(--main-spacing);
+  margin-bottom: 0;
+  grid-row: 1/1;
+}
+
+.section-featured-locations ul.locations li a.location--selector {
+  justify-self: start;
+  padding: var(--space-4) 0;
+}
+
+.section-featured-locations ul.locations li a.location--selector.is-selected {
+  padding-left: var(--space-4);
+}
+
+.section-featured-locations ul.locations li a.location--selector--go {
+  justify-self: end;
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+}
+
+.section-featured-locations ul.locations li:hover > a.location--selector--go {
+  display: flex;
+}
+
+.section-featured-locations ul.locations li a.location--selector--go svg {
+  width: 100%;
+}
+
+@media (min-width:768px) {
+  .section-featured-locations ul.locations li a {
+    font-size: var(--font-size);
+  }
+}
+
+@media (max-width:767px) {
+  .section-featured-locations ul.locations li a {
+    font-size: var(--font-size);
+  }
+}
+
+.section-featured-locations ul.locations li a:hover #icon--right-arrow.stroke g {
+  stroke: var(--text-color-light);
+}
+
+.section-featured-locations .flickity-prev-next-button {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.section-featured-locations .flickity-prev-next-button.previous {
+  left: 10px !important;
+  right: unset !important;
+}
+.section-featured-locations .flickity-prev-next-button.next {
+  right: 10px !important;
+  left: unset !important;
+}
+
+
+.section-featured-locations .location--carousel_image.is--fixed .box-ratio {
+  padding-bottom: var(--desktop-section-height) !important;
+}
+.section-featured-locations .location--carousel_image.is--fixed img {
+  height: var(--desktop-section-height) !important;
+  object-fit: cover;
+}
+.section-featured-locations .location--carousel_image.is--fixed .placeholder-image {
+  height: var(--desktop-section-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-featured-locations .location--carousel_image.is--fixed .placeholder-image svg {
+  height: 100%;
+  width: 100%;
+}
+@media screen and (max-width: 740px) {
+  .section-featured-locations .location--carousel_image.is--fixed .box-ratio {
+    padding-bottom: var(--mobile-section-height) !important;
+  }
+  .section-featured-locations .location--carousel_image.is--fixed img {
+    height: var(--mobile-section-height) !important;
+    object-fit: cover;
+  }
+  .section-featured-locations .location--carousel_image.is--fixed .placeholder-image {
+    height: var(--mobile-section-height);
+  }
+}

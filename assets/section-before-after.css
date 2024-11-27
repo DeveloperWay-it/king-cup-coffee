@@ -1,0 +1,142 @@
+/*---- Before and after image section ---- */
+
+.before--after {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.after-image {
+  display: block;
+}
+
+.before-image {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.before--after_slider {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 2px;
+  background: var(--background);
+  /* Stop vertical scrolling on touch */
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
+
+button.before--after_button {
+  transform: translateX(-50%);
+  background: var(--background);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+button.before--after_button span {
+  flex: 0 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.before--after img {
+  width: 100%;
+  max-width: unset;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.before-image .box-ratio {
+  overflow: visible;
+}
+
+.before--after.fixed-height .box-ratio {
+  padding-bottom: 0 !important;
+}
+
+.before--after.fixed-height img,
+.before--after.fixed-height .after-image,
+.before--after.fixed-height .onboard {
+  height: 100%;
+}
+
+@media screen and (min-width: 801px) {
+  .before--after.fixed-height,
+  .before--after.fixed-height .box-ratio {
+    height: var(--desktop-section-height);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .before--after.fixed-height,
+  .before--after.fixed-height .box-ratio {
+    height: var(--mobile-section-height);
+  }
+}
+
+.before--after_caption {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  position: absolute;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.before--after_caption.caption-top {
+  top: 10px;
+}
+
+.before--after_caption.caption-middle {
+  bottom: 50%;
+  transform: translateY(50%)
+}
+
+.before--after_caption.caption-bottom {
+  bottom: 10px;
+}
+
+.before-image .before--after_caption {
+  left: 10px;
+  text-align: left;
+}
+
+.after-image .before--after_caption {
+  right: 10px;
+  text-align: right;
+}
+
+.before--after_caption .rte {
+  margin-bottom: 0;
+}
+
+.before--after_caption h3,
+.before--after_caption p {
+  margin-bottom: 0;
+  color: var(--text-color);
+}
+
+.before-after__btn-wrapper {
+  display: inline-block;
+  margin-top: 5px;
+}

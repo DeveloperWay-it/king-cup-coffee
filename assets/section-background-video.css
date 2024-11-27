@@ -1,0 +1,110 @@
+.videoWrapper {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25% !important;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.videoWrapper .section-video {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+[data-section-type="background-video-section"] .videoWrapper{
+  height: var(--section-mobile-height);
+  padding-bottom: unset !important;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.videoWrapper video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.section-background-video .background-video__outer-wrapper {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Caption */
+.background-video__caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  text-align: center;
+  padding: 30px;
+  max-width: 90%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-video__overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 3;
+}
+
+/* Subheading */
+.background-video__caption-subheading p {
+  color: var(--text-color);
+  margin-bottom: var(--space-5);
+}
+
+span.background-video__subheading {
+  display: block;
+}
+
+/* Button */
+.background-video__caption a.button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 740px) {
+  [data-section-type="background-video-section"] .videoWrapper,
+  [data-section-type="video-section"] .videoWrapper {
+    height: var(--section-desktop-height);
+  }
+}
+[data-section-type="background-video-section"] .videoWrapper .section-video,
+[data-section-type="video-section"] .videoWrapper .section-video {
+  position: static;
+  top: unset;
+  right: unset;
+  bottom: unset;
+  left: unset;
+}
+
+.section-background-video .background-video__caption {
+  position: absolute;
+  max-width: 90%;
+  text-align: center;
+  padding: var(--space-7);
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+ .section-background-video .background-video__caption {
+    width: 90%;
+  }
+}

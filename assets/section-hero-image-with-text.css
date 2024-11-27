@@ -1,0 +1,93 @@
+.section-text-with-image {
+  background: -webkit-linear-gradient(var(--text-color) 80%, var(--background) 20%);
+  color: var(--background);
+  padding: 0 var(--space-11) var(--space-8) var(--space-11);
+}
+
+.section-text-with-image.py0 {
+  padding: 0 0 var(--space-8) 0;
+}
+
+.section-text-with-image .text-with-image {
+  position: relative;
+  z-index: 1;
+}
+
+.section-text-with-image h3 {
+  color: var(--background);
+  font-size: var(--h3-size);
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: var(--heading-spacing);
+  text-transform: unset;
+  word-break: break-word;
+}
+
+.section-text-with-image .rte p {
+  font-size: var(--font-size);
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: var(--main-spacing);
+}
+
+@media (max-width: 767px) {
+  .section-text-with-image {
+    background: -webkit-linear-gradient(var(--text-color) 35%, var(--background) 35%);
+    padding: 0;
+    color: var(--text-color) !important;
+  }
+
+  .section-text-with-image h3 {
+    color: var(--text-color) !important;
+  }
+
+  .section-text-with-image .rte p {
+    color: var(--text-color) !important;
+  }
+
+  .section-text-with-image article.text {
+    order: 2;
+    text-align: center;
+  }
+
+  .section-text-with-image article.image {
+    order: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-text-with-image .grid__wrapper.reverse article:last-child {
+    order: -1;
+  }
+}
+
+.section-text-with-image .image-container.is--fixed .box-ratio {
+  padding-bottom: var(--desktop-section-height) !important;
+}
+.section-text-with-image .image-container.is--fixed img {
+  height: var(--desktop-section-height) !important;
+  object-fit: cover;
+}
+.section-text-with-image .image-container.is--fixed .placeholder-image {
+  height: var(--desktop-section-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-text-with-image .image-container.is--fixed .placeholder-image svg {
+  height: 100%;
+}
+@media screen and (max-width: 740px) {
+  .section-text-with-image .image-container.is--fixed .box-ratio {
+    padding-bottom: var(--mobile-section-height) !important;
+  }
+  .section-text-with-image .image-container.is--fixed img {
+    height: var(--mobile-section-height) !important;
+    object-fit: cover;
+  }
+  .section-text-with-image .image-container.is--fixed .placeholder-image {
+    height: var(--mobile-section-height);
+  }
+}

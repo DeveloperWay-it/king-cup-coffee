@@ -1,0 +1,261 @@
+{% comment %} Image with text overlay Assets {% endcomment %}
+<link rel="preload" href="{{ 'section-image-with-text-overlay.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'section-image-with-text-overlay.css' | asset_url }}"></noscript>
+
+{% comment %} Image with text overlay Logic {% endcomment %}
+{%- liquid
+  if section.settings.full_width
+    assign full_width =  'edge'
+  endif
+
+  assign section_padding = ''
+  if section.settings.section_padding == 'top'
+    assign section_padding = 'pb0'
+  elsif section.settings.section_padding == 'bottom'
+    assign section_padding = 'mt0'
+  elsif section.settings.section_padding == 'none'
+    assign section_padding = 'mt0 pb0'
+  endif
+
+  assign desktop_height = section.settings.image_height | append: 'px'
+  assign mobile_height = section.settings.mobile_height | append: 'px'
+
+  assign block_opacity = section.settings.overlay_opacity | plus: 0 | divided_by: 100.0
+
+  assign sm_render = '100vw'
+  assign md_render = 'calc(100vw / 2)'
+  assign lg_render = 'calc(1600px / 2)'
+
+  if section.index == 1
+    assign fetchpriority = 'high'
+    assign loading = 'eager'
+  endif
+
+-%}
+
+{% style %}
+#shopify-section-{{ section.id }} {
+  --text-color: {{ section.settings.text_color }};
+  --button-bg: {{ section.settings.button_bg }};
+  --button-text: {{ section.settings.button_text_color }};
+  --desktop-section-height: {{ desktop_height }};
+  --mobile-section-height: {{ mobile_height }};
+  --section-overlay-color: {{ section.settings.overlay_color | color_modify: 'alpha', block_opacity }};
+}
+.image-with-text-overlay-{{ section.id }} .section-img-txt-overlay__bg-img {
+  height: {{ section.settings.image_height }}px;
+}
+.image-with-text-overlay-{{ section.id }} .section-img-txt-overlay__heading {
+  font-size: {{ section.settings.heading_size }}px;
+  line-height: calc(({{ section.settings.heading_size }}px * 0.17) + {{ section.settings.heading_size }}px);
+}
+.image-with-text-overlay-{{ section.id }} .section-img-txt-overlay__subheading {
+  font-size: {{ section.settings.subheading_size }}px;
+  line-height: calc(({{ section.settings.subheading_size }}px * 0.34) + {{ section.settings.subheading_size }}px);
+}
+{% endstyle %}
+
+{% comment %} Image with text overlay Template {% endcomment %}
+<div
+  class="section-img-txt-overlay image-with-text-overlay-{{ section.id }} global__section {{ section_padding }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="image-text-overlay"
+  data-section-loaded="false">
+
+  <div class="grid__wrapper {{ full_width }}">
+
+    <article class="span-12">
+      {% if section.settings.link != blank %}<a href="{{ section.settings.link }}">{% endif %}
+        <div class="section-img-txt-overlay__wrapper homepage-promo relative">
+          {% if section.settings.image %}
+            <div class="section-img-txt-overlay__bg-img background-image relative">
+              {% render 'helper-image'
+                type: section.settings.image,
+                sm_render: sm_render,
+                md_render: md_render,
+                lg_render: lg_render,
+                loading: loading,
+                fetchpriority: fetchpriority,
+                width: 2400 %}
+            </div>
+          {% else %}
+            <div class="onboard relative demo-1 color-2">
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+          <div class="section-img-txt-overlay__caption caption absolute-center">
+            {% if section.settings.title != blank %}
+              <h3 class="section-img-txt-overlay__heading animate--text">{{ section.settings.title }}</h3>
+            {% endif %}
+            {% if section.settings.subheading_text != blank %}
+              <p class="section-img-txt-overlay__subheading mb0 animate--text delay--1">{{ section.settings.subheading_text }}</p>
+            {% endif %}
+            {%- if section.settings.button_text != blank and section.settings.link != blank -%}
+              <div class="animate--text delay--2">
+                <a class="section-img-txt-overlay__button button btn-outline mb0 mt4 inline-block" href="{{ section.settings.link }}">
+                  {{ section.settings.button_text }}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {% if section.settings.link != blank %}</a>{% endif %}
+    </article>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image with text overlay",
+  "tag": "section",
+  "class": "dynamic-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Image overlay color",
+      "default": "#000000",
+      "info":"Adding an overlay helps text to appear over images"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Image overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 200,
+      "max": 900,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop image height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 200,
+      "max": 900,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile image height",
+      "default": 500
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Image with Text Overlay"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading_text",
+      "label": "Subheading",
+      "default": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story."
+    },
+        {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Optional"
+    },
+    {
+      "type": "header",
+      "content": "Section styles"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text overlay"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

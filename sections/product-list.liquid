@@ -1,0 +1,366 @@
+{% comment %} Locations Assets {% endcomment %}
+<link rel="preload" href="{{ 'section-product-list.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'section-product-list.css' | asset_url }}"></noscript>
+
+{% comment %} Locations Logic {% endcomment %}
+{%- liquid
+  if section.settings.full_width
+    assign full_width =  'edge'
+  endif
+
+  assign list = section.settings.product_list
+
+  assign section_padding = ''
+  if section.settings.section_padding == 'top'
+    assign section_padding = 'pb0'
+  elsif section.settings.section_padding == 'bottom'
+    assign section_padding = 'mt0'
+  elsif section.settings.section_padding == 'none'
+    assign section_padding = 'mt0 pb0'
+  endif
+
+  if section.settings.item_position == 'left'
+    assign position_one = 'first'
+    assign position_two = 'last'
+  elsif section.settings.item_position == 'right'
+    assign position_one = 'last'
+    assign position_two = 'first'
+  elsif section.settings.item_position == 'center'
+    assign position_one = 'a-center'
+    assign position_two = 'a-center'
+  endif
+
+  assign sm_render = '100vw'
+
+  if section.settings.item_width == 'one_third' or section.settings.item_width == '33'
+    assign width_one = 'span-8'
+    assign width_two = 'span-4'
+    assign md_render = 'calc(100vw / 3)'
+    assign lg_render = 'calc(1600px / 3)'
+    assign width = '800'
+  elsif section.settings.item_width == 'one_half' or section.settings.item_width == '50'
+    assign width_one = 'span-6'
+    assign width_two = 'span-6'
+    assign md_render = 'calc(100vw / 2)'
+    assign lg_render = 'calc(1600px / 2)'
+    assign width = '1000'
+  elsif section.settings.item_width == 'two_thirds' or section.settings.item_width == '66'
+    assign md_render = 'calc(100vw * 0.6667)'
+    assign lg_render = 'calc(1600px * 0.6667)'
+    assign width_one = 'span-4'
+    assign width_two = 'span-8'
+    assign width = '1200'
+  elsif section.settings.item_width == 'three_quarters' or section.settings.item_width == '75'
+    assign md_render = 'calc(100vw * 0.75)'
+    assign lg_render = 'calc(1600px * 0.75)'
+    assign width_one = 'span-9'
+    assign width_two = 'span-3'
+    assign width = '1200'
+  elsif section.settings.item_width == 'one_whole' or section.settings.item_width == '100'
+    assign md_render = '100vw'
+    assign lg_render = '100vw'
+    assign width_one = 'span-8 push-2'
+    assign width_two = 'span-8 push-2'
+    assign width = '2000'
+  endif
+
+  assign is_fixed_height = false
+  if section.settings.image_height == 'fixed'
+    assign is_fixed_height = true
+    assign desktop_height = section.settings.desktop_height | append: 'px'
+    assign mobile_height = section.settings.mobile_height | append: 'px'
+  endif
+
+-%}
+
+{% capture carousel_config %}{
+  "wrapAround":true,
+  "dragThreshold":"15",
+  "pauseAutoPlayOnHover":false,
+  "pageDots": false,
+  "prevNextButtons":true,
+  "arrowShape": "M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+}{% endcapture %}
+
+{% capture component_config %}{
+  "classes": {
+    "list": {{ '.product--list' | json }},
+    "carousel": {{ '.js-carousel' | json }},
+    "link": {{ '.product--item' | json }},
+    "selected": {{ '.is-selected' | json }}
+  }
+}{% endcapture %}
+
+{% style %}
+#shopify-section-{{ section.id }} {
+  --desktop-section-height: {{ desktop_height }};
+  --mobile-section-height: {{ mobile_height }};
+}
+{% endstyle %}
+
+{% comment %} Locations Template {% endcomment %}
+<div
+ class="global__section section-product-list product-list-{{ section.id }} {{ section_padding }}"
+ data-section-id="{{ section.id }}"
+ data-section-type="carousel"
+ data-section-loaded="false"
+ data-asset-url="{{ 'carousel.js' | asset_url }}">
+
+
+<wau-product-carousel-with-links data-config='{{ component_config }}'>
+  <div class="grid__wrapper {{ full_width }}">
+
+    <article class="{{ width_two }} {{ position_one }}">
+      <div class="slider-container">
+        <div class="main-carousel main-carousel--{{ section.id }} v-center js-carousel relative" data-flickity='{{ carousel_config }}'>
+          {% if list.count != 0 %}
+            {% for product in list %}
+              {% liquid
+                assign fetchpriority = 'auto'
+                assign loading = 'lazy'
+                if section.index == 1 and forloop.first
+                  assign fetchpriority = 'high'
+                  assign loading = 'eager'
+                endif
+              %}
+              <div
+                class="carousel-cell product--carousel_image{% if is_fixed_height %} is--fixed{% endif %} slide-{{ product.id }}"
+                data-product-id="{{ product.id }}" data-slide-index="{{ forloop.index0 }}">
+                 {% render 'helper-image',
+                  type: product.featured_image,
+                  sm_render: sm_render,
+                  md_render: md_render,
+                  lg_render: lg_render,
+                  loading: loading,
+                  fetchpriority: fetchpriority,
+                  width: width %}
+              </div>
+            {% endfor %}
+          {% else %}
+            {% for i in (1..3) %}
+              <div
+                class="carousel-cell product--carousel_image{% if is_fixed_height %} is--fixed{% endif %} slide-{{ forloop.index0 }}"
+                data-product-id="{{ product.id }}" data-slide-index="{{ forloop.index0 }}">
+                <div class="placeholder-image demo-1 color-2">
+                  {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+                  {% assign placeholder = 'product-' | append: current %}
+                  {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </article>
+    <article class="{{ width_one }} {{ position_two }} a-left v-center">
+      <div class="product--list pl8 pr8 sm-pl0 sm-pr0">
+        <h3 class="animate--text">{{ section.settings.title }}</h3>
+        <ul class="product--list_items">
+          {% if list.count != 0 %}
+            {% for product in list %}
+              {% liquid 
+                if routes.root_url == '/'
+                  assign product_url = '/products/' | append: product.handle | append: '?section_id=quickshop'
+                else
+                  assign product_url = routes.root_url | append: '/products/' | append: product.handle | append: '?section_id=quickshop'
+                endif 
+                if product.template_suffix == 'pre-order'
+                  assign call_to_action = 'products.product.pre_order' | t
+                else
+                  assign call_to_action = 'products.product.add_to_cart' | t
+                endif
+              %}
+              <li class="product--item animate--text delay--{{ forloop.index }}{% if forloop.first %} is-selected{% endif %}" data-section-id="main-carousel--{{ section.id }}" data-selector=".slide-{{ product.id }}">
+                <h3 class="h4 product--item_title">{{ product.title | escape }}</h3>
+                <div class="product--item_details">
+
+                  <div class="product--item_price">
+                    {% if product.price < product.compare_at_price %}
+                      <span class="product-loop__price--sale onsale inline-block">
+                        {{ product.price | money }}
+                      </span>
+                      <span class="product-loop__price--compare was inline-block ml1">
+                        {{ product.compare_at_price | money }}
+                      </span>
+                      {% assign savings = product.compare_at_price | minus: product.price %}
+                      <span class="product-loop__price--savings savings hide">
+                        ({{ 'collections.general.save' | t }} {{ savings | money }})
+                      </span>
+                    {% else %}
+                      {% if product.price_varies %}
+                        {{ 'products.general.from' | t }} {{ product.price_min | money }} - {{ product.price_max | money }}
+                      {% else %}
+                        {{ product.price | money }}
+                      {% endif %}
+                    {% endif %}
+
+                    {%- render 'product-unit-price', variant: product.selected_or_first_available_variant -%}
+                  </div>
+
+                  <div class="product--item_buttons">
+                    {%- if product.available -%}
+                      {%- if product.variants.size > 1 -%}
+                        <button class="quick-view-{{ product.id }} product-listing__quickview-trigger js-quickview-trigger no-js-hidden button-as-link"
+                          type="button"
+                          name="button"
+                          aria-hidden="true"
+                          data-quickview-alt="true"
+                          data-product-url="{{ product_url }}"
+                          data-has-model="{{ has_model }}"
+                          data-has-video="{{ has_video }}">
+                          {{ 'products.product.view_options' | t }}
+                        </button>
+                      {%- else -%}
+                        <button class="quick-view-{{ product.id }} product-listing__quickview-trigger js-quickview-trigger no-js-hidden button-as-link"
+                          type="button"
+                          name="button"
+                          aria-hidden="true"
+                          data-quickview-alt="true"
+                          data-quick-add
+                          data-product-url="{{ product_url }}"
+                          data-has-model="{{ has_model }}"
+                          data-has-video="{{ has_video }}">
+                            {{ call_to_action }}
+                        </button>
+                      {%- endif -%}
+                    {%- else -%}
+                      <span class="sold-out">{{ 'products.product.sold_out' | t }}</span>
+                    {%- endif -%}
+                    <a class="product--selector relative" href="{{ product.url }}">
+                      {{ 'products.product.product_details' | t }}
+                    </a>
+                  </div>
+                </div> <!-- product--item_details -->
+              </li>
+            {% endfor %}
+          {% else %}
+            {% for i in (1..3) %}
+              <li class="product--item animate--text delay--{{ forloop.index }}{% if forloop.first %} is-selected{% endif %}">
+                <h3 class="h4 product--item_title">{{ 'products.product.onboarding.title' | t }}</h3>
+                <div class="product--item_details">
+                  {{ 999 | money }}
+                  <a class="product--selector relative" data-selector=".slide-{{ forloop.index0 }}" href="#">
+                    {{ 'products.product.product_details' | t }}
+                  </a>
+                </div>
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+    </article>
+
+  </div></wau-product-carousel-with-links>
+</div>
+
+{% schema %}
+{
+  "name": "Product list",
+  "tag": "section",
+  "class": "dynamic-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Product list"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products",
+      "limit": 10
+    },
+    {
+      "type": "select",
+      "id": "item_position",
+      "label": "Choose image position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+     },
+    {
+      "type": "select",
+      "id": "item_width",
+      "label": "Choose image width",
+      "options": [
+        { "value": "one_third", "label": "33%" },
+        { "value": "one_half", "label": "50%" },
+        { "value": "two_thirds", "label": "75%" },
+        { "value": "one_whole", "label": "100%" }
+      ],
+      "default": "one_half"
+    },
+    {
+      "type": "radio",
+      "id": "image_height",
+      "label": "Image height",
+      "default":"natural",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "fixed",
+          "label": "Fixed height"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 200,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop fixed height",
+      "default": 650
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile fixed height",
+      "default": 400
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product list"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

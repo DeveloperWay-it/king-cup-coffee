@@ -1,0 +1,229 @@
+{% comment %}
+snippets/onboard-single-product.liquid
+
+Accepts:
+
+- show_quantity: {Boolean} blocks setting.
+- form_width: {String} String of CSS classes.
+- gallery_width: {String} string of CSS classes.
+
+
+Usage:
+
+{%
+  render 'onboard-single-product',
+  show_quantity: block.settings.show_quantity,
+  form_width: 'span-4 push-7 v-center',
+  gallery_width: 'span-6 v-center'
+%}
+{% endcomment %}
+<article
+class="{{ gallery_width }} js-product-gallery  mb4"
+data-gallery-config='{{ product_gallery_config }}'>
+<span class="demo-1 color-2">{{ 'product-1' | append: current | placeholder_svg_tag: 'placeholder-svg' }}</span>
+</article>
+
+<article
+  id="product-description"
+  class="{{ form_width }}">
+
+  <div class="sm-px6">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'metafield' %}
+          <div class="rte pt2 mb2" {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </div>
+        {% when 'title' %}
+          <h3 class="lh2 pt2 mb2" {{ block.shopify_attributes }}>
+              {{ 'products.product.onboarding.title' | t }}
+          </h3>
+        {% when 'subtitle' %}
+          <h4 class="subtitle pt2 mb2" {{ block.shopify_attributes }}>{{ 'products.product.onboarding.subtitle' | t }}</h4>
+        {% when 'quantity' %}
+          <div {{ block.shopify_attributes }}>
+            <div class="variants">
+              <div class="product__quantity {% if product.has_only_default_variant %}border--active{% endif %}">
+                <label class="product__quantity-label vib-center" for="{{ product_type }}-productQty-{{ product.id }}">{{ 'products.product.quantity' | t }}</label>
+                <div class="product__quantity--selector grid__wrapper edge cg0 rg0">
+                  <input id="{{ product_type }}-productQty-{{ product.id }}"
+                    min="1"
+                    data-limit="{% if current_variant.inventory_management == 'shopify' %}{% unless current_variant.inventory_policy == 'continue' %}{{ current_variant.inventory_quantity }}{% endunless %}{% endif %}"
+                    type="text"
+                    name="quantity"
+                    class="product__quantity-input vib-center span-10 sm-span-10 auto"
+                    value="1" />
+                  <button class="product__quantity-down downer js-qty-down mr1 mb0 vib-center no-js-hidden span-1 sm-span-1 auto" data-href="{{ product.url }}" tabindex="0" aria-label="Decrease quantity" type="button">
+                    {% render 'snip-icons',
+                       wrapper: '.product__quantity',
+                       type: 'apollo',
+                       icon: 'minus',
+                       size: '10px',
+                       fill: 'var(--text-color)',
+                       hover: 'var(--text-color)' %}
+                  </button>
+                  <button class="product__quantity-up js-qty-up up ml1 mb0 vib-center no-js-hidden span-1 sm-span-1 auto" data-href="{{ product.url }}" tabindex="0" aria-label="Increase quantity" type="button">
+                    {% render 'snip-icons',
+                       wrapper: '.product__quantity',
+                       type: 'theme',
+                       icon: 'plus',
+                       size: '10px',
+                       fill: 'var(--text-color)',
+                       hover: 'var(--text-color)' %}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% when 'buttons' %}
+          <div {{ block.shopify_attributes }}>
+            <div class="product-add pt2 mb2">
+
+              <button
+               type="submit"
+               name="add"
+               class="add-item add w100 btn-outline btn-secondary"
+               disabled="disabled">
+                   <span data-product-price>
+                     $14.55 -
+                   </span>
+
+                   <span class="hide" data-compare-text>
+                     {{ 'products.product.regular_price' | t }}
+                   </span>
+                   <span class="strike ml1" data-compare-price>
+                   </span>
+
+                   <span data-add-to-cart-text>
+                     {{ 'products.product.sold_out' | t }}
+                   </span>
+             </button>
+            </div>
+          </div>
+        {% when 'social_share' %}
+          <div class="product-template__social-share pt2 pb2 a-center" {{ block.shopify_attributes }}>
+            <p class="inline-block mb0 mr3 v-center">{{ 'products.product.social_share' | t }}</p>
+            {% render 'snip-social-sharing',
+              share_title: 'Featured Product',
+              share_permalink: '#',
+              share_image: blank %}
+          </div>
+        {%- when 'variants' -%}
+
+          {%- if settings.product_variants == 'swatches' -%}
+            <div class="product__variants-swatches mt4 mb6 no-js-hidden onboarding--content" data-section="{{ section.id }}">
+
+              <div class="swatches__container pt2 mb0 js-variant-selector" data-option-index="{{ option.position }}" data-other-options='{{ other_options | json }}'>
+                <p class="swatches__option-name">Variants</p>
+                {%- for n in (1..4) -%}
+                  {% capture radio_button %}
+                    <input type="radio" id="{{ section.id }}-{{ n }}-{{ forloop.index0 }}"
+                        class="swatches__form--input"
+                        name="Variants"
+                        value="{{ n | escape }}"
+                        form="product-form-{{ section.id }}"
+                        data-position="1"
+                        {{ checked }}>
+                  {% endcapture %}
+                  {% capture regular_swatch %}
+                    <div class="swatches__swatch--regular swatch-element js-swatch-element">
+                      {{ radio_button }}
+                      <label class="swatches__form--label" for="{{ section.id }}-{{ n }}-{{ forloop.index0 }}" tabindex="0">
+                        {{ n }}
+                      </label>
+                    </div>
+                  {% endcapture %}
+
+                  {{ regular_swatch }}
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- else -%}
+            <div class="product__variants-select no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
+                <div class="product-form__input product-form__input--dropdown">
+                  <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                    Variants
+                  </label>
+                  <div class="select">
+                    <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                      class="js-variant-selector"
+                      name="options[{{ option.name | escape }}]"
+                      form="product-form-{{ section.id }}"
+                    >
+                      {%- for n in (1..4) -%}
+                        <option value="{{ value | escape }}">
+                          {{ n }}
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                  </div>
+                </div>
+            </div>
+          {%- endif -%}
+          <style>
+            .onboarding--content .swatches__form--label:hover { 
+              color: #fff;
+            }
+          </style>
+        {% when 'payment_icons' %}
+          <div class="product-template__payment-icons pt5 pb5 mt5 mb5"
+              style="background-color:{{ block.settings.background_color }};" {{ block.shopify_attributes }}>
+            {% if block.settings.title != blank %}
+              <h5>{{ block.settings.title | escape }}</h5>
+            {% endif %}
+            {% for type in shop.enabled_payment_types %}
+              {{ type | payment_type_svg_tag: class:'payment-icon' }}
+            {% endfor %}
+          </div>  
+        {%- when 'product_customization' -%}
+          {%
+            render 'product-customizations',
+            block: block,
+            section:section,
+            product:product
+          %}        
+        {% when 'metafield_popup' %}
+          <div class="pt2 mb2">
+            {% if block.settings.popup_label != blank and block.settings.popup_metafield_content != blank %}
+              <button class="btn-as-link js-modal-open underline pt2 mb2" type="button" name="button" data-wau-modal-target="product-modal--{{ forloop.index }}" {{ block.shopify_attributes }}>
+                {{ block.settings.popup_label }}
+              </button>
+              <div data-wau-modal-content="product-modal--{{ forloop.index }}" style="display: none;">
+                <div class="rte">
+                  {{ block.settings.popup_metafield_content }}
+                </div><!-- /.rte -->
+              </div>
+            {% endif %}
+          </div>
+        {%- when 'text_with_icon' -%}
+          {% liquid
+            assign type = 'apollo'
+            assign icon = block.settings.icon
+            case icon
+              when 'burger', 'cafe', 'cake', 'camera', 'cookie', 'croissant', 'desktop', 'diamond', 'dry-cleaning', 'favorite', 'finger-print', 'flower', 'forest', 'gaming', 'headphones', 'health', 'ice-cream', 'laptop', 'laundry', 'liquor', 'lock', 'mic', 'mobile-phone', 'nature', 'new-release', 'pets', 'pizza', 'plant', 'rabbit', 'radio', 'savings', 'shield', 'sustainable', 'take-out', 'trophy', 'tv', 'washing-machine', 'watch', 'wine', 'world'
+              assign type = 'theme'
+            endcase
+          %}
+          {% if block.settings.text != blank %}
+            <div class="product-template__text-with-icon mt3 mb3 a-{{ block.settings.text_align }}" {{ block.shopify_attributes }}>
+              <div class="product--text-with-icon__icon">
+              {% render 'snip-icons',
+                  wrapper: '.product-form__text-icon',
+                  type: type,
+                  icon: icon,
+                  size: '20px' %}
+                </div>
+                <div class="product--text-with-icon__text">
+                  {{ block.settings.text }}
+                </div>
+            </div>
+          {% endif %}  
+         {% when '@app' %}
+          <div class="product__section--app pt2 mb2" {{ block.shopify_attributes }}>
+            {% render block %}
+          </div>
+      {% endcase %}
+    {% endfor %}
+
+  </div>
+</article>

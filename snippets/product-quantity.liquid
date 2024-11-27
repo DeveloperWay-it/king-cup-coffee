@@ -1,0 +1,63 @@
+{% comment %}
+snippets/product-quantity.liquid
+
+Accompanies the main-product.liquid and featured-product.liquid.
+
+Accepts:
+
+- product: {Object} Liquid product
+- block: {Object} Liquid block
+- section: {Object} Liquid section
+- product_form_config: {String} JSON object.
+- current_variant: {Object} Liquid current_variant
+- product_type: {String} 'product'
+
+Usage:
+
+{%
+  render 'product-quantity',
+  product: product,
+  block: block,
+  section: section,
+  product_form_config: product_form_config,
+  current_variant: current_variant,
+  product_type: 'product',
+%}
+{% endcomment %}
+{% assign product_form_id = 'product-form-' | append: section.id %}
+{% form 'product', product,
+   id: product_form_id,
+   class: "product__form-container product_form js-prod-form-submit",
+   data-product-form: product_form_config,
+   data-product-id: product.id %}
+   <div class="product__quantity {% if product.has_only_default_variant %}border--active{% endif %}">
+     <label class="product__quantity-label vib-center" for="{{ product_type }}-productQty-{{ product.id }}">{{ 'products.product.quantity' | t }}</label>
+     <div class="product__quantity--selector grid__wrapper edge cg0 rg0">
+       <input id="{{ product_type }}-productQty-{{ product.id }}"
+         min="1"
+         data-limit="{% if current_variant.inventory_management == 'shopify' %}{% unless current_variant.inventory_policy == 'continue' %}{{ current_variant.inventory_quantity }}{% endunless %}{% endif %}"
+         type="text"
+         name="quantity"
+         class="product__quantity-input js-qty-input vib-center span-10 sm-span-10 auto"
+         value="1" />
+       <button class="product__quantity-down downer js-qty-down mr1 mb0 vib-center no-js-hidden span-1 sm-span-1 auto" data-href="{{ product.url }}" tabindex="0" aria-label="Decrease quantity" type="button">
+         {% render 'snip-icons',
+            wrapper: '.product__quantity',
+            type: 'apollo',
+            icon: 'minus',
+            size: '10px',
+            fill: 'var(--text-color)',
+            hover: 'var(--text-color)' %}
+       </button>
+       <button class="product__quantity-up js-qty-up up ml1 mb0 vib-center no-js-hidden span-1 sm-span-1 auto" data-href="{{ product.url }}" tabindex="0" aria-label="Increase quantity" type="button">
+         {% render 'snip-icons',
+            wrapper: '.product__quantity',
+            type: 'theme',
+            icon: 'plus',
+            size: '10px',
+            fill: 'var(--text-color)',
+            hover: 'var(--text-color)' %}
+       </button>
+     </div>
+   </div>
+{% endform %}

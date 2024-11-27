@@ -1,0 +1,83 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-2": {
+          "type": "announcement_text",
+          "settings": {
+            "announcement_text_1": "<p>Share a shop announcement or message</p>",
+            "announcement_text_2": "",
+            "announcement_text_3": "",
+            "alignment": "center"
+          }
+        },
+        "announcement-bar-0": {
+          "type": "phone_number",
+          "settings": {
+            "phone_number": "<p>777-777-7777</p>",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-2",
+        "announcement-bar-0"
+      ],
+      "settings": {
+        "announcement_text_size": 13
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "linklist_with_images_QL8jJ9": {
+          "type": "linklist_with_images",
+          "settings": {
+            "linklist_images_menu_item": "Catalog",
+            "image_ratio": "square",
+            "links_alignment": "left",
+            "featured_image_1": "shopify://shop_images/lenses-lattes.jpg",
+            "featured_image_label_1": "",
+            "image_url_1": "",
+            "featured_image_2": "shopify://shop_images/coffee-and-cake.jpg",
+            "featured_image_label_2": "",
+            "image_url_2": "",
+            "featured_image_3": "shopify://shop_images/espresso-machine-with-dark-wood-handles.jpg",
+            "featured_image_label_3": "",
+            "image_url_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "linklist_with_images_QL8jJ9"
+      ],
+      "settings": {
+        "inline_layout": true,
+        "logo_align_left": true,
+        "enable_sticky": true,
+        "logo_max_width": 200,
+        "logo_max_width_mobile": 150,
+        "logo_size": 32,
+        "main_nav": "main-menu",
+        "nav_alignment": "center",
+        "show_desktop_icons": true
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

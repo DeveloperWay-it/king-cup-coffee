@@ -1,0 +1,515 @@
+{% comment %} Product Quickshop Logic {% endcomment %}
+{%- liquid
+
+  assign show_payment_button = settings.product_show_payment_button
+  assign current_variant = product.selected_or_first_available_variant
+  assign enable_video_looping = section.settings.enable_video_looping
+  assign first_3d_model = product.media | where: "media_type", "model" | first
+
+  if settings.product_show_payment_button
+    assign secondary_button = 'btn-secondary'
+  endif
+
+  if product.template_suffix == 'pre-order'
+    assign call_to_action = 'products.product.pre_order' | t
+  else
+    assign call_to_action = 'products.product.add_to_cart' | t
+  endif
+
+  unless current_variant.available
+   assign call_to_action = 'products.product.sold_out' | t
+  endunless
+
+  assign product_info_align =  'a-center'
+
+  if section.settings.quickview_type == 'drawer'
+    assign section_padding = 'py6 px4'
+    assign gallery_width = 'span-12'
+    assign form_width ='span-12'
+  else
+    assign gallery_width ='span-6 auto v-start'
+    assign form_width ='span-6 auto v-start'
+  endif
+
+  assign has_media = false
+  assign has_video = false
+  assign has_plyr = false
+  assign has_ytv = false
+  for media in product.media
+    if media.media_type == "video"
+      assign has_plyr = true
+      assign has_video = true
+      continue
+    endif
+    if media.media_type == "external_video"
+      assign has_ytv = true
+      assign has_video = true
+      continue
+    endif
+    if media.media_type == "model"
+      assign has_media = true
+      continue
+    endif
+  endfor
+
+  if product.template_suffix == 'pre-order'
+    assign button_text = 'products.product.pre_order' | t
+  else
+    assign button_text = 'products.product.add_to_cart' | t
+  endif
+-%}
+
+{%- unless template contains 'product' -%}
+  {% comment %} Product Quickshop Assets {% endcomment %}
+  <link rel="preload" href="{{ 'section-main-product.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}"></noscript>
+{%- endunless -%}
+
+<link rel="preload" href="{{ 'component-quickshop.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'component-quickshop.css' | asset_url }}"></noscript>
+
+{%- if product != blank and section.settings.enable_quickview -%}
+  {% comment %} Product Quickshop Template {% endcomment %}
+  <div id="quickshopTemplate" style="display: none;">
+    <div
+      class="quickshop-product product-quickview__wrapper js-quickview-wrapper product__section--main product-{{ product.id }} product-quickview-{{ section.id }} no-section-animation {{ section_padding }}"
+      data-product-id="{{ product.id }}"
+      data-section-id="{{ section.id }}"
+      data-payment-button="{{ show_payment_button }}"
+      data-section-type="product"
+      data-quickshop-gallery
+      data-product-video="{{ has_video }}"
+      data-click-to-enlarge="false"
+      data-product-model="{{ has_media }}"
+      data-initial-variant="{{ current_variant.featured_media.id }}">
+
+      {% render 'product-json', product: product %}
+
+      {% capture product_gallery_config %}{
+        "thumbPosition": "bottom",
+        "enableVideoLooping": {{ enable_video_looping | json }},
+        "mainSlider": {% if product.media.size <= 1 %}false{% else %}true{% endif %},
+        "thumbSlider": {% if product.media.size >= 4 %}true{% else %}false{% endif %},
+        "productId": {{ product.id | json }},
+        "thumbsShown": 4,
+        "clickToEnlarge": false,
+        "isQuick": true
+      }{% endcapture %}
+
+      {% capture product_form_config %}
+        { "money_format": {{ shop.money_format | json }},
+          "enable_history": true,
+          "sold_out": {{ "products.product.sold_out" | t | json }},
+          "button": {{ button_text | json }},
+          "unavailable": {{ 'products.product.unavailable' | t | json }},
+          "quickview": true,
+          "featured_product": false,
+          "swatches": {{ settings.product_variants | json }}
+        }
+      {% endcapture %}
+
+      {%- if has_media -%}
+        <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
+      {%- endif -%}
+      {%- if has_plyr -%}
+        <link id="PlyrViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/shopify-plyr/v1.0/shopify-plyr.css" media="print" onload="this.media='all'">
+      {%- endif -%}
+
+      <div class="grid__wrapper edge rg0">
+        {% render 'snip-headings', url: product.url, align: settings.heading_align, grid: 'span-12' %}
+
+          <article class="product__section-images product-gallery__wrapper {{ gallery_width }} carousel-container js-product-gallery single_image--{{ is_single_image }}"
+          data-product-single-media-group
+          data-product-gallery
+          data-gallery-config='{{ product_gallery_config }}'>
+            {% render 'product-image-gallery',
+              product: product,
+              thumbnail_position: "bottom",
+              click_to_enlarge: false,
+              enable_video_looping: enable_video_looping,
+              media_type: 'all' %}
+          </article>
+
+          <article
+            class="product__section-right layout--{{ settings.product_variants }} {{ form_width }}">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'metafield' %}
+                    <div class="rte pt2 mb2" {{ block.shopify_attributes }}>
+                      {{ block.settings.text }}
+                    </div>
+                  {% when 'title' %}
+                    <h3 class="lh2 pt2 mb2" {{ block.shopify_attributes }}>
+                      <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title }}</a>
+                    </h3>
+                  {% when 'subtitle' %}
+                    {% if block.settings.subtitle != blank %}
+                      <h4 class="subtitle pt2 mb2" {{ block.shopify_attributes }}>{{ block.settings.subtitle }}</h4>
+                    {% elsif product.description contains '[#subtitle]' %}
+                      {% assign subtitle = product.description | split: '[/subtitle]' | first | split: '[#subtitle]' | last %}
+                      <h4 class="subtitle pt2 mb2" {{ block.shopify_attributes }}>{{ subtitle }}</h4>
+                    {% endif %}
+                  {% when 'price' %}
+                    <div class="product-block product-block--{{ block.type }}" {{ block.shopify_attributes }}>
+                      {%
+                        render 'product-price',
+                        current_variant: current_variant,
+                        product: product
+                      %}
+                      {%- form 'product', product, id: 'product-form-installment' -%}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                        <div class="spi-banner" {{ block.shopify_attributes }}>
+                          {{ form | payment_terms }}
+                        </div><!-- /#spi-banner -->
+                      {%- endform -%}
+                    </div><!-- /div.product-block -->
+                  {% when 'variants' %}
+                    <div class="product-block product-block--{{ block.type }}" {{ block.shopify_attributes }}>
+                      {%
+                        render 'product-variants',
+                        product: product,
+                        block: block,
+                        section: section,
+                        current_variant: current_variant,
+                        product_form_config: product_form_config
+                      %}
+                    </div>
+                  {% when 'quantity' %}
+                    {% unless product.gift_card? %}
+                      <div class="product-block product-block--{{ block.type }}" {{ block.shopify_attributes }}>
+                        {%
+                          render 'product-quantity',
+                          product: product,
+                          block: block,
+                          section: section,
+                          product_form_config: product_form_config,
+                          current_variant: current_variant,
+                          product_type: 'product',
+
+                        %}
+                      </div><!-- /.product-block -->
+                    {% endunless %}
+
+                  {% when 'buttons' %}
+                    <div {{ block.shopify_attributes }}>
+                      {%
+                        render 'product-buttons',
+                        product: product,
+                        type: section,
+                        product_type: 'product',
+                        current_variant: current_variant,
+                        product_form_config: product_form_config,
+                        call_to_action: call_to_action,
+                        secondary_button: secondary_button,
+                        show_price_in_button: block.settings.show_price_in_button,
+                        show_gift_card_recipient: block.settings.show_gift_card_recipient
+                      %}
+                    </div>
+                  {% when 'payment_icons' %}
+                    <div class="product-template__payment-icons pt5 pb5 mt5 mb5"
+                        style="background-color:{{ block.settings.background_color }};" {{ block.shopify_attributes }}>
+                      {% if block.settings.title != blank %}
+                        <h5>{{ block.settings.title | escape }}</h5>
+                      {% endif %}
+                      {% for type in shop.enabled_payment_types %}
+                        {{ type | payment_type_svg_tag: class:'payment-icon' }}
+                      {% endfor %}
+                    </div>
+                  {%- when 'product_customization' -%}
+                    {%
+                      render 'product-customizations',
+                      block: block,
+                      section:section,
+                      product:product
+                    %}
+                  {% when 'social_share' %}
+                    <div class="product-template__social-share pt2 pb2 a-center" {{ block.shopify_attributes }}>
+                      <p class="inline-block mb0 mr3 v-center">{{ 'products.product.social_share' | t }}</p>
+                      {% render 'snip-social-sharing',
+                        share_title: product.title,
+                        share_permalink: product.url,
+                        share_image: product %}
+                    </div>
+                  {% when '@app' %}
+                    <div class="product__section--app pt2 mb2" {{ block.shopify_attributes }}>
+                      {% render block %}
+                    </div>
+                {% endcase %}
+              {% endfor %}
+          </article>
+
+      </div>
+
+      {%- if first_3d_model -%}
+        <script type="application/json" id="ModelJson-{{ section.id }}">
+          {{ product.media | where: 'media_type', 'model' | json }}
+        </script>
+      {%- endif -%}
+      {%- if has_ytv -%}
+        <script type="text/javascript">
+          // Youtube API callback
+          function onYouTubeIframeAPIReady() {
+            setTimeout(function() {
+              ProductVideo.loadVideos('youtube');
+            }, 600);
+          }
+        </script>
+        <script src="https://www.youtube.com/iframe_api" id="youtube-sdk"></script>
+      {%- endif -%}
+
+    </div>
+  </div>
+{% endif %}
+
+{% comment %} Product Quickshop Onboard Template {% endcomment %}
+<div class="product-quickview__onboard-wrapper js-quickview-onboard"
+  data-quickshop-type="{{ section.settings.quickview_type }}"
+  style="display: none;">
+
+  <button class="js-quickview-onboard-trigger"
+    style="display: none;"
+    type="button" name="button"
+    aria-hidden="true">
+  </button>
+  <div class="{{ section_padding }}">
+    <div class="grid__wrapper edge rg0 product__section--main">
+      {% render 'onboard-single-product',
+         gallery_width: gallery_width,
+         form_width: form_width %}
+    </div>
+  </div>
+</div>
+
+{%- if section.settings.quickview_type == 'drawer' -%}
+  <aside class="slideout slideout__drawer-right quickview" data-wau-slideout="quickview" id="slideout-quickview">
+    <section class="product-quickview__container">
+      <div class="slideout__trigger--close slideout__trigger-quickview__wrapper">
+        <button class="slideout__trigger-quickview js-slideout-close" aria-controls="slideout-quickview" data-slideout-direction="right" aria-label="Close" tabindex="0" type="button" name="button">
+          <div class="icn-close"></div>
+        </button>
+      </div>
+      <div id="quickview-form"
+        class="product-quickview__form-wrapper js-quickview-content"
+        data-section-id="{{ section.id }}"
+        data-url="{{ product.url }}"
+        data-quickshop-type="drawer"
+        data-quickshop-add="{{ section.settings.enable_quick_add }}">
+
+      </div>
+    </section>
+  </aside>
+{%- elsif section.settings.quickview_type == 'modal' -%}
+  <div class="modal__container" data-wau-modal="quickview" id="modal-quickview">
+    <div class="modal__inner-wrapper">
+      <section class="product-quickview__container">
+        <div class="modal__trigger--close modal__trigger-quickview__wrapper">
+          <button class="modal__trigger-quickview js-modal-close" aria-controls="modal-quickview" aria-label="Close" tabindex="0" type="button" name="button">
+            <div class="icn-close"></div>
+          </button>
+        </div>
+        <div id="quickview-form"
+         class="product-quickview__form-wrapper js-quickview-content"
+         data-section-id="{{ section.id }}"
+         data-url="{{ product.url }}"
+         data-quickshop-type="modal"
+         data-quickshop-add="{{ section.settings.enable_quick_add }}">
+
+        </div>
+      </section>
+    </div>
+  </div>
+{%- endif -%}
+
+<script src="{{ 'product-quickshop.js' | asset_url }}" defer="defer"></script>
+<style>
+  {%- if section.settings.enable_quick_add -%}
+    .product-listing__quickview-trigger svg.quickview-trigger--search {
+      display: none;
+    }
+  {%- else -%}
+    .product-listing__quickview-trigger svg.quickview-trigger--plus {
+      display: none;
+    }
+    .product-listing__quickview-trigger svg.quickview-trigger--dots {
+      display: none;
+    }
+  {%- endif -%}
+
+  {%- unless section.settings.enable_quickview == false -%}
+    .product-loop__item:hover .product-listing__quickview-trigger {
+      display: block;
+    }
+  {%- endunless -%}
+</style>
+
+{% schema %}
+{
+  "name": "Quickshop",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_quickview",
+      "label": "Enable quickshop",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "quickview_type",
+      "label": "Quickshop type",
+      "options": [
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        },
+        {
+          "value": "modal",
+          "label": "Modal"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_add",
+      "label": "Enable quick add",
+      "info": "Adds an item with no variant to the cart on click.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Enable video looping",
+      "default": false
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn more about [Media types](https:\/\/help.shopify.com/en\/manual\/products\/product-media\)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "metafield",
+      "name": "Text",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "subtitle",
+      "name": "Subtitle",
+      "limit": 1,
+      "settings": [{
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+      }]
+    },
+    {
+      "type": "variants",
+      "name": "Variants",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "payment_icons",
+      "name": "Payment icons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Secure online shopping"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "rgba(0,0,0,0)"
+        }
+      ]
+    },
+    {
+      "type": "product_customization",
+      "name": "Product customization",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Product customizations allow you to capture additional information when your customers place an order."
+        },
+        {
+          "type": "select",
+          "id": "property_type",
+          "label": "Choose a property",
+          "options": [
+            {
+              "value": "text",
+              "label": "Single line text"
+            },
+            {
+              "value": "multi_line_text",
+              "label": "Multiple line text"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading*",
+          "default": "Label",
+          "info": "*Required."
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "social_share",
+      "name": "Social share",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

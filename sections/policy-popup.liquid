@@ -1,0 +1,155 @@
+{% if request.cookies['cookie_popup_shown'] == nil or section.settings.test_mode %}
+  <style>
+    .cookie__popup-container {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 20px;
+      bottom: 20px;
+      overflow: auto;
+      max-width: 400px;
+    }
+    @media screen and (max-width: 740px) {
+      .cookie__popup-container {
+        width: calc(100% - 40px);
+      }
+    }
+    .cookie__popup-content {
+      background-color: {{ section.settings.background_color }};
+      padding: 20px;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      row-gap: 0;
+    }
+    .cookie__popup-content p {
+      color: {{ section.settings.text_color }};
+    }
+    .cookie__popup-content a {
+      color: {{ section.settings.text_color }};
+      text-decoration: underline;
+    }
+    .cookie__popup-container-close,
+    .cookie__popup-container-close:hover {
+      border: 1px solid {{ section.settings.text_color }};
+      color: {{ section.settings.text_color }};
+      background: {{ section.settings.background_color }};
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      line-height: 48px;
+      margin-right: auto;
+    }
+  </style>
+  <div id="cookie--popup" class="cookie__popup-container"
+    data-section-id="{{ section.id }}"
+    data-section-type="cookie-popup">
+    <div class="cookie__popup-content">
+      {{ section.settings.popup_message }}
+      <cookie-consent-button id="cookie-consent-button">
+        <button id="submit_cookie_consent" class="button cookie__popup-container-close">{{ section.settings.close_button_text | escape }}</button>
+      </cookie-consent-button>
+    </div>
+  </div>
+{% endif %}
+{% if section.settings.test_mode %}
+  <script type="text/javascript">
+    document.write("<style> .cookie__popup-container { display: block; }</style>");
+  </script>
+{% else %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const testMode = {% if section.settings.test_mode %}true{% else %}false{% endif %};
+    const submitCookieConsent = document.getElementById('submit_cookie_consent');
+    const cookieContainer = document.getElementById('cookie--popup');
+    function handleClick(event) {
+      var days = 7;
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      var expires = "; expires=" + date.toGMTString();
+      document.cookie = 'cookiePopupShown=true;' + expires + "; path=/; SameSite=None; Secure";
+      location.reload();
+    }
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+    const cookiePopupShown = readCookie('cookiePopupShown');
+    if (!cookiePopupShown || testMode) {
+      cookieContainer.style.display = 'block';
+    }
+    if (submitCookieConsent) {
+      submitCookieConsent.addEventListener('click', handleClick);
+    }
+    // Listen for section selection in the theme editor
+    document.addEventListener('shopify:section:select', function(event) {
+      if (event.detail.sectionId === '{{ section.id }}') {
+        cookieContainer.style.display = 'block';
+      }
+    });
+    // Listen for section deselection in the theme editor
+    document.addEventListener('shopify:section:deselect', function(event) {
+      if (event.detail.sectionId === '{{ section.id }}') {
+        cookieContainer.style.display = 'none';
+      }
+    });
+  });
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Policy Popup",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "test_mode",
+      "label": "Enable Test Mode",
+      "default": false,
+      "info": "If checked, the popup will always display in the theme editor."
+    },
+    {
+      "type": "richtext",
+      "id": "popup_message",
+      "label": "Popup Message",
+      "default": "<p>We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies. For more information see our <a href=\"#\" title=\"#\">privacy policy<\/a>.<\/p>"
+    },
+    {
+      "type": "text",
+      "id": "close_button_text",
+      "label": "Button text",
+      "default": "Accept"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f5f5f5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cookie policy"
+    }
+  ],
+  "enabled_on": {
+    "groups": [
+      "footer"
+    ]
+  }
+}
+{% endschema %}

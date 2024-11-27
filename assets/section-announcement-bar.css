@@ -1,0 +1,117 @@
+.section-top-bar__wrapper {
+  background-color: var(--announcement-bg);
+  color: var(--announcement-text);
+}
+
+.section-top-bar__wrapper a {
+  color: var(--announcement-text);
+}
+
+.section-top-bar__wrapper a:hover {
+  color: var(--announcement-hover);
+}
+
+.section-top-bar__wrapper {
+  text-transform: uppercase;
+}
+
+.section-top-bar__wrapper .block-one--true.block-two--true .section-top-bar__three {
+  grid-column: auto/span 7;
+  width: 100%;
+}
+
+.section-top-bar__wrapper .block-one--true.block-two--false .section-top-bar__three {
+  grid-column: auto/span 10;
+  width: 100%;
+}
+
+.section-top-bar__wrapper .block-one--false.block-two--true .section-top-bar__three {
+  grid-column: auto/span 9;
+  width: 100%;
+}
+
+.section-top-bar__wrapper .block-one--false.block-two--false .three {
+  grid-column: auto/span 12;
+  width: 100%;
+}
+
+/* Foodie Customizations */
+.section-top-bar__wrapper {
+  background-color: var(--announcement-bg);
+  color: var(--announcement-text);
+  text-transform: uppercase;
+}
+
+.section-top-bar__one {
+  background-color: var(--phone-number-background);
+  padding: var(--space-4) 0;
+}
+
+.section-top-bar__one a, .section-top-bar__one a:visited,
+.section-top-bar__one p {
+  color: var(--phone-number-text) !important;
+}
+
+.section-top-bar__two {
+  background-color: var(--shop-note-background);
+  padding: var(--space-4) 0;
+}
+
+.section-top-bar__two a,
+.section-top-bar__two a:visited,
+.section-top-bar__two p {
+  color: var(--shop-note-text) !important;
+}
+
+.section-top-bar__three {
+  background-color: var(--announcement-bg);
+  padding: var(--space-4) 0;
+}
+
+.section-top-bar__three a,
+.section-top-bar__three a:visited, .section-top-bar__three p {
+  color: var(--announcement-text);
+}
+
+.section-top-bar__wrapper ul.cart.cart-link-topbar-true li a,
+.section-top-bar__wrapper ul.cart.cart-link-topbar-true span {
+  color: var(--announcement-text);
+}
+
+/* ---- Announcement bar text/carousel ---- */
+
+.section-top-bar__wrapper .js-carousel {
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+  max-height: 20px;
+}
+
+.announcement--text {
+  width: 100%;
+}
+
+.section-top-bar__wrapper button.flickity-prev-next-button.previous,
+.section-top-bar__wrapper button.flickity-prev-next-button.next {
+  top: 10px;
+  background: transparent !important;
+  width: 30px;
+  height: 30px;
+}
+
+.section-top-bar__wrapper button.flickity-prev-next-button.previous {
+  left: 5px;
+}
+
+.section-top-bar__wrapper button.flickity-prev-next-button.next {
+  right: 5px;
+  left: unset;
+}
+
+.section-top-bar__wrapper button.flickity-prev-next-button svg.flickity-button-icon {
+  fill: var(--announcement-text);
+  width: 10px !important;
+}
+
+.js-carousel .announcement--text p {
+  padding: 0 20px;
+}

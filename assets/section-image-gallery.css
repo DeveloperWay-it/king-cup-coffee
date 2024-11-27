@@ -1,0 +1,184 @@
+.section-gallery__item-link {
+  display: block;
+  margin: 0;
+}
+
+.section-gallery__item-wrapper {
+  float: left;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.section-gallery__item-wrapper:hover {
+  cursor: pointer;
+}
+
+.section-gallery__caption {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 3;
+}
+
+.section-gallery__container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.section-gallery__item-wrapper--one-quarter {
+  width: 25%;
+}
+
+.section-gallery__item-wrapper--one-third {
+  width: calc(100% / 3);
+}
+
+.section-gallery__item-wrapper--two-thirds {
+  width: 66.667%;
+}
+
+.section-gallery__item-wrapper--one-half {
+  width: 50%;
+}
+
+.section-gallery__item-wrapper--three-quarters {
+  width: 75%;
+}
+
+.section-gallery__item-wrapper--one-whole {
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .section-gallery__container {
+    width: 100%;
+    margin: 0 auto !important;
+  }
+
+  .section-gallery__item-wrapper--one-quarter {
+    width: 50%;
+  }
+
+  .section-gallery__item-wrapper--one-third {
+    width: 100%;
+  }
+
+  .section-gallery__item-wrapper--two-thirds {
+    width: 100%;
+  }
+
+  .section-gallery__item-wrapper--one-half {
+    width: 100%;
+  }
+
+  .section-gallery__item-wrapper--three-quarters {
+    width: 100%;
+  }
+
+  .section-gallery__item-wrapper--one-whole {
+    width: 100%;
+  }
+}
+
+.section-gallery__item-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    transition: all .3s ease;
+}
+
+@media (max-width: 767px) {
+  .section-gallery__container {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .section-gallery__item-wrapper--one-quarter, .section-gallery__item-wrapper--one-third, .section-gallery__item-wrapper--two-thirds, .section-gallery__item-wrapper--one-half, .section-gallery__item-wrapper--three-quarters, .section-gallery__item-wrapper--one-whole {
+    flex: 0 0 auto;
+    width: 270px;
+    float: none !important;
+  }
+
+  .section-gallery__block-subheading {
+    font-size: var(--font-size);
+  }
+}
+
+/* Foodie Custom */
+.section-gallery__caption h3 {
+  font-size: var(--h3-size);
+  color: var(--text-color);
+  line-height: 1;
+}
+
+.section-gallery__caption p {
+  font-size: var(--font-size);
+  color: var(--text-color);
+  visibility: hidden;
+  opacity: 0;
+  margin-bottom: var(--space-1);
+  transition: all .5s ease;
+}
+
+.section-gallery__button-wrapper {
+  visibility: hidden;
+  opacity: 0;
+  transition: all .5s ease;
+}
+
+.section-gallery__block-link.button {
+  font-size: var(--font-size-reset);
+  margin-top: 10px !important;
+}
+
+.section-gallery__item-wrapper:hover .section-gallery__caption p,
+.section-gallery__item-wrapper:hover .section-gallery__button-wrapper {
+  visibility: visible !important;
+  opacity: 1;
+}
+
+@media screen and (max-width: 1024px) {
+  .section-gallery__item-wrapper .section-gallery__caption p,
+  .section-gallery__item-wrapper .section-gallery__button-wrapper {
+    visibility: visible !important;
+    opacity: 1;
+  }
+}
+
+.section-gallery .section-gallery__item-inner.is--fixed .box-ratio {
+  padding-bottom: var(--desktop-section-height) !important;
+}
+.section-gallery .section-gallery__item-inner.is--fixed img {
+  height: var(--desktop-section-height) !important;
+  object-fit: cover;
+}
+.section-gallery .section-gallery__item-inner.is--fixed .onboard {
+  height: var(--desktop-section-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-gallery .section-gallery__item-inner.is--fixed .onboard svg {
+  height: 100%;
+  width: 100%;
+}
+@media screen and (max-width: 740px) {
+  .section-gallery .section-gallery__item-inner.is--fixed .box-ratio {
+    padding-bottom: var(--mobile-section-height) !important;
+  }
+  .section-gallery .section-gallery__item-inner.is--fixed img {
+    height: var(--mobile-section-height) !important;
+    object-fit: cover;
+  }
+  .section-gallery .section-gallery__item-inner.is--fixed .onboard {
+    height: var(--mobile-section-height);
+  }
+}

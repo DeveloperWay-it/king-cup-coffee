@@ -1,0 +1,59 @@
+.scrolling__text-section {
+  background: var(--background);
+}
+span.scrolling__text--item {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+.scrolling__text--wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.scrolling__text--content {
+  width: fit-content;
+  display: flex;
+  column-gap: 30px;
+  white-space: nowrap;
+  position: relative;
+}
+@keyframes text {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+span.scrolling--image {
+  width: 60px;
+  line-height: 1;
+}
+span.scrolling--image.no--image {
+  width: initial;
+}
+.scrolling__text-section h1,
+.scrolling__text-section h2,
+.scrolling__text-section h3,
+.scrolling__text-section h4,
+.scrolling__text-section h5,
+.scrolling__text-section h6,
+.scrolling__text-section .scrolling--text p {
+  margin-bottom: 0;
+  line-height: initial;
+}
+.scrolling__text-section p,
+.scrolling__text-section a {
+  color: var(--text-color);
+}
+.scrolling__text-section a {
+  text-decoration: none;
+}
+.scrolling__text-section .scrolling--text.style--outlined h1,
+.scrolling__text-section .scrolling--text.style--outlined h2,
+.scrolling__text-section .scrolling--text.style--outlined h3,
+.scrolling__text-section .scrolling--text.style--outlined h4,
+.scrolling__text-section .scrolling--text.style--outlined h5,
+.scrolling__text-section .scrolling--text.style--outlined h6,
+.scrolling__text-section .scrolling--text.style--outlined p,
+.scrolling__text-section .scrolling--text.style--outlined a {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-color);
+}

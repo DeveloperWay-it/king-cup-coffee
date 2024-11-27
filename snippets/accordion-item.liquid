@@ -1,0 +1,54 @@
+{% comment %}
+snippets/accordion-item.liquid
+
+Capture block content and pass it to this snippet to render in a individual accordion.
+
+Usage:
+
+{%
+  render 'accordion-item',
+  accordion_heading_capture: accordion_heading_capture,
+  accordion_content_capture: accordion_content_capture,
+  default_open: block.settings.default_open_accordion,
+  unique_id: block.id
+%}
+
+{% endcomment %}
+<div class="js-accordion c-accordion c-accordion--default c-accordion--foodie c-accordion--default c-accordion--{{ template | handleize }} c-accordion--{{ unique_id }}" id="c-accordion--{{ unique_id }}" {% if section.settings.allow_multiple %}data-accordion-allow-multiple{% endif %}>
+
+
+  {%- liquid
+
+    assign accordion_content_class = 'c-accordion__panel--'
+    assign accordion_content_id = accordion_content_class | append: unique_id
+
+    assign page = blank
+
+  -%}
+
+   {% unless accordion_heading_capture == blank and accordion_content_capture == blank  %}
+   <button class="js-accordion-header c-accordion__header {% if default_open %}js-accordion-is-open{% endif %}"
+           {% if default_open %}
+             aria-expanded="true"
+           {% else %}
+             aria-expanded="false"
+           {% endif %}
+           aria-controls="{{ accordion_content_id }}" data-toggle="accordion"
+           {{ block.shopify_attributes }} >
+      {{ accordion_heading_capture }}
+      <div class="c-accordion__header-icons">
+        {% render 'snip-icons',
+          wrapper: '.js-accordion-header',
+          type: 'theme',
+          icon: 'down-carrot',
+          size: '8px',
+          classes: 'inactive-arrow mt0 mr0 mb0 ml0' %}
+      </div>
+   </button>
+    <div class="c-accordion__panel {% if default_open %}is-active{% endif %} {{ accordion_content_id }} c-accordion__panel--{{ block.type }}" id="{{ accordion_content_id }}" data-parent="#c-accordion--{{ unique_id }}">
+     <div class="c-accordion__inner">
+      {{ accordion_content_capture }}
+     </div>
+    </div>
+   {% endunless %}
+  </div><!-- /.c-accordion.c-accordion--product -->

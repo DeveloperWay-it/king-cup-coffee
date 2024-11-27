@@ -1,0 +1,261 @@
+{% comment %} Editorial Columns Assets {% endcomment %}
+<link rel="preload" href="{{ 'section-editorial-columns.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'section-editorial-columns.css' | asset_url }}"></noscript>
+
+{% comment %} Editorial Columns Logic {% endcomment %}
+{%- liquid
+
+  assign section_padding = ''
+  if section.settings.section_padding == 'top'
+    assign section_padding = 'pb0'
+  elsif section.settings.section_padding == 'bottom'
+    assign section_padding = 'mt0'
+  elsif section.settings.section_padding == 'none'
+    assign section_padding = 'mt0 pb0'
+  endif
+  
+  if settings.section_title_align == 'left'
+    assign heading_align = 'a-left'
+  elsif settings.section_title_align == 'right'
+    assign heading_align = 'a-right'
+  else 
+    assign heading_align = 'a-center'
+  endif
+
+  assign text_align = section.settings.text_align
+  case section.blocks.size
+    when 0
+    when 1
+      assign block_width = 'span-8 auto push-2'
+    when 2
+      assign block_width = 'span-6 auto'
+    when 3
+      assign block_width = 'span-4 auto'
+    when 4
+      assign block_width = 'span-3 auto'
+    when 5
+      assign block_width = 'span-4 auto'
+    when 6
+      assign block_width = 'span-4 auto'
+  endcase
+
+  assign sm_render = '100vw'
+  assign md_render = 'calc(100vw / ' | append: section.blocks.size | append: ')'
+  assign lg_render = 'calc(1600px / ' | append: section.blocks.size | append: ')'
+
+  assign is_fixed_height = false
+  if section.settings.image_height == 'fixed'
+    assign is_fixed_height = true
+    assign desktop_height = section.settings.desktop_height | append: 'px'
+    assign mobile_height = section.settings.mobile_height | append: 'px'
+  endif
+
+  if section.index == 1
+    assign fetchpriority = 'high'
+    assign loading = 'eager'
+  endif
+
+-%}
+
+{% style %}
+#shopify-section-{{ section.id }} {
+  --desktop-section-height: {{ desktop_height }};
+  --mobile-section-height: {{ mobile_height }};
+}
+{% endstyle %}
+
+{% comment %} Editorial Columns Template {% endcomment %}
+<div
+  class="section-txt-cols text-columns-{{ section.id }} global__section {{ section_padding }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="editorial-columns"
+  data-section-loaded="false">
+  <div class="grid__wrapper">
+    {% render 'snip-headings', align: heading_align, classes: 'section-txt-cols__section-heading', grid: 'span-12', heading: section.settings.title %}
+  </div>
+  <div class="section-txt-cols__inner-wrapper grid__wrapper">
+    {% for block in section.blocks %}
+      <article class="section-txt-cols__item text-promo-{{ block.id }} {{ block_width }} a-{{ text_align }}" data-block-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
+        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+          <div class="section-txt-cols__image{% if is_fixed_height %} is--fixed{% endif %} mb4">
+            {% if block.settings.image != blank %}
+              {% render 'helper-image',
+                 type: block.settings.image,
+                 sm_render: sm_render,
+                 md_render: md_render,
+                 lg_render: lg_render,
+                 loading: loading,
+                 fetchpriority: fetchpriority,
+                 width: 1000 %}
+            {% endif %}
+          </div>
+        {% if block.settings.link != blank %}</a>{% endif %}
+
+          <div class="section-txt-cols__content mb2 animate--text delay--{{ forloop.index0 }}">
+            {% if block.settings.title != blank %}
+              <h3 class="section-txt-cols__block-heading mb2">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.subheading != blank %}
+              <div class="section-txt-cols__block-subheading mb2">
+                {{ block.settings.subheading }}
+              </div>
+            {% endif %}
+            {%- if block.settings.button != blank and block.settings.link != blank-%}
+              <a class="button btn-outline" href="{{ block.settings.link }}">{{ block.settings.button }}</a>
+            {%- endif -%}
+          </div>
+      </article>
+    {% endfor %}
+
+    {% if section.blocks.size == 0 %}
+      {% render 'onboard-no-blocks' %}
+    {% endif %}
+  </div>
+</div>
+
+{% if section.blocks.size == 5 %}
+  {% style %}
+  article.section-txt-cols__item[data-block-index="4"] {
+    grid-column: 3/7;
+  }
+  {% endstyle %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Editorial columns",
+  "tag": "section",
+  "class": "dynamic-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Editorial columns"
+    },
+    {
+      "type": "radio",
+      "id": "image_height",
+      "label": "Image height",
+      "default":"natural",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "fixed",
+          "label": "Fixed height"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 200,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop fixed height",
+      "default": 450
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile fixed height",
+      "default": 300
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_align",
+      "label": "Text alignment",
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+	"blocks": [
+    {
+      "type": "text_block",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Our collections"
+        },
+        {
+          "type": "richtext",
+          "id": "subheading",
+          "label": "Text",
+          "default": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "label": "Button",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial columns",
+      "blocks": [
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

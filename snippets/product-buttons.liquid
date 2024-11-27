@@ -1,0 +1,109 @@
+{% comment %}
+  snippets/product-buttons.liquid
+
+  Accompanies the main-product.liquid and featured-product.liquid theme files.
+
+  Accepts:
+    - product: {Object} Product Liquid object
+    - type: {Object} Section Liquid object
+    - product_type: {String} Either 'product' or 'featured_product'
+    - current_variant: {Object} Variant Liquid object
+    - product_form_config: {Object} Liquid object
+    - call_to_action: {String} String for "Add to cart" button
+    - show_price_in_button: {Boolean} Boolean setting
+    - show_gift_card_recipient: {Boolean} Boolean setting
+    - secondary_button: {String}
+    - product_info_align: {String} ??
+
+
+  Usage:
+  {%
+    render 'product-buttons',
+    product: product,
+    type: section,
+    product_type: 'product',
+    current_variant: current_variant,
+    product_form_config: product_form_config,
+    call_to_action: call_to_action,
+    show_price_in_button: block.settings.show_price_in_button,
+    show_gift_card_recipient: block.settings.show_gift_card_recipient
+  %}
+{% endcomment %}
+{%- liquid
+
+  assign product_form_id = 'product-buttons-form-' | append: section.id
+
+-%}
+
+{% form 'product', product,
+   id: product_form_id,
+   class: "product__form-container product_form js-prod-form-submit",
+   data-product-form: product_form_config,
+   data-product-id: product.id %}
+
+
+   {% capture price %}
+     <span data-regular-price>
+       {{ current_variant.price | money }}
+     </span>
+
+     <span class="hide" data-compare-text>
+       {{ 'products.product.regular_price' | t }}
+     </span>
+     <span class="strike ml1" data-compare-price>
+       {% if product.compare_at_price_max > product.price %}
+         {% if current_variant.compare_at_price > current_variant.price %}
+           {{ current_variant.compare_at_price | money }}
+         {% endif %}
+       {% endif %}
+     </span>
+   {% endcapture %}
+
+   <input class="formQty" type="hidden" name="quantity" value="1" />
+
+  <div class="product-single__store-availability-container pb5"
+    data-store-availability-container
+    data-product-title="{{ product.title | escape }}"
+    data-has-only-default-variant="{{ product.has_only_default_variant }}"
+    data-base-url="{{ shop.url }}{{ routes.root_url }}"
+    data-variant-id="{{ current_variant.id }}"
+    data-section-type="pickup-availability"
+    data-section-loaded="false"
+    data-asset-url="{{ 'section-pickup-availability.js' | asset_url }}"></div>
+
+  <div class="product__add-container mt4">
+
+    {% if show_gift_card_recipient and product.gift_card? %}
+      {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+    {%- endif -%}
+
+    <input id="formVariantId" name="" type="hidden" value="{{ product.selected_or_first_available_variant.id }}">
+    <div class="note note-success mt3 js-added-msg a-center mb4" style="display: none">
+      <b>{{ 'products.product.added' | t }}</b>&nbsp;&nbsp;&nbsp;<a class="underline" href="{{ routes.cart_url }}">{{ 'products.product.view_cart' | t }}</a> {{ 'products.product.or' | t }} <a class="underline" href="{{ routes.all_products_collection_url }}">{{ 'products.product.continue' | t }}</a>.
+    </div>
+    <div class="note note-error js-error-msg a-center mb4" style="display: none">
+      <b>{{ 'cart.general.cart_error' | t }}</b>&nbsp;&nbsp;&nbsp;{{ 'cart.general.update_qty_error' | t }}
+    </div>
+
+    <button
+     type="submit"
+     name="add"
+     data-variant-id="{{ current_variant.id }}"
+     class="ajax-submit js-ajax-submit add-item add btn-outline {{ secondary_button }} w100"
+     {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+        {% if show_price_in_button %}
+          {{ price }}
+          <span>&nbsp;&nbsp;—&nbsp;&nbsp;</span>
+        {% endif %}
+         <span data-add-to-cart-text>
+           {{ call_to_action }}
+         </span>
+     </button>
+
+    {% if settings.product_show_payment_button %}
+      <div class="product-additional-buttons mb2">
+        {{ form | payment_button }}
+      </div>
+    {% endif %}
+  </div>
+{% endform %}

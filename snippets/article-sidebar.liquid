@@ -1,0 +1,45 @@
+{% if show_sidebar %}
+  <aside class="span-3 auto">
+    {% if blog.articles_count > 0 %}
+      <h3>{{ 'blogs.article.recent_posts' | t }}</h3>
+      <ul id="posts" class="hover-list main--article_sidebar-list">
+        {% for article in blog.articles limit: 5 %}
+          <li class="article--list_article">
+            {% if article.image %}
+              {% liquid 
+                assign loading = "lazy"
+                if section.index == 1 and forloop.index <3 
+                  assign loading = "eager"
+                elsif section.index == 2 and forloop.first
+                    assign loading = "eager"
+                else
+                  assign loading = "lazy"
+                endif
+              %}
+            <div class="article--list_image">
+              <a href="{{ article.url }}">
+                {% render 'helper-image',
+                  type: article.image,
+                  width: 300,
+                  loading: loading %}
+              </a>
+            </div>
+            {% endif %}
+            <a title="{{article.title}}" href="{{article.url}}">{{ article.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if blog.all_tags.size > 0 %}
+      <h3 class="mt4">{{ 'blogs.article.tags' | t }}</h3>
+      <ul id="tags" class="hover-list main--article_sidebar-list">
+        {% for tag in blog.all_tags %}
+          <li>
+            <a title="{{tag}}" href="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+            <br/>{%- if show_date -%}{{ 'blogs.article.posted_on_date_html' | t: date: published_at }}{%- endif -%}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </aside>
+{% endif %}

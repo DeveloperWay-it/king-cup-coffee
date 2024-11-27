@@ -1,0 +1,226 @@
+{% comment %} Background Video Assets {% endcomment %}
+<link rel="preload" href="{{ 'section-background-video.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'section-background-video.css' | asset_url }}"></noscript>
+
+{% comment %} Background Video Logic {% endcomment %}
+{% liquid
+
+  assign section_padding = ''
+  if section.settings.section_padding == 'top'
+    assign section_padding = 'pb0'
+  elsif section.settings.section_padding == 'bottom'
+    assign section_padding = 'mt0'
+  elsif section.settings.section_padding == 'none'
+    assign section_padding = 'mt0 pb0'
+  endif
+
+  case section.settings.height
+    when 'small'
+      assign mobile_height = 175
+      assign desktop_height = 475
+    when 'medium'
+      assign mobile_height = 270
+      assign desktop_height = 650
+    when 'large'
+      assign mobile_height = 375
+      assign desktop_height = 775
+  endcase
+
+  assign has_button = false
+  if section.settings.link != blank and section.settings.button_text != blank
+    assign has_button = true
+  endif
+
+  assign caption = false
+  if section.settings.title != blank or section.settings.subheading_text != blank or has_button
+    assign caption = true
+  endif
+
+%}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --text-color: {{ section.settings.text_color }};
+    --button-bg: {{ section.settings.button_bg }};
+    --button-text: {{ section.settings.button_text_color }};
+    --section-mobile-height: {{ mobile_height | append: 'px' }};
+    --section-desktop-height: {{ desktop_height | append: 'px' }}
+  }
+  .background-video-{{ section.id }} .background-video__caption {
+    background-color: {{ section.settings.bg_color }};
+  }
+{% endstyle %}
+
+<div
+  class="global__section background_video__section background-video-{{ section.id }} {{ section_padding }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="background-video-section"
+  data-section-loaded="false">
+
+  {% unless section.settings.full_width %}<div class="grid__wrapper">{% endunless %}
+    <div class="background-video__outer-wrapper span-12 relative">
+
+      {% if section.settings.show_overlay_color %}
+        <div class="background-video__overlay"></div>
+      {% endif %}
+
+      <div class="videoWrapper">
+        {% if section.settings.video != blank %}
+          {{ section.settings.video | video_tag: image_size: '2000x', controls: false, muted: true, autoplay: true, loop: true, playsinline: true, preload: 'metadata', class: 'section-video js-video' }}
+        {% endif %}
+      </div>
+
+      {%- if caption -%}
+        <div class="background-video__caption">
+          {% if section.settings.title != blank %}
+            <h3 class="background-video__heading animate--text">{{ section.settings.title }}</h3>
+          {% endif %}
+          {% if section.settings.subheading_text != blank %}
+            <span class="background-video__subheading mb0 animate--text delay--1">{{ section.settings.subheading_text }}</span>
+          {% endif %}
+          {% if has_button %}
+            <div class="animate--text delay--2">
+              <a class="button btn-outline mb0" href="{{ section.settings.link }}" title="{{ section.settings.button_text | escape }}">
+                {{ section.settings.button_text | escape }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {%- endif -%}
+
+    </div>
+  {% unless section.settings.full_width %}</div>{% endunless %}
+</div>
+{% schema %}
+{
+  "name":"Background video",
+  "tag": "section",
+  "class": "dynamic-section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "A Shopify-hosted video"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Background video height",
+      "default": "medium",
+      "options": [
+        {
+          "label": "Small",
+          "value": "small"
+        },
+        {
+          "label": "Medium",
+          "value": "medium"
+        },
+        {
+          "label": "Large",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Caption"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Background Video"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading_text",
+      "label": "Subheading",
+      "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Button"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Caption background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section styles"
+    },
+    {
+      "type":      "checkbox",
+      "id":        "show_overlay_color",
+      "label":     "Enable overlay",
+      "default":   true
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+  "presets": [
+   {
+      "name": "Background video"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

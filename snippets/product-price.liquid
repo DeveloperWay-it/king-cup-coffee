@@ -1,0 +1,43 @@
+{% comment %}
+snippets/product-price.liquid
+
+Accompanies the main-product.liquid, featured-product.liquid, onboard-single-product.liquid and quickshop.liquid.
+
+Accepts:
+- current_variant
+- product
+
+Usage:
+{%
+  render 'product-price',
+  current_variant: current_variant,
+  product: product
+%}
+{% endcomment %}
+
+{% capture price %}
+  <span data-regular-price>
+    {{ current_variant.price | money }}
+  </span>
+
+  <span class="hide" data-compare-text>
+    {{ 'products.product.regular_price' | t }}
+  </span>
+  <span class="strike ml1" data-compare-price>
+    {% if product.compare_at_price_max > product.price %}
+      {% if current_variant.compare_at_price > current_variant.price %}
+        {{ current_variant.compare_at_price | money }}
+      {% endif %}
+    {% endif %}
+  </span>
+{% endcapture %}
+
+<div class="product__price">
+   <div class="product__price-label">
+     {{ 'cart.general.price' | t }}:
+   </div>
+   <div class="product__price-value">
+     {{ price }}
+   </div>
+</div>
+{%- render 'product-unit-price', variant: current_variant, product_info_align: 'a-center' -%}

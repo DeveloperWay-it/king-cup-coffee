@@ -1,0 +1,559 @@
+{% comment %} Rich Text Assets {% endcomment %}
+<link rel="preload" href="{{ 'section-testimonials.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'section-testimonials.css' | asset_url }}"></noscript>
+
+{% comment %} Testimonials logic {% endcomment %}
+{%- liquid
+
+  assign section_padding = ''
+  if section.settings.section_padding == 'top'
+    assign section_padding = 'pb0'
+  elsif section.settings.section_padding == 'bottom'
+    assign section_padding = 'mt0'
+  elsif section.settings.section_padding == 'none'
+    assign section_padding = 'mt0 pb0'
+  endif
+
+  if settings.section_title_align == 'left'
+    assign heading_align = 'a-left'
+  elsif settings.section_title_align == 'right'
+    assign heading_align = 'a-right'
+  else 
+    assign heading_align = 'a-center'
+  endif
+
+  assign enough_to_wrap = false
+  assign show_dropshadow = false
+
+  if section.settings.show_dropshadow
+    assign show_dropshadow = true
+  endif
+
+  case section.settings.blocks_to_show
+    when '1'
+      assign grid = 'single'
+      assign width = '800'
+      if section.blocks.size > 1
+        assign enough_to_wrap = true
+      endif
+    when '2'
+      assign grid = 'double'
+      assign width = '400'
+      if section.blocks.size > 2
+        assign enough_to_wrap = true
+      endif
+  endcase
+
+  assign sm_render = '100vw'
+  assign md_render = '100vw'
+  assign lg_render = '100vw'
+
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }}  {
+    --text-color: {{ section.settings.text_color }};
+    --background: {{ section.settings.background }};
+  }
+{% endstyle %}
+
+{% comment %} Testimonials Template {% endcomment %}
+<div
+  class="global__section section--testimonials testimonials--{{ section.id }} {{ section_padding }}"
+  data-section-id="{{ section.id }}"
+  data-asset-url="{{ 'carousel.js' | asset_url }}"
+  data-section-type="carousel"
+  data-section-loaded="false">
+
+  <div class="grid__wrapper rg0">
+    {% render 'snip-headings', align: heading_align, classes: 'animate--text delay--1 px4', grid: 'span-12' %}
+  </div>
+
+  <div class="grid__wrapper">
+    {% capture carousel_config %}{
+      "wrapAround":true,
+      "contain": true,
+      "cellAlign":"left",
+      "dragThreshold":"15",
+      "pauseAutoPlayOnHover":false,
+      "prevNextButtons":false,
+      "pageDots": {{ enough_to_wrap }},
+      "accessibility": false,
+      "arrowShape": "M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+    }{% endcapture %}
+
+      <div class="span-12 auto testimonial--item_container js-carousel" data-flickity='{{ carousel_config }}'>
+
+        {% for block in section.blocks %}
+          <div data-section-type="testimonials" class="testimonial--section_item item--type_{{ block.type }} {{ grid }}{% if show_dropshadow %} dropshadow--true{% endif %}" {{ block.shopify_attributes }}>
+            <div class="testimonial--item_wrapper">
+              {% liquid
+
+                assign has_author = false
+                assign has_title = false
+                assign has_text = false
+                assign has_product = false
+                assign has_collection = false
+                assign has_image = false
+                assign show_thumbnails = false
+
+                if block.settings.author != blank
+                  assign author = block.settings.author
+                  assign has_author = true
+                endif
+
+                if block.settings.title != blank
+                  assign title = block.settings.title
+                  assign has_title = true
+                endif
+
+                if block.settings.richtext != blank
+                  assign richtext = block.settings.richtext
+                  assign has_text = true
+                endif
+
+                case block.type
+
+                  when 'text_block'
+
+                    if block.settings.image != blank
+                      assign image = block.settings.image
+                      assign has_image = true
+                    endif
+
+                  when 'product_block'
+
+                    if block.settings.product != blank
+                      assign product = block.settings.product
+                      assign image = product.featured_image
+                      assign has_multple_images = false
+                      if product.images.size > 1
+                        assign has_multiple_images = true
+                      endif
+                      assign has_image = true
+                      assign has_product = true
+                    endif
+
+                    if block.settings.show_thumbnails
+                      assign show_thumbnails = true
+                    endif
+
+                  when 'collection_block'
+
+                    if block.settings.collection != blank
+                      assign collection = block.settings.collection
+                      assign has_collection = true
+                      assign has_multiple_images = false
+                      if block.settings.image_type == 'collection_image'
+                        assign image = collection.image
+                        assign has_image = true
+                      elsif block.settings.image_type == 'first_product'
+                        assign image = collection.products.first.featured_image
+                        assign has_image = true
+                      endif
+                      if collection.products.size > 1
+                        assign has_multiple_images = true
+                      endif
+                    endif
+
+                    if block.settings.show_thumbnails
+                      assign show_thumbnails = true
+                    endif
+
+                endcase
+
+                assign fetchpriority = "auto"
+                assign loading = "lazy"
+
+                case section.settings.blocks_to_show
+                when '1'
+                  if section.index == 1 and forloop.first
+                    assign fetchpriority = 'high'
+                    assign loading = 'eager'
+                  endif
+                when '2'
+                if section.index == 1 and forloop.index <= 2
+                  assign fetchpriority = 'high'
+                  assign loading = 'eager'
+                endif
+              endcase
+
+              %}
+
+              {% capture star %}
+                {% render 'snip-icons',
+                  wrapper: section_context,
+                  type: 'apollo',
+                  icon: 'star',
+                  classes: 'testimonials--icon vib-center',
+                  size: '30px',
+                  fill: section.settings.star_color,
+                  hover: section.settings.star_color %}
+              {% endcapture %}
+
+                {% if has_image %}
+                  <div class="testimonial--item_image">
+                    {% render 'helper-image',
+                      type: image,
+                      class: 'js-testimonial-image',
+                      sm_render: sm_render,
+                      md_render: md_render,
+                      lg_render: lg_render,
+                      loading: loading,
+                      fetchpriority: fetchpriority,
+                      width: width %}
+
+                      {% if has_product and has_multiple_images and grid == 'single' and show_thumbnails == true %} <!-- is product -->
+                        {% for image in product.images limit: 3 %}
+                          <a href="#" class="testimonial--thumb testimonial--product_image--{{ forloop.index }} animate--text delay--{{ forloop.index }}" data-src="{{ image | image_url: width: 800 }}">
+                            {% render 'helper-image',
+                              type: product.images[forloop.index0],
+                              class: 'testimonial--item_image-loop',
+                              sm_render: sm_render,
+                              md_render: md_render,
+                              lg_render: lg_render,
+                              loading: loading,
+                              fetchpriority: fetchpriority,
+                              width: 300 %}
+                            </a>
+                        {% endfor %}
+                      {% endif %} <!-- is product -->
+
+                      {% if has_collection and has_multiple_images and grid == 'single' and show_thumbnails %} <!-- is collection -->
+                        {% for product in collection.products limit: 3 %}
+                          <a href="#" class="testimonial--thumb testimonial--product_image--{{ forloop.index }} animate--text delay--{{ forloop.index }}" data-src="{{ product.featured_image | image_url: width: 800 }}">
+                            {% render 'helper-image',
+                              type: product.images[forloop.index0],
+                              class: 'testimonial--item_image-loop',
+                              sm_render: sm_render,
+                              md_render: md_render,
+                              lg_render: lg_render,
+                              loading: loading,
+                              fetchpriority: fetchpriority,
+                              width: 300 %}
+                            </a>
+                        {% endfor %}
+                      {% endif %} <!-- is collection -->
+
+                  </div>
+                {% else %}
+                  {% if block.type == 'collection_block' %}
+                    <div class="demo-1 color-2 relative testimonial--item_image placeholder">
+                      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {% elsif block.type == 'product_block' %}
+                    <div class="demo-1 color-2 relative testimonial--item_image placeholder">
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {% endif %}
+                {% endif %}
+
+                {% if grid == 'single' %}<div class="testimonial--item_flex-container">{% endif %}
+                <div class="testimonial--item_caption">
+
+                  {% if has_author %}
+                    <div class="testimonial--item_author animate--text">
+                      <p>{{ author }}</p>
+                    </div>
+                  {% endif %}
+
+                  {% if has_title %}
+                    <div class="testimonial--item_title animate--text">
+                      <h3{% if grid == 'double' %} class="h4"{% endif %}>{{ title }}</h3>
+                    </div>
+                  {% endif %}
+
+                  {% if has_text %}
+                    <div class="testimonial--item_richtext animate--text delay--1">
+                      {{ richtext }}
+                    </div>
+                  {% endif %}
+
+                  {% if has_product %}
+                    <span class="testimonial--content_link animate--text delay--2">{{ 'products.product.product' | t }}:&nbsp;<a href="{{ product.url }}">{{ product.title }}</a></span>
+                  {% elsif has_collection %}
+                    <span class="testimonial--content_link animate--text delay--2">{{ 'products.product.collection' | t }}&nbsp;<a href="{{ collection.url }}">{{ collection.title }}</a></span>
+                  {% endif %}
+
+                </div> <!-- testimonial--item_caption -->
+
+                <div class="testimonial--item_stars">
+                  {% case block.settings.stars %}
+                  {% when 1 %}
+                    {{ star }}
+                  {% when 2 %}
+                    {{ star }}
+                    {{ star }}
+                  {% when 3 %}
+                    {{ star }}
+                    {{ star }}
+                    {{ star }}
+                  {% when 4 %}
+                    {{ star }}
+                    {{ star }}
+                    {{ star }}
+                    {{ star }}
+                  {% when 5 %}
+                    {{ star }}
+                    {{ star }}
+                    {{ star }}
+                    {{ star }}
+                    {{ star }}
+                  {% endcase %}
+                </div> <!-- testimonial--item_stars -->
+
+                {% if grid == 'single' %}</div>{% endif %} <!-- testimonial--item_flex-container -->
+
+            </div>
+          </div>
+        {% endfor %}
+      </div><!-- /.span-12.auto -->
+  </div>
+</div>
+{{ 'section-testimonials.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "dynamic-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What they are saying"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dropshadow",
+      "label": "Show dropshadow on each item",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "blocks_to_show",
+      "label": "Testimonials visible",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#ffd450"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#FAF4E8"
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+  "blocks": [
+  {
+    "type": "text_block",
+    "name": "Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "author",
+        "label": "Author",
+        "default": "A customer"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Testimonial heading",
+        "default": "A testimonial"
+      },
+      {
+        "type": "richtext",
+        "id": "richtext",
+        "label": "Testimonial text",
+        "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+      },
+      {
+        "type": "range",
+        "id": "stars",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "label": "Star ratings",
+        "default": 5
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  },
+  {
+    "type": "product_block",
+    "name": "Product",
+    "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_thumbnails",
+      "label": "Show product thumbnails",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author",
+      "default": "A customer"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Testimonial heading",
+      "default": "A testimonial"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Testimonial text",
+      "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+    },
+    {
+      "type": "range",
+      "id": "stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Star ratings",
+      "default": 5
+    }]
+  },
+  {
+    "type": "collection_block",
+    "name": "Collection",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "radio",
+        "id": "image_type",
+        "label": "Image type",
+        "default":"collection_image",
+        "options": [
+          {
+            "value": "collection_image",
+            "label": "Collection image"
+          },
+          {
+            "value": "first_product",
+            "label": "First product"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_thumbnails",
+        "label": "Show collection item thumbnails",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "author",
+        "label": "Author",
+        "default": "A customer"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Testimonial heading",
+        "default": "A testimonial"
+      },
+      {
+        "type": "richtext",
+        "id": "richtext",
+        "label": "Testimonial text",
+        "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+      },
+      {
+        "type": "range",
+        "id": "stars",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "label": "Star ratings",
+        "default": 5
+      }
+    ]
+  }
+],
+"presets":[
+  {
+    "name":"Testimonials",
+    "blocks": [
+      {
+        "type": "product_block"
+      },
+      {
+        "type": "product_block"
+      },
+      {
+        "type": "product_block"
+      }
+    ]
+  }
+],
+"disabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

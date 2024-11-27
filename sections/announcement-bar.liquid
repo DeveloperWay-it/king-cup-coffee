@@ -1,0 +1,247 @@
+{% comment %} Announcement Bar Assets {% endcomment %}
+<link rel="preload" href="{{ 'section-announcement-bar.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'section-announcement-bar.css' | asset_url }}"></noscript>
+
+{% comment %} Announcement Bar Logic {% endcomment %}
+{%- liquid
+  assign has_phone = false
+  assign has_note = false
+  assign has_text = false
+
+  for block in section.blocks
+    if block.type == 'phone_number'
+      assign has_phone = true
+    endif
+    if block.type == 'shop_note'
+      assign has_note = true
+    endif
+    if block.type == 'announcement_text'
+      assign has_text = true
+    endif
+  endfor
+-%}
+{% comment %} Announcement Template {% endcomment %}
+<div class="section-top-bar__wrapper sm-hide js-top-bar"
+  data-section-id="{{ section.id }}"
+  data-asset-url="{{ 'carousel.js' | asset_url }}"
+  data-section-type="announcement-bar">
+  <div class="grid__wrapper wrapper-nest edge cg0 block-one--{{ has_phone }} block-two--{{ has_note }} block-three--{{ has_text }} ">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'phone_number' -%}
+          <div id="block-{{ block.id }}" class="section-top-bar__one one span-2 auto a-{{ block.settings.alignment }}">
+            <div class="px3">{{ block.settings.phone_number }}</div>
+          </div>
+        {%- when 'shop_note' -%}
+          <div id="block-{{ block.id }}" class="section-top-bar__two two span-3 auto a-{{ block.settings.alignment }}">
+            <div class="px3">{{ block.settings.shop_note }}</div>
+          </div>
+        {%- when 'announcement_text' -%}
+          {% liquid
+            assign count = 0 | plus: 0
+            assign is_carousel = false
+
+            assign at_1 = block.settings.announcement_text_1
+            assign at_2 = block.settings.announcement_text_2
+            assign at_3 = block.settings.announcement_text_3
+
+            if at_1 != blank
+              assign count = count | plus: 1
+            endif
+            if at_2 != blank
+              assign count = count | plus: 1
+            endif
+            if at_3 != blank
+              assign count = count | plus: 1
+            endif
+
+            if count > 1
+              assign is_carousel = true
+            endif
+          %}
+
+          {% if is_carousel %}
+            {% capture carousel_config %}{
+              "wrapAround":true,
+              "autoPlay": 5000,
+              "friction":0.4,
+              "cellAlign": "left",
+              "dragThreshold":"15",
+              "draggable": true,
+              "pauseAutoPlayOnHover":false,
+              "prevNextButtons":true,
+              "pageDots": false,
+              "accessibility": false,
+              "arrowShape": "M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+            }{% endcapture  %}
+          {% endif %}
+
+          <div id="block-{{ block.id }}" class="section-top-bar__three three auto a-{{ block.settings.alignment }}">
+            {% if count > 0 %}
+            <div class="px3{% if is_carousel %} js-carousel{% endif %}"{% if is_carousel %} data-flickity='{{ carousel_config }}' data-section-type="carousel"{% endif %}>
+              {% if at_1 != blank %}
+                <div class="announcement--text">
+                  {{ block.settings.announcement_text_1 }}
+                </div>
+              {% endif %}
+              {% if at_2 != blank %}
+                <div class="announcement--text">
+                  {{ block.settings.announcement_text_2 }}
+                </div>
+              {% endif %}
+              {% if at_3 != blank %}
+                <div class="announcement--text">
+                  {{ block.settings.announcement_text_3 }}
+                </div>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+  <style>
+    .section-top-bar__wrapper a,
+    .section-top-bar__wrapper p {
+      color: var(--announcement-text);
+      font-size: {{ section.settings.announcement_text_size }}px !important;
+      margin-bottom: 0;
+    }
+  </style>
+</div>
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "js-site-announcement-bar",
+  "settings": [
+    {
+      "type": "range",
+      "id": "announcement_text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 13
+    }
+	],
+  "blocks": [
+    {
+      "type": "phone_number",
+       "name": "Phone number",
+       "limit": 1,
+       "settings": [
+         {
+           "type": "richtext",
+           "id": "phone_number",
+           "label": "Phone number",
+           "default": "<p>777-777-7777</p>"
+         },
+         {
+           "type": "select",
+           "id": "alignment",
+           "label": "Text alignment",
+           "options": [
+             {
+               "value": "left",
+               "label": "Left"
+             },
+             {
+               "value": "center",
+               "label": "Center"
+             }
+           ],
+           "default": "center"
+         }
+      ]
+    },
+    {
+      "type": "shop_note",
+       "name": "Shop note",
+       "limit": 1,
+       "settings": [
+         {
+           "type": "richtext",
+           "id": "shop_note",
+           "label": "Shop note",
+           "default": "<p>Order Pickup | Delivery</p>"
+         },
+         {
+           "type": "select",
+           "id": "alignment",
+           "label": "Text alignment",
+           "options": [
+             {
+               "value": "left",
+               "label": "Left"
+             },
+             {
+               "value": "center",
+               "label": "Center"
+             }
+           ],
+           "default": "center"
+         }
+      ]
+    },
+    {
+       "type": "announcement_text",
+       "name": "Announcement text",
+       "limit": 1,
+       "settings": [
+         {
+          "type": "paragraph",
+          "content": "Add announcement text, additional messages will show in a carousel unless left blank"
+         },
+         {
+           "type": "richtext",
+           "id": "announcement_text_1",
+           "label": "Shop announcement",
+           "default": "<p>Share a shop announcement or message</p>"
+         },
+         {
+          "type": "richtext",
+          "id": "announcement_text_2",
+          "label": "Shop announcement",
+          "default": "<p>Share a shop announcement or message</p>"
+          },
+          {
+            "type": "richtext",
+            "id": "announcement_text_3",
+            "label": "Shop announcement",
+            "default": "<p>Share a shop announcement or message</p>"
+          },
+         {
+           "type": "select",
+           "id": "alignment",
+           "label": "Text alignment",
+           "options": [
+             {
+               "value": "left",
+               "label": "Left"
+             },
+             {
+               "value": "center",
+               "label": "Center"
+             }
+           ],
+           "default": "center"
+         }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "phone_number"
+      },
+      {
+        "type": "shop_note"
+      },
+      {
+        "type": "announcement_text"
+      }
+    ]
+  }
+}
+{% endschema %}
