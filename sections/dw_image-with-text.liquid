@@ -1,0 +1,431 @@
+{% comment %} Image with text logic {% endcomment %}
+{%- liquid
+
+  assign section_padding = ''
+  if section.settings.section_padding == 'top'
+    assign section_padding = 'pb0'
+  elsif section.settings.section_padding == 'bottom'
+    assign section_padding = 'mt0'
+  elsif section.settings.section_padding == 'none'
+    assign section_padding = 'mt0 pb0'
+  endif
+
+  if section.settings.iwt_layout == 'image_left'
+    assign img_order = 'img_order_left'
+    assign text_order = 'img_text_left'
+  else
+    assign img_order = 'img_order_right'
+    assign text_order = 'img_text_right'
+  endif
+
+  assign text_color = 'var(--scheme-' | append: section.settings.color_scheme | append: '-text)'
+  assign bg_color = 'var(--scheme-' | append: section.settings.color_scheme | append: '-bg)'
+  assign button_text = 'var(--scheme-' | append: section.settings.color_scheme | append: '-button-text)'
+  assign button_bg = 'var(--scheme-' | append: section.settings.color_scheme | append: '-button-bg)'
+
+  assign mobile_text_color = 'var(--scheme-' | append: section.settings.color_scheme_mobile | append: '-text)'
+  assign mobile_bg_color = 'var(--scheme-' | append: section.settings.color_scheme_mobile | append: '-bg)'
+  assign mobile_button_text = 'var(--scheme-' | append: section.settings.color_scheme_mobile | append: '-button-text)'
+  assign mobile_button_bg = 'var(--scheme-' | append: section.settings.color_scheme_mobile | append: '-button-bg)'
+
+  assign desktop_height = section.settings.iwt_section_height | append: 'px'
+  assign mobile_height = '280px'
+
+  if section.settings.show_box_shadow
+    assign show_box_shadow =  'section-menu__box-show--true'
+  else
+    assign show_box_shadow =  'section-menu__box-show--false'
+  endif
+
+  assign sm_render = '100vw'
+  assign md_render = 'calc(100vw / 2)'
+  assign lg_render = 'calc(1600px / 2)'
+
+  if section.index == 1
+    assign fetchpriority = 'high'
+    assign loading = 'eager'
+  endif
+-%}
+
+{% style %}
+#shopify-section-{{ section.id }} {
+  --desktop-section-height: {{ desktop_height }};
+  --mobile-section-height: {{ mobile_height }};
+  --button-text: {{ button_text }};
+  --button-bg: {{ button_bg }};
+  --mobile-button-text: {{ mobile_button_text }};
+  --mobile-button-bg: {{ mobile_button_bg }};
+}
+{%- unless section.settings.color_scheme == 'none' -%}
+  .dw-dynamic-section .image-with-text-{{ section.id }} .info {
+    background-color: {{ bg_color }};
+  }
+  .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper h2,
+  .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper p,
+  .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper .rte a,
+  .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper .rte ul,
+  .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper .rte ol {
+    color: {{ text_color }};
+  }
+  .dw-dynamic-section .image-with-text-{{ section.id }}.section-menu__box-show--true article {
+    -webkit-box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+    -moz-box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+    box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+  }
+{%- endunless -%}
+
+.dw-dynamic-section .section-image-with-text.full-width {
+  max-width: unset;
+  padding: 0;
+  height: 85vh;
+}
+
+.dw-dynamic-section .section-image-with-text .image {
+  overflow: auto;
+}
+
+.dw-dynamic-section .section-image-with-text .background-image {
+  height: 100%;
+}
+
+.dw-dynamic-section .section-image-with-text .img_order_left {
+  order: 1;
+}
+.dw-dynamic-section .section-image-with-text .img_text_left {
+  order: 2;
+}
+.dw-dynamic-section .section-image-with-text .img_order_right {
+  order: 2;
+}
+.dw-dynamic-section .section-image-with-text .img_text_right {
+  order: 1;
+}
+
+.dw-dynamic-section .section-image-with-text .image .box-ratio {
+  height: 100%;
+  padding: 0 !important;
+  {%
+    ###############################
+    # padding-bottom: var(--desktop-section-height) !important;
+    ###############################
+  %}
+}
+.dw-dynamic-section .section-image-with-text .image img {
+  {%
+    ###############################
+    #  height: var(--desktop-section-height);
+    ###############################
+  %}
+  height: 100%;
+  object-fit: cover;
+}
+.dw-dynamic-section .section-image-with-text .image .onboard {
+  {%
+    ###############################
+    #  height: var(--desktop-section-height);
+    ###############################
+  %}
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dw-dynamic-section .section-image-with-text .image .onboard svg {
+  height: 100%;
+  width: 100%;
+}
+@media screen and (max-width: 740px) {
+  {%- unless section.settings.color_scheme_mobile == 'none' -%}
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info {
+      background-color: {{ mobile_bg_color }};
+    }
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper h2,
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper p,
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper .rte a,
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper .rte ul,
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper .rte ol {
+      color: {{ mobile_text_color }};
+    }
+    .dw-dynamic-section .image-with-text-{{ section.id }}.section-menu__box-show--true article {
+      -webkit-box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+      -moz-box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+      box-shadow: 20px 20px 0 0 var(--box-shadow-color);
+    }
+
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper [type=button].btn-outline, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper [type=submit].btn-outline, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper a.button.btn-outline, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper button.btn-outline, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper button.shopify-payment-button__button--unbranded {
+      color: var(--mobile-button-text);
+      border: 1px solid var(--mobile-button-bg);
+      background-color: var(--mobile-button-bg);
+    }
+
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper [type=button].btn-outline:hover, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper [type=submit].btn-outline:hover, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper a.button.btn-outline:hover, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper button.btn-outline:hover, 
+    .dw-dynamic-section .image-with-text-{{ section.id }} .info__inner-wrapper button.shopify-payment-button__button--unbranded:hover {
+      color: var(--mobile-button-bg);
+      border: 1px solid var(--mobile-button-text);
+      background-color: var(--mobile-button-text);
+    }
+  {%- endunless -%}
+
+  .dw-dynamic-section .section-image-with-text{
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .dw-dynamic-section .section-image-with-text .info__inner-wrapper .rte {
+    text-align: center;
+  }
+  .dw-dynamic-section .section-image-with-text .image .box-ratio {
+    height: 100%;
+    padding: 0 !important;
+    {%
+      ###############################
+      # padding-bottom: var(--mobile-section-height) !important;
+      ###############################
+    %}
+  }
+  .dw-dynamic-section .section-image-with-text .img_order_left {
+    order: 2;
+  }
+  .dw-dynamic-section .section-image-with-text .img_text_left {
+    order: 1;
+  }
+  .dw-dynamic-section .section-image-with-text .img_order_right {
+    order: 1;
+  }
+  .dw-dynamic-section .section-image-with-text .img_text_right {
+    order: 2;
+  }
+  .dw-dynamic-section .section-image-with-text .image img {
+    {%
+      ###############################
+      #  height: var(--mobile-section-height);
+      ###############################
+    %}
+    height: 100%;
+    object-fit: cover;
+  }
+  .dw-dynamic-section .section-image-with-text .info__inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dw-dynamic-section .section-image-with-text .image .onboard {
+    height: var(--mobile-section-height);
+  }
+}
+
+@media (min-width: 768px) {
+  {%
+    ###############################
+    #.image-with-text-{{ section.id }} article {
+    #  height: {{ section.settings.iwt_section_height }}px;
+    #}
+    ###############################
+  %}
+  
+  .image-with-text-{{ section.id }} .info__inner-wrapper {
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+{% endstyle %}
+
+{% comment %} Image with text template {% endcomment %}
+<div
+  class="global__section section-image-with-text image-with-text-{{ section.id }} full-width {{ section_padding }} {{ show_box_shadow }} grid__wrapper relative cg0 rg0"
+  data-section-id="{{ section.id }}"
+  data-section-type="image-with-text"
+  data-section-loaded="false">
+
+    <article class="image span-6 auto {{ img_order }}">
+      {% if section.settings.iwt_image != blank %}
+        <div class="background-image">
+          {% render 'helper-image'
+            type: section.settings.iwt_image,
+            sm_render: sm_render,
+            md_render: md_render,
+            lg_render: lg_render,
+            loading: loading,
+            fetchpriority: fetchpriority,
+            width: 900 %}
+        </div>
+      {% else %}
+        <div class="onboard demo-1 color-1">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+    </article>
+    <article class="info span-6 auto relative {{ text_order }}">
+      <div class="info__inner-wrapper p11 sm-px6 sm-py8">
+        {% if section.settings.iwt_heading != blank %}
+          <h2 class="animate--text">{{ section.settings.iwt_heading }}</h2>
+        {% endif %}
+        {% if section.settings.iwt_text != blank %}
+          <div class="rte mb6 animate--text delay--1">
+            {{ section.settings.iwt_text }}
+          </div>
+        {% endif %}
+        {% if section.settings.iwt_link != blank %}
+          <div class="animate--text delay--2">
+            <a class="button btn-outline" href="{{ section.settings.iwt_link }}">{{ section.settings.iwt_button }}</a>
+          </div>
+        {% endif %}
+      </div>
+    </article>
+</div>
+{% schema %}
+{
+  "name": "DW - Image with text",
+  "tag": "section",
+  "class": "dynamic-section dw-dynamic-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "iwt_image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "iwt_layout",
+      "label": "Layout",
+      "default": "image_left",
+      "options": [
+        {
+          "value": "image_left",
+          "label": "Image left"
+        },
+        {
+          "value": "image_right",
+          "label": "Image right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "iwt_heading",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "iwt_text",
+      "label": "Text",
+      "default": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>"
+    },
+    {
+      "type": "text",
+      "id": "iwt_button",
+      "default": "Button",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "iwt_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_box_shadow",
+      "label": "Show box shadow",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default":"3",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "color_scheme_mobile",
+      "label": "Color scheme mobile",
+      "default":"2",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "iwt_section_height",
+      "min": 200,
+      "max": 1200,
+      "step": 100,
+      "unit": "px",
+      "label": "Section height",
+      "default": 500
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+  "presets": [{
+    "name": "DW - Image with text"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
