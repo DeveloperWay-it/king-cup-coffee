@@ -1,0 +1,107 @@
+<link rel="preload" href="{{ 'image-and-product-cards.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<section class="image-and-product-cards">
+  <div class="img-and-product-cards-container">
+    <div class="row">
+      <div class="image-column" style="background-image: url('{{ section.settings.image | image_url: width: 900 }}'); background-size: cover; background-position: center;">
+        <p>{{ section.settings.description }}</p>
+        <h2>{{ section.settings.heading }}</h2>
+        {% if section.settings.button_text and section.settings.button_link %}
+          <a href="{{ section.settings.button_link }}" class="button">{{ section.settings.button_text }}</a>
+        {% endif %}
+      </div>
+
+      <div class="product-column">
+        <div class="product-cards">
+            {% for i in (1..4) %}
+                {% assign product_key = "product_" | append: i %}
+                {% assign product = section.settings[product_key] %}
+                {% if product %}
+                  <div class="product-card">
+                    <a href="{{ product.url }}">
+                      <div class="product-image">
+                        <div class="product-image-bg" 
+                             style="background-image: url('{{ product.featured_image | image_url }}'); background-size: cover; background-position: center;">
+                        </div>
+                      </div>
+
+                        <div class="product-text">
+                            <h3>{{ product.title }}</h3>
+                            <p class="price" >{{ product.price | money }}</p>
+                            <form method="post" action="/cart/add">
+                              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                              <button type="submit" class="add-to-cart-button">Aggiungi al carrello</button>
+                            </form>
+                        </div>
+                    </a>
+            
+                    
+                  </div>
+                {% endif %}
+              {% endfor %}              
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image and Product Cards",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Write a short description about this section."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product 3"
+    },
+    {
+      "type": "product",
+      "id": "product_4",
+      "label": "Product 4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image, Text and Products",
+      "category": "Custom sections"
+    }
+  ]
+}
+{% endschema %}
