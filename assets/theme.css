@@ -734,7 +734,7 @@ svg.lg {
 
 @font-face {
   font-family: 'Iowan'; /* Nome del font */
-  src: url('{{ "Iowan Old Style.otf" | asset_url }}') format('otf');
+  src: url('{{ "Iowan_Old_Style.otf" | asset_url }}') format('otf');
   font-weight: normal; /* Specifica il peso */
   font-style: normal; /* Specifica lo stile */
 }
