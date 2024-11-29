@@ -306,11 +306,13 @@ data-section-type="carousel">
               }
               @media only screen and (max-width: 768px) {
                 {% if mobile_image != blank %}
+                  {%comment%}
                   .slide--{{ block.id }} .slideshow__slide-image {
                     {% if fixed_height %}
                       padding-bottom: var(--mobile-section-height) !important;
                     {% endif %}
                   }
+                  {%endcomment%}
                 {% else %}
                   .slide--{{ block.id }} .slideshow__slide-image .box-ratio {
                     padding-bottom: {{ image_box_ratio }} !important;
