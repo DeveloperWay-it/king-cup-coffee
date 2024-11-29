@@ -5,6 +5,14 @@
       <div class="image-column" style="background-image: url('{{ section.settings.image | image_url: width: 900 }}'); background-size: cover; background-position: center;">
         <p>{{ section.settings.description }}</p>
         <h2>{{ section.settings.heading }}</h2>
+        {% if section.settings.button_text and section.settings.button_link %}
+          <a href="{{ section.settings.button_link }}" class="button">{{ section.settings.button_text }}</a>
+        {% endif %}
+      </div>
+
+      {% comment %} <div class="image-column" style="background-image: url('{{ section.settings.image | image_url: width: 900 }}'); background-size: cover; background-position: center;">
+        <p>{{ section.settings.description }}</p>
+        <h2>{{ section.settings.heading }}</h2>
         {% if section.settings.button_text %}
           <form method="post" action="/cart/add">
             {% for i in (1..4) %}
@@ -18,7 +26,7 @@
             <button type="submit" class="button">{{ section.settings.button_text }}</button>
           </form>
         {% endif %}
-      </div>
+      </div> {% endcomment %}
 
       <div class="product-column">
         <div class="product-cards">
@@ -81,7 +89,11 @@
       "label": "Button Text",
       "default": "Learn More"
     },
-   
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
     {
       "type": "product",
       "id": "product_1",
