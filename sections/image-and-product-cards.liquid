@@ -9,25 +9,6 @@
           <a href="{{ section.settings.button_link }}" class="button">{{ section.settings.button_text }}</a>
         {% endif %}
       </div>
-
-      {% comment %} <div class="image-column" style="background-image: url('{{ section.settings.image | image_url: width: 900 }}'); background-size: cover; background-position: center;">
-        <p>{{ section.settings.description }}</p>
-        <h2>{{ section.settings.heading }}</h2>
-        {% if section.settings.button_text %}
-          <form method="post" action="/cart/add">
-            {% for i in (1..4) %}
-              {% assign product_key = "product_" | append: i %}
-              {% assign product = section.settings[product_key] %}
-              {% if product %}
-                <input type="hidden" name="items[][id]" value="{{ product.variants.first.id }}">
-                <input type="hidden" name="items[][quantity]" value="1">
-              {% endif %}
-            {% endfor %}
-            <button type="submit" class="button">{{ section.settings.button_text }}</button>
-          </form>
-        {% endif %}
-      </div> {% endcomment %}
-
       <div class="product-column">
         <div class="product-cards">
             {% for i in (1..4) %}

@@ -67,6 +67,8 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: white;
+    display: block;
+    height: 100%;
 }
 
 .row .product-column .product-cards .product-card .product-text h3{
@@ -179,7 +181,6 @@
     }
     .row .product-column .product-cards .product-card .product-text {
         padding: 15px 30px;
-
     }
 
     .row .product-column .product-cards .product-card .product-image .product-image-bg {
