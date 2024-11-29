@@ -9,6 +9,20 @@
  */
 {
   "sections": {
+    "image_and_product_cards_HCViPR": {
+      "type": "image-and-product-cards",
+      "settings": {
+        "image": "shopify://shop_images/Caffe_Nocciola_1_2.png",
+        "heading": "Doppia quantità per la qualita di sempre",
+        "description": "BUNDELE & SAVE",
+        "button_text": "aggiungi al carrello",
+        "button_link": "shopify://blogs/news",
+        "product_1": "confezione-caffe-prova-1",
+        "product_2": "confezione-caffe-prova-1-copia",
+        "product_3": "confezione-caffe-prova-1-copia-copia",
+        "product_4": "confezione-caffe-prova-1"
+      }
+    },
     "image_with_text_qpLBCV": {
       "type": "image-with-text",
       "custom_css": [],
@@ -294,7 +308,7 @@
             "bg_shape": "rough_circle_shape",
             "title": "Fact Text",
             "text_size": 32,
-            "bg_color": "#4B2C1B",
+            "bg_color": "#4b2c1b",
             "text_color": "#ffffff",
             "link": ""
           }
@@ -539,6 +553,7 @@
     }
   },
   "order": [
+    "image_and_product_cards_HCViPR",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
     "text_with_icons_wcBWMk",
