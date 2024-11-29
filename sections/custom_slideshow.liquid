@@ -45,6 +45,13 @@
 -%}
 
 {% style %}
+  {% if fixed_height %}
+    #shopify-section-{{ section.id }} {
+      --desktop-section-height: {{ desktop_height }}px;
+      --mobile-section-height: {{ mobile_height }}px;
+    }
+  {% endif %}
+
   @media (max-width: 740px) {
      #shopify-section-{{ section.id }} {
        --font-size: calc({{ section.settings.subheading_size }}px - ({{ section.settings.subheading_size }}px * 0.15));
@@ -62,10 +69,6 @@
     #shopify-section-{{ section.id }} {
       --font-size:  {{ section.settings.subheading_size }}px;
       --h2-size:  {{ section.settings.slide_heading_size }}px;
-      {% if fixed_height %}
-        --desktop-section-height: {{ desktop_height }}px;
-        --mobile-section-height: {{ mobile_height }}px;
-      {% endif %}
     }
 
     #shopify-section-{{ section.id }} .flickity-slider {
@@ -290,6 +293,7 @@ data-section-type="carousel">
             {% endif %}
             {% style %}
               .slideshow__caption.slide-{{ block.id }} {
+                {%comment%}
                 top: {{ block.settings.caption_vertical }}%;
                 left: {{ block.settings.caption_horizontal }}%;
                 -webkit-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
@@ -297,6 +301,8 @@ data-section-type="carousel">
                 -moz-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
                 -o-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
                 transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
+                {%endcomment%}
+                position: relative;
               }
               @media only screen and (max-width: 768px) {
                 {% if mobile_image != blank %}
@@ -551,7 +557,8 @@ data-section-type="carousel">
           "value": "fixed_height",
           "label": "Fixed height"
         }
-      ]
+      ],
+      "default": "fixed_height"
     },
     {
       "type": "range",

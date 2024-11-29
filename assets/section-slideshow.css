@@ -100,6 +100,7 @@
 
 @media screen and (max-width: 740px) {
 	.section-slideshow .slideshow__caption {
+		aspect-ratio: 1;
 		width: 100%;
 		word-break: break-word;
 	}
@@ -164,6 +165,8 @@
 @media (max-width: 767px) {
 	.section-slideshow .slideshow__caption-wrapper {
 		width: 100%;
+		height: 100%;
+		justify-content: center;
 	}
 
 	.section-slideshow .flickity__section .flickity-button {
@@ -260,6 +263,7 @@
 		.box-ratio
 		img {
 		height: var(--mobile-section-height) !important;
+		aspect-ratio: 1;
 	}
 	.section-slideshow
 		.slideshow.is-fixed_height
