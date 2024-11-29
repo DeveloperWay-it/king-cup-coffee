@@ -51,7 +51,6 @@
 .row .product-column .product-cards .product-card a {
  display: block;
  margin: 0;
- height: 100%;
 }
 
 .row .product-column .product-cards .product-card .product-text {
@@ -59,7 +58,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
 }
 
 .row .product-column .product-cards .product-card .product-text h3{
