@@ -1,0 +1,216 @@
+<link
+  rel="preload"
+  href="{{ 'bestsellers.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="{{ 'bestsellers.css' | asset_url }}">
+</noscript>
+
+{% style %}
+  .bestseller_section .product-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    align-self: start;
+    justify-self: start;
+    height: 100%;
+    width: 100%;
+  }
+
+  .bestseller_section .product-card a {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .bestseller_section .product-card .product-text {
+    padding: 10px 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    height: auto;
+    flex: 1;
+  }
+
+  .bestseller_section .product-card .product-text h3 {
+    font-size: 17px;
+    line-height: 24px;
+    /* font-weight: 700; */
+    font-family: "Iowan" !important;
+    font-family: var(--heading-family);
+    letter-spacing: normal;
+    margin: 0;
+  }
+
+  .bestseller_section .product-card .product-text .price {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 800;
+    margin-top: auto;
+    margin-bottom: 15px;
+    font-family: "Assistant";
+    padding-top: 10px;
+  }
+
+  .bestseller_section .product-card .product-image {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 0.66px solid black;
+    background: #f9f4ef;
+  }
+
+  .bestseller_section .product-card .product-image-bg {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .bestseller_section .product-card .add-to-cart-button {
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 15px;
+    font-weight: 600px;
+    height: fit-content;
+    width: 100%;
+  }
+
+  .bestseller_section .product-card .add-to-cart-button:hover {
+    border: transparent;
+    color: white;
+  }
+{% endstyle %}
+
+
+<div class="bestseller_section global__section">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for product in section.settings.collection.products %}
+        <div class="swiper-slide">
+          {% render 'product-card'
+            , product: product
+            , add_quantity_selector: true %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 4,
+      },
+    }
+  });
+  
+  document.querySelectorAll('.quantity-wrapper').forEach((wrapper) => {
+    const input = wrapper.querySelector('.quantity-input');
+    const buttons = wrapper.querySelectorAll('.quantity-btn');
+    
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const action = button.getAttribute('data-action');
+        let currentValue = parseInt(input.value) || 1;
+    
+        if (action === 'increase') {
+          input.value = currentValue + 1;
+        } else if (action === 'decrease' && currentValue > 1) {
+          input.value = currentValue - 1;
+        }
+      });
+    });
+  });
+  
+  document.querySelectorAll('.bestseller_section form').forEach((form) => {
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault(); // Impedisce il comportamento di submit predefinito
+  
+      const formData = new FormData(form);
+      try {
+        // Aggiunta prodotto al carrello
+        const response = await WAU.ThemeCart.addItemFromForm(form);
+        console.log('Prodotto aggiunto:', response);
+  
+        // Recupera il carrello aggiornato
+        const cart = await WAU.ThemeCart.getCart();
+  
+        // Aggiorna la vista del carrello
+        const config = JSON.parse(document.getElementById('cart-config').innerHTML || "{}");
+        WAU.AjaxCart.updateView(config, cart);
+  
+        // Mostra il carrello
+        if (config.cart_action === "drawer") {
+          WAU.AjaxCart.showDrawer(config);
+        } else if (config.cart_action === "modal_cart") {
+          WAU.AjaxCart.showModal(config);
+        } else {
+          console.log('Configurazione del carrello non supportata.');
+        }
+      } catch (error) {
+        console.error('Errore:', error.message);
+        alert('C\'è stato un problema durante l\'aggiunta al carrello.');
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Bestseller section",
+    "tag": "section",
+    "class": "bestseller-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Bestseller section "
+      }
+    ]
+
+  }
+
+{% endschema %}

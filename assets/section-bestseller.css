@@ -1,0 +1,96 @@
+/* Before JS or No Js Styles */
+.section-bestseller[data-section-loaded="false"] .product-loop__item {
+	display: inline-block;
+}
+
+.section-bestseller__section-heading {
+	padding-bottom: 0;
+}
+
+.section-bestseller__wrapper--carousel .flickity-button.previous {
+	position: absolute;
+	top: -40px;
+	right: 50px;
+	left: unset;
+}
+
+.section-bestseller__wrapper--carousel .flickity-button.next {
+	position: absolute;
+	top: -40px;
+	right: 0;
+	left: unset;
+}
+
+.section-bestseller__wrapper--carousel .flickity-viewport,
+.section-bestseller__wrapper--carousel .flickity-enabled.is-draggable {
+	outline: none !important;
+	outline-offset: none !important;
+}
+
+.section-bestseller__wrapper--carousel .product-loop__item {
+	margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+	.section-bestseller__wrapper--carousel .product-loop__wrapper {
+		grid-column: 0.0769230769 !important;
+		width: 100% !important;
+	}
+
+	.section-bestseller__wrapper--carousel .product-loop__item {
+		padding-right: 10px;
+		width: 80% !important;
+	}
+}
+
+/* ---- View all button ---- */
+.section-bestseller__wrapper--carousel a.button.view--all_button,
+.section-bestseller__wrapper--grid a.button.view--all_button {
+	display: none;
+	white-space: nowrap;
+	align-items: center;
+	padding: 0 10px;
+	position: absolute;
+	left: 3%;
+	top: 19px;
+	height: 44px;
+}
+
+@media screen and (min-width: 768px) {
+	.section-bestseller__wrapper--carousel:hover a.button.view--all_button,
+	.section-bestseller__wrapper--grid:hover a.button.view--all_button {
+		display: flex;
+		background: transparent;
+		color: var(--text-color);
+	}
+}
+
+.section-bestseller__wrapper--carousel a.button.view--all_button.align--right {
+	left: unset;
+	right: 145px;
+}
+
+.section-bestseller__wrapper--grid a.button.view--all_button.align--right {
+	left: unset;
+	right: 3%;
+}
+/*
+.bestseller-section .product-card {
+	display: block;
+}
+
+.bestseller-section .product-card a {
+	display: flex;
+	flex-direction: column;
+}
+
+.bestseller-section .product-image {
+	width: 200px;
+	height: 200px;
+}
+
+.bestseller-section .product-image-bg {
+	width: 100%;
+	height: 100%;
+}
+*/

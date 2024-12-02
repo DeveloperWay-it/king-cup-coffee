@@ -9,18 +9,193 @@
  */
 {
   "sections": {
+    "custom_slideshow_9G3cGT": {
+      "type": "custom_slideshow",
+      "blocks": {
+        "image_LFQHMk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
+            "mobile_image": "shopify://shop_images/Caffe_Nocciola_1_1_2.png",
+            "heading": "Slide image title",
+            "subheading": "<p>Slide image subheading</p>",
+            "link": "shopify://collections",
+            "button_text": "Button",
+            "second_link": "",
+            "second_button_text": "Button 2 text",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "align_content": "left",
+            "slide_text_color": "#ffffff",
+            "slide_button_color": "#ffffff",
+            "slide_button_bg": "#000000",
+            "caption_background": "#a18167",
+            "hide_caption_background": false,
+            "reverse_content": true,
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "text_align": "center"
+          }
+        },
+        "image_VPxAzT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
+            "mobile_image": "shopify://shop_images/Caffe_Nocciola_1_1_2.png",
+            "heading": "Slide image title",
+            "subheading": "<p>Slide image subheading</p>",
+            "link": "",
+            "button_text": "Button",
+            "second_link": "shopify://collections",
+            "second_button_text": "Button 2 text",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "align_content": "left",
+            "slide_text_color": "#ffffff",
+            "slide_button_color": "#ffffff",
+            "slide_button_bg": "#a18167",
+            "caption_background": "#000000",
+            "hide_caption_background": false,
+            "reverse_content": false,
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_LFQHMk",
+        "image_VPxAzT"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_autoplay": false,
+        "slider_speed": 5,
+        "pager": "arrows",
+        "slideshow_size": "fixed_height",
+        "desktop_height": 900,
+        "mobile_height": 600,
+        "caption_below": false,
+        "slide_heading_size": 32,
+        "subheading_size": 18,
+        "section_padding": "bottom"
+      }
+    },
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
       "settings": {
         "image": "shopify://shop_images/Caffe_Nocciola_1_2.png",
         "heading": "Doppia quantità per la qualita di sempre",
-        "description": "BUNDELE & SAVE",
+        "description": "BUNDLE & SAVE",
         "button_text": "aggiungi al carrello",
         "button_link": "shopify://blogs/news",
         "product_1": "confezione-caffe-prova-1",
         "product_2": "confezione-caffe-prova-1-copia",
         "product_3": "confezione-caffe-prova-1-copia-copia",
         "product_4": "confezione-caffe-prova-1"
+      }
+    },
+    "custom_collection_list_BdEqUA": {
+      "type": "custom_collection-list",
+      "blocks": {
+        "featured_collection_YyGRdm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_prrJwx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_1.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_TexrdC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_XpctN3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_1.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_XTENmG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_2.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_azgAMd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_3.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_83tNNf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_4.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_gNbmLr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_2.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_QPRbU4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_3.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_RkhjFe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_4.png",
+            "product_image": false
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_YyGRdm",
+        "featured_collection_prrJwx",
+        "featured_collection_TexrdC",
+        "featured_collection_XpctN3",
+        "featured_collection_XTENmG",
+        "featured_collection_azgAMd",
+        "featured_collection_83tNNf",
+        "featured_collection_gNbmLr",
+        "featured_collection_QPRbU4",
+        "featured_collection_RkhjFe"
+      ],
+      "settings": {
+        "title": "Collection list",
+        "subtitle": "Text to show under title",
+        "items_per_row": 5,
+        "section_padding": "both"
       }
     },
     "image_with_text_qpLBCV": {
@@ -35,6 +210,19 @@
         "show_box_shadow": false,
         "color_scheme": "3",
         "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "product_list_Q8iJEY": {
+      "type": "product-list",
+      "settings": {
+        "title": "Product list",
+        "product_list": [],
+        "item_position": "left",
+        "item_width": "one_half",
+        "image_height": "natural",
+        "desktop_height": 650,
+        "mobile_height": 400,
         "section_padding": "both"
       }
     },
@@ -536,25 +724,26 @@
         "background": "#a18167"
       }
     },
-    "featured_blog_fiRnGA": {
-      "type": "featured-blog",
+    "custom_bestseller_section_taHKKQ": {
+      "type": "custom_bestseller-section",
       "settings": {
-        "title": "Featured Blog",
-        "blog": "news",
-        "items_per_page": 3,
-        "items_per_row": 3,
-        "text_align": "left",
-        "show_date": true,
-        "show_author": false,
-        "show_tags": false,
-        "show_comments": true,
+        "title": "Featured collection",
+        "collection": "frontpage",
+        "display_type": "carousel",
+        "items_per_row": 4,
+        "mobile_items_per_row": "2",
+        "items_per_page": 7,
+        "show_view_all": true,
         "section_padding": "both"
       }
     }
   },
   "order": [
+    "custom_slideshow_9G3cGT",
     "image_and_product_cards_HCViPR",
+    "custom_collection_list_BdEqUA",
     "image_with_text_qpLBCV",
+    "product_list_Q8iJEY",
     "testimonials_AUEU9y",
     "text_with_icons_wcBWMk",
     "countdown_knwzCz",
@@ -565,6 +754,6 @@
     "featured_collection_WqzhHx",
     "image_with_text_VXGFYf",
     "scrolling_text_GwJ37X",
-    "featured_blog_fiRnGA"
+    "custom_bestseller_section_taHKKQ"
   ]
 }

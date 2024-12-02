@@ -37,7 +37,16 @@
             endif
 
           -%}
-          {% if collection_image %}
+          {% if custom_image != blank %}
+            {% render 'helper-image',
+              type: custom_image,
+              sm_render: sm_render,
+              md_render: md_render,
+              lg_render: lg_render,
+              loading: loading,
+              fetchpriority: fetchpriority,
+              width: 800 %}
+          {% elsif product_image %}
             {% render 'helper-image',
                type: collection.image,
                sm_render: sm_render,
