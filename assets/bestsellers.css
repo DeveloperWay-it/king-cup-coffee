@@ -67,6 +67,7 @@
 	cursor: pointer;
 	font-size: 16px;
 	margin: 0;
+	height: 30px;
 }
 
 .bestseller_section .quantity-input {
@@ -97,7 +98,8 @@
 	cursor: pointer;
 	font-size: 12px;
 	margin: 0;
-	line-height: normal;
+	line-height: 1;
+	height: 32px;
 }
 
 .bestseller_section .swiper-button-prev,
