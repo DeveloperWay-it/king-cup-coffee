@@ -19,7 +19,14 @@
 }
 
 .bestseller_section .product-card {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	box-sizing: border-box;
+	align-self: start;
+	justify-self: start;
 	height: 100%;
+	width: 100%;
 	flex: 1 100%;
 }
 
@@ -27,11 +34,23 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
 }
 
 .bestseller_section .product-card .product-image {
 	width: 100%;
 	aspect-ratio: 301 / 371;
+	display: flex;
+	flex: 1 100%;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 0.66px solid black;
+	background: #f9f4ef;
+	max-height: 70%;
 }
 
 .bestseller_section .product-card .product-image-bg {
@@ -42,6 +61,36 @@
 	max-width: 70%;
 	height: 100%;
 	margin: auto;
+}
+
+.bestseller_section .product-card .product-text {
+	padding: 10px 13px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: white;
+	height: auto;
+	flex: 1;
+}
+
+.bestseller_section .product-card .product-text h3 {
+	font-size: 17px;
+	line-height: 24px;
+	/* font-weight: 700; */
+	font-family: "Iowan" !important;
+	font-family: var(--heading-family);
+	letter-spacing: normal;
+	margin: 0;
+}
+
+.bestseller_section .product-card .product-text .price {
+	font-size: 20px;
+	line-height: 25px;
+	font-weight: 800;
+	margin-top: auto;
+	margin-bottom: 15px;
+	font-family: "Assistant";
+	padding-top: 10px;
 }
 
 .bestseller_section .product-card .product-form {
@@ -93,13 +142,28 @@
 
 .bestseller_section .product-card .add-to-cart-btn {
 	flex: 1;
-	padding: 10px 20px;
+	padding: 0px 20px;
 	border: none;
 	cursor: pointer;
 	font-size: 12px;
 	margin: 0;
 	line-height: 1;
 	height: 32px;
+}
+
+.bestseller_section .product-card .add-to-cart-button {
+	font-size: 12px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 15px;
+	font-weight: 600px;
+	height: fit-content;
+	width: 100%;
+}
+
+.bestseller_section .product-card .add-to-cart-button:hover {
+	border: transparent;
+	color: white;
 }
 
 .bestseller_section .swiper-button-prev,

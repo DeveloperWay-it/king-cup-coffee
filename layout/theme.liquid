@@ -37,6 +37,7 @@
   {% render 'snip-structured-data' %}
 
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <script src="{{ 'product-cards-form.js' | asset_url }}" defer></script>
 
   {{ content_for_header }}
 
@@ -62,6 +63,8 @@
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
   />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
 </head>
 
 <body id="{{ page_title | handle }}"
