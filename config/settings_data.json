@@ -879,13 +879,13 @@
     }
   },
   "current": {
-    "main_font": "news_gothic_no_2_n4",
-    "nav_font": "news_gothic_no_2_n4",
-    "heading_font": "work_sans_n6",
+    "main_font": "assistant_n4",
+    "nav_font": "assistant_n4",
+    "heading_font": "work_sans_n4",
     "font_size": 15,
     "nav_size": 15,
     "h1_size": 22,
-    "h2_size": 20,
+    "h2_size": 42,
     "h3_size": 18,
     "nav_spacing": 1,
     "heading_spacing": 3,
@@ -933,6 +933,8 @@
     "keyboard_focus": "#f2f2f2",
     "focus_border_style": "dashed",
     "collection_image_ratio": "vertical",
+    "collection_grid_dropshadow": false,
+    "collection_product_count": false,
     "image_ratio": "vertical",
     "product_grid_padding": false,
     "product_grid_dropshadow": false,
@@ -1100,13 +1102,6 @@
         }
       }
     },
-    "content_for_index": [],
-    "blocks": {
-      "11532412952436166569": {
-        "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-        "disabled": false,
-        "settings": {}
-      }
-    }
+    "content_for_index": []
   }
 }

@@ -58,6 +58,10 @@
 	width: 100%;
 }
 
+.slideshow__slide.row-reverse {
+	flex-direction: row-reverse;
+}
+
 .slideshow__slide-image {
 	position: relative;
 }
@@ -120,6 +124,10 @@
 	align-items: center;
 	row-gap: 15px;
 	padding: 30px;
+}
+
+.slideshow__caption .slideshow__caption-wrapper > * {
+	width: 70%;
 }
 
 .slideshow__caption.hide_caption_background .slideshow__caption-wrapper {

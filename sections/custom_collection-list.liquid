@@ -52,6 +52,9 @@
 
   <div class="grid__wrapper--10 cg6 sm-cg3 mb4 rg0">
     {% render 'snip-headings', align: heading_align, grid: 'span-12', url: routes.collection_url %}
+    <div class="rte span-12" style="text-align: center;">
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
   </div>
 
   <div class="grid__wrapper--10 cg6 sm-cg3 rg9">
@@ -94,6 +97,12 @@
       "id": "title",
       "label": "Heading",
       "default": "Collection list"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Text to show under title"
     },
     {
       "type": "range",

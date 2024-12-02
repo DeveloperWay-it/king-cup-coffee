@@ -121,14 +121,22 @@
   {% endif %}
 
   {% for block in section.blocks %}
-  {% assign block_opacity = block.settings.overlay_opacity | plus: 0 | divided_by: 100.0%}
-    #slide--{{ block.id }} {
-        --section-overlay-color: {{ block.settings.overlay_color | color_modify: 'alpha', block_opacity }};
-        --background: {{ block.settings.caption_background }};
-        --text-color: {{ block.settings.slide_text_color }};
-        --button-text: {{ block.settings.slide_button_color }};
-        --button-bg: {{ block.settings.slide_button_bg }};
-    }
+    {% assign block_opacity = block.settings.overlay_opacity | plus: 0 | divided_by: 100.0%}
+      #slide--{{ block.id }} {
+          --section-overlay-color: {{ block.settings.overlay_color | color_modify: 'alpha', block_opacity }};
+          --background: {{ block.settings.caption_background }};
+          --text-color: {{ block.settings.slide_text_color }};
+          --button-text: {{ block.settings.slide_button_color }};
+          --button-bg: {{ block.settings.slide_button_bg }};
+      }
+
+      #shopify-section-{{ section.id }} #slide--{{ block.id }} .slideshow__caption-wrapper > * {
+        text-align: {{ block.settings.align_content }};
+      }
+
+      #shopify-section-{{ section.id }} #slide--{{ block.id }} .slideshow__caption-wrapper > .slide__buttons {
+        justify-content: {{ block.settings.align_content }};
+      }
   {% endfor %}
 
 {% endstyle %}
@@ -216,7 +224,7 @@ data-section-type="carousel">
           <div
             id="slide--{{ block.id }}"
             data-block-id="{{ block.id }}"
-            class="slide--{{ block.id }} slideshow__slide{% if has_image == false %} slideshow__slide-onboard{% endif %}"
+            class="slide--{{ block.id }} slideshow__slide{% if has_image == false %} slideshow__slide-onboard{% endif %} {% if block.settings.reverse_content %}row-reverse{% endif %}"
             data-slider-index="{{ forloop.index0 }}"
             data-slide-index="{{ forloop.index0 }}"
             {{ block.shopify_attributes }}
@@ -451,6 +459,26 @@ data-section-type="carousel">
           "default": 0
         },
         {
+          "type": "select",
+          "id": "align_content",
+          "label": "Align content in slide",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
           "type": "color",
           "id": "slide_text_color",
           "label": "Caption text",
@@ -478,6 +506,11 @@ data-section-type="carousel">
           "type": "checkbox",
           "id": "hide_caption_background",
           "label": "Hide caption background on mobile"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse_content",
+          "label": "Reverse content of the slide"
         },
         {
           "type": "range",

@@ -1,0 +1,116 @@
+.bestseller_section {
+	position: relative;
+	width: 90%;
+	max-width: 1600px;
+	margin: auto;
+	border-left: 0;
+}
+
+.bestseller_section .swiper-container {
+	overflow: hidden;
+	background-color: black;
+	border: 1px solid;
+}
+
+.bestseller_section .swiper-slide {
+	display: flex;
+	height: auto;
+	border-left: 1px solid;
+}
+
+.bestseller_section .product-card {
+	height: 100%;
+	flex: 1 100%;
+}
+
+.bestseller_section .product-card a {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+.bestseller_section .product-card .product-image {
+	width: 100%;
+	aspect-ratio: 301 / 371;
+}
+
+.bestseller_section .product-card .product-image-bg {
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 100%;
+	max-width: 70%;
+	height: 100%;
+	margin: auto;
+}
+
+.bestseller_section .product-card .product-form {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.bestseller_section .product-card .quantity-wrapper {
+	display: flex;
+	align-items: center;
+	border: 1px solid #ccc;
+	z-index: 99;
+}
+
+.bestseller_section .product-card .quantity-btn {
+	display: flex;
+	align-items: center;
+	background-color: white;
+	color: black;
+	border: none;
+	padding: 10px 5px;
+	cursor: pointer;
+	font-size: 16px;
+	margin: 0;
+}
+
+.bestseller_section .quantity-input {
+	width: 50px;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	height: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.bestseller_section input::-webkit-outer-spin-button,
+.bestseller_section input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+.bestseller_section input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.bestseller_section .product-card .add-to-cart-btn {
+	flex: 1;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	font-size: 12px;
+	margin: 0;
+	line-height: normal;
+}
+
+.bestseller_section .swiper-button-prev,
+.bestseller_section .swiper-button-next {
+	background: black;
+	border-radius: 50%;
+	aspect-ratio: 1;
+	width: auto;
+	height: 30px;
+}
+
+.bestseller_section .swiper-button-prev:after,
+.bestseller_section .swiper-button-next:after {
+	color: white;
+	font-size: 20px;
+}
