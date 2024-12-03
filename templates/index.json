@@ -25,6 +25,78 @@
         "section_padding": "none"
       }
     },
+    "custom_slideshow_Rf7Min": {
+      "type": "custom_slideshow",
+      "blocks": {
+        "image_m9eWmF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
+            "mobile_image": "shopify://shop_images/Caffe_Nocciola_1_1_2.png",
+            "heading": "Doppia quantità per la qualità di sempre",
+            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+            "link": "shopify://collections/all",
+            "button_text": "Scopri di più",
+            "second_link": "",
+            "second_button_text": "Button 2 text",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "align_content": "left",
+            "slide_text_color": "#ffffff",
+            "slide_button_color": "#ffffff",
+            "slide_button_bg": "#a18167",
+            "caption_background": "#000000",
+            "hide_caption_background": false,
+            "reverse_content": true,
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "text_align": "center"
+          }
+        },
+        "image_QkdeMh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
+            "mobile_image": "shopify://shop_images/Caffe_Nocciola_1_1_2.png",
+            "heading": "Slide image title",
+            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+            "link": "shopify://collections/all",
+            "button_text": "Scopri di più",
+            "second_link": "",
+            "second_button_text": "Button 2 text",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "align_content": "center",
+            "slide_text_color": "#ffffff",
+            "slide_button_color": "#ffffff",
+            "slide_button_bg": "#000000",
+            "caption_background": "#a18167",
+            "hide_caption_background": false,
+            "reverse_content": false,
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_m9eWmF",
+        "image_QkdeMh"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_autoplay": false,
+        "slider_speed": 5,
+        "pager": "arrows",
+        "slideshow_size": "fixed_height",
+        "desktop_height": 900,
+        "mobile_height": 600,
+        "caption_below": false,
+        "slide_heading_size": 32,
+        "subheading_size": 18,
+        "section_padding": "both"
+      }
+    },
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
       "settings": {
@@ -570,6 +642,7 @@
   },
   "order": [
     "custom_image_with_text_JMgwEL",
+    "custom_slideshow_Rf7Min",
     "image_and_product_cards_HCViPR",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
