@@ -268,7 +268,7 @@
         "title": "La nostra gamma di prodotti",
         "subtitle": "Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.",
         "items_per_row": 5,
-        "section_padding": "bottom"
+        "section_padding": "both"
       }
     },
     "image_and_product_cards_HCViPR": {
