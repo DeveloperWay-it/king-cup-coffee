@@ -271,6 +271,13 @@
         "section_padding": "both"
       }
     },
+    "bestsellers_KXbceH": {
+      "type": "bestsellers",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "frontpage"
+      }
+    },
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
       "settings": {
@@ -819,6 +826,7 @@
     "custom_slideshow_Rf7Min",
     "scrolling_text_gcUMKf",
     "custom_collection_list_4RW7nh",
+    "bestsellers_KXbceH",
     "image_and_product_cards_HCViPR",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
