@@ -104,7 +104,7 @@
         "text_twHqyp": {
           "type": "text",
           "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
+            "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
             "image": "shopify://shop_images/carrefour-logo-1-1_1.png",
@@ -114,7 +114,7 @@
         "text_nKKGmc": {
           "type": "text",
           "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
+            "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
             "image": "shopify://shop_images/955bad005fd1ccc8675e2e4aa6f5da5b_1.png",
@@ -124,7 +124,7 @@
         "text_EggBGx": {
           "type": "text",
           "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
+            "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
             "image": "shopify://shop_images/Iper_La_grande_I_Logo.svg_3.png",
@@ -134,7 +134,7 @@
         "text_UWytiQ": {
           "type": "text",
           "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
+            "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
             "image": "shopify://shop_images/Logo_Ipercoop_2.png",
@@ -144,7 +144,7 @@
         "text_WFMDHE": {
           "type": "text",
           "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
+            "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
             "image": "shopify://shop_images/Logo-extended.Tigros.svg_3.png",
