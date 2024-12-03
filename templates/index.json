@@ -98,6 +98,76 @@
         "section_padding": "none"
       }
     },
+    "scrolling_text_gcUMKf": {
+      "type": "scrolling-text",
+      "blocks": {
+        "text_twHqyp": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "image": "shopify://shop_images/carrefour-logo-1-1_1.png",
+            "icon_both_sides": false
+          }
+        },
+        "text_nKKGmc": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "image": "shopify://shop_images/955bad005fd1ccc8675e2e4aa6f5da5b_1.png",
+            "icon_both_sides": false
+          }
+        },
+        "text_EggBGx": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "image": "shopify://shop_images/Iper_La_grande_I_Logo.svg_3.png",
+            "icon_both_sides": false
+          }
+        },
+        "text_UWytiQ": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "image": "shopify://shop_images/Logo_Ipercoop_2.png",
+            "icon_both_sides": false
+          }
+        },
+        "text_WFMDHE": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Scrolling text</p>",
+            "text_style": "filled",
+            "icon": "chat",
+            "image": "shopify://shop_images/Logo-extended.Tigros.svg_3.png",
+            "icon_both_sides": false
+          }
+        }
+      },
+      "block_order": [
+        "text_twHqyp",
+        "text_nKKGmc",
+        "text_EggBGx",
+        "text_UWytiQ",
+        "text_WFMDHE"
+      ],
+      "settings": {
+        "text_size": 20,
+        "speed": 15,
+        "icon_height": 20,
+        "padding": 30,
+        "color": "#000",
+        "background": ""
+      }
+    },
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
       "settings": {
@@ -644,6 +714,7 @@
   "order": [
     "custom_image_with_text_JMgwEL",
     "custom_slideshow_Rf7Min",
+    "scrolling_text_gcUMKf",
     "image_and_product_cards_HCViPR",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
