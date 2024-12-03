@@ -22,7 +22,7 @@
         "color_scheme": "3",
         "color_scheme_mobile": "3",
         "iwt_section_height": 500,
-        "section_padding": "both"
+        "section_padding": "none"
       }
     },
     "image_and_product_cards_HCViPR": {
