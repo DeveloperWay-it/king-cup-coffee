@@ -11,6 +11,7 @@
   "sections": {
     "custom_image_with_text_JMgwEL": {
       "type": "custom_image-with-text",
+      "disabled": true,
       "settings": {
         "iwt_image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
         "iwt_layout": "image_right",
@@ -87,10 +88,10 @@
         "full_width": true,
         "enable_autoplay": false,
         "slider_speed": 5,
-        "pager": "arrows",
+        "pager": "dots",
         "slideshow_size": "fixed_height",
-        "desktop_height": 900,
-        "mobile_height": 600,
+        "desktop_height": 800,
+        "mobile_height": 700,
         "caption_below": false,
         "slide_heading_size": 32,
         "subheading_size": 18,
