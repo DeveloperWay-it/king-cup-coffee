@@ -168,6 +168,109 @@
         "background": ""
       }
     },
+    "custom_collection_list_4RW7nh": {
+      "type": "custom_collection-list",
+      "blocks": {
+        "featured_collection_kfprRh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_P9FMrj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_1.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_P4kEnE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_jEX3fJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_1.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_CbdcQi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_2.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_kbp9Qg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_3.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_4kwCAp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Frame_7_4.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_npnyyq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_2.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_JdNYdC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_3.png",
+            "product_image": false
+          }
+        },
+        "featured_collection_JyD3Qd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "collection_custom_image": "shopify://shop_images/Group_1_4.png",
+            "product_image": false
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_kfprRh",
+        "featured_collection_P9FMrj",
+        "featured_collection_P4kEnE",
+        "featured_collection_jEX3fJ",
+        "featured_collection_CbdcQi",
+        "featured_collection_kbp9Qg",
+        "featured_collection_4kwCAp",
+        "featured_collection_npnyyq",
+        "featured_collection_JdNYdC",
+        "featured_collection_JyD3Qd"
+      ],
+      "settings": {
+        "title": "La nostra gamma di prodotti",
+        "subtitle": "Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.",
+        "items_per_row": 5,
+        "section_padding": "bottom"
+      }
+    },
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
       "settings": {
@@ -715,6 +818,7 @@
     "custom_image_with_text_JMgwEL",
     "custom_slideshow_Rf7Min",
     "scrolling_text_gcUMKf",
+    "custom_collection_list_4RW7nh",
     "image_and_product_cards_HCViPR",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
