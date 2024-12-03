@@ -12,6 +12,7 @@
     "custom_image_with_text_JMgwEL": {
       "type": "custom_image-with-text",
       "settings": {
+        "iwt_image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
         "iwt_layout": "image_right",
         "iwt_heading": "Doppia quantità per la qualità di sempre",
         "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
