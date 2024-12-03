@@ -274,7 +274,7 @@
     "bestsellers_KXbceH": {
       "type": "bestsellers",
       "settings": {
-        "title": "Featured collection",
+        "title": "Bestsellers",
         "collection": "frontpage"
       }
     },
