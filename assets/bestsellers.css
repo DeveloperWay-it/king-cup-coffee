@@ -88,7 +88,7 @@
 	line-height: 25px;
 	font-weight: 800;
 	margin-top: auto;
-	margin-bottom: 15px;
+	margin-bottom: 25px;
 	font-family: "Assistant";
 	padding-top: 10px;
 }
@@ -175,8 +175,23 @@
 	height: 30px;
 }
 
+.bestseller_section .swiper-button-prev {
+	left: -40px;
+}
+
+.bestseller_section .swiper-button-next {
+	left: calc(100% + 10px);
+}
+
 .bestseller_section .swiper-button-prev:after,
 .bestseller_section .swiper-button-next:after {
 	color: white;
 	font-size: 20px;
+}
+
+@media (max-width: 740px) {
+	.bestseller_section .swiper-button-prev,
+	.bestseller_section .swiper-button-next {
+		display: none;
+	}
 }

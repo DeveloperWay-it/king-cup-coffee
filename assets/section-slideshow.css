@@ -228,6 +228,12 @@
 	top: 50%;
 }
 
+@media screen and (max-width: 740px) {
+	.custom_slideshow .section-slideshow .slideshow__btn-wrapper a {
+		font-size: 12px;
+	}
+}
+
 /* ---- Slideshow section heights ---- */
 .section-slideshow .slideshow.is-fixed_height .slideshow__slide .box-ratio img {
 	object-fit: cover;
