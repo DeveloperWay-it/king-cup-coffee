@@ -194,4 +194,7 @@
 	.bestseller_section .swiper-button-next {
 		display: none;
 	}
+  .bestseller_section {
+    margin-right: 0px;
+  }
 }
