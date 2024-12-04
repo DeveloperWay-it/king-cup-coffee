@@ -7,7 +7,32 @@
   <link rel="stylesheet" href="{{ 'bestsellers.css' | asset_url }}">
 </noscript>
 
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --heading-size: {{ section.settings.heading_size }}px;
+    --mobile-heading-size: {{ section.settings.mobile_heading_size }}px;
+  }
+
+  #shopify-section-{{ section.id }}
+  .bestseller_section_title {
+    font-size: var(--heading-size);
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: normal;
+    margin-bottom: 60px;  
+  }
+
+  @media screen and (max-width: 740px) {
+    #shopify-section-{{ section.id }} .bestseller_section_title {
+      font-size: var(--mobile-heading-size);
+    }
+  }
+{% endstyle %}
+
 <div class="bestseller_section global__section">
+  <h2 class="bestseller_section_title">
+    {{ section.settings.heading | escape }}
+  </h2>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       {% for product in section.settings.collection.products %}
@@ -26,7 +51,7 @@
 <script>
   var swiper = new Swiper('.swiper-container', {
     loop: true,
-    slidesPerView: 1,
+    slidesPerView: 1.5,
     spaceBetween: 0,
     navigation: {
       nextEl: '.swiper-button-next',
@@ -59,9 +84,29 @@
     "settings": [
       {
         "type": "text",
-        "id": "title",
+        "id": "heading",
         "label": "Heading",
-        "default": "Featured collection"
+        "default": "Best Sellers"
+      },
+      {
+        "type": "range",
+        "id": "heading_size",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading size",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "mobile_heading_size",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading size on mobile",
+        "default": 28
       },
       {
         "id": "collection",

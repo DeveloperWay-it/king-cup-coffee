@@ -52,10 +52,15 @@
     }
   {% endif %}
 
+  #shopify-section-{{ section.id }} {
+    --font-size: calc({{ section.settings.subheading_size }}px - ({{ section.settings.subheading_size }}px * 0.15));
+    --h2-size: calc({{ section.settings.slide_heading_size }}px - ({{ section.settings.slide_heading_size }}px * 0.15));
+  }
+
   @media (max-width: 740px) {
      #shopify-section-{{ section.id }} {
-       --font-size: calc({{ section.settings.subheading_size }}px - ({{ section.settings.subheading_size }}px * 0.15));
-       --h2-size: calc({{ section.settings.slide_heading_size }}px - ({{ section.settings.slide_heading_size }}px * 0.15));
+       --font-size: calc({{ section.settings.mobile_subheading_size }}px - ({{ section.settings.mobile_subheading_size }}px * 0.15));
+       --h2-size: calc({{ section.settings.mobile_slide_heading_size }}px - ({{ section.settings.mobile_slide_heading_size }}px * 0.15));
      }
 
      /*
@@ -136,6 +141,29 @@
 
       #shopify-section-{{ section.id }} #slide--{{ block.id }} .slideshow__caption-wrapper > .slide__buttons {
         justify-content: {{ block.settings.align_content }};
+      }
+
+      @media screen and (max-width: 740px) {
+        #slide--{{ block.id }} {
+          --mobile-background: {{ block.settings.mobile_caption_background }};
+          --mobile-button-bg: {{ block.settings.mobile_slide_button_bg }};
+        }
+
+        #slide--{{ block.id }} .slideshow__caption .slideshow__caption-wrapper {
+          background: var(--mobile-background);
+        }
+
+        #slide--{{ block.id }} .slideshow__caption .slideshow__caption-wrapper .button {
+          background-color: var(--mobile-button-bg);
+        }
+
+        #shopify-section-{{ section.id }} #slide--{{ block.id }} .slideshow__caption-wrapper > * {
+          text-align: {{ block.settings.align_content_mobile }};
+        }
+
+        #shopify-section-{{ section.id }} #slide--{{ block.id }} .slideshow__caption-wrapper > .slide__buttons {
+          justify-content: {{ block.settings.align_content_mobile }};
+        }
       }
   {% endfor %}
 
@@ -370,7 +398,7 @@ data-section-type="carousel">
 {
   "name": "Custom Slideshow",
   "tag": "section",
-  "class": "dynamic-section",
+  "class": "dynamic-section custom_slideshow",
   "max_blocks": 5,
   "blocks": [
     {
@@ -479,6 +507,26 @@ data-section-type="carousel">
           "default": "left"
         },
         {
+          "type": "select",
+          "id": "align_content_mobile",
+          "label": "Align content in slide mobile",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
           "type": "color",
           "id": "slide_text_color",
           "label": "Caption text",
@@ -501,6 +549,18 @@ data-section-type="carousel">
           "id": "caption_background",
           "label": "Caption background",
           "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "mobile_slide_button_bg",
+          "label": "Mobile Button background",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "mobile_caption_background",
+          "label": "Mobile Caption background",
+          "default": "#A18167"
         },
         {
           "type": "checkbox",
@@ -637,6 +697,16 @@ data-section-type="carousel">
     },
     {
       "type": "range",
+      "id": "mobile_slide_heading_size",
+      "min": 12,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size on mobile",
+      "default": 28
+    },
+    {
+      "type": "range",
       "id": "subheading_size",
       "min": 12,
       "max": 36,
@@ -644,6 +714,16 @@ data-section-type="carousel">
       "unit": "px",
       "label": "Subheading size",
       "default": 18
+    },
+    {
+      "type": "range",
+      "id": "mobile_subheading_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size on mobile",
+      "default": 12
     },
     {
       "type": "select",

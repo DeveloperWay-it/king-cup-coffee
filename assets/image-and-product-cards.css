@@ -169,6 +169,12 @@
 	padding: 10px 30px;
 }
 
+@media (max-width: 767px) {
+	.row .image-column {
+		max-height: 70vh;
+	}
+}
+
 @media screen and (min-width: 350px) {
 	.row
 		.product-column
