@@ -1,0 +1,61 @@
+<!-- sections/collection-products.liquid -->
+<section id="collection-products">
+  {% if collection.products_count > 0 %}
+    <div class="product-grid">
+      {% paginate collection.products by 12 %}
+        {% for product in collection.products %}
+          {% include 'product-card', product: product %}
+        {% endfor %}
+        {{- paginate | default_pagination }}
+      {% endpaginate %}
+    </div>
+  {% else %}
+    <p>No products found.</p>
+  {% endif %}
+</section>
+
+<form id="collection-filters">
+  <select name="sort_by" id="sort-by">
+    <option value="manual">Featured</option>
+    <option value="best-selling">Best Selling</option>
+    <option value="title-ascending">Alphabetically, A-Z</option>
+    <option value="title-descending">Alphabetically, Z-A</option>
+    <option value="price-ascending">Price, low to high</option>
+    <option value="price-descending">Price, high to low</option>
+  </select>
+</form>
+
+<script>
+  document.getElementById('sort-by').addEventListener('change', function () {
+    const sortValue = this.value;
+    const url = new URL(window.location.href);
+
+    // Update the URL parameters for filtering
+    url.searchParams.set('sort_by', sortValue);
+
+    // Fetch the updated section using the Section Rendering API
+    fetch(`${url.pathname}?section_id={{ section.id }}&${url.searchParams.toString()}`)
+      .then(response => response.text())
+      .then(html => {
+        // Replace the current section with the updated content
+        const parser = new DOMParser();
+        const newDoc = parser.parseFromString(html, 'text/html');
+        const newSection = newDoc.getElementById('collection-products');
+        document.getElementById('collection-products').innerHTML = newSection.innerHTML;
+      })
+      .catch(error => console.error('Error:', error));
+  });
+</script>
+
+{%schema%}
+  {
+    "name": "Collection products",
+    "tag": "section",
+    "class": "collection-products",
+    "presets": [
+      {
+        "name": "Collection products"
+      }
+    ]
+  }
+{%endschema%}
