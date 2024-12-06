@@ -1,0 +1,27 @@
+.price-slider-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+.price-slider-container input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 0;
+  pointer-events: all;
+}
+
+.price-slider-container input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background-color: #0074d9;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
+}

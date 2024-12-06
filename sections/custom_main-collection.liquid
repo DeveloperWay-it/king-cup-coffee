@@ -1,0 +1,66 @@
+<link rel="preload" href="{{ 'custom_main-collection.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'custom_main-collection.css' | asset_url }}"></noscript>
+<link rel="preload" href="{{ 'custom_product-card.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}"></noscript>
+<link rel="preload" href="{{ 'component-product-grid.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'component-product-grid.css' | asset_url }}"></noscript>
+
+<!-- sections/collection-products.liquid -->
+
+<products-grid class="main-collection" infinite-scroll-enabled="{{ section.settings.infinite_scroll_enabled }}">
+  <div class="main-collection_filters">
+    {% render 'custom_filters' %}
+  </div>
+  
+  <div class="main-collection_products">
+    {% if collection.products_count > 0 %}
+      <div class="grid__wrapper main-collection_grid">
+        {% paginate collection.products by section.settings.products_per_page %}
+          {% for product in collection.products %}
+            {% include 'product-card', product: product, , add_quantity_selector: true, classes: 'main-collection_grid-item' %}
+          {% endfor %}
+        {% endpaginate %}
+      </div>
+      <div id="pagination" data-next-page="2"></div>
+      <div id="loading-indicator" style="display: none;">Caricamento...</div>
+      {% if section.settings.infinite_scroll_enabled == false %}
+        <div class="animate--text delay--2 main-collection_load-products">
+          <a class="button btn-outline">Carica altri prodotti</a>
+        </div>
+      {% endif %}
+    {% else %}
+      <p>No products found.</p>
+    {% endif %}
+  </div>
+</products-grid>
+
+{%schema%}
+  {
+    "name": "Custom Main Collection",
+    "tag": "section",
+    "class": "main-collection",
+    "settings": [
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 6,
+        "max": 24,
+        "step": 3,
+        "label": "Products per page",
+        "default": 15,
+        "info": "This setting allows you to adjust the number of products displayed per page."
+      },
+      {
+        "type": "checkbox",
+        "id": "infinite_scroll_enabled",
+        "label": "Enable infinite scroll",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Main Collection"
+      }
+    ]
+  }
+{%endschema%}

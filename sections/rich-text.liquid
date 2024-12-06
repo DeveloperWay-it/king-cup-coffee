@@ -52,8 +52,9 @@
     .rich-text-{{ section.id }} .pages-content p,
     .rich-text-{{ section.id }} .pages-content a {
       font-family: var(--heading-family);
-      font-size: {{ section.settings.text_size }}px !important;
+      font-size: {{ section.settings.text_size }}px;
       line-height: calc(({{ section.settings.text_size }}px * .375) + {{ section.settings.text_size }}px);
+      letter-spacing: normal;
     }
      @media (min-width: 768px) {
       .rich-text-{{ section.id }} .section-heading,
@@ -65,12 +66,16 @@
     }
     @media (max-width: 767px) {
       .rich-text-{{ section.id }} h2 {
-        font-size: calc({{ section.settings.heading_size }}px - ({{ section.settings.heading_size }}px * 0.15));
-        line-height: calc(({{ section.settings.heading_size }}px * .2) + {{ section.settings.heading_size }}px);
+        font-size: {{ section.settings.mobile_heading_size }}px;
+        line-height: calc(({{ section.settings.mobile_heading_size }}px * .2) + {{ section.settings.mobile_heading_size }}px);
       }
-      .rich-text-{{ section.id }} p {
-        font-size: calc({{ section.settings.text_size }}px - ({{ section.settings.text_size }}px * 0.15));
-        line-height: calc(({{ section.settings.text_size }}px * .2) + {{ section.settings.text_size }}px);
+      .rich-text-{{ section.id }} p,
+      .rich-text-{{ section.id }} a,
+      .rich-text-{{ section.id }} .pages-content,
+      .rich-text-{{ section.id }} .pages-content p,
+      .rich-text-{{ section.id }} .pages-content a {
+        font-size: {{ section.settings.mobile_text_size }}px;
+        line-height: calc(({{ section.settings.mobile_text_size }}px * .2) + {{ section.settings.mobile_text_size }}px);
       }
     }
     {% unless section.settings.color_scheme == 'none' %}
@@ -84,9 +89,16 @@
         color: var(--scheme-{{ section.settings.color_scheme }}-hover) !important;
       }
       .rich-text-{{ section.id }} .grid__wrapper {
+        gap: 0;
         background-color: var(--scheme-{{ section.settings.color_scheme }}-bg) !important;
       }
     {% endunless %}
+
+    @media (max-width: 767px) {
+      .rich-text-{{ section.id }} .grid__wrapper {
+        padding: 30px 0;
+      }
+    }
   </style>
 </div>
 
@@ -127,6 +139,26 @@
       "step": 1,
       "unit": "px",
       "label": "Text size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Heading size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Text size",
       "default": 20
     },
     {

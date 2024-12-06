@@ -39,6 +39,15 @@
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
   <script src="{{ 'product-cards-form.js' | asset_url }}" defer></script>
 
+  {% if template.name contains 'collection' %}
+    <script src="{{ 'products-filters.js' | asset_url }}" defer></script>
+    <script src="{{ 'products-grid.js' | asset_url }}" defer></script>
+    {% comment %}
+    <link rel="preload" href="{{ 'price-range.css' | asset_url }}" as="style">
+    <script src="{{ 'price-range.js' | asset_url }}" defer></script>
+    {% endcomment %}
+  {% endif %}
+
   {{ content_for_header }}
 
   {% render 'css-variables' %}

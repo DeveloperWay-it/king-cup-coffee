@@ -13,22 +13,33 @@
       "type": "main-collection-banner",
       "settings": {
         "full_width": true,
-        "image": "shopify://shop_images/lenses-lattes.jpg",
-        "banner_height": 400
+        "image": "shopify://shop_images/Rectangle_90.png",
+        "mobile_image": "shopify://shop_images/Rectangle_90_1.png",
+        "banner_height": 500,
+        "banner_height_mobile": 300
       }
     },
     "rich_text_Rern3e": {
       "type": "rich-text",
       "settings": {
         "title": "Welcome",
-        "rich_text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-        "heading_size": 40,
-        "text_size": 20,
+        "rich_text": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </p>",
+        "heading_size": 42,
+        "text_size": 18,
+        "mobile_heading_size": 24,
+        "mobile_text_size": 12,
         "page": "",
         "alignment": "a-center",
         "content_width": 60,
-        "section_padding": "both",
+        "section_padding": "none",
         "color_scheme": "1"
+      }
+    },
+    "custom_main_collection_88bxD8": {
+      "type": "custom_main-collection",
+      "settings": {
+        "products_per_page": 6,
+        "infinite_scroll_enabled": false
       }
     },
     "main": {
@@ -47,6 +58,7 @@
         "a8162060-cb0e-4be7-91eb-83a96e11ad84",
         "a693520f-e2ed-48e0-aaae-58e0dc5dcc3f"
       ],
+      "disabled": true,
       "settings": {
         "items_per_page": 30,
         "items_per_row": 3,
@@ -61,9 +73,9 @@
         "text_block_nREyxA": {
           "type": "text_block",
           "settings": {
-            "icon": "chat",
+            "icon": "custom_world",
             "link": "",
-            "title": "Heading",
+            "title": "",
             "subheading": "<p>Pair icon with text on store details.</p>"
           }
         },
@@ -72,7 +84,7 @@
           "settings": {
             "icon": "chat",
             "link": "",
-            "title": "Heading",
+            "title": "",
             "subheading": "<p>Pair icon with text on store details.</p>"
           }
         },
@@ -81,7 +93,7 @@
           "settings": {
             "icon": "chat",
             "link": "",
-            "title": "Heading",
+            "title": "",
             "subheading": "<p>Pair icon with text on store details.</p>"
           }
         },
@@ -90,7 +102,7 @@
           "settings": {
             "icon": "chat",
             "link": "",
-            "title": "Heading",
+            "title": "",
             "subheading": "<p>Pair icon with text on store details.</p>"
           }
         },
@@ -99,7 +111,7 @@
           "settings": {
             "icon": "chat",
             "link": "",
-            "title": "Heading",
+            "title": "",
             "subheading": "<p>Pair icon with text on store details.</p>"
           }
         },
@@ -108,7 +120,7 @@
           "settings": {
             "icon": "chat",
             "link": "",
-            "title": "Heading",
+            "title": "",
             "subheading": "<p>Pair icon with text on store details.</p>"
           }
         }
@@ -122,17 +134,18 @@
         "text_block_LU8BWM"
       ],
       "settings": {
-        "title": "Text with Icons",
+        "title": "",
         "text_align": "center",
         "size": 20,
         "color_scheme": "1",
-        "section_padding": "both"
+        "section_padding": "none"
       }
     }
   },
   "order": [
     "banner",
     "rich_text_Rern3e",
+    "custom_main_collection_88bxD8",
     "main",
     "text_with_icons_7Wp79c"
   ]

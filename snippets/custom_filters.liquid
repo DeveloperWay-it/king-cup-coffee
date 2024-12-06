@@ -1,0 +1,224 @@
+<products-filters data-section-id="{{ section.id }}">
+  <select name="sort_by" id="sort-by">
+    <option value="manual">Featured</option>
+    <option value="best-selling">Best Selling</option>
+    <option value="title-ascending">Alphabetically, A-Z</option>
+    <option value="title-descending">Alphabetically, Z-A</option>
+    <option value="price-ascending">Price, low to high</option>
+    <option value="price-descending">Price, high to low</option>
+  </select>
+
+  {%- for filter in collection.filters -%}
+    <details open>
+      <summary>
+        <div>
+          <span>{{ filter.label }}</span>
+
+          {%- if filter.active_values.size > 0 -%}
+            <span>({{ filter.active_values.size }})</span>
+          {%- endif -%}
+        </div>
+      </summary>
+
+      <div>
+        {%- case filter.type -%}
+          {%- when 'boolean' -%}
+            <ul>
+                <li>
+                  <label for="Filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
+                  <input type="checkbox"
+                    name="{{ filter.param_name }}"
+                    value="{{ filter.true_value.value }}"
+                    id="Filter-{{ filter.param_name }}"
+                    {% if filter.true_value.active -%}checked{%- endif %}
+                    {% if filter.true_value.count == 0 and filter.true_value.active == false -%}disabled{%- endif -%}
+                  >{{ filter.true_value.label }}</label>
+                </li>
+                <li>
+                  <label for="Filter-{{ filter.param_name }}-{{ filter.false_value.value }}">
+                  <input type="checkbox"
+                    name="{{ filter.param_name }}"
+                    value="{{ filter.false_value.value }}"
+                    id="Filter-{{ filter.param_name }}"
+                    {% if filter.false_value.active -%}checked{%- endif %}
+                    {% if filter.false_value.count == 0 and filter.false_value.active == false -%}disabled{%- endif %}
+                  >{{ filter.false_value.label }}</label>
+                </li>
+            </ul>
+          {%- when 'list' -%}
+            <ul>
+              {%- for filter_value in filter.values -%}
+                <li>
+                  <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                  <input type="checkbox"
+                    name="{{ filter_value.param_name }}"
+                    value="{{ filter_value.value }}"
+                    id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                    {% if filter_value.active -%}checked{%- endif %}
+                    {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                  >
+                    <span>
+                      {%- case filter_value.display.type -%}
+                        {%- when 'colors' -%}
+                          {% liquid
+                            assign size_limit = filter_value.display.value.size | at_most: 4
+                            assign rotation = '0deg'
+                            if size_limit == 2
+                              assign rotation = '45deg'
+                            endif
+
+                            assign angle_increment = 360 | divided_by: size_limit
+                            assign angle = 0
+                          %}
+                          {%- capture conic_gradient -%}
+                            {%- for color in filter_value.display.value limit: size_limit -%}
+                              {{ color }} {{ angle }}deg{%- assign angle = angle | plus: angle_increment %} {{ angle }}deg{%- unless forloop.last %}, {%- endunless -%}
+                            {%- endfor -%}
+                          {%- endcapture -%}
+                          <span style="
+                            width: 25px;
+                            height: 25px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: conic-gradient({{ conic_gradient }}); transform: rotateZ({{ rotation }});
+                          "></span>
+                        {%- when 'image' -%}
+                          {{
+                            filter_value.display.value
+                            | image_url: width: 25
+                            | image_tag: alt: filter_value.display.value.alt
+                          }}
+                        {%- else -%}
+                          <span class="visual-display__child"></span>
+                      {%- endcase -%}
+                    </span>
+                    {{ filter_value.label }}
+                  </label>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- when 'price_range' -%}
+            <price-range-filter>
+            <div class="filter-group-display__price-range">
+              <div class="filter-group-display__price-range-from">
+                <span>{{ cart.currency.symbol }}</span>
+
+                <input name="{{ filter.min_value.param_name }}"
+                  id="Filter-{{ filter.min_value.param_name }}"
+                  {% if filter.min_value.value -%}
+                    value="{{ filter.min_value.value | money_without_currency }}"
+                  {%- endif %}
+                  type="number"
+                  placeholder="0"
+                  min="0"
+                  max="{{ filter.range_max | money_without_currency }}"
+                >
+
+                <label for="Filter-{{ filter.min_value.param_name }}">From</label>
+              </div>
+              <div class="filter-group-display__price-range-to">
+                <span>{{ cart.currency.symbol }}</span>
+
+                <input name="{{ filter.max_value.param_name }}"
+                  id="Filter-{{ filter.max_value.param_name }}"
+                  {% if filter.max_value.value -%}
+                    value="{{ filter.max_value.value | money_without_currency }}"
+                  {%- endif %}
+                  type="number"
+                  placeholder="{{ filter.range_max | money_without_currency }}"
+                  min="0"
+                  max="{{ filter.range_max | money_without_currency }}"
+                >
+
+                <label for="Filter-{{ filter.max_value.param_name }}">To</label>
+              </div>
+            </div>
+          </price-range-filter>
+        {%- endcase -%}
+      </div>
+    </details>
+  {%- endfor -%}
+
+  <div>
+    {%- for filter in collection.filters -%}
+      {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+          <p>
+            <a href="{{ filter.url_to_remove }}">
+              {%- assign min_value = filter.min_value.value | default: 0 -%}
+              {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+              {{ min_value | money }} - {{ max_value | money }} X
+            </a>
+          </p>
+        {%- endif -%}
+      {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+          <p>
+            <a href="{{ filter_value.url_to_remove }}">
+              {{ filter.label }}: {{ filter_value.label }} X
+            </a>
+          </p>
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</products-filters>
+
+<style>
+  .filter-group-display__price-range {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-group-display__price-range-from,
+.filter-group-display__price-range-to {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.filter-group-display__price-range span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.filter-group-display__price-range input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-group-display__price-range input:focus {
+  border-color: #0074d9;
+  box-shadow: 0 0 5px rgba(0, 116, 217, 0.3);
+  outline: none;
+}
+
+.filter-group-display__price-range label {
+  font-size: 14px;
+  color: #555;
+  font-weight: normal;
+}
+
+.filter-group-display__price-range input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.filter-group-display__price-range input:disabled {
+  background-color: #f9f9f9;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+</style>
