@@ -37,9 +37,22 @@
            lg_render: lg_render,
            width: 2400,
            loading: loading,
-           fetchpriority: fetchpriority
-        %}
+           fetchpriority: fetchpriority,
+           class: 'sm-hide'
+        %}        
       {% endif %}
+      {%- if section.settings.mobile_image != blank -%}
+        {% render 'helper-image',
+          type: section.settings.mobile_image,
+          sm_render: sm_render,
+          md_render: md_render,
+          lg_render: lg_render,
+          width: 2400,
+          loading: loading,
+          fetchpriority: fetchpriority,
+          class: 'md-lg-hide'
+        %}
+      {%- endif -%}
     </div>
     <style>
       .collection__banner-{{ section.id }} .box-ratio {
@@ -50,6 +63,16 @@
         object-position: center;
         width: 100%;
         height: {{ section.settings.banner_height }}px !important;
+      }
+
+      @media screen and (max-width: 740px) {
+
+        .collection__banner-{{ section.id }} .box-ratio {
+          padding-bottom: {{ section.settings.banner_height_mobile }}px !important;
+        }
+        .collection__banner-{{ section.id }} .box-ratio img {
+          height: {{ section.settings.banner_height_mobile }}px !important;
+        }
       }
     </style>
   </section>
@@ -75,6 +98,12 @@
       "info": "1920px x 600px recommended"
     },
     {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Background image for mobile",
+      "info": "1920px x 600px recommended"
+    },
+    {
       "type": "range",
       "id": "banner_height",
       "min": 200,
@@ -82,6 +111,16 @@
       "step": 100,
       "unit": "px",
       "label": "Banner height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "min": 200,
+      "max": 600,
+      "step": 100,
+      "unit": "px",
+      "label": "Banner height mobile",
       "default": 400
     }
   ]
