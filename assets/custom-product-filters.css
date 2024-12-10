@@ -1,0 +1,621 @@
+
+details {
+  border-bottom: 1px solid;  /* Aggiungi un bordo blu */
+  padding: 20px 0px;           /* Spaziatura interna */
+}
+
+summary {
+  position: relative;
+  font-size: 16px;             /* Imposta la dimensione del font */
+  color: black;              /* Colore del testo blu */
+  cursor: pointer;            /* Mostra il cursore a mano quando sopra l'elemento */
+  padding-bottom: 5px;                /* Spaziatura interna */
+  transition: all 0.3s ease;   /* Aggiunge una transizione per il cambiamento di stato */
+}
+
+summary:hover {
+  color: #2c3e50;              /* Colore più scuro al passaggio del mouse */
+  border-radius: 4px;          /* Aggiungi angoli arrotondati al passaggio del mouse */
+}
+
+details > div {
+  margin-top: 10px;
+  color: #555;                 /* Colore del testo del contenuto */
+  font-size: 14px;             /* Dimensione del font per il contenuto */
+  line-height: 1.6;            /* Altezza della linea per migliorare la leggibilità */
+}
+
+summary::marker {
+  content: '';
+}
+
+summary::before {
+  content: "▶";               /* Aggiungi un triangolo per l'icona */
+  position: absolute;
+  right: 0;
+  margin-right: 8px;           /* Distanza tra l'icona e il testo */
+  transition: transform 0.3s ease; /* Transizione per l'animazione */
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);    /* Ruota il simbolo quando è espanso */
+}
+
+/* SELETTORE FILTRI */
+.filters-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.filter-item {
+  letter-spacing: normal;
+}
+
+.filter-item label{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Nascondi la checkbox originale */
+.filter-item input[type="checkbox"] {
+  display: none;
+}
+
+/* Contenitore della checkbox stilizzata */
+.filter-item .filter-selector {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black; /* Colore del bordo */
+  border-radius: 50%; /* Rende il cerchio */
+  background-color: #fff; /* Sfondo iniziale */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Stato attivo della checkbox */
+.filter-item input[type="checkbox"]:checked + .filter-selector {
+  background-color: white; /* Colore di sfondo selezionato */
+  border-color: black; /* Colore del bordo selezionato */
+}
+
+/* Cerchio interno per indicare lo stato selezionato */
+.filter-item input[type="checkbox"]:checked + .filter-selector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: black; /* Colore del cerchio interno */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Aggiungi un effetto hover */
+.filter-item .filter-selector:hover {
+  border-color: black; /* Cambia il colore del bordo al passaggio del mouse */
+}
+
+/* Disabilitato */
+.filter-item input[type="checkbox"]:disabled + .filter-selector {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+ul.filters-list.filter-list__quantita {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+ul.filters-list.filter-list__quantita li.filter-item {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+ul.filters-list.filter-list__quantita li.filter-item label {
+  height: 100%;
+}
+
+ul.filters-list.filter-list__quantita li.filter-item .filter-selector {
+  width: 100%;
+  height: 100%;
+}
+
+.filter-item label[for*="filter.p.m.custom.quantita"] input[type="checkbox"] {
+  display: none;
+}
+
+/* Stile per il bottone */
+.filter-item label[for*="filter.p.m.custom.quantita"] .filter-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 1px solid; /* Colore del bordo */
+  border-radius: 0;
+  background-color: #fff; /* Sfondo iniziale */
+  color: black; /* Colore del testo */
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none; /* Impedisce la selezione del testo */
+}
+
+/* Stile per lo stato selezionato */
+.filter-item label[for*="filter.p.m.custom.quantita"] input[type="checkbox"]:checked + .filter-selector {
+  background-color: black; /* Sfondo attivo */
+  color: #fff; /* Colore del testo attivo */
+}
+
+.filter-item label[for*="filter.p.m.custom.quantita"] input[type="checkbox"]:checked + .filter-selector::before {
+  content: unset;
+}
+
+/* Effetto hover */
+.filter-item label[for*="filter.p.m.custom.quantita"] .filter-selector:hover {
+  background-color: black; /* Sfondo al passaggio del mouse */
+  color: #fff;
+}
+
+/* Disabilitato */
+.filter-item label[for*="filter.p.m.custom.quantita"] input[type="checkbox"]:disabled + .filter-selector {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Product type */
+ul.filters-list.filter-list__product-type {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  gap: 15px;
+}
+
+ul.filters-list.filter-list__product-type input[type="radio"] {
+  display: none;
+}
+
+ul.filters-list.filter-list__product-type .filter-item {
+  height: 100%;
+  flex: 1;
+}
+
+/* Contenitore stilizzato per ogni radio button */
+ul.filters-list.filter-list__product-type .filter-item label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+/* Immagine all'interno del filtro */
+ul.filters-list.filter-list__product-type .filter-selector img {
+  width: 50px; /* Dimensione dell'immagine */
+  height: 50px;
+  object-fit: contain; /* Adatta l'immagine senza distorcerla */
+  margin-bottom: 5px;
+}
+
+/* Testo del filtro */
+ul.filters-list.filter-list__product-type .filter-selector span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+/* Stato selezionato */
+ul.filters-list.filter-list__product-type input[type="radio"]:checked + .filter-selector span {
+  color: black; /* Cambia colore del testo */
+  text-decoration: underline; /* Sottolinea il testo */
+}
+
+
+
+ul.filters-list.filter-list__product-type input[type="radio"] .content {
+  display: flex;
+  flex-direction: column;
+}
+
+ul.filters-list.filter-list__product-type .radio-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+ul.filters-list.filter-list__product-type .radio-button input {
+  display: none;
+}
+
+ul.filters-list.filter-list__product-type .radio-button .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid transparent;
+  border-radius: 0px;
+  text-align: center;
+  transition: border-color 0.3s ease, text-decoration 0.3s ease;
+}
+
+ul.filters-list.filter-list__product-type .radio-button .filter-icon {
+  margin-bottom: 8px;
+}
+
+ul.filters-list.filter-list__product-type .radio-button .color-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+ul.filters-list.filter-list__product-type .radio-button input:checked + .content {
+  border-color: black;
+}
+
+ul.filters-list.filter-list__product-type .radio-button input:disabled + .content {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+/* Price Ranges */
+
+/* Contenitore dello slider */
+.slider-container {
+position: relative;
+width: 100%;
+height: 20px; /* Altezza della barra dello slider */
+margin: 20px 0;
+}
+
+/* Impostazioni di base per gli slider */
+.price-range-slider {
+position: absolute;
+width: 100%;
+height: 8px;
+background: #ddd;
+cursor: pointer;
+-webkit-appearance: none;
+border-radius: 5px;
+}
+
+/* Slider per il minimo */
+#min-price-slider {
+z-index: 1;
+background: #3498db;
+}
+
+/* Slider per il massimo */
+#max-price-slider {
+z-index: 2;
+background: #2ecc71;
+}
+
+/* Input numerici */
+.filter-group-display__price-range-from,
+.filter-group-display__price-range-to {
+display: inline-block;
+width: 45%;
+margin-right: 5%;
+}
+
+.filter-group-display__price-range-from input,
+.filter-group-display__price-range-to input {
+width: 100%;
+padding: 5px;
+}
+
+.filter-group-display__price-range-from,
+.filter-group-display__price-range-to {
+text-align: center;
+}
+
+.filter-price__trigger:after {
+  content: " ";
+  border: solid var(--text-color);
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  position: absolute;
+  top: calc(50% - 6px);
+  right: var(--space-4);
+  pointer-events: none;
+}
+
+@media screen and (max-width: 980px) {
+  .filter-price__trigger {
+    width: 100%;
+    display: block;
+  }
+}
+
+.filter--price-range {
+  position: relative;
+}
+
+.filter-price__trigger:hover {
+  cursor: pointer;
+  background-color: unset !important;
+}
+
+.c-accordion .filter-price__dropdown {
+  padding: var(--space-4) 1.375rem var(--space-4) 2rem;
+}
+
+.collection__horizontal-toolbar .filter-price__dropdown {
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease-in-out;
+  z-index: 2;
+  position: absolute;
+  top: var(--space-8);
+  left: 0;
+  background: var(--background);
+  padding: 15px 10px 10px;
+  line-height: initial;
+  width: 100%;
+}
+
+.filter-price__trigger.active, .filter-price__trigger:focus {
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+  outline: 0 !important;
+}
+
+.filter-range__boxes {
+  font-size: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-range__footer {
+  font-size: var(--font-size);
+  border-top: 1px solid var(--dotted-color);
+  padding-top: 10px;
+}
+
+.filter-range__footer a {
+  font-size: var(--font-size);
+  text-decoration: underline;
+}
+
+.filter-range__field {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: var(--font-size);
+  flex: 0 0 50%;
+}
+
+label.filter-range__field__label {
+  display: block;
+  font-size: var(--font-size);
+  font-weight: bolder;
+  margin-bottom: 4px;
+}
+
+.filter-range__field__input {
+  box-shadow: none;
+  border: 1px solid;
+  line-height: var(--space-8);
+  background: var(--background);
+  padding-left: 6px;
+  width: 75%;
+}
+
+/* Price Range Slider  */
+  .filter-range__slider--input {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .filter-range__slider--wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0 20px 0;
+  }
+
+  .filter--price-range .filter-range__field__input {
+    border: 1px solid var(--dotted-color);
+    text-align: left;
+    -moz-appearance: textfield;
+    width: auto !important;
+    min-width: 70px;
+    margin: unset !important;
+    float: unset !important;
+  }
+
+  .collection__page-sidebar .filter-range__field__input {
+    width: 80% !important;
+  }
+
+  .filter-range__field__input::-webkit-outer-spin-button,
+  .filter-range__field__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .filter-range__field__input:invalid,
+  .filter-range__field__input:out-of-range {
+    border: 2px solid var(--error-msg-dark);
+  }
+
+  .filter-range__slider--input {
+    -webkit-appearance: none;
+    width: 100%;
+  }
+
+  .filter-range__slider--input:focus {
+    outline: none;
+  }
+
+  .filter-range__slider--input:focus::-webkit-slider-runnable-track {
+    background: var(--text-color);
+  }
+
+  .filter-range__slider--input:focus::-ms-fill-lower {
+    background: var(--text-color);
+  }
+
+  .filter-range__slider--input:focus::-ms-fill-upper {
+    background: var(--text-color);
+  }
+
+  .filter-range__slider--input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: var(--text-color);
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+
+  .filter-range__slider--input::-webkit-slider-thumb {
+    z-index: 1;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid var(--text-color);
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: var(--background);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+
+  .filter-range__slider--input::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: var(--text-color);
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+
+  .filter-range__slider--input::-moz-range-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid var(--text-color);
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: var(--background);
+    cursor: pointer;
+  }
+
+  .filter-range__slider--input::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  .filter-range__slider--input::-ms-fill-lower,
+  .filter-range__slider--input::-ms-fill-upper {
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+
+  .filter-range__slider--input::-ms-fill-upper {
+    background: var(--text-color);
+  }
+
+  .filter-range__slider--input::-ms-fill-lower {
+    background: #eee;
+  }
+
+  .filter-range__slider--input::-ms-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid var(--text-color);
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: var(--background);
+    cursor: pointer;
+  }
+
+  @-moz-document url-prefix() {
+    .filter-range__slider--input {
+      position: relative;
+    }
+    .filter-range__slider--input,
+    .filter-range__field {
+      display: inline-block;
+      width: 47%;
+    }
+    .filter-range__field__input {
+      width: 80% !important;
+    }
+    .filter-range__field__currency {
+      display: inline-block;
+      width: 10%;
+    }
+  }
+
+.no-js .filter--price-range, .no-js .collection__filtering {
+  display: none;
+}
+
+.no-js select.styled-select {
+  margin: 10px 0 0 0 !important;
+}
+
+ul.current_filters li {
+  margin: 0 5px 5px 0;
+  display: inline-block;
+}
+
+ul.current_filters li.current_filters--filter a {
+  font-size: var(--font-size);
+  background: var(--text-color);
+  padding: 5px 25px 5px 10px;
+  color: var(--background);
+  display: block;
+  margin: 0;
+  position: relative;
+}
+
+ul.current_filters li.current_filters--filter a:after {
+  content: "x";
+  position: absolute;
+  right: 10px;
+  font-size: var(--font-size);
+}
+
+ul.current_filters li a.current_filters--clear {
+  text-decoration: underline;
+  font-size: var(--font-size);
+}
+
+.desktop-filters { z-index: 2; }

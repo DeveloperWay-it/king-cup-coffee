@@ -7,7 +7,11 @@
 
 <!-- sections/collection-products.liquid -->
 
-<products-grid class="main-collection" infinite-scroll-enabled="{{ section.settings.infinite_scroll_enabled }}">
+<products-grid class="main-collection-section" infinite-scroll-enabled="{{ section.settings.infinite_scroll_enabled }}">
+  <div class="main-collection_product-type-filters">
+    {% render 'custom_product-type-filters' %}
+  </div>
+  
   <div class="main-collection_filters">
     {% render 'custom_filters' %}
   </div>
