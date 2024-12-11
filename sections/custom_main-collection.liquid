@@ -8,25 +8,16 @@
 <!-- sections/collection-products.liquid -->
 
 <products-grid class="main-collection-section" infinite-scroll-enabled="{{ section.settings.infinite_scroll_enabled }}">
-  <div class="main-collection_mobile-filters">
-    <div class="main-collection_toggle-buttons grid__wrapper">
-      <button id="toggle-format-button" class="toggle-button">Formato</button>
-      <button id="toggle-filters-button" class="toggle-button">Filtra</button>
-    </div>
-    <div id="product-type-filters" class="main-collection_product-type-filters" style="display: none;">
-      {% render 'custom_product-type-filters' %}
-    </div>
-
-    <div id="filters-section" class="main-collection_filters" style="display: none;">
-      {% render 'custom_filters' %}
-    </div>
+  <div class="main-collection_toggle-buttons grid__wrapper">
+    <button id="toggle-format-button" class="toggle-button">Formato</button>
+    <button id="toggle-filters-button" class="toggle-button">Filtra</button>
   </div>
 
-  <div class="main-collection_product-type-filters">
+  <div class="main-collection_product-type-filters hidden-mobile">
     {% render 'custom_product-type-filters' %}
   </div>
   
-  <div class="main-collection_filters">
+  <div class="main-collection_filters hidden-mobile">
     {% render 'custom_filters' %}
   </div>
   
@@ -53,33 +44,54 @@
 </products-grid>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Selettori per i pulsanti e le sezioni
-    const toggleFormatButton = document.getElementById('toggle-format-button');
-    const productTypeFilters = document.getElementById('product-type-filters');
-    const toggleFiltersButton = document.getElementById('toggle-filters-button');
-    const filtersSection = document.getElementById('filters-section');
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleFormatButton = document.getElementById('toggle-format-button');
+  const toggleFiltersButton = document.getElementById('toggle-filters-button');
+  const productTypeFilters = document.querySelector('.main-collection_product-type-filters');
+  const filtersSection = document.querySelector('.main-collection_filters');
 
-    // Funzione per mostrare una sezione e nascondere l'altra
-    function toggleSection(showSection, hideSection) {
-      if (showSection.style.display === 'none') {
-        showSection.style.display = 'block';
-        hideSection.style.display = 'none';
-      } else {
-        showSection.style.display = 'none';
-      }
-    }
+  // Classe per nascondere gli elementi
+  const hiddenClass = 'hidden-mobile';
 
-    // Evento di click per il pulsante "Formato"
+  function showOnly(targetElement) {
+    // Nascondi tutti i contenitori
+    [productTypeFilters, filtersSection].forEach((element) => {
+      if (element) element.classList.add(hiddenClass);
+    });
+
+    // Mostra solo l'elemento target
+    if (targetElement) targetElement.classList.remove(hiddenClass);
+  }
+
+  // Aggiungi event listener per il pulsante "Formato"
+  if (toggleFormatButton) {
     toggleFormatButton.addEventListener('click', function () {
-      toggleSection(productTypeFilters, filtersSection);
+      if (window.innerWidth <= 768) { // Verifica che sia mobile
+        const isHidden = productTypeFilters.classList.contains(hiddenClass);
+        if (isHidden) {
+          showOnly(productTypeFilters);
+        } else {
+          productTypeFilters.classList.add(hiddenClass);
+        }
+      }
     });
+  }
 
-    // Evento di click per il pulsante "Filtra"
+  // Aggiungi event listener per il pulsante "Filtra"
+  if (toggleFiltersButton) {
     toggleFiltersButton.addEventListener('click', function () {
-      toggleSection(filtersSection, productTypeFilters);
+      if (window.innerWidth <= 768) { // Verifica che sia mobile
+        const isHidden = filtersSection.classList.contains(hiddenClass);
+        if (isHidden) {
+          showOnly(filtersSection);
+        } else {
+          filtersSection.classList.add(hiddenClass);
+        }
+      }
     });
-  });
+  }
+});
+
 </script>
 
 {%schema%}
