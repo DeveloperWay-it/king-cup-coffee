@@ -177,11 +177,18 @@ const CollectionFilters = {
 			filters.forEach((item, i) => {
 				item.addEventListener('change', function(event){
 					setTimeout(function() {
-						const formData = new FormData(item.closest('form'));
-						const searchParams = new URLSearchParams(formData).toString();
-						const accordionContext = item.closest('.c-accordion__panel');
+						// const formData = new FormData(item.closest('form'));
+						// const searchParams = new URLSearchParams(formData).toString();
+						// const accordionContext = item.closest('.c-accordion__panel');
+						// CollectionFilters.renderPage(searchParams, accordionContext, true);
 
-						CollectionFilters.renderPage(searchParams, accordionContext, true);
+						// Ottieni l'istanza del Web Component ProductsFilters
+						const productsFilters = document.querySelector('products-filters');
+
+						if (productsFilters) {
+								// Chiama il metodo filterProducts su questa istanza
+								productsFilters.filterProducts();
+						}
 
 					}, 1000);
 				});

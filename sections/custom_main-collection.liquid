@@ -7,8 +7,17 @@
 
 <!-- sections/collection-products.liquid -->
 
-<products-grid class="main-collection" infinite-scroll-enabled="{{ section.settings.infinite_scroll_enabled }}">
-  <div class="main-collection_filters">
+<products-grid class="main-collection-section" infinite-scroll-enabled="{{ section.settings.infinite_scroll_enabled }}">
+  <div class="main-collection_toggle-buttons grid__wrapper">
+    <button id="toggle-format-button" class="toggle-button">Formato</button>
+    <button id="toggle-filters-button" class="toggle-button">Filtra</button>
+  </div>
+
+  <div class="main-collection_product-type-filters hidden-mobile">
+    {% render 'custom_product-type-filters' %}
+  </div>
+  
+  <div class="main-collection_filters hidden-mobile">
     {% render 'custom_filters' %}
   </div>
   
@@ -33,6 +42,57 @@
     {% endif %}
   </div>
 </products-grid>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleFormatButton = document.getElementById('toggle-format-button');
+  const toggleFiltersButton = document.getElementById('toggle-filters-button');
+  const productTypeFilters = document.querySelector('.main-collection_product-type-filters');
+  const filtersSection = document.querySelector('.main-collection_filters');
+
+  // Classe per nascondere gli elementi
+  const hiddenClass = 'hidden-mobile';
+
+  function showOnly(targetElement) {
+    // Nascondi tutti i contenitori
+    [productTypeFilters, filtersSection].forEach((element) => {
+      if (element) element.classList.add(hiddenClass);
+    });
+
+    // Mostra solo l'elemento target
+    if (targetElement) targetElement.classList.remove(hiddenClass);
+  }
+
+  // Aggiungi event listener per il pulsante "Formato"
+  if (toggleFormatButton) {
+    toggleFormatButton.addEventListener('click', function () {
+      if (window.innerWidth <= 768) { // Verifica che sia mobile
+        const isHidden = productTypeFilters.classList.contains(hiddenClass);
+        if (isHidden) {
+          showOnly(productTypeFilters);
+        } else {
+          productTypeFilters.classList.add(hiddenClass);
+        }
+      }
+    });
+  }
+
+  // Aggiungi event listener per il pulsante "Filtra"
+  if (toggleFiltersButton) {
+    toggleFiltersButton.addEventListener('click', function () {
+      if (window.innerWidth <= 768) { // Verifica che sia mobile
+        const isHidden = filtersSection.classList.contains(hiddenClass);
+        if (isHidden) {
+          showOnly(filtersSection);
+        } else {
+          filtersSection.classList.add(hiddenClass);
+        }
+      }
+    });
+  }
+});
+
+</script>
 
 {%schema%}
   {

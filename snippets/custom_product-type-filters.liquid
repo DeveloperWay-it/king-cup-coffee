@@ -1,0 +1,55 @@
+<products-filters data-section-id="{{ section.id }}">
+  <div>
+    {%- for filter in collection.filters -%}
+      {%- case filter.param_name -%}
+        {%- when 'filter.p.product_type' -%}
+          {% assign filter_label_handle = filter.label | handleize %}
+          <ul class="filters-list filter-list__{{ filter_label_handle }}">
+            <li class="filter-item">
+              <label class="radio-button" for="Filter-{{ filter.param_name }}-all">
+                <input type="radio"
+                  name="{{ filter.param_name }}"
+                  value=""
+                  id="Filter-{{ filter.param_name }}-all"
+                  {% if filter.active == false %}checked{% endif %}
+                >
+                <div class="content">
+                  <img class="filter-icon" src="{{ 'tutti.png' | asset_img_url }}" />
+                  <span class="filter-label">Mostra tutti</span>
+                </div>
+              </label>
+            </li>
+            {%- for filter_value in filter.values -%}
+              <li class="filter-item">
+                <label class="radio-button" for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                  <input type="radio"
+                    name="{{ filter_value.param_name }}"
+                    value="{{ filter_value.value }}"
+                    id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                    {% if filter_value.active -%}checked{%- endif %}
+                    {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                  >
+                  <div class="content">
+                    <span class="filter-icon">
+                      {%- case filter_value.display.type -%}
+                        {%- when 'colors' -%}
+                          <span class="color-circle" style="
+                            background: conic-gradient({{ conic_gradient }});
+                            transform: rotateZ({{ rotation }});
+                          "></span>
+                        {%- when 'image' -%}
+                          {{ filter_value.display.value | image_url: width: 25 | image_tag: alt: filter_value.display.value.alt }}
+                        {%- else -%}
+                          <img class="default-icon" src="{{ filter_value.label | handleize | append: '.png' | asset_url }}" />
+                      {%- endcase -%}
+                    </span>
+                    <span class="filter-label">{{ filter_value.label }}</span>
+                  </div>
+                </label>
+              </li>
+            {%- endfor -%}
+          </ul>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</products-filters>
