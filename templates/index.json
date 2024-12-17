@@ -49,7 +49,7 @@
             "slide_button_bg": "#a18167",
             "caption_background": "#000000",
             "mobile_slide_button_bg": "#000000",
-            "mobile_caption_background": "#A18167",
+            "mobile_caption_background": "#a18167",
             "hide_caption_background": false,
             "reverse_content": true,
             "caption_horizontal": 50,
@@ -77,7 +77,7 @@
             "slide_button_bg": "#000000",
             "caption_background": "#a18167",
             "mobile_slide_button_bg": "#000000",
-            "mobile_caption_background": "#A18167",
+            "mobile_caption_background": "#a18167",
             "hide_caption_background": false,
             "reverse_content": false,
             "caption_horizontal": 50,
@@ -271,6 +271,10 @@
         "featured_collection_npnyyq",
         "featured_collection_JdNYdC",
         "featured_collection_JyD3Qd"
+      ],
+      "custom_css": [
+        "{background: #000;}",
+        "a {color: #fff;}"
       ],
       "settings": {
         "title": "La nostra gamma di prodotti",
