@@ -106,6 +106,63 @@
         "section_padding": "none"
       }
     },
+    "text_with_icons_wcBWMk": {
+      "type": "text-with-icons",
+      "blocks": {
+        "text_block_T4yPUd": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "image": "shopify://shop_images/HP_-_Spedizione_gratis_sopra_i_60.svg",
+            "link": "",
+            "title": "SPEDIZIONE GRATIS SOPRA I 60€",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_PcXNnD": {
+          "type": "text_block",
+          "settings": {
+            "icon": "clock",
+            "link": "",
+            "title": "SPEDIZIONI RAPIDE IN 24/48H",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_DzWFKC": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "image": "shopify://shop_images/HP_-_Pagamenti_sicuri.svg",
+            "link": "",
+            "title": "PAGAMENTI SICURI E CERTIFICATI",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        },
+        "text_block_yCbfp4": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "image": "shopify://shop_images/HP_-_Supporto_h24.svg",
+            "link": "",
+            "title": "ONLINE SUPPORT",
+            "subheading": "<p>Pair icon with text on store details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_T4yPUd",
+        "text_block_PcXNnD",
+        "text_block_DzWFKC",
+        "text_block_yCbfp4"
+      ],
+      "settings": {
+        "title": "",
+        "text_align": "center",
+        "size": 50,
+        "color_scheme": "1",
+        "section_padding": "both"
+      }
+    },
     "scrolling_text_gcUMKf": {
       "type": "scrolling-text",
       "blocks": {
@@ -377,70 +434,6 @@
         "star_color": "#ffd450",
         "text_color": "#000000",
         "background": "#faf4e8",
-        "section_padding": "both"
-      }
-    },
-    "text_with_icons_wcBWMk": {
-      "type": "text-with-icons",
-      "blocks": {
-        "text_block_PcXNnD": {
-          "type": "text_block",
-          "settings": {
-            "icon": "chat",
-            "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
-          }
-        },
-        "text_block_DzWFKC": {
-          "type": "text_block",
-          "settings": {
-            "icon": "chat",
-            "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
-          }
-        },
-        "text_block_yCbfp4": {
-          "type": "text_block",
-          "settings": {
-            "icon": "chat",
-            "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
-          }
-        },
-        "text_block_T3Pt44": {
-          "type": "text_block",
-          "settings": {
-            "icon": "chat",
-            "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
-          }
-        },
-        "text_block_EyFaBN": {
-          "type": "text_block",
-          "settings": {
-            "icon": "chat",
-            "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_block_PcXNnD",
-        "text_block_DzWFKC",
-        "text_block_yCbfp4",
-        "text_block_T3Pt44",
-        "text_block_EyFaBN"
-      ],
-      "settings": {
-        "title": "",
-        "text_align": "center",
-        "size": 20,
-        "color_scheme": "1",
         "section_padding": "both"
       }
     },
@@ -844,13 +837,13 @@
   "order": [
     "custom_image_with_text_JMgwEL",
     "custom_slideshow_Rf7Min",
+    "text_with_icons_wcBWMk",
     "scrolling_text_gcUMKf",
     "custom_collection_list_4RW7nh",
     "bestsellers_KXbceH",
     "image_and_product_cards_HCViPR",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
-    "text_with_icons_wcBWMk",
     "countdown_knwzCz",
     "logo_list_j4bkR4",
     "fact_columns_9ADVah",
