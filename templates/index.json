@@ -163,6 +163,53 @@
         "section_padding": "both"
       }
     },
+    "countdown_knwzCz": {
+      "type": "countdown",
+      "blocks": {
+        "text_HcbENg": {
+          "type": "text",
+          "settings": {
+            "countdown_text": "<p>Add urgency to a store event</p>",
+            "hide_after_countdown": true
+          }
+        },
+        "countdown_kBqdRN": {
+          "type": "countdown",
+          "settings": {
+            "year": "2025",
+            "month": "december",
+            "day": "31",
+            "hour": "12",
+            "minute": "0",
+            "after_countdown_message": "Countdown has ended"
+          }
+        },
+        "button_gFFUCH": {
+          "type": "button",
+          "settings": {
+            "countdown_button": "Shop now",
+            "countdown_link": "",
+            "hide_after_countdown": true
+          }
+        }
+      },
+      "block_order": [
+        "text_HcbENg",
+        "countdown_kBqdRN",
+        "button_gFFUCH"
+      ],
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/lenses-lattes.jpg",
+        "image_position": "left",
+        "layout": "center",
+        "section_padding": "bottom",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "button_color": "#ffffff",
+        "button_background": "#333333"
+      }
+    },
     "scrolling_text_gcUMKf": {
       "type": "scrolling-text",
       "blocks": {
@@ -373,13 +420,13 @@
       "type": "image-with-text",
       "custom_css": [],
       "settings": {
-        "iwt_layout": "image_right",
-        "iwt_heading": "Heading",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Doppia quantità per la qualita di sempre",
         "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
         "iwt_button": "Button",
         "iwt_link": "shopify://pages/contact",
         "show_box_shadow": false,
-        "color_scheme": "3",
+        "color_scheme": "2",
         "iwt_section_height": 500,
         "section_padding": "both"
       }
@@ -435,53 +482,6 @@
         "text_color": "#000000",
         "background": "#faf4e8",
         "section_padding": "both"
-      }
-    },
-    "countdown_knwzCz": {
-      "type": "countdown",
-      "blocks": {
-        "text_HcbENg": {
-          "type": "text",
-          "settings": {
-            "countdown_text": "<p>Add urgency to a store event</p>",
-            "hide_after_countdown": true
-          }
-        },
-        "countdown_kBqdRN": {
-          "type": "countdown",
-          "settings": {
-            "year": "2025",
-            "month": "december",
-            "day": "31",
-            "hour": "12",
-            "minute": "0",
-            "after_countdown_message": "Countdown has ended"
-          }
-        },
-        "button_gFFUCH": {
-          "type": "button",
-          "settings": {
-            "countdown_button": "Shop now",
-            "countdown_link": "",
-            "hide_after_countdown": true
-          }
-        }
-      },
-      "block_order": [
-        "text_HcbENg",
-        "countdown_kBqdRN",
-        "button_gFFUCH"
-      ],
-      "settings": {
-        "full_width": false,
-        "image": "shopify://shop_images/lenses-lattes.jpg",
-        "image_position": "left",
-        "layout": "center",
-        "section_padding": "bottom",
-        "background_color": "#000000",
-        "text_color": "#ffffff",
-        "button_color": "#ffffff",
-        "button_background": "#333333"
       }
     },
     "logo_list_j4bkR4": {
@@ -838,13 +838,13 @@
     "custom_image_with_text_JMgwEL",
     "custom_slideshow_Rf7Min",
     "text_with_icons_wcBWMk",
+    "countdown_knwzCz",
     "scrolling_text_gcUMKf",
     "custom_collection_list_4RW7nh",
     "bestsellers_KXbceH",
     "image_and_product_cards_HCViPR",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
-    "countdown_knwzCz",
     "logo_list_j4bkR4",
     "fact_columns_9ADVah",
     "editorial_columns_F8GyNb",
