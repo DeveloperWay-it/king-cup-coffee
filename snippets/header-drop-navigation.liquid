@@ -126,10 +126,10 @@
         {% elsif block.settings.linklist_icons_menu_item == link.title %}
           {% assign meganav = true %}
           {% capture mega_dropdown_menu_icons %}
-            <nav id="drop-mega-menu" class="drop sm-hide md-hide menu-{{ block.id }} js-dropdown-megamenu" {{ block.shopify_attributes }}>
-              <div class="grid__wrapper edge">
-                <div class="span-5 auto left v-center">
-                  <ul class="grid__wrapper wrapper-nest">
+            <nav id="drop-mega-menu" class="drop icons sm-hide md-hide menu-{{ block.id }} js-dropdown-megamenu" {{ block.shopify_attributes }}>
+              
+                <div class="span-5 auto left v-center icons-border-wrapper">
+                  <ul class="grid__wrapper_icons wrapper-nest">
                     {% assign icon_counter = 0 %}
                     {% for sub_link in link.links %}
                       <li class="span-6 auto">
@@ -151,14 +151,14 @@
                               </span>
                             {% endif %}
                           {% endif %}
-                          {{ sub_link.title }}
+                          <p>{{ sub_link.title }}</p>
                         </a>
 
                       </li>
                     {% endfor %}
                   </ul>
                 </div>
-              </div>
+             
             </nav>
           {% endcapture %}
         {% endif %}

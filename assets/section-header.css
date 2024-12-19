@@ -359,3 +359,34 @@ span.js-cart-count.icon-only {
 span.js-cart-count.icon-only:hover {
   color: var(--header-bg) !important;
 }
+
+.grid__wrapper_icons{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 38px;
+  margin-bottom: 0;
+}
+
+.grid__wrapper_icons li{
+  width: fit-content!important;
+}
+
+.menu-item-with-icon{
+  display: flex!important;
+  flex-direction: column;
+  width: fit-content!important;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item-with-icon p{
+  width: fit-content;
+}
+
+.js-dropdown-megamenu.icons .icons-border-wrapper {
+  border-top: 0.4px solid rgba(0, 0, 0, 0.6);
+  margin-top: 20px;
+
+}
