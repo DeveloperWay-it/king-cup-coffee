@@ -163,9 +163,9 @@
     "newsletter_WCQdVW": {
       "type": "newsletter",
       "settings": {
-        "title": "Subscribe to our newsletter",
-        "subheading": "<p>Signup for our newsletter to stay up to date on sales and events.</p>",
-        "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+        "title": "Ottieni il 20% di sconto sul tuo primo ordine",
+        "subheading": "<p>Registrati e regalati una coccola King Cup</p>",
+        "mail_gdpr_text": "",
         "alignment": "a-center",
         "heading_font_size": 32,
         "subheading_font_size": 16,
