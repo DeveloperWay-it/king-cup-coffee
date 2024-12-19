@@ -84,7 +84,7 @@
           "type": "text_with_icon",
           "settings": {
             "icon": "ship-truck",
-            "text": "<p>Pair an icon with text</p>",
+            "text": "<p>Consegna stimata in 1-2 giorni lavorativi</p>",
             "text_align": "left"
           }
         },
