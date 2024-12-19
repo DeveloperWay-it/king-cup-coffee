@@ -243,73 +243,79 @@
     "text_with_icons_GqU6RF": {
       "type": "text-with-icons",
       "blocks": {
-        "text_block_kkCXbh": {
-          "type": "text_block",
-          "settings": {
-            "icon": "chat",
-            "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
-          }
-        },
         "text_block_x7k8ej": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-68.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Scegliamo i migliori produttori <br/>da tutto il mondo</p>"
           }
         },
-        "text_block_HQnPjH": {
+        "text_block_xLJbqh": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-69.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Ricette naturali e salutari</p>"
           }
         },
-        "text_block_mUb9Xa": {
+        "text_block_L6iNbz": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-70.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Bevande veloci e facili da preparare</p>"
           }
         },
-        "text_block_DiBxLB": {
+        "text_block_DzJLQT": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-71.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Poniamo al centro le esigenze del consumatore moderno</p>"
           }
         },
-        "text_block_rM66NF": {
+        "text_block_P6UUVM": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-72.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Pagamenti sicuri e certificati</p>"
+          }
+        },
+        "text_block_tpaKFT": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-73.png",
+            "link": "",
+            "title": "",
+            "subheading": "<p>Assistenza call center veloce ed affidabile</p>"
           }
         }
       },
       "block_order": [
-        "text_block_kkCXbh",
         "text_block_x7k8ej",
-        "text_block_HQnPjH",
-        "text_block_mUb9Xa",
-        "text_block_DiBxLB",
-        "text_block_rM66NF"
+        "text_block_xLJbqh",
+        "text_block_L6iNbz",
+        "text_block_DzJLQT",
+        "text_block_P6UUVM",
+        "text_block_tpaKFT"
       ],
       "settings": {
-        "title": "Text with Icons",
+        "title": "",
         "text_align": "center",
-        "size": 20,
+        "size": 50,
         "color_scheme": "1",
         "section_padding": "both"
       }
