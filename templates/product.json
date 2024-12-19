@@ -185,29 +185,45 @@
         "panel_eWGLCm": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "heading": "I PRODOTTI KING CUP HANNO UNA DATA DI SCADENZA?",
+            "content": "<p>Tutti i nostri prodotti sono sigillati ermeticamente per proteggere la miscela da luce, ossigeno e umidità. In questo modo la miscela si mantiene fresca per almeno due anni dopo il confezionamento.</p><p>Su ogni astuccio è possibile trovare la data entro la quale consigliamo di consumare il prodotto. Questa data è semplicemente un indice della freschezza, del sapore e dell’aroma ottimale della miscela.</p>"
           }
         },
         "panel_zjXpeW": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "heading": "CHE CORRIERE CONSEGNERÀ IL MIO ORDINE?",
+            "content": "<p>Sarà GLS a consegnare il tuo pacco, tuttavia per garantire il miglior servizio potremmo cambiare il corriere in base al luogo di consegna o al periodo.</p><p>Per le spedizioni all’estero ci appoggiamo a Fedex.</p>"
           }
         },
         "panel_yBhYCp": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "heading": "POSSO SCEGLIERE L’ORARIO DI CONSEGNA?",
+            "content": "<p>Segnaleremo ogni nota inserita dal cliente al nostro corriere; tuttavia non ci assumiamo alcuna responsabilità nel caso in cui quest’ultimo non la prenda in considerazione.</p>"
+          }
+        },
+        "panel_Vbr4MX": {
+          "type": "panel",
+          "settings": {
+            "heading": "QUALE METODO DI PAGAMENTO POSSO USARE?",
+            "content": "<ul><li>Carta di credito ( circuito Master Card - Visa - Amex )</li><li>Satispay</li><li>PayPal</li><li>Bonifico Bancario</li><li>Contrassegno</li></ul>"
+          }
+        },
+        "panel_cteTXR": {
+          "type": "panel",
+          "settings": {
+            "heading": "COSA SUCCEDE SE NON SONO IN CASA AL MOMENTO DELLA CONSEGNA?",
+            "content": "<p>Il nostro corriere provvederà a lasciare all’indirizzo segnalatoci un avviso con le istruzioni su luogo e orari ove poter ritirare l’ordine.</p><p>Il corriere effettuerà fino a 2 tentativi di consegna, terminati i quali ritornerà il pacco al mittente. Di conseguenza, è consigliabile indicare un luogo di consegna dove sia presente qualcuno per il ritiro.</p>"
           }
         }
       },
       "block_order": [
         "panel_eWGLCm",
         "panel_zjXpeW",
-        "panel_yBhYCp"
+        "panel_yBhYCp",
+        "panel_Vbr4MX",
+        "panel_cteTXR"
       ],
       "settings": {
         "heading": "FAQs",
