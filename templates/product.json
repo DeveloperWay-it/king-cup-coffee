@@ -129,6 +129,13 @@
             "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
             "default_open_accordion": false
           }
+        },
+        "complementary_products_3Vwimk": {
+          "type": "complementary_products",
+          "settings": {
+            "heading": "Pair it with",
+            "limit": 1
+          }
         }
       },
       "block_order": [
@@ -148,7 +155,8 @@
         "accordion_content_YCXTQC",
         "accordion_content_HfEAfr",
         "accordion_content_D3QwGy",
-        "accordion_content_83JQYX"
+        "accordion_content_83JQYX",
+        "complementary_products_3Vwimk"
       ],
       "settings": {
         "form_bg_color": "#ffffff",
