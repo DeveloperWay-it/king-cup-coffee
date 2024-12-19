@@ -22,7 +22,7 @@
     "rich_text_Rern3e": {
       "type": "rich-text",
       "settings": {
-        "title": "{{ section.settings.page.title }}",
+        "title": "{{ collection.title }}",
         "rich_text": "{{ section.settings.page.content }}",
         "heading_size": 42,
         "text_size": 18,
