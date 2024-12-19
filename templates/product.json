@@ -65,6 +65,12 @@
             "default_open_accordion": true
           }
         },
+        "metafield_XFA8tC": {
+          "type": "metafield",
+          "settings": {
+            "text": "Confezione da 50 capsule ➡"
+          }
+        },
         "quantity": {
           "type": "quantity",
           "settings": {}
@@ -147,6 +153,7 @@
         "text_with_icon_NMtTey",
         "text_with_icon_m4i6x6",
         "description_JzXQMm",
+        "metafield_XFA8tC",
         "quantity",
         "variants",
         "buttons",
