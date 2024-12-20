@@ -364,7 +364,7 @@ span.js-cart-count.icon-only:hover {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:flex-start;
   gap: 38px;
   margin-bottom: 0;
 }
@@ -377,16 +377,17 @@ span.js-cart-count.icon-only:hover {
   display: flex!important;
   flex-direction: column;
   width: fit-content!important;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  height: 100%;
 }
 
 .menu-item-with-icon p{
-  width: fit-content;
+  max-width: 150px;
+  text-align: center;
 }
 
 .js-dropdown-megamenu.icons .icons-border-wrapper {
   border-top: 0.4px solid rgba(0, 0, 0, 0.6);
   margin-top: 20px;
-
 }
