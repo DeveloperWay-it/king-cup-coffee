@@ -45,7 +45,7 @@
         "linklist_with_images_QL8jJ9": {
           "type": "linklist_with_images",
           "settings": {
-            "linklist_images_menu_item": "Catalog",
+            "linklist_images_menu_item": "I Nostri Prodotti",
             "image_ratio": "square",
             "links_alignment": "left",
             "featured_image_1": "shopify://shop_images/lenses-lattes.jpg",
@@ -58,10 +58,22 @@
             "featured_image_label_3": "",
             "image_url_3": ""
           }
+        },
+        "linklist_with_icons_QRYmWw": {
+          "type": "linklist_with_icons",
+          "settings": {
+            "linklist_icons_menu_item": "Naviga Per Formato",
+            "icon_image_1": "shopify://shop_images/4.png",
+            "icon_image_2": "shopify://shop_images/1.png",
+            "icon_image_3": "shopify://shop_images/2.png",
+            "icon_image_4": "shopify://shop_images/3.png",
+            "icon_image_5": "shopify://shop_images/5.png"
+          }
         }
       },
       "block_order": [
-        "linklist_with_images_QL8jJ9"
+        "linklist_with_images_QL8jJ9",
+        "linklist_with_icons_QRYmWw"
       ],
       "settings": {
         "inline_layout": true,
@@ -70,7 +82,7 @@
         "logo_max_width": 200,
         "logo_max_width_mobile": 150,
         "logo_size": 32,
-        "main_nav": "main-menu",
+        "main_nav": "test-menu",
         "nav_alignment": "center",
         "show_desktop_icons": true
       }
