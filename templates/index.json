@@ -200,14 +200,14 @@
       ],
       "settings": {
         "full_width": false,
-        "image": "shopify://shop_images/lenses-lattes.jpg",
+        "image": "shopify://shop_images/Ginseng_zucchero_di_canna_Lavazza_1.jpg",
         "image_position": "left",
         "layout": "center",
         "section_padding": "bottom",
         "background_color": "#000000",
         "text_color": "#ffffff",
         "button_color": "#ffffff",
-        "button_background": "#333333"
+        "button_background": "#ae775c"
       }
     },
     "scrolling_text_gcUMKf": {
@@ -537,7 +537,7 @@
         "speed": 15,
         "icon_height": 20,
         "padding": 30,
-        "color": "#FFFFFF",
+        "color": "#ffffff",
         "background": "#d6bbad"
       }
     },
