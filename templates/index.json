@@ -378,7 +378,7 @@
       ],
       "custom_css": [
         "{background: #000;}",
-        "h3 {color: #fff;}"
+        "h3, h2, p {color: #fff;}"
       ],
       "settings": {
         "title": "La nostra gamma di prodotti",
