@@ -22,8 +22,8 @@
     "rich_text_Rern3e": {
       "type": "rich-text",
       "settings": {
-        "title": "Welcome",
-        "rich_text": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.   Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </p>",
+        "title": "{{ collection.title }}",
+        "rich_text": "{{ section.settings.page.content }}",
         "heading_size": 42,
         "text_size": 18,
         "mobile_heading_size": 24,

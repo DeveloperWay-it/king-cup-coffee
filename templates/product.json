@@ -65,6 +65,12 @@
             "default_open_accordion": true
           }
         },
+        "metafield_XFA8tC": {
+          "type": "metafield",
+          "settings": {
+            "text": "Confezione da 50 capsule ➡"
+          }
+        },
         "quantity": {
           "type": "quantity",
           "settings": {}
@@ -84,7 +90,7 @@
           "type": "text_with_icon",
           "settings": {
             "icon": "ship-truck",
-            "text": "<p>Pair an icon with text</p>",
+            "text": "<p>Consegna stimata in 1-2 giorni lavorativi</p>",
             "text_align": "left"
           }
         },
@@ -129,6 +135,13 @@
             "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
             "default_open_accordion": false
           }
+        },
+        "complementary_products_3Vwimk": {
+          "type": "complementary_products",
+          "settings": {
+            "heading": "Pair it with",
+            "limit": 1
+          }
         }
       },
       "block_order": [
@@ -140,6 +153,7 @@
         "text_with_icon_NMtTey",
         "text_with_icon_m4i6x6",
         "description_JzXQMm",
+        "metafield_XFA8tC",
         "quantity",
         "variants",
         "buttons",
@@ -148,7 +162,8 @@
         "accordion_content_YCXTQC",
         "accordion_content_HfEAfr",
         "accordion_content_D3QwGy",
-        "accordion_content_83JQYX"
+        "accordion_content_83JQYX",
+        "complementary_products_3Vwimk"
       ],
       "settings": {
         "form_bg_color": "#ffffff",
@@ -163,13 +178,13 @@
     "newsletter_WCQdVW": {
       "type": "newsletter",
       "settings": {
-        "title": "Subscribe to our newsletter",
-        "subheading": "<p>Signup for our newsletter to stay up to date on sales and events.</p>",
-        "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+        "title": "Ottieni il 20% di sconto sul tuo primo ordine",
+        "subheading": "<p>Registrati e regalati una coccola King Cup</p>",
+        "mail_gdpr_text": "",
         "alignment": "a-center",
         "heading_font_size": 32,
         "subheading_font_size": 16,
-        "color_scheme": "3",
+        "color_scheme": "2",
         "show_social_icons": false,
         "section_padding": "both"
       }
@@ -185,29 +200,45 @@
         "panel_eWGLCm": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "heading": "I PRODOTTI KING CUP HANNO UNA DATA DI SCADENZA?",
+            "content": "<p>Tutti i nostri prodotti sono sigillati ermeticamente per proteggere la miscela da luce, ossigeno e umidità. In questo modo la miscela si mantiene fresca per almeno due anni dopo il confezionamento.</p><p>Su ogni astuccio è possibile trovare la data entro la quale consigliamo di consumare il prodotto. Questa data è semplicemente un indice della freschezza, del sapore e dell’aroma ottimale della miscela.</p>"
           }
         },
         "panel_zjXpeW": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "heading": "CHE CORRIERE CONSEGNERÀ IL MIO ORDINE?",
+            "content": "<p>Sarà GLS a consegnare il tuo pacco, tuttavia per garantire il miglior servizio potremmo cambiare il corriere in base al luogo di consegna o al periodo.</p><p>Per le spedizioni all’estero ci appoggiamo a Fedex.</p>"
           }
         },
         "panel_yBhYCp": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "heading": "POSSO SCEGLIERE L’ORARIO DI CONSEGNA?",
+            "content": "<p>Segnaleremo ogni nota inserita dal cliente al nostro corriere; tuttavia non ci assumiamo alcuna responsabilità nel caso in cui quest’ultimo non la prenda in considerazione.</p>"
+          }
+        },
+        "panel_Vbr4MX": {
+          "type": "panel",
+          "settings": {
+            "heading": "QUALE METODO DI PAGAMENTO POSSO USARE?",
+            "content": "<ul><li>Carta di credito ( circuito Master Card - Visa - Amex )</li><li>Satispay</li><li>PayPal</li><li>Bonifico Bancario</li><li>Contrassegno</li></ul>"
+          }
+        },
+        "panel_cteTXR": {
+          "type": "panel",
+          "settings": {
+            "heading": "COSA SUCCEDE SE NON SONO IN CASA AL MOMENTO DELLA CONSEGNA?",
+            "content": "<p>Il nostro corriere provvederà a lasciare all’indirizzo segnalatoci un avviso con le istruzioni su luogo e orari ove poter ritirare l’ordine.</p><p>Il corriere effettuerà fino a 2 tentativi di consegna, terminati i quali ritornerà il pacco al mittente. Di conseguenza, è consigliabile indicare un luogo di consegna dove sia presente qualcuno per il ritiro.</p>"
           }
         }
       },
       "block_order": [
         "panel_eWGLCm",
         "panel_zjXpeW",
-        "panel_yBhYCp"
+        "panel_yBhYCp",
+        "panel_Vbr4MX",
+        "panel_cteTXR"
       ],
       "settings": {
         "heading": "FAQs",
@@ -227,73 +258,79 @@
     "text_with_icons_GqU6RF": {
       "type": "text-with-icons",
       "blocks": {
-        "text_block_kkCXbh": {
-          "type": "text_block",
-          "settings": {
-            "icon": "chat",
-            "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
-          }
-        },
         "text_block_x7k8ej": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-68.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Scegliamo i migliori produttori <br/>da tutto il mondo</p>"
           }
         },
-        "text_block_HQnPjH": {
+        "text_block_xLJbqh": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-69.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Ricette naturali e salutari</p>"
           }
         },
-        "text_block_mUb9Xa": {
+        "text_block_L6iNbz": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-70.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Bevande veloci e facili da preparare</p>"
           }
         },
-        "text_block_DiBxLB": {
+        "text_block_DzJLQT": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-71.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Poniamo al centro le esigenze del consumatore moderno</p>"
           }
         },
-        "text_block_rM66NF": {
+        "text_block_P6UUVM": {
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-72.png",
             "link": "",
-            "title": "Heading",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "title": "",
+            "subheading": "<p>Pagamenti sicuri e certificati</p>"
+          }
+        },
+        "text_block_tpaKFT": {
+          "type": "text_block",
+          "settings": {
+            "icon": "chat",
+            "image": "shopify://shop_images/King_Cup_-_Icone_corrette_-73.png",
+            "link": "",
+            "title": "",
+            "subheading": "<p>Assistenza call center veloce ed affidabile</p>"
           }
         }
       },
       "block_order": [
-        "text_block_kkCXbh",
         "text_block_x7k8ej",
-        "text_block_HQnPjH",
-        "text_block_mUb9Xa",
-        "text_block_DiBxLB",
-        "text_block_rM66NF"
+        "text_block_xLJbqh",
+        "text_block_L6iNbz",
+        "text_block_DzJLQT",
+        "text_block_P6UUVM",
+        "text_block_tpaKFT"
       ],
       "settings": {
-        "title": "Text with Icons",
+        "title": "",
         "text_align": "center",
-        "size": 20,
+        "size": 50,
         "color_scheme": "1",
         "section_padding": "both"
       }
