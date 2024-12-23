@@ -122,6 +122,67 @@
                 </nav>
               {% endcapture %}
           {% endif  %}
+          {% when 'megamenu' %}
+            {% if block.settings.megamenu_menu_item == link.title %}
+                {% assign meganav = true %}
+                {% capture mega_dropdown_menu %}
+                  <nav id="drop-mega-menu" class="megamenu drop sm-hide md-hide menu-{{ block.id }} js-dropdown-megamenu" {{ block.shopify_attributes }}>
+                    <div class="megamenu-container">
+                    {% if block.settings.megamenu_title  %}<div class="megamenu-title" >{{ block.settings.megamenu_title }}</div> {% endif %}
+                      <div class="megamenu-subcontainer">
+
+                      <div class="sublink-container">
+                        <ul class="wrapper-nest">
+                          {% for sub_link in link.links %}
+                            <li data-image-target-id="megamenu-image-{{ forloop.index }}" data-target-id="megamenu-subsublink-{{ forloop.index }}"class="megamenu-sublink span-6 auto"><div>{{ sub_link.title }}</div>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      <div class="subsublink-container">
+                        <ul>
+                          {%for sub_link in link.links %}
+                            <ul id="megamenu-subsublink-{{ forloop.index }}" class="megamenu-subsublink sub-menu {{ align }}">
+                                  {% for sub_sub_link in sub_link.links %}
+                                    <li class="menu-item">
+                                      <a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      <div class="image-container">
+                          {% for sub_link in link.links %}
+                            <a id="megamenu-image-{{ forloop.index }}" class="megamenu-sublink-image mega-dropdown__image-wrapper" href="{{ sub_link.url }}">
+                                  {% render 'helper-image',
+                                  type: sub_link.object.featured_image,
+                                  sm_render: '360px',
+                                  md_render: '360px',
+                                  lg_render: '360px',
+                                  loading: 'eager',
+                                  width: 400 %}
+                            </a>
+                          {% endfor %}
+                        <style>
+                          .menu-{{ block.id }} .mega-dropdown__image-wrapper .box-ratio {
+                            {%- if block.settings.image_ratio == 'square' -%}
+                              padding-bottom: 100% !important;
+                            {%- elsif block.settings.image_ratio == 'vertical' -%}
+                              padding-bottom: 125% !important;
+                            {%- else -%}
+                              padding-bottom: 66% !important;
+                            {%- endif -%}
+                            position: relative;
+                          }
+                        </style>
+                      </div>
+                      </div>
+                    </div>
+                  </nav>
+                {% endcapture %}
+            {% endif  %}
+        
         {% when 'linklist_with_icons' %}
           {% if block.settings.linklist_icons_menu_item == link.title %}
               {% assign meganav = true %}

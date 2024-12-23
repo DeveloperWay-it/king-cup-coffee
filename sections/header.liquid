@@ -289,6 +289,65 @@
 	],
   "blocks": [
     {
+      "type": "megamenu",
+       "name": "Megamenu",
+       "settings": [
+        {
+          "type":"text",
+          "id":"megamenu_menu_item",
+          "label":"Navigation item",
+          "info":"Enter navigation item to apply a mega menu. This menu will display a maximum of three link columns and three custom photos. Set up linklists in Admin > Online Store > Navigation."
+        },
+        {
+          "type":"text",
+          "id":"megamenu_title",
+          "label": "Megamenu title"
+          },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "default": "square",
+          "options": [
+             { "value": "vertical", "label": "Vertical images"},
+             { "value": "horizontal", "label": "Horizontal images"},
+             { "value": "square", "label": "Square images"}
+          ],
+          "label": "Image ratio"
+        },
+        {
+          "type": "select",
+          "id": "links_alignment",
+          "label": "Image label alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "image_picker",
+          "id": "featured_image_1",
+          "label": "Select a featured image #1"
+        },
+        {
+          "type": "text",
+          "id": "featured_image_label_1",
+          "label": "Featured image label #1"
+        },
+        {
+          "id": "image_url_1",
+          "type": "url",
+          "label": "Image link #1"
+        }
+      ]
+    },
+    {
       "type": "linklist_with_images",
        "name": "Links with images",
        "settings": [
