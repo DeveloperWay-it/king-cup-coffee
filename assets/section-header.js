@@ -197,3 +197,38 @@ const Header = {
 document.querySelectorAll('[data-section-type="header"]').forEach(function(container){
   Header.init(container);
 });
+
+document.querySelectorAll('.megamenu-sublink').forEach(function(sublink) {
+  sublink.addEventListener('click', function(event) {
+    event.preventDefault(); // Previene il comportamento predefinito del link
+
+    // Nascondi tutti i megamenu-subsublink
+    document.querySelectorAll('.megamenu-subsublink').forEach(function(subsub) {
+      subsub.style.display = 'none';
+    });
+
+    // Nascondi tutte le megamenu-sublink-image
+    document.querySelectorAll('.megamenu-sublink-image').forEach(function(image) {
+      image.style.display = 'none';
+    });
+
+    // Ottieni l'ID del megamenu-sublink cliccato
+    const sublinkId = this.getAttribute('data-target-id'); // Assicurati che il megamenu-sublink abbia un attributo data-target-id
+
+    // Trova il corrispondente megamenu-subsublink usando l'ID
+    const correspondingSubsub = document.getElementById(sublinkId);
+
+    if (correspondingSubsub) {
+      correspondingSubsub.style.display = 'block'; // Mostra il corrispondente megamenu-subsublink
+    }
+
+    // Trova il corrispondente megamenu-sublink-image usando l'ID
+    const correspondingImageId = this.getAttribute('data-image-target-id'); // Assicurati che il megamenu-sublink abbia un attributo data-image-target-id
+    const correspondingImage = document.getElementById(correspondingImageId);
+
+    if (correspondingImage) {
+      console.log(correspondingImage);
+      correspondingImage.style.display = 'block'; // Mostra il corrispondente megamenu-sublink-image
+    }
+  });
+});
