@@ -42,43 +42,49 @@
     "header": {
       "type": "header",
       "blocks": {
-        "megamenu_YiX9y4": {
-          "type": "megamenu",
+        "linklist_with_images_QL8jJ9": {
+          "type": "linklist_with_images",
+          "disabled": true,
           "settings": {
-            "megamenu_menu_item": "I Nostri Prodotti",
-            "megamenu_title": "Scopri la nostra gamma di prodotti",
-            "image_ratio": "horizontal",
+            "linklist_images_menu_item": "Catalog",
+            "image_ratio": "square",
             "links_alignment": "left",
+            "featured_image_1": "shopify://shop_images/lenses-lattes.jpg",
             "featured_image_label_1": "",
-            "image_url_1": ""
+            "image_url_1": "",
+            "featured_image_2": "shopify://shop_images/coffee-and-cake.jpg",
+            "featured_image_label_2": "",
+            "image_url_2": "",
+            "featured_image_3": "shopify://shop_images/espresso-machine-with-dark-wood-handles.jpg",
+            "featured_image_label_3": "",
+            "image_url_3": ""
           }
         },
-        "linklist_with_icons_QRYmWw": {
-          "type": "linklist_with_icons",
+        "megamenu_mPKXQt": {
+          "type": "megamenu",
           "settings": {
-            "linklist_icons_menu_item": "Naviga Per Formato",
-            "icon_image_1": "shopify://shop_images/4.png",
-            "icon_image_2": "shopify://shop_images/1.png",
-            "icon_image_3": "shopify://shop_images/2.png",
-            "icon_image_4": "shopify://shop_images/3.png",
-            "icon_image_5": "shopify://shop_images/5.png"
+            "megamenu_menu_item": "Catalog",
+            "megamenu_title": "Catalog",
+            "image_ratio": "square",
+            "links_alignment": "left",
+            "featured_image_1": "shopify://shop_images/ginseng-volto-radice.i64537-kJGsA5C-w431-h311-l1-r1.png",
+            "featured_image_label_1": "Lorem Ipsum",
+            "image_url_1": ""
           }
         }
       },
       "block_order": [
-        "megamenu_YiX9y4",
-        "linklist_with_icons_QRYmWw"
+        "linklist_with_images_QL8jJ9",
+        "megamenu_mPKXQt"
       ],
       "settings": {
         "inline_layout": true,
         "logo_align_left": true,
         "enable_sticky": true,
-        "logo": "shopify://shop_images/9484639cfa5c5828c99bc0b4f51b7d75.png",
-        "logo_homepage": "shopify://shop_images/9484639cfa5c5828c99bc0b4f51b7d75.png",
-        "logo_max_width": 50,
-        "logo_max_width_mobile": 50,
+        "logo_max_width": 200,
+        "logo_max_width_mobile": 150,
         "logo_size": 32,
-        "main_nav": "test-menu",
+        "main_nav": "main-menu",
         "nav_alignment": "center",
         "show_desktop_icons": true
       }
