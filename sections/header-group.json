@@ -71,11 +71,23 @@
             "featured_image_label_1": "Lorem Ipsum",
             "image_url_1": ""
           }
+        },
+        "linklist_with_icons_ccFXTb": {
+          "type": "linklist_with_icons",
+          "settings": {
+            "linklist_icons_menu_item": "Compatibilità",
+            "icon_image_1": "shopify://shop_images/4.png",
+            "icon_image_2": "shopify://shop_images/5.png",
+            "icon_image_3": "shopify://shop_images/1.png",
+            "icon_image_4": "shopify://shop_images/2.png",
+            "icon_image_5": "shopify://shop_images/3.png"
+          }
         }
       },
       "block_order": [
         "linklist_with_images_QL8jJ9",
-        "megamenu_mPKXQt"
+        "megamenu_mPKXQt",
+        "linklist_with_icons_ccFXTb"
       ],
       "settings": {
         "inline_layout": true,
