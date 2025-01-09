@@ -121,8 +121,10 @@
         },
         "text_block_PcXNnD": {
           "type": "text_block",
+          "disabled": true,
           "settings": {
             "icon": "clock",
+            "image": "shopify://shop_images/clock.png",
             "link": "",
             "title": "SPEDIZIONI RAPIDE IN 24/48H",
             "subheading": "<p>Pair icon with text on store details.</p>"
@@ -187,7 +189,7 @@
         "button_gFFUCH": {
           "type": "button",
           "settings": {
-            "countdown_button": "Shop now",
+            "countdown_button": "SCOPRI DI PIU'",
             "countdown_link": "",
             "hide_after_countdown": true
           }
@@ -394,58 +396,7 @@
         "heading": "Best Sellers",
         "heading_size": 32,
         "mobile_heading_size": 28,
-        "collection": "frontpage"
-      }
-    },
-    "custom_slideshow_JYLq8t": {
-      "type": "custom_slideshow",
-      "blocks": {
-        "image_XVyhBN": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/IMG_1414-Modifica_1.jpg",
-            "mobile_image": "shopify://shop_images/IMG_1414-Modifica_1.jpg",
-            "heading": "Doppia quantità per la qualità di sempre",
-            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
-            "link": "shopify://collections/all",
-            "button_text": "Scopri di più",
-            "second_link": "",
-            "second_button_text": "Button 2 text",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "align_content": "left",
-            "align_content_mobile": "center",
-            "slide_text_color": "#ffffff",
-            "slide_button_color": "#ffffff",
-            "slide_button_bg": "#292929",
-            "caption_background": "#ae775c",
-            "mobile_slide_button_bg": "#000000",
-            "mobile_caption_background": "#a18167",
-            "hide_caption_background": false,
-            "reverse_content": true,
-            "caption_horizontal": 50,
-            "caption_vertical": 50,
-            "text_align": "center"
-          }
-        }
-      },
-      "block_order": [
-        "image_XVyhBN"
-      ],
-      "settings": {
-        "full_width": true,
-        "enable_autoplay": false,
-        "slider_speed": 5,
-        "pager": "dots",
-        "slideshow_size": "natural",
-        "desktop_height": 800,
-        "mobile_height": 700,
-        "caption_below": true,
-        "slide_heading_size": 42,
-        "mobile_slide_heading_size": 28,
-        "subheading_size": 18,
-        "mobile_subheading_size": 12,
-        "section_padding": "none"
+        "collection": "zenzero"
       }
     },
     "image_with_text_qpLBCV": {
@@ -517,29 +468,18 @@
         "section_padding": "both"
       }
     },
-    "scrolling_text_GwJ37X": {
-      "type": "scrolling-text",
-      "blocks": {
-        "text_wUct7f": {
-          "type": "text",
-          "settings": {
-            "scrolling_text": "<p>Doppia quantità per la qualita di sempre</p>",
-            "text_style": "outlined",
-            "icon": "none",
-            "icon_both_sides": false
-          }
-        }
-      },
-      "block_order": [
-        "text_wUct7f"
-      ],
+    "featured_collection_WqzhHx": {
+      "type": "featured-collection",
+      "disabled": true,
       "settings": {
-        "text_size": 20,
-        "speed": 15,
-        "icon_height": 20,
-        "padding": 30,
-        "color": "#ffffff",
-        "background": "#d6bbad"
+        "title": "Featured collection",
+        "collection": "",
+        "display_type": "carousel",
+        "items_per_row": 3,
+        "mobile_items_per_row": "2",
+        "items_per_page": 7,
+        "show_view_all": true,
+        "section_padding": "both"
       }
     },
     "logo_list_j4bkR4": {
@@ -616,17 +556,80 @@
         "product_4": "confezione-caffe-prova-1"
       }
     },
-    "featured_collection_WqzhHx": {
-      "type": "featured-collection",
+    "custom_slideshow_JYLq8t": {
+      "type": "custom_slideshow",
+      "blocks": {
+        "image_XVyhBN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_1414-Modifica_1.jpg",
+            "mobile_image": "shopify://shop_images/IMG_1414-Modifica_1.jpg",
+            "heading": "Doppia quantità per la qualità di sempre",
+            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+            "link": "shopify://collections/all",
+            "button_text": "Scopri di più",
+            "second_link": "",
+            "second_button_text": "Button 2 text",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "align_content": "left",
+            "align_content_mobile": "center",
+            "slide_text_color": "#ffffff",
+            "slide_button_color": "#ffffff",
+            "slide_button_bg": "#292929",
+            "caption_background": "#ae775c",
+            "mobile_slide_button_bg": "#000000",
+            "mobile_caption_background": "#a18167",
+            "hide_caption_background": false,
+            "reverse_content": true,
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_XVyhBN"
+      ],
       "settings": {
-        "title": "Featured collection",
-        "collection": "",
-        "display_type": "carousel",
-        "items_per_row": 3,
-        "mobile_items_per_row": "2",
-        "items_per_page": 7,
-        "show_view_all": true,
-        "section_padding": "both"
+        "full_width": true,
+        "enable_autoplay": false,
+        "slider_speed": 5,
+        "pager": "dots",
+        "slideshow_size": "natural",
+        "desktop_height": 800,
+        "mobile_height": 700,
+        "caption_below": true,
+        "slide_heading_size": 42,
+        "mobile_slide_heading_size": 28,
+        "subheading_size": 18,
+        "mobile_subheading_size": 12,
+        "section_padding": "none"
+      }
+    },
+    "scrolling_text_GwJ37X": {
+      "type": "scrolling-text",
+      "blocks": {
+        "text_wUct7f": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Doppia quantità per la qualita di sempre</p>",
+            "text_style": "outlined",
+            "icon": "none",
+            "icon_both_sides": false
+          }
+        }
+      },
+      "block_order": [
+        "text_wUct7f"
+      ],
+      "settings": {
+        "text_size": 20,
+        "speed": 15,
+        "icon_height": 20,
+        "padding": 30,
+        "color": "#ffffff",
+        "background": "#d6bbad"
       }
     },
     "featured_blog_fiRnGA": {
@@ -653,13 +656,13 @@
     "scrolling_text_gcUMKf",
     "custom_collection_list_4RW7nh",
     "bestsellers_KXbceH",
-    "custom_slideshow_JYLq8t",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
-    "scrolling_text_GwJ37X",
-    "logo_list_j4bkR4",
-    "image_and_product_cards_HCViPR",
     "featured_collection_WqzhHx",
+    "logo_list_j4bkR4",
+    "custom_slideshow_JYLq8t",
+    "scrolling_text_GwJ37X",
+    "image_and_product_cards_HCViPR",
     "featured_blog_fiRnGA"
   ]
 }
