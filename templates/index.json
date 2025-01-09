@@ -396,8 +396,8 @@
         "featured_collection_JyD3Qd"
       ],
       "custom_css": [
-        "{background: #000;}",
-        "h3,h2,p {color: #fff;}",
+        "{background: #fff;}",
+        "h3,h2,p {color: #000;}",
         ".collection-loop__item--vertical:hover {background: #000;}"
       ],
       "settings": {
