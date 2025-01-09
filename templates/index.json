@@ -378,7 +378,8 @@
       ],
       "custom_css": [
         "{background: #000;}",
-        "h3, h2, p {color: #fff;}"
+        "h3,h2,p {color: #fff;}",
+        ".collection-loop__item--vertical:hover {background: #000}"
       ],
       "settings": {
         "title": "La nostra gamma di prodotti",
