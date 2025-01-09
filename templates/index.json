@@ -623,7 +623,9 @@
       "block_order": [
         "text_wUct7f"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".global__section {margin-top: -6px;}"
+      ],
       "settings": {
         "text_size": 20,
         "speed": 15,
@@ -636,7 +638,7 @@
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
       "custom_css": [
-        ".img-and-product-cards-container {margin-top: 150px}"
+        ".img-and-product-cards-container {margin-top: 150px;}"
       ],
       "settings": {
         "image": "shopify://shop_images/Caffe_Nocciola_1_2.png",
