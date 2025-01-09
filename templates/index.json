@@ -121,10 +121,9 @@
         },
         "text_block_PcXNnD": {
           "type": "text_block",
-          "disabled": true,
           "settings": {
             "icon": "clock",
-            "image": "shopify://shop_images/clock.png",
+            "image": "shopify://shop_images/clock_3.png",
             "link": "",
             "title": "SPEDIZIONI RAPIDE IN 24/48H",
             "subheading": "<p>Pair icon with text on store details.</p>"
@@ -536,26 +535,6 @@
         "section_padding": "both"
       }
     },
-    "image_and_product_cards_HCViPR": {
-      "type": "image-and-product-cards",
-      "settings": {
-        "image": "shopify://shop_images/Caffe_Nocciola_1_2.png",
-        "heading": "Doppia quantità per la qualita di sempre",
-        "description": "BUNDELE & SAVE",
-        "button_text": "aggiungi al carrello",
-        "heading_size": 32,
-        "subheading_size": 18,
-        "button_size": 18,
-        "mobile_heading_size": 24,
-        "mobile_subheading_size": 14,
-        "mobile_button_size": 12,
-        "button_link": "shopify://blogs/news",
-        "product_1": "confezione-caffe-prova-1",
-        "product_2": "confezione-caffe-prova-1-copia",
-        "product_3": "confezione-caffe-prova-1-copia-copia",
-        "product_4": "confezione-caffe-prova-1"
-      }
-    },
     "custom_slideshow_JYLq8t": {
       "type": "custom_slideshow",
       "blocks": {
@@ -630,6 +609,26 @@
         "padding": 30,
         "color": "#ffffff",
         "background": "#d6bbad"
+      }
+    },
+    "image_and_product_cards_HCViPR": {
+      "type": "image-and-product-cards",
+      "settings": {
+        "image": "shopify://shop_images/Caffe_Nocciola_1_2.png",
+        "heading": "Doppia quantità per la qualita di sempre",
+        "description": "BUNDELE & SAVE",
+        "button_text": "aggiungi al carrello",
+        "heading_size": 32,
+        "subheading_size": 18,
+        "button_size": 18,
+        "mobile_heading_size": 24,
+        "mobile_subheading_size": 14,
+        "mobile_button_size": 12,
+        "button_link": "shopify://blogs/news",
+        "product_1": "confezione-caffe-prova-1",
+        "product_2": "confezione-caffe-prova-1-copia",
+        "product_3": "confezione-caffe-prova-1-copia-copia",
+        "product_4": "confezione-caffe-prova-1"
       }
     },
     "featured_blog_fiRnGA": {
