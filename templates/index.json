@@ -292,7 +292,7 @@
         "text_WFMDHE"
       ],
       "custom_css": [
-        ".scrolling__text--wrapper {margin-bottom: 100px}"
+        ".scrolling__text--wrapper {margin-bottom: 100px;}"
       ],
       "settings": {
         "text_size": 20,
@@ -420,6 +420,19 @@
         "collection": "zenzero"
       }
     },
+    "featured_collection_WqzhHx": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "",
+        "display_type": "carousel",
+        "items_per_row": 3,
+        "mobile_items_per_row": "2",
+        "items_per_page": 7,
+        "show_view_all": true,
+        "section_padding": "both"
+      }
+    },
     "image_with_text_qpLBCV": {
       "type": "image-with-text",
       "disabled": true,
@@ -486,20 +499,6 @@
         "star_color": "#ffd450",
         "text_color": "#000000",
         "background": "#faf4e8",
-        "section_padding": "both"
-      }
-    },
-    "featured_collection_WqzhHx": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "Featured collection",
-        "collection": "",
-        "display_type": "carousel",
-        "items_per_row": 3,
-        "mobile_items_per_row": "2",
-        "items_per_page": 7,
-        "show_view_all": true,
         "section_padding": "both"
       }
     },
@@ -636,6 +635,9 @@
     },
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
+      "custom_css": [
+        ".img-and-product-cards-container {margin-top: 150px}"
+      ],
       "settings": {
         "image": "shopify://shop_images/Caffe_Nocciola_1_2.png",
         "heading": "Doppia quantità per la qualita di sempre",
@@ -679,9 +681,9 @@
     "scrolling_text_gcUMKf",
     "custom_collection_list_4RW7nh",
     "bestsellers_KXbceH",
+    "featured_collection_WqzhHx",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
-    "featured_collection_WqzhHx",
     "logo_list_j4bkR4",
     "custom_slideshow_JYLq8t",
     "scrolling_text_GwJ37X",
