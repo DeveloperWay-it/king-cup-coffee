@@ -211,6 +211,23 @@
         "button_background": "#ae775c"
       }
     },
+    "rich_text_wW3DQ3": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {
+        "title": "Dove puoi trovarci",
+        "rich_text": "",
+        "heading_size": 40,
+        "text_size": 20,
+        "mobile_heading_size": 40,
+        "mobile_text_size": 20,
+        "page": "",
+        "alignment": "a-center",
+        "content_width": 60,
+        "section_padding": "both",
+        "color_scheme": "1"
+      }
+    },
     "scrolling_text_gcUMKf": {
       "type": "scrolling-text",
       "blocks": {
@@ -272,6 +289,7 @@
         "text_UWytiQ",
         "text_WFMDHE"
       ],
+      "custom_css": [],
       "settings": {
         "text_size": 20,
         "speed": 15,
@@ -602,6 +620,7 @@
       "block_order": [
         "text_wUct7f"
       ],
+      "custom_css": [],
       "settings": {
         "text_size": 20,
         "speed": 15,
@@ -652,6 +671,7 @@
     "custom_slideshow_Rf7Min",
     "text_with_icons_wcBWMk",
     "countdown_knwzCz",
+    "rich_text_wW3DQ3",
     "scrolling_text_gcUMKf",
     "custom_collection_list_4RW7nh",
     "bestsellers_KXbceH",
