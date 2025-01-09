@@ -214,7 +214,7 @@
     "rich_text_wW3DQ3": {
       "type": "rich-text",
       "custom_css": [
-        ".section-heading {margin-bottom: -1000px}"
+        ".section-heading {margin-bottom: -1000px;}"
       ],
       "settings": {
         "title": "Dove puoi trovarci",
@@ -291,7 +291,9 @@
         "text_UWytiQ",
         "text_WFMDHE"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".scrolling__text--wrapper {margin-bottom: 100px}"
+      ],
       "settings": {
         "text_size": 20,
         "speed": 15,
