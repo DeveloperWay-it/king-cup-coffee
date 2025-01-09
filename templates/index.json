@@ -213,7 +213,9 @@
     },
     "rich_text_wW3DQ3": {
       "type": "rich-text",
-      "disabled": true,
+      "custom_css": [
+        ".section-heading {margin-bottom: -1000px}"
+      ],
       "settings": {
         "title": "Dove puoi trovarci",
         "rich_text": "",
