@@ -35,7 +35,7 @@
             "image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
             "mobile_image": "shopify://shop_images/Caffe_Nocciola_1_1_2.png",
             "heading": "Doppia quantità per la qualità di sempre",
-            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+            "subheading": "",
             "link": "shopify://collections/all",
             "button_text": "Scopri di più",
             "second_link": "",
@@ -379,7 +379,7 @@
       "custom_css": [
         "{background: #000;}",
         "h3,h2,p {color: #fff;}",
-        ".collection-loop__item--vertical:hover {background: #000}"
+        ".collection-loop__item--vertical:hover {background: #000;}"
       ],
       "settings": {
         "title": "La nostra gamma di prodotti",
