@@ -26,7 +26,7 @@
 -%}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
+  /* .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
@@ -40,6 +40,10 @@
     .blog-articles {
       grid-template-columns: 1fr 1fr 1fr;
     }
+  } */
+
+  .blog-template .article-loop__excerpt {
+    text-align: {{ section.settings.text_align }};
   }
 {%- endstyle -%}
 
@@ -48,6 +52,7 @@
 {% assign regular_tags = '' %}
 {% assign selected_category = '' %}
 {% assign selected_tags = '' %}
+{% assign limit_filters = 10 %}
 
 {% comment %} Separate categories and tags, identify selected ones {% endcomment %}
 {% for tag in blog.all_tags %}
@@ -149,23 +154,19 @@
       {% endcomment %}
 
       <div class="grid__wrapper rg9 pb8">
-        <div class="blog-container">
+        <div class="blog-container span-12 auto mt5 mb5">
           <div class="blog-sidebar">
             {% comment %} Search section {% endcomment %}
             <div class="sidebar-section">
-              <h3>Cerca</h3>
               <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
                 <input type="hidden" name="type" value="article">
                 <input type="hidden" name="options[prefix]" value="last">
-                {% if blog.handle %}
-                  <input type="hidden" name="q" value="blog:{{ blog.handle }}">
-                {% endif %}
                 <input
-                  type="search"
                   name="q"
-                  class="search__input"
-                  placeholder="Cerca articoli..."
-                  aria-label="Cerca"
+                  type="search"
+                  class="search-input"
+                  placeholder="Cerca..."
+                  aria-label="Campo di ricerca"
                   value="{{ search.terms | escape }}"
                 >
               </form>
@@ -173,60 +174,71 @@
 
             {% comment %} Categories section {% endcomment %}
             <div class="sidebar-section">
-              {% if current_tags.size > 0 %}
-                <a href="{{ blog.url }}" class="reset-filters">
-                  <svg class="reset-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                    <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
-                  </svg>
+              {% comment %}
+                {% if current_tags.size > 0 %}
+                  <a href="{{ blog.url }}" class="reset-filters">
+                    <svg class="reset-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                      <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                    </svg>
 
-                  Resetta filtri
-                </a>
-              {% endif %}
+                    Resetta filtri
+                  </a>
+                {% endif %}
+              {% endcomment %}
 
-              <div class="flex items-center justify-between">
-                <h3>Categorie</h3>
+              <div class="collapse-container">
+                <div class="collapse-header">CATEGORIE</div>
+                <div class="collapse-content show">
+                  <ul class="collapse-list">
+                    {% for category in unique_categories %}
+                      {% if category != blank %}
+                        {% capture full_category_tag %}category|{{ category }}{% endcapture %}
+                        <li class="collapse-item {% if forloop.index > limit_filters %}hidden{% endif %}">
+                          {% comment %} Category URL mantiene i tag selezionati {% endcomment %}
+                          {% capture category_url %}{{ blog.url }}/tagged/{{ full_category_tag | handle }}{% endcapture %}
+
+                          <a
+                            href="{{ category_url }}"
+                            class="category-link {% if selected_category == full_category_tag %}active{% endif %}"
+                          >
+                            {{ category }}
+                          </a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <a href="#" class="show-more">MOSTRA TUTTI</a>
+                </div>
               </div>
-
-              <ul class="category-list">
-                {% for category in unique_categories %}
-                  {% if category != blank %}
-                    {% capture full_category_tag %}category|{{ category }}{% endcapture %}
-                    <li>
-                      {% comment %} Category URL mantiene i tag selezionati {% endcomment %}
-                      {% capture category_url %}{{ blog.url }}/tagged/{{ full_category_tag | handle }}{% endcapture %}
-
-                      <a
-                        href="{{ category_url }}"
-                        class="category-link {% if selected_category == full_category_tag %}active{% endif %}"
-                      >
-                        {{ category }}
-                      </a>
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
             </div>
 
             {% comment %} Tags section {% endcomment %}
             <div class="sidebar-section">
-              <h3>Tag</h3>
-              <div class="tag-list">
-                {% for tag in unique_tags %}
-                  {% if tag != blank %}
-                    <a
-                      href="{{ blog.url }}/tagged/{{ tag | handle }}"
-                      class="tag-button {% if current_tags contains tag %}active{% endif %}"
-                    >
-                      {{ tag }}
-                    </a>
-                  {% endif %}
-                {% endfor %}
+              <div class="collapse-container">
+                <div class="collapse-header">TAG CLOUD</div>
+                <div class="collapse-content show">
+                  <ul class="collapse-list">
+                    {% for tag in unique_tags %}
+                      {% if tag != blank %}
+                        <li class="collapse-item {% if forloop.index > limit_filters %}hidden{% endif %}">
+                          <a
+                            href="{{ blog.url }}/tagged/{{ tag | handle }}"
+                            class="category-link {% if current_tags contains tag %}active{% endif %}"
+                          >
+                            {{ tag }}
+                          </a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <a href="#" class="show-more">MOSTRA TUTTI</a>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="blog-content">
-            <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+            <div class="blog-articles grid__wrapper {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
               {% render 'article-loop',
                 blog: blog,
                 grid_items: section.settings.items_per_row,
@@ -238,7 +250,7 @@
             </div>
 
             {%- if paginate.pages > 1 -%}
-              {%- render 'pagination', paginate: paginate -%}
+              {% comment %} {%- render 'pagination', paginate: paginate -%} {% endcomment %}
             {%- endif -%}
           </div>
         </div>
@@ -246,11 +258,52 @@
     </div>
   {%- endpaginate -%}
 
-  <style>
-    .blog-template .article-loop__excerpt {
-      text-align: {{ section.settings.text_align }};
-    }
-  </style>
+  <script>
+    (function () {
+      // Gestione dei collapse
+      var headers = document.querySelectorAll('.collapse-header');
+      var limit = {{ limit_filters }};
+
+      for (var i = 0; i < headers.length; i++) {
+        headers[i].addEventListener('click', function () {
+          this.classList.toggle('active');
+          var content = this.nextElementSibling;
+          content.classList.toggle('show');
+        });
+      }
+
+      // Gestione dei toggle mostra/nascondi
+      var toggleButtons = document.querySelectorAll('.show-more');
+
+      for (var i = 0; i < toggleButtons.length; i++) {
+        var button = toggleButtons[i];
+        var container = button.closest('.collapse-content');
+        var hiddenItems = container.querySelectorAll('.collapse-item.hidden');
+
+        // Nascondi il pulsante se non ci sono abbastanza elementi
+        if (container.querySelectorAll('.collapse-item').length <= limit) {
+          button.style.display = 'none';
+          continue;
+        }
+
+        // Aggiungi evento click
+        button.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          var thisContainer = this.closest('.collapse-content');
+          var thisHiddenItems = thisContainer.querySelectorAll('.collapse-item.hidden');
+          var isExpanded = this.getAttribute('data-expanded') === 'true';
+
+          for (var j = 0; j < thisHiddenItems.length; j++) {
+            thisHiddenItems[j].style.display = isExpanded ? 'none' : 'block';
+          }
+
+          this.textContent = isExpanded ? 'MOSTRA TUTTI' : 'MOSTRA MENO';
+          this.setAttribute('data-expanded', !isExpanded);
+        });
+      }
+    })();
+  </script>
 </section>
 
 {% schema %}
