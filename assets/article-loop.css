@@ -1,0 +1,98 @@
+.blog-template .article-loop__date {
+  background: var(--text-color);
+  color: var(--background);
+  padding: var(--space-2);
+}
+
+.blog-template .article-loop__date.has-image--true {
+  /* position: absolute;
+  top: 10px;
+  left: 10px; */
+}
+
+.blog-template .article-loop__date.has-image--false {
+  margin-bottom: 10px;
+}
+
+.blog-template .blog-template__tags--tag a {
+  border: 1px solid var(--dotted-color);
+}
+
+.blog-template .blog-template__tags--tag a,
+.blog-template .blog-template__tags--clear a {
+  font-size: var(--font-size);
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-color-light);
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+
+/* Foodie Custom */
+.blog-template .article-loop__date {
+  color: var(--text-color-light);
+  background-color: var(--background);
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  line-height: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-template .article-loop__date .article-loop__date__icon {
+  width: 12px;
+  fill: var(--text-color-light);
+  position: relative;
+  top: -2px;
+}
+
+.post-title a {
+  font-family: var(--main-family);
+}
+
+.category {
+  position: absolute;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 15px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  bottom: 40px;
+  left: -8px;
+}
+
+.info-category {
+  background-color: #009be2;
+}
+
+.article-headline .article-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-headline .article-actions .read-more span {
+  color: var(--button-bg);
+}
+
+.article-headline .article-actions .read-more:hover span {
+  text-decoration: underline;
+}
+
+.article-headline .article-actions .comments {
+  color: var(--text-color-light);
+  display: flex;
+  gap: 8px;
+}
+
+.article-headline .article-actions .comments .comments-icons {
+  width: 18px;
+  fill: var(--text-color-light);
+  position: relative;
+  top: -1px;
+}

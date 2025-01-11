@@ -12,31 +12,25 @@
   assign side_by_side = false
   case section.settings.items_per_row
     when 4
-      assign items_per_row = 'span-3 auto'
+      assign items_per_row = 'span-3 auto px1 pb3'
     when 3
-      assign items_per_row = 'span-4 auto'
+      assign items_per_row = 'span-4 auto px1 pb3'
     when 2
-      assign items_per_row = 'span-6 auto'
+      assign items_per_row = 'span-6 auto px1 pb3'
     when 1
       assign items_per_row = 'span-12'
-      assign side_by_side = true
   endcase
 
   assign items_per_page = section.settings.items_per_page
+  assign truncatewords = section.settings.truncatewords
+  assign limit_filters = section.settings.limit_filters
 -%}
-
-{%- style -%}
-  .blog-template .article-loop__excerpt {
-    text-align: {{ section.settings.text_align }};
-  }
-{%- endstyle -%}
 
 {% comment %} First, collect all tags and separate them {% endcomment %}
 {% assign categories = '' %}
 {% assign regular_tags = '' %}
 {% assign selected_category = '' %}
 {% assign selected_tags = '' %}
-{% assign limit_filters = 10 %}
 
 {% comment %} Separate categories and tags, identify selected ones {% endcomment %}
 {% for tag in blog.all_tags %}
@@ -66,76 +60,8 @@
   data-section-type="blog-template"
   data-section-loaded="false"
 >
-  {% comment %}
-    {% paginate blog.articles by items_per_page %}
-
-      <div class="grid__wrapper py8">
-        <div class="span-12 auto a-center">
-          <h1>{{ blog.title }}</h1>
-        </div>
-      </div>
-
-      <div class="grid__wrapper rg9 pb8">
-
-        {% if section.settings.text != blank or current_tags %}
-          <div class="span-12 auto mb5">
-            {% unless section.settings.text == blank %}
-              <div class="blog-description a-center rte">
-                {{ section.settings.text }}
-              </div>
-            {% endunless %}
-            {% if current_tags %}
-              <div class="blog-template__tags--wrapper">
-                <p class="blog-template__tags--label m mb1">{{ 'blogs.article.tagged' | t }}</p>
-                <ul class="blog-template__tags--group inline-block mb0 w100 v-start">
-                  {%- for tag in current_tags -%}
-                    <li class="blog-template__tags--tag mr3">{{ tag | link_to_remove_tag: tag }}</li>
-                  {%- endfor -%}
-                  <li class="blog-template__tags--clear">
-                    <a href="{{ blog.url }}">
-                      {% render 'snip-icons',
-                         wrapper: '.tag-filters',
-                         type: 'theme',
-                         icon: 'close',
-                         size: '10px',
-                         classes: 'm0 vib-center',
-                         fill: 'var(--text-color)',
-                         hover: 'var(--text-color)' %}
-                       <span class="vib-center">{{ 'collections.general.clear_all_tags' | t }}</span>
-                     </a>
-                   </li>
-                </ul>
-              </div>
-            {% endif %}
-          </div>
-        {% endif %}
-
-        {% render 'article-loop',
-            blog: blog,
-            grid_items: section.settings.items_per_row,
-            items_per_row: items_per_row,
-            side_by_side: side_by_side,
-            paginate: paginate ,
-            items_per_page: items_per_page %}
-
-      </div>
-
-      {% if paginate.pages > 1 %}
-        <div class="span-12 auto mb8">
-          {% render 'snip-pagination', paginate: paginate %}
-        </div>
-      {% endif %}
-
-    {% endpaginate %}
-  {% endcomment %}
-
-  {%- paginate blog.articles by 6 -%}
+  {%- paginate blog.articles by items_per_page -%}
     <div class="main-blog page-width section-{{ section.id }}-padding">
-      {% comment %}
-        <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-          {{ blog.title | escape }}
-        </h1>
-      {% endcomment %}
 
       <div class="grid__wrapper rg9 pb8">
         <div class="blog-container span-12 auto mt5 mb5">
@@ -149,8 +75,8 @@
                   name="q"
                   type="search"
                   class="search-input"
-                  placeholder="Cerca..."
-                  aria-label="Campo di ricerca"
+                  placeholder="{{ 'blogs.search.placeholder' | t }}"
+                  aria-label="{{ 'blogs.search.ariaLabel' | t }}"
                   value="{{ search.terms | escape }}"
                 >
               </form>
@@ -171,7 +97,7 @@
               {% endcomment %}
 
               <div class="collapse-container">
-                <div class="collapse-header">CATEGORIE</div>
+                <div class="collapse-header">{{ 'blogs.filters.categories.title' | t | upcase }}</div>
                 <div class="collapse-content show">
                   <ul class="collapse-list">
                     {% for category in unique_categories %}
@@ -191,7 +117,7 @@
                       {% endif %}
                     {% endfor %}
                   </ul>
-                  <a href="#" class="show-more">MOSTRA TUTTI</a>
+                  <a href="#" class="show-more">{{ 'blogs.filters.viewAll' | t | upcase }}</a>
                 </div>
               </div>
             </div>
@@ -199,7 +125,7 @@
             {% comment %} Tags section {% endcomment %}
             <div class="sidebar-section">
               <div class="collapse-container">
-                <div class="collapse-header">TAG CLOUD</div>
+                <div class="collapse-header">{{ 'blogs.filters.tags.title' | t | upcase }}</div>
                 <div class="collapse-content show">
                   <ul class="collapse-list">
                     {% for tag in unique_tags %}
@@ -215,7 +141,7 @@
                       {% endif %}
                     {% endfor %}
                   </ul>
-                  <a href="#" class="show-more">MOSTRA TUTTI</a>
+                  <a href="#" class="show-more">{{ 'blogs.filters.viewAll' | t | upcase }}</a>
                 </div>
               </div>
             </div>
@@ -229,12 +155,13 @@
                 items_per_row: items_per_row,
                 side_by_side: side_by_side,
                 paginate: paginate,
-                items_per_page: items_per_page
+                items_per_page: items_per_page,
+                truncatewords: truncatewords
               %}
             </div>
 
             {%- if paginate.pages > 1 -%}
-              {% comment %} {%- render 'pagination', paginate: paginate -%} {% endcomment %}
+              {%- render 'pagination', paginate: paginate -%}
             {%- endif -%}
           </div>
         </div>
@@ -244,7 +171,6 @@
 
   <script>
     (function () {
-      // Gestione dei collapse
       var headers = document.querySelectorAll('.collapse-header');
       var limit = {{ limit_filters }};
 
@@ -256,7 +182,6 @@
         });
       }
 
-      // Gestione dei toggle mostra/nascondi
       var toggleButtons = document.querySelectorAll('.show-more');
 
       for (var i = 0; i < toggleButtons.length; i++) {
@@ -264,13 +189,11 @@
         var container = button.closest('.collapse-content');
         var hiddenItems = container.querySelectorAll('.collapse-item.hidden');
 
-        // Nascondi il pulsante se non ci sono abbastanza elementi
         if (container.querySelectorAll('.collapse-item').length <= limit) {
           button.style.display = 'none';
           continue;
         }
 
-        // Aggiungi evento click
         button.addEventListener('click', function (e) {
           e.preventDefault();
 
@@ -282,7 +205,7 @@
             thisHiddenItems[j].style.display = isExpanded ? 'none' : 'block';
           }
 
-          this.textContent = isExpanded ? 'MOSTRA TUTTI' : 'MOSTRA MENO';
+          this.textContent = isExpanded ? "{{ 'blogs.filters.viewAll' | t | upcase }}" : "{{ 'blogs.filters.viewLess' | t | upcase }}";
           this.setAttribute('data-expanded', !isExpanded);
         });
       }
@@ -307,6 +230,15 @@
       "max": 48,
       "step": 1,
       "label": "Posts per page",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "truncatewords",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "label": "Article description truncate",
       "default": 20
     },
     {
@@ -347,6 +279,21 @@
       "id": "show_comments",
       "label": "Show comment count",
       "default": true
+    },
+    {
+      "type": "color",
+      "id": "read_more_text_color",
+      "label": "Read more text color",
+      "default": "#292929"
+    },
+    {
+      "type": "range",
+      "id": "limit_filters",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "label": "Limit filters",
+      "default": 7
     }
   ]
 }

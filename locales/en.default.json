@@ -63,9 +63,29 @@
       "logout": "Logout",
       "cart": "Cart",
       "bag": "Bag"
-    }
+    },
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next page",
+      "previous": "Previous page"
+    },
   },
   "blogs": {
+    "search": {
+      "placeholder": "Search...",
+      "ariaLabel": "Search field"
+    },
+    "filters": {
+      "categories": {
+        "title": "Categories"
+      },
+      "tags": {
+        "title": "Tags cloud"
+      },
+      "viewAll": "View all",
+      "viewLess": "View less"
+    },
     "article": {
       "recent_posts": "Recent Posts",
       "posted_on_date_html": "Posted on {{ date }}",
