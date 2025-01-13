@@ -13,7 +13,8 @@
       "type": "banner-image",
       "settings": {
         "full_width": true,
-        "banner_height": 400
+        "image": "shopify://shop_images/testata-listing-blog.i64276-kdFNSao-l1.webp",
+        "banner_height": 200
       }
     },
     "main": {
@@ -21,12 +22,15 @@
       "settings": {
         "text": "",
         "items_per_page": 20,
+        "truncatewords": 20,
         "items_per_row": 3,
         "text_align": "left",
         "show_date": true,
         "show_author": false,
-        "show_tags": true,
-        "show_comments": false
+        "show_tags": false,
+        "show_comments": false,
+        "read_more_text_color": "#f4b845",
+        "limit_filters": 7
       }
     }
   },

@@ -52,6 +52,7 @@
 
 .post-title a {
   font-family: var(--main-family);
+  font-weight: 800;
 }
 
 .category {
@@ -69,6 +70,10 @@
 
 .info-category {
   background-color: #009be2;
+}
+
+.article-headline p{
+color: #5a5a5a;
 }
 
 .article-headline .article-actions {
