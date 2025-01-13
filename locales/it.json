@@ -63,9 +63,29 @@
       "logout": "esci",
       "cart": "Carrello",
       "bag": "Borsa"
-    }
+    },
+    "pagination": {
+      "label": "Impaginazione",
+      "page": "Pagina {{ number }}",
+      "next": "Pagina successiva",
+      "previous": "Pagina precedente"
+    },
   },
   "blogs": {
+    "search": {
+      "placeholder": "Cerca...",
+      "ariaLabel": "Campo di ricerca"
+    },
+    "filters": {
+      "categories": {
+        "title": "Categorie"
+      },
+      "tags": {
+        "title": "Tag cloud"
+      },
+      "viewAll": "Mosta tutti",
+      "viewLess": "Mostra meno"
+    },
     "article": {
       "recent_posts": "Articoli recenti",
       "posted_on_date_html": "postato su {{ date }}",

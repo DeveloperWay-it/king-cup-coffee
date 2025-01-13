@@ -1,99 +1,217 @@
 {% comment %} Blog Assets {% endcomment %}
-<link rel="preload" href="{{ 'section-main-blog.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link
+  rel="preload"
+  href="{{ 'section-main-blog.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript><link rel="stylesheet" href="{{ 'section-main-blog.css' | asset_url }}"></noscript>
 
 {% comment %} Blog Logic {% endcomment %}
 {%- liquid
   assign side_by_side = false
   case section.settings.items_per_row
-  when 4
-    assign items_per_row = 'span-3 auto'
-  when 3
-    assign items_per_row = 'span-4 auto'
-  when 2
-    assign items_per_row = 'span-6 auto'
-  when 1
-    assign items_per_row = 'span-12'
-    assign side_by_side = true
+    when 4
+      assign items_per_row = 'span-3 auto px1 pb3'
+    when 3
+      assign items_per_row = 'span-4 auto px1 pb3'
+    when 2
+      assign items_per_row = 'span-6 auto px1 pb3'
+    when 1
+      assign items_per_row = 'span-12'
   endcase
 
   assign items_per_page = section.settings.items_per_page
-
+  assign truncatewords = section.settings.truncatewords
+  assign limit_filters = section.settings.limit_filters
 -%}
+
+{% comment %} First, collect all tags and separate them {% endcomment %}
+{% assign categories = '' %}
+{% assign regular_tags = '' %}
+{% assign selected_category = '' %}
+{% assign selected_tags = '' %}
+
+{% comment %} Separate categories and tags, identify selected ones {% endcomment %}
+{% for tag in blog.all_tags %}
+  {% if tag contains 'category|' %}
+    {% assign category_name = tag | split: 'category|' | last %}
+    {% assign categories = categories | append: category_name | append: ',' %}
+  {% else %}
+    {% assign regular_tags = regular_tags | append: tag | append: ',' %}
+  {% endif %}
+{% endfor %}
+
+{% for tag in current_tags %}
+  {% if tag contains 'category|' %}
+    {% assign selected_category = tag %}
+  {% else %}
+    {% assign selected_tags = selected_tags | append: tag | append: ',' %}
+  {% endif %}
+{% endfor %}
+
+{% assign unique_categories = categories | split: ',' | sort %}
+{% assign unique_tags = regular_tags | split: ',' | sort %}
 
 {% comment %} Blog Template {% endcomment %}
 <section
   class="blog-template"
   data-section-id="{{ section.id }}"
   data-section-type="blog-template"
-  data-section-loaded="false">
+  data-section-loaded="false"
+>
 
-  {% paginate blog.articles by items_per_page %}
+  {%- paginate blog.articles by items_per_page -%}
+    <div class="main-blog page-width section-{{ section.id }}-padding">
 
-    <div class="grid__wrapper py8">
-      <div class="span-12 auto a-center">
-        <h1>{{ blog.title }}</h1>
-      </div>
-    </div>
-
-    <div class="grid__wrapper rg9 pb8">
-
-      {% if section.settings.text != blank or current_tags %}
-        <div class="span-12 auto mb5">
-          {% unless section.settings.text == blank %}
-            <div class="blog-description a-center rte">
-              {{ section.settings.text }}
+      <div class="grid__wrapper rg9 pb8">
+        <div class="blog-container span-12 auto mt5 mb5">
+          <div class="blog-sidebar">
+            {% comment %} Search section {% endcomment %}
+            <div class="sidebar-section">
+              <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+                <input type="hidden" name="type" value="article">
+                <input type="hidden" name="options[prefix]" value="last">
+                <input
+                  name="q"
+                  type="search"
+                  class="search-input"
+                  placeholder="{{ 'blogs.search.placeholder' | t }}"
+                  aria-label="{{ 'blogs.search.ariaLabel' | t }}"
+                  value="{{ search.terms | escape }}"
+                >
+              </form>
             </div>
-          {% endunless %}
-          {% if current_tags %}
-            <div class="blog-template__tags--wrapper">
-              <p class="blog-template__tags--label m mb1">{{ 'blogs.article.tagged' | t }}</p>
-              <ul class="blog-template__tags--group inline-block mb0 w100 v-start">
-                {%- for tag in current_tags -%}
-                  <li class="blog-template__tags--tag mr3">{{ tag | link_to_remove_tag: tag }}</li>
-                {%- endfor -%}
-                <li class="blog-template__tags--clear">
-                  <a href="{{ blog.url }}">
-                    {% render 'snip-icons',
-                       wrapper: '.tag-filters',
-                       type: 'theme',
-                       icon: 'close',
-                       size: '10px',
-                       classes: 'm0 vib-center',
-                       fill: 'var(--text-color)',
-                       hover: 'var(--text-color)' %}
-                     <span class="vib-center">{{ 'collections.general.clear_all_tags' | t }}</span>
-                   </a>
-                 </li>
-              </ul>
+
+            {% comment %} Categories section {% endcomment %}
+            <div class="sidebar-section">
+              {% comment %}
+                {% if current_tags.size > 0 %}
+                  <a href="{{ blog.url }}" class="reset-filters">
+                    <svg class="reset-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                      <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                    </svg>
+
+                    Resetta filtri
+                  </a>
+                {% endif %}
+              {% endcomment %}
+
+              <div class="collapse-container">
+                <div class="collapse-header">{{ 'blogs.filters.categories.title' | t | upcase }}</div>
+                <div class="collapse-content show">
+                  <ul class="collapse-list">
+                    {% for category in unique_categories %}
+                      {% if category != blank %}
+                        {% capture full_category_tag %}category|{{ category }}{% endcapture %}
+                        <li class="collapse-item {% if forloop.index > limit_filters %}hidden{% endif %}">
+                          {% comment %} Category URL mantiene i tag selezionati {% endcomment %}
+                          {% capture category_url %}{{ blog.url }}/tagged/{{ full_category_tag | handle }}{% endcapture %}
+
+                          <a
+                            href="{{ category_url }}"
+                            class="category-link {% if selected_category == full_category_tag %}active{% endif %}"
+                          >
+                            {{ category }}
+                          </a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <a href="#" class="show-more">{{ 'blogs.filters.viewAll' | t | upcase }}</a>
+                </div>
+              </div>
             </div>
-          {% endif %}
+
+            {% comment %} Tags section {% endcomment %}
+            <div class="sidebar-section">
+              <div class="collapse-container">
+                <div class="collapse-header">{{ 'blogs.filters.tags.title' | t | upcase }}</div>
+                <div class="collapse-content show">
+                  <ul class="collapse-list">
+                    {% for tag in unique_tags %}
+                      {% if tag != blank %}
+                        <li class="collapse-item {% if forloop.index > limit_filters %}hidden{% endif %}">
+                          <a
+                            href="{{ blog.url }}/tagged/{{ tag | handle }}"
+                            class="category-link {% if current_tags contains tag %}active{% endif %}"
+                          >
+                            {{ tag }}
+                          </a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <a href="#" class="show-more">{{ 'blogs.filters.viewAll' | t | upcase }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-content">
+            <div class="blog-articles grid__wrapper {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+              {% render 'article-loop',
+                blog: blog,
+                grid_items: section.settings.items_per_row,
+                items_per_row: items_per_row,
+                side_by_side: side_by_side,
+                paginate: paginate,
+                items_per_page: items_per_page,
+                truncatewords: truncatewords
+              %}
+            </div>
+
+            {%- if paginate.pages > 1 -%}
+              {%- render 'pagination', paginate: paginate -%}
+            {%- endif -%}
+          </div>
         </div>
-      {% endif %}
-
-      {% render 'article-loop',
-          blog: blog,
-          grid_items: section.settings.items_per_row,
-          items_per_row: items_per_row,
-          side_by_side: side_by_side,
-          paginate: paginate ,
-          items_per_page: items_per_page %}
-
-    </div>
-
-    {% if paginate.pages > 1 %}
-      <div class="span-12 auto mb8">
-        {% render 'snip-pagination', paginate: paginate %}
       </div>
-    {% endif %}
+    </div>
+  {%- endpaginate -%}
 
-  {% endpaginate %}
+  <script>
+    (function () {
+      var headers = document.querySelectorAll('.collapse-header');
+      var limit = {{ limit_filters }};
 
-  <style>
-    .blog-template .article-loop__excerpt {
-      text-align: {{ section.settings.text_align }};
-    }
-  </style>
+      for (var i = 0; i < headers.length; i++) {
+        headers[i].addEventListener('click', function () {
+          this.classList.toggle('active');
+          var content = this.nextElementSibling;
+          content.classList.toggle('show');
+        });
+      }
+
+      var toggleButtons = document.querySelectorAll('.show-more');
+
+      for (var i = 0; i < toggleButtons.length; i++) {
+        var button = toggleButtons[i];
+        var container = button.closest('.collapse-content');
+        var hiddenItems = container.querySelectorAll('.collapse-item.hidden');
+
+        if (container.querySelectorAll('.collapse-item').length <= limit) {
+          button.style.display = 'none';
+          continue;
+        }
+
+        button.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          var thisContainer = this.closest('.collapse-content');
+          var thisHiddenItems = thisContainer.querySelectorAll('.collapse-item.hidden');
+          var isExpanded = this.getAttribute('data-expanded') === 'true';
+
+          for (var j = 0; j < thisHiddenItems.length; j++) {
+            thisHiddenItems[j].style.display = isExpanded ? 'none' : 'block';
+          }
+
+          this.textContent = isExpanded ? "{{ 'blogs.filters.viewAll' | t | upcase }}" : "{{ 'blogs.filters.viewLess' | t | upcase }}";
+          this.setAttribute('data-expanded', !isExpanded);
+        });
+      }
+    })();
+  </script>
 </section>
 
 {% schema %}
@@ -113,6 +231,15 @@
       "max": 48,
       "step": 1,
       "label": "Posts per page",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "truncatewords",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "label": "Article description truncate",
       "default": 20
     },
     {
@@ -153,6 +280,21 @@
       "id": "show_comments",
       "label": "Show comment count",
       "default": true
+    },
+    {
+      "type": "color",
+      "id": "read_more_text_color",
+      "label": "Read more text color",
+      "default": "#292929"
+    },
+    {
+      "type": "range",
+      "id": "limit_filters",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "label": "Limit filters",
+      "default": 7
     }
   ]
 }

@@ -1,47 +1,212 @@
-.template-blog .article-loop__date {
-  background: var(--text-color);
-  color: var(--background);
-  padding: var(--space-2);
+.blog-template .blog-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.template-blog .article-loop__date.has-image--true {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+@media screen and (min-width: 768px) {
+  .blog-template .blog-container {
+    flex-direction: row;
+  }
 }
 
-.template-blog .article-loop__date.has-image--false {
-  margin-bottom: 10px;
+/* Sidebar */
+
+.blog-template .blog-container .blog-sidebar {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  max-width: unset;
+  gap: 24px;
 }
 
-.template-blog .blog-template__tags--tag a {
-  border: 1px solid var(--dotted-color);
+@media screen and (min-width: 768px) {
+  .blog-template .blog-container .blog-sidebar {
+    flex: 1 0 200px;
+  }
 }
 
-.template-blog .blog-template__tags--tag a, .template-blog .blog-template__tags--clear a {
-  font-size: var(--font-size);
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.57;
-  letter-spacing: 1px;
+@media screen and (min-width: 1200px) {
+  .blog-template .blog-container .blog-sidebar {
+    flex: 1 0 260px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .blog-template .blog-container .blog-sidebar {
+    flex: 1 0 360px;
+  }
+}
+
+.blog-template .blog-container .blog-sidebar .search-form .search-input {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E")
+    no-repeat 8px center;
+}
+
+.blog-template .blog-container .blog-sidebar .search-form .search-input:focus {
+  outline: none;
+  border-color: #666;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.blog-template
+  .blog-container
+  .blog-sidebar
+  .search-form
+  .search-input::placeholder {
+  color: #666;
+}
+
+.blog-template .blog-container .blog-sidebar .reset-filters {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.3rem;
+  background-color: rgba(var(--color-foreground), 0.08);
+  border: none;
+  border-radius: var(--buttons-radius-outset);
+  font-size: 1.2rem;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: all var(--duration-short) ease;
+  margin-bottom: 24px;
+}
+
+.blog-template .blog-container .blog-sidebar .reset-filters:hover {
+  background-color: rgba(var(--color-foreground), 0.12);
+}
+
+.blog-template .blog-container .blog-sidebar .reset-filters .reset-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.5rem;
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-header {
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-header::before {
+  content: "+";
+  margin-right: 8px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-header.active::before {
+  content: "−";
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-content.show {
+  max-height: 500px;
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-item a.category-link {
+  padding: 8px 0 8px 24px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-template
+  .blog-container
+  .blog-sidebar
+  .collapse-item
+  a.category-link::before {
+  content: "";
+  border: solid #ababab;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: relative;
+  left: -8px;
+}
+
+.blog-template
+  .blog-container
+  .blog-sidebar
+  .collapse-item
+  a.category-link:hover {
+  text-decoration: underline;
+}
+
+/* .blog-template .blog-container .blog-sidebar .collapse-item a.category-link:hover::before {
+  text-decoration: none;
+} */
+
+.blog-template
+  .blog-container
+  .blog-sidebar
+  .collapse-item
+  a.category-link.active {
+  font-weight: bold;
+}
+
+/* .blog-template .blog-container .blog-sidebar .collapse-item a.category-link.active::before {
+  font-weight: normal;
+} */
+
+.blog-template .blog-container .blog-sidebar .collapse-item .category-link {
+  margin-bottom: 0;
+}
+
+.blog-template .blog-container .blog-sidebar .collapse-item.hidden {
+  display: none;
+}
+
+.blog-template .blog-container .blog-sidebar .show-more {
+  display: block;
+  padding: 12px 0;
+  color: #000;
+  font-weight: 500;
+  text-decoration: none;
   text-transform: uppercase;
-  padding: var(--space-3) var(--space-4);
-  color: var(--text-color-light);
-  display: inline-block;
-  margin-bottom: var(--space-3);
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-/* Foodie Custom */
-.template-blog .article-loop__date {
-  border-color: var(--text-color);
-  color: var(--text-color);
-  background-color: var(--background);
-  border-radius: 1px;
-  border-style: solid;
-  border-width: 1px;
-  display: inline-block;
-  font-size: var(--font-size-sm);
-  height: 26px;
-  line-height: 26px;
-  padding: 0 8px 0 8px;
+.blog-template .blog-container .blog-sidebar .show-more:hover {
+  background-color: #f5f5f5;
 }
+
+/* end Sidebar */
+
+/* Articles */
+
+.blog-template .blog-container .blog-articles {
+  display: grid;
+  grid-gap: 1rem;
+  column-gap: var(--grid-mobile-horizontal-spacing);
+  row-gap: var(--grid-mobile-vertical-spacing);
+}
+
+/* end Articles */
