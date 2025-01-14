@@ -63,7 +63,7 @@
         "megamenu_mPKXQt": {
           "type": "megamenu",
           "settings": {
-            "megamenu_menu_item": "Catalog",
+            "megamenu_menu_item": "I Nostri Prodotti",
             "megamenu_title": "Catalog",
             "image_ratio": "square",
             "links_alignment": "left",
@@ -97,7 +97,7 @@
         "logo_max_width": 50,
         "logo_max_width_mobile": 50,
         "logo_size": 32,
-        "main_nav": "main-menu",
+        "main_nav": "test-menu",
         "nav_alignment": "center",
         "show_desktop_icons": true
       }
