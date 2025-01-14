@@ -10,7 +10,7 @@
 {
   "sections": {
     "banner": {
-      "type": "banner-image",
+      "type": "blog-banner-image",
       "settings": {
         "full_width": true,
         "image": "shopify://shop_images/testata-listing-blog.i64276-kdFNSao-l1.webp",
