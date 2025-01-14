@@ -433,9 +433,14 @@ span.js-cart-count.icon-only:hover {
   border-right: 0.4px solid rgba(0, 0, 0, 0.6);
 }
 
+
 .megamenu-subsublink {
   display: none;
   margin-bottom: 8px
+}
+
+.megamenu-subsublink:first-child {
+  display: block ; /* Mostra il primo megamenu-subsublink per impostazione predefinita */
 }
 
 .megamenu-sublink {
@@ -451,10 +456,10 @@ span.js-cart-count.icon-only:hover {
 .section-header ul.header__navigation .megamenu-sublink-image {
   display: none;
 }
-
-.mega-dropdown__image-wrapper .megamenu-subsublink:first-child {
-  display: block ; /* Mostra il primo megamenu-subsublink per impostazione predefinita */
+.section-header ul.header__navigation .megamenu-sublink-image:first-child {
+  display: block;
 }
+
 
 .megamenu-sublink:hover,
 .megamenu-subsublink a:hover {
