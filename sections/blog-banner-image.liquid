@@ -4,6 +4,7 @@
   id: section.id,
   index: section.index,
   title: blog.title,
+  subtitle: blog.metafields.custom.blog_subtitle,
   image: section.settings.image,
   full_width: section.settings.full_width,
   template: template,
@@ -14,7 +15,7 @@
 
 {% schema %}
 {
-  "name": "Banner image",
+  "name": "Blog Banner image",
   "tag": "section",
   "settings": [
     {

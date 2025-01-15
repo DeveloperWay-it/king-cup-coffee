@@ -1,0 +1,105 @@
+{% comment %} Blog Assets {% endcomment %}
+<link
+  rel="preload"
+  href="{{ 'component-banner-image.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<noscript><link rel="stylesheet" href="{{ 'component-banner-image.css' | asset_url }}"></noscript>
+
+{%- liquid
+  assign section_banner = false
+
+  if image != blank
+    assign section_banner = true
+  endif
+
+  if full_width
+    assign full_width = 'edge'
+  endif
+
+  if image == blank and template contains 'article' and article.image != blank
+    assign section_banner = true
+  endif
+
+  assign sm_render = '100vw'
+  assign md_render = '100vw'
+  assign lg_render = '100vw'
+
+  if index == 1
+    assign fetchpriority = 'high'
+    assign loading = 'eager'
+  endif
+-%}
+
+{% comment %} Banner Image Template {% endcomment %}
+{%- if section_banner -%}
+  <div
+    class="global__section section__banner-{{ id }} mt0 grid__wrapper {{ full_width }} pb0 mb5"
+    data-section-id="{{ id }}"
+    data-section-type="banner-image"
+    data-section-loaded="false"
+  >
+    <div class="section__banner-image span-12 auto">
+      {%- if image == blank and template contains 'article' and article.image != blank -%}
+        {% render 'helper-image',
+          type: article.image,
+          sm_render: sm_render,
+          md_render: md_render,
+          lg_render: lg_render,
+          loading: loading,
+          fetchpriority: fetchpriority,
+          width: 2400
+        %}
+      {%- else -%}
+        {% render 'helper-image',
+          type: image,
+          sm_render: sm_render,
+          md_render: md_render,
+          lg_render: lg_render,
+          loading: loading,
+          fetchpriority: fetchpriority,
+          width: 2400
+        %}
+      {%- endif -%}
+
+      <div class="section__banner-image--headings grid__wrapper rg9 pt8">
+        <div class="section__banner-image--headings-container span-12 auto mt5 mb5">
+          <div class="section__banner-image--headings-sidebar"></div>
+
+          <div class="section__banner-image--headings-content grid__wrapper">
+            <div class="span-12">
+              <h1 class="title">{{ title }}</h1>
+              <div class="subtitle">{{ subtitle }}</div>
+            </div>
+
+            {%- if section.settings.show_breadcrumbs == true -%}
+              <div class="span-12">
+                <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+                  <a href="/" title="Home">Home</a>
+                  <span aria-hidden="true">&#47;</span>
+                  <span>{{ title }}</span>
+                </nav>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .section__banner-{{ id }} .box-ratio {
+        padding-bottom: {{ banner_height }}px !important;
+      }
+      .section__banner-{{ id }} .box-ratio img {
+        object-fit: cover;
+        object-position: center;
+        height: {{ banner_height }}px !important;
+      }
+      .section__banner-image--headings * {
+        font-family: var(--main-family);
+        color: {{ heading_text_color }} !important;
+      }
+    </style>
+  </div>
+{%- endif -%}
