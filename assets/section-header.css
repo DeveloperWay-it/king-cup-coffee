@@ -369,6 +369,11 @@ span.js-cart-count.icon-only:hover {
   gap: 38px;
   margin-bottom: 0;
 }
+.grid__wrapper_icons.two-columns{ 
+  margin: 0 auto;
+  flex-wrap: wrap;
+  max-width: 776px
+}
 
 .grid__wrapper_icons li{
   width: fit-content!important;
@@ -377,7 +382,7 @@ span.js-cart-count.icon-only:hover {
 .menu-item-with-icon{
   display: flex!important;
   flex-direction: column;
-  width: fit-content!important;
+  width: 156px!important;
   justify-content: flex-start;
   align-items: center;
   height: 100%;

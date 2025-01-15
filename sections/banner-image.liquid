@@ -1,6 +1,6 @@
 {% comment %} Banner Image Logic {% endcomment %}
 
-{%- render 'banner-image',
+{%- render 'banner-image-snippet',
   id: section.id,
   index: section.index,
   title: blog.title,
@@ -44,18 +44,6 @@
       "id": "heading_text_color",
       "label": "Heading text color",
       "default": "#ffffff"
-    },
-    {
-      "id": "title",
-      "type": "text",
-      "label": "Title",
-      "default": ""
-    },
-    {
-      "id": "subtitle",
-      "type": "text",
-      "label": "Subtitle",
-      "default": ""
     },
     {
       "type": "checkbox",

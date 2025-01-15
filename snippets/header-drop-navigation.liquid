@@ -186,17 +186,16 @@
         {% when 'linklist_with_icons' %}
           {% if block.settings.linklist_icons_menu_item == link.title %}
               {% assign meganav = true %}
+              {% assign length = link.links | size %}
               {% capture mega_dropdown_menu %}
                 <nav id="drop-mega-menu" class="drop icons sm-hide md-hide menu-{{ block.id }} js-dropdown-megamenu" {{ block.shopify_attributes }}>
                   <div class="span-5 auto left v-center icons-border-wrapper">
-                    <ul class="grid__wrapper_icons wrapper-nest">
-                      {% assign icon_counter = 0 %}
+                    <ul class="grid__wrapper_icons wrapper-nest {% if length >= 6 %} two-columns {% endif %}">
+
                       {% for sub_link in link.links %}
                         <li class="span-6 auto">
                           <a href="{{ sub_link.url }}" class="menu-item-with-icon">
-                            {% assign icon_counter = icon_counter | plus: 1 %}
-                            {% if icon_counter <= 5 %}
-                              {% assign custom_icon = "icon_image_" | append: icon_counter %}
+                              {% assign custom_icon = "icon_image_" | append: forloop.index %}
                               {% assign custom_icon = block.settings[custom_icon] %}
                               {% if custom_icon %}
                                 <span class="icon-wrapper">
@@ -209,7 +208,6 @@
                                     width: 100, 
                                     height: 100 %}
                                 </span>
-                              {% endif %}
                             {% endif %}
                             <p>{{ sub_link.title }}</p>
                           </a>
