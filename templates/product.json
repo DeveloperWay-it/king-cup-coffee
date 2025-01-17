@@ -26,49 +26,10 @@
           "type": "price",
           "settings": {}
         },
-        "text_with_icon_Jz4Qnw": {
-          "type": "text_with_icon",
-          "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
-          }
-        },
-        "text_with_icon_Lnb6tc": {
-          "type": "text_with_icon",
-          "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
-          }
-        },
-        "text_with_icon_NMtTey": {
-          "type": "text_with_icon",
-          "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
-          }
-        },
-        "text_with_icon_m4i6x6": {
-          "type": "text_with_icon",
-          "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
-          }
-        },
-        "description_JzXQMm": {
-          "type": "description",
-          "settings": {
-            "show_as_accordion": true,
-            "default_open_accordion": true
-          }
-        },
-        "metafield_XFA8tC": {
+        "metafield_jKGUCU": {
           "type": "metafield",
           "settings": {
-            "text": "Confezione da 50 capsule ➡"
+            "text": "{{ product.metafields.custom.descrizione_breve | metafield_tag }}"
           }
         },
         "quantity": {
@@ -94,19 +55,18 @@
             "text_align": "left"
           }
         },
-        "metafield_jKGUCU": {
-          "type": "metafield",
-          "settings": {
-            "text": ""
-          }
-        },
         "accordion_content_YCXTQC": {
           "type": "accordion_content",
           "settings": {
             "accordion_heading": "Dettagli prodotto",
             "page": "",
-            "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": true
+            "richtext": "{{ product.description }}",
+            "default_open_accordion": true,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "accordion_content_HfEAfr": {
@@ -114,8 +74,13 @@
           "settings": {
             "accordion_heading": "Ingredienti",
             "page": "",
-            "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": false
+            "richtext": "{{ product.metafields.custom.ingredienti | metafield_tag }}",
+            "default_open_accordion": false,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "accordion_content_D3QwGy": {
@@ -123,8 +88,13 @@
           "settings": {
             "accordion_heading": "Come si prepara",
             "page": "",
-            "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": false
+            "richtext": "{{ product.metafields.custom.ingredienti | metafield_tag }}",
+            "default_open_accordion": false,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "accordion_content_83JQYX": {
@@ -133,7 +103,12 @@
             "accordion_heading": "Spedizione e reso",
             "page": "",
             "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": false
+            "default_open_accordion": false,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "complementary_products_3Vwimk": {
@@ -148,17 +123,11 @@
         "title",
         "subtitle",
         "price",
-        "text_with_icon_Jz4Qnw",
-        "text_with_icon_Lnb6tc",
-        "text_with_icon_NMtTey",
-        "text_with_icon_m4i6x6",
-        "description_JzXQMm",
-        "metafield_XFA8tC",
+        "metafield_jKGUCU",
         "quantity",
         "variants",
         "buttons",
         "text_with_icon_GTrkzD",
-        "metafield_jKGUCU",
         "accordion_content_YCXTQC",
         "accordion_content_HfEAfr",
         "accordion_content_D3QwGy",
