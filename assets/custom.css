@@ -1,0 +1,96 @@
+/* Stile generale */
+.new_icon__icon {
+    width: 30px;
+    height: 28px;
+}
+
+.text-with-new-icon p {
+    margin: 0px;
+}
+
+.icon-block {
+    margin: 12px 0;
+    width: 33.33%; /* 3 colonne per desktop */
+    float: left;
+}
+
+@media (max-width: 768px) {
+    .icon-block {
+        width: 50%; /* 2 colonne per tablet */
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .icon-block {
+        width: 100%; /* 1 colonna per mobile */
+        float: none; /* Rimuove il float */
+        display: flex; /* Mantiene l'icona e il testo orizzontale */
+        align-items: center; /* Allinea verticalmente icona e testo */
+        justify-content: flex-start; /* Allinea icona e testo a sinistra */
+        gap: 10px; /* Spaziatura tra icona e testo */
+    }
+}
+
+/* Stile per il contenitore delle icone nell'accordion */
+.icon-container-accordion-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 100%;
+}
+
+.icon-item {
+    text-align: center;
+    flex-basis: calc(18% - 15px); /* 4 elementi per riga su desktop */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.icon-item img {
+    width: 50px; /* Dimensione delle icone */
+    margin-bottom: 5px;
+}
+
+.icon-item span {
+    font-size: 14px;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.icon-container-accordion-content p {
+    margin-bottom: 0px;
+}
+
+@media (max-width: 768px) {
+    .icon-item {
+        flex-basis: calc(22.33% - 15px); /* 3 elementi per riga su tablet */
+    }
+
+    .icon-container-accordion-content p {
+        font-size: 8px;
+    }
+
+    .icon-item img {
+        width: 30px; /* Ridimensionamento icone su tablet */
+    }
+
+    .icon-container-accordion-content {
+        gap: 6px; /* Spaziatura ridotta su tablet */
+    }
+
+    .icon-item {
+        padding: 4px; /* Padding ridotto su tablet */
+    }
+}
+
+@media (max-width: 480px) {
+    .icon-item {
+        flex-basis: 100%; /* 1 elemento per riga su mobile */
+    }
+
+    .icon-item {
+        padding: 7px;
+    }
+}
