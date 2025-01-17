@@ -61,7 +61,7 @@
             "accordion_heading": "Dettagli prodotto",
             "page": "",
             "richtext": "{{ product.description }}",
-            "default_open_accordion": true,
+            "default_open_accordion": false,
             "text_1": "",
             "text_2": "",
             "text_3": "",
@@ -88,7 +88,7 @@
           "settings": {
             "accordion_heading": "Come si prepara",
             "page": "",
-            "richtext": "{{ product.metafields.custom.ingredienti | metafield_tag }}",
+            "richtext": "{{ product.metafields.custom.come_si_prepara | metafield_tag }}",
             "default_open_accordion": false,
             "text_1": "",
             "text_2": "",
