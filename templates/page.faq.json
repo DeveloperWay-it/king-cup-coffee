@@ -13,7 +13,9 @@
       "type": "banner-image",
       "settings": {
         "full_width": true,
-        "banner_height": 400
+        "banner_height": 400,
+        "heading_text_color": "#ffffff",
+        "show_breadcrumbs": true
       }
     },
     "main": {
@@ -28,29 +30,136 @@
         "panel_bMF7Qd": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            "heading": "1. Dove posso acquistare i prodotti King Cup?",
+            "content": "<p>Puoi trovare i nostri prodotti nei migliori ipermercati e supermercati e sull’Online Shop <a href=\"https://www.kingcupcoffee.com/\">www.kingcupcoffee.com</a>.</p><p>Scopri nella sezione “Distributori” i punti vendita più vicini a te.<br/>Nel nostro Online Shop troverai la gamma completa e aggiornata di tutte le bevande King Cup.</p>"
           }
         },
         "panel_mtW3Bh": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            "heading": "2. Le Capsule King Cup sono compatibili con la mia macchina del caffè?",
+            "content": "<p>Dipende dal sistema della macchina per le quali abbiamo 3 versioni diverse di capsule:</p><ol><li>Capsule compatibili Nespresso®*: compatibili con tutte la macchine del caffè con marchio “Nespresso”.</li><li>Capsule compatibili Dolce Gusto®*: compatibili con tutte la macchine del caffè con marchio “Dolce Gusto”.</li><li>Capsule compatibili A Modo Mio®*: compatibili con tutte la macchine del caffè con marchio “Lavazza A Modo Mio”.</li></ol><p>*il marchio non è di proprietà di King Cup Italia Srl né di aziende ad essa collegate.</p>"
           }
         },
         "panel_yiGgA4": {
           "type": "panel",
           "settings": {
-            "heading": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            "heading": "3. Gli Stick e le Capsule hanno una data di scadenza?",
+            "content": "<p>Tutti i nostri prodotti, Stick che Capsule, sono sigillati ermeticamente per proteggere la miscela da luce, ossigeno e umidità. In questo modo la miscela si mantiene fresca per almeno due anni dopo il confezionamento.</p><p>Su ogni astuccio è possibile trovare la data entro la quale consigliamo di consumare il prodotto. Questa data è semplicemente un indice della freschezza, del sapore e dell’aroma ottimale della miscela.</p>"
+          }
+        },
+        "panel_B3RJcr": {
+          "type": "panel",
+          "settings": {
+            "heading": "4. Che corriere consegnerà il mio ordine?",
+            "content": "<p>Sarà GLS a consegnare il tuo pacco.</p><p>Per gli ordini al di fuori dall'Italia, sarà il corriere DPD a consegnare il tuo ordine. </p>"
+          }
+        },
+        "panel_7hT4ei": {
+          "type": "panel",
+          "settings": {
+            "heading": "5. Posso scegliere l’orario di consegna?",
+            "content": "<p>Segnaleremo ogni nota inserita dal cliente al nostro corriere; tuttavia non ci assumiamo alcuna responsabilità nel caso in cui quest’ultimo non la prenda in considerazione.</p>"
+          }
+        },
+        "panel_Ld8zeD": {
+          "type": "panel",
+          "settings": {
+            "heading": "6. Cosa succede se non sono in casa al momento della consegna?",
+            "content": "<p>Il nostro corriere provvederà a lasciare all’indirizzo segnalatoci un avviso con le istruzioni su luogo e orari ove poter ritirare l’ordine.</p><p>Il corriere effettuerà fino a 2 tentativi di consegna, terminati i quali ritornerà il pacco al mittente. Di conseguenza, è consigliabile indicare un luogo di consegna dove sia presente qualcuno per il ritiro.</p>"
+          }
+        },
+        "panel_dQrePa": {
+          "type": "panel",
+          "settings": {
+            "heading": "7. Devo pagare qualcosa alla consegna?",
+            "content": "<p>No, il totale viene pagato per intero durante l’acquisto online, a meno che si scelga di pagare tramite contrassegno. Con quest’ultimo il totale subirà una maggiorazione di 4,50 € che apparirà già nel totale dell’ordine e verrà pagato interamente alla consegna.</p>"
+          }
+        },
+        "panel_brmExC": {
+          "type": "panel",
+          "settings": {
+            "heading": "8. Posso richiedere la fattura?",
+            "content": "<p>Certo, ad ogni ordine seguirà relativa fattura se richiesto. Pertanto necessitiamo di sapere il codice fiscale o la partita Iva in caso di aziende. La fattura verrà inviata tramite mail.</p>"
+          }
+        },
+        "panel_3MqbwW": {
+          "type": "panel",
+          "settings": {
+            "heading": "9. Inserire i dati della mia carta è sicuro?",
+            "content": "<p>Per pagamenti tramite carta di credito ci avvaliamo dei servizi e le politiche di PayPal Inc. Pertanto inserire i dati della sua carta di credito nel loro portale è sicuro.</p><p>Tutti i dati da lei forniti verranno utilizzati solo a scopo di vendita e sono tutelati dalla legge sulla privacy.</p>"
+          }
+        },
+        "panel_GLhAH4": {
+          "type": "panel",
+          "settings": {
+            "heading": "10. Posso pagare con carta PostePay?",
+            "content": "<p>Sì, può pagare anche tramite PostePay tramite il portale PayPal.</p>"
+          }
+        },
+        "panel_dbNe7p": {
+          "type": "panel",
+          "settings": {
+            "heading": "11. Dov’è il mio ordine?",
+            "content": "<p>Ad avvenuta spedizione riceverà un’email di notifica direttamente dal corriere con il numero di tracking per poter monitorare on-line lo stato della spedizione.</p>"
+          }
+        },
+        "panel_GGV3nG": {
+          "type": "panel",
+          "settings": {
+            "heading": "12. Da dove spedite?",
+            "content": "<p>Tutte le spedizioni partono dalla nostra sede operativa del Nord Italia.</p>"
+          }
+        },
+        "panel_3D96xT": {
+          "type": "panel",
+          "settings": {
+            "heading": "13. Non ho ancora ricevuto il mio ordine. Cosa devo fare?",
+            "content": "<p>Tutti gli ordini vengono spediti entro due giorni lavorativi. Nel caso fossero trascorsi più di due giorni lavorativi consigliamo di contattarci tramite e-mail <a href=\"mailto:info@kingcupcoffee.eu\">info@kingcupcoffee.eu</a></p>"
+          }
+        },
+        "panel_4RrRHw": {
+          "type": "panel",
+          "settings": {
+            "heading": "14. Come funzionano i Codici Promozione?",
+            "content": "<p>Se è in possesso di codici promozionali, una volta scelti e visualizzati i prodotti nel carrello, basterà inserire il codice nell’apposito spazio e il prezzo verrà scontato automaticamente.</p>"
+          }
+        },
+        "panel_pd7rGb": {
+          "type": "panel",
+          "settings": {
+            "heading": "15. Posso aggiungere o eliminare articoli dal mio ordine?",
+            "content": "<p>Se l’ordine non è già stato inoltrato è possibile aggiungere ed eliminare articoli direttamente dal carrello; se l’ordine è già stato inoltrato basterà contattarci tramite e-mail all’indirizzo <a href=\"mailto:info@kingcupcoffee.eu\">info@kingcupcoffee.eu</a> entro 12 ore. A seconda degli articoli aggiunti o eliminati potrà variare il prezzo della spedizione.</p>"
+          }
+        },
+        "panel_69cUKj": {
+          "type": "panel",
+          "settings": {
+            "heading": "16. Posso fare acquisti da mobile?",
+            "content": "<p>Sì, il nostro sito web è responsive mobile, totalmente funzionante tramite dispositivi mobile o tablet.</p>"
           }
         }
       },
       "block_order": [
         "panel_bMF7Qd",
         "panel_mtW3Bh",
-        "panel_yiGgA4"
+        "panel_yiGgA4",
+        "panel_B3RJcr",
+        "panel_7hT4ei",
+        "panel_Ld8zeD",
+        "panel_dQrePa",
+        "panel_brmExC",
+        "panel_3MqbwW",
+        "panel_GLhAH4",
+        "panel_dbNe7p",
+        "panel_GGV3nG",
+        "panel_3D96xT",
+        "panel_4RrRHw",
+        "panel_pd7rGb",
+        "panel_69cUKj"
+      ],
+      "custom_css": [
+        "li {border-bottom: none;}"
       ],
       "settings": {
         "heading": "FAQs",
@@ -58,77 +167,22 @@
         "section_padding": "both"
       }
     },
-    "1626883542b88f92db": {
-      "type": "editorial-columns",
-      "blocks": {
-        "1626883542b88f92db-0": {
-          "type": "text_block",
-          "settings": {
-            "title": "Our collections",
-            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.<\/p>",
-            "button": "Learn More",
-            "link": ""
-          }
-        },
-        "1626883542b88f92db-1": {
-          "type": "text_block",
-          "settings": {
-            "title": "Our collections",
-            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.<\/p>",
-            "button": "Learn More",
-            "link": ""
-          }
-        },
-        "1626883542b88f92db-2": {
-          "type": "text_block",
-          "settings": {
-            "title": "Our collections",
-            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.<\/p>",
-            "button": "Learn More",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "1626883542b88f92db-0",
-        "1626883542b88f92db-1",
-        "1626883542b88f92db-2"
-      ],
+    "contact_form_bVgX7J": {
+      "type": "contact-form",
       "settings": {
-        "title": "Text columns with images",
-        "image_height": "natural",
-        "desktop_height": 450,
-        "mobile_height": 300,
-        "text_align": "left",
-        "section_padding": "both"
-      }
-    },
-    "162688359266c09739": {
-      "type": "image-with-text",
-      "settings": {
-        "iwt_layout": "image_left",
-        "iwt_heading": "Heading",
-        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.<\/p>",
-        "iwt_button": "Button",
-        "iwt_link": "",
-        "show_box_shadow": false,
-        "color_scheme": "3",
-        "iwt_section_height": 500,
-        "section_padding": "both"
-      }
-    },
-    "16268836031fe513b3": {
-      "type": "image-with-text",
-      "settings": {
-        "iwt_layout": "image_right",
-        "iwt_heading": "Heading",
-        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.<\/p>",
-        "iwt_button": "Button",
-        "iwt_link": "",
-        "show_box_shadow": false,
-        "color_scheme": "3",
-        "iwt_section_height": 500,
-        "section_padding": "both"
+        "title": "Hai ancora qualche dubbio?",
+        "width": 60,
+        "section_padding": "both",
+        "cf_show_company_name": false,
+        "cf_show_address": false,
+        "cf_show_website_url": false,
+        "cf_show_phone": true,
+        "cf_show_custom_field_one": false,
+        "cf_custom_field_one": "Custom field one",
+        "cf_custom_field_one_type": "input",
+        "cf_show_custom_field_two": false,
+        "cf_custom_field_two": "Custom field two",
+        "cf_custom_field_two_type": "input"
       }
     }
   },
@@ -136,8 +190,6 @@
     "banner",
     "main",
     "accordion_FcrPKE",
-    "1626883542b88f92db",
-    "162688359266c09739",
-    "16268836031fe513b3"
+    "contact_form_bVgX7J"
   ]
 }

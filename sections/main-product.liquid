@@ -201,13 +201,14 @@
 
     -%}
 
-
+    
     <article class="product__section-right layout--{{ settings.product_variants }} {{ form_grid_class }} sm-span-12 auto v-start">
       <div class="sm-px6">
         {% for block in section.blocks %}
           {% case block.type %}
             {% when 'metafield' %}
               <div class="rte pt2 mb2" {{ block.shopify_attributes }}>
+                <br>
                 {{ block.settings.text }}
               </div>
             {% when 'title' %}
@@ -360,10 +361,21 @@
                   accordion_heading_capture: accordion_heading_capture,
                   accordion_content_capture: accordion_content_capture,
                   default_open: block.settings.default_open_accordion,
-                  unique_id: block.id
+                  unique_id: block.id,
+                  accordion_icon1: block.settings.icon_1,
+                  accordion_icon_title1: block.settings.text_1,
+                  accordion_icon2: block.settings.icon_2,
+                  accordion_icon_title2: block.settings.text_2,
+                  accordion_icon3: block.settings.icon_3,
+                  accordion_icon_title3: block.settings.text_3,
+                  accordion_icon4: block.settings.icon_4,
+                  accordion_icon_title4: block.settings.text_4,
+                  accordion_icon5: block.settings.icon_5,
+                  accordion_icon_title5: block.settings.text_5
                 %}
               </div><!-- /.product-blocks__block--accordion-item -->
               {% endif %}
+
 
             {% when 'payment_icons' %}
               <div class="product-template__payment-icons pt5 pb5 mt5 mb5"
@@ -376,12 +388,30 @@
                 {% endfor %}
               </div> 
 
+        <!-- ****text_with_icon_new code***-->
+             {% when 'text_with_icon_new' %}
+           
+            <div class="text-with-icon-horizontal">
+              {% if block.settings.text_new_icon != blank %}
+              <div class="product-template__text-with-icon icon-block a-{{ block.settings.text_align_text }}" {{ block.shopify_attributes }}>
+                <div class="new_icon__icon">
+                   <img src="{{ block.settings.icon_image | img_url: 'small' }}" alt="Icon Image">
+                  
+                </div>
+                <div class="text-with-new-icon">
+                {{ block.settings.text_new_icon }}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+              
+    
             {%- when 'text_with_icon' -%}
               {% liquid
                 assign type = 'apollo'
                 assign icon = block.settings.icon
                 case icon
-                  when 'burger', 'cafe', 'cake', 'camera', 'cookie', 'croissant', 'desktop', 'diamond', 'dry-cleaning', 'favorite', 'finger-print', 'flower', 'forest', 'gaming', 'headphones', 'health', 'ice-cream', 'laptop', 'laundry', 'liquor', 'lock', 'mic', 'mobile-phone', 'nature', 'new-release', 'pets', 'pizza', 'plant', 'rabbit', 'radio', 'savings', 'shield', 'sustainable', 'take-out', 'trophy', 'tv', 'washing-machine', 'watch', 'wine', 'world'
+                  when 'burger', 'cafe', 'cake', 'camera', 'cookie', 'croissant', 'desktop', 'diamond', 'dry-cleaning', 'favorite', 'finger-print', 'flower', 'forest', 'gaming', 'headphones', 'health', 'ice-cream', 'laptop', 'laundry', 'liquor', 'lock', 'mic', 'mobile-phone', 'nature', 'new-release', 'pets', 'pizza', 'plant', 'rabbit', 'radio', 'savings', 'shield', 'sustainable', 'take-out', 'trophy', 'tv', 'washing-machine', 'watch', 'wine', 'world','king-cup1','king-cup2','king-cup3'
                   assign type = 'theme'
                 endcase
               %}
@@ -470,6 +500,8 @@
         {% endfor %}
       </div>
     </article>
+
+    
   </div>
   <style>
     {% if section.settings.show_selected_border %}
@@ -595,7 +627,7 @@
       "limit": 4,
       "settings": [
         {
-          "type": "text",
+          "type": "richtext",
           "id": "text",
           "label": "Text"
         }
@@ -732,7 +764,58 @@
           "label": "Have accordion item open",
           "info": "Accordion item is open by default when the page loads",
           "default": false
-        }
+        },
+           {
+        "type": "image_picker",
+        "label": "Icon 1",
+        "id": "icon_1"
+      },
+      {
+        "type": "text",
+        "label": "Text 1",
+        "id": "text_1"
+      },
+      {
+        "type": "image_picker",
+        "label": "Icon 2",
+        "id": "icon_2"
+      },
+      {
+        "type": "text",
+        "label": "Text 2",
+        "id": "text_2"
+      },
+      {
+        "type": "image_picker",
+        "label": "Icon 3",
+        "id": "icon_3"
+      },
+      {
+        "type": "text",
+        "label": "Text 3",
+        "id": "text_3"
+      },
+      {
+        "type": "image_picker",
+        "label": "Icon 4",
+        "id": "icon_4"
+      },
+      {
+        "type": "text",
+        "label": "Text 4",
+        "id": "text_4"
+      },
+      {
+        "type": "image_picker",
+        "label": "Icon 5",
+        "id": "icon_5"
+      },
+      {
+        "type": "text",
+        "label": "Text 5",
+        "id": "text_5"
+      }
+        
       ]
     },
     {
@@ -853,6 +936,33 @@
         }
       ]
     },
+    
+    // add new text with icon new
+    {
+      "type": "text_with_icon_new",
+      "name": "Text with Icon new",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Image",
+          "info": "Or choose an global image or metafield image"
+        }, 
+        {
+          "type": "richtext",
+          "id": "text_new_icon",
+          "label": "Text",
+          "default": "<p>Pair text with icon new</p>"
+        },
+         {
+          "type": "text_alignment",
+          "id": "text_align_text",
+          "label": "Text alignment",
+          "default": "left"
+        }
+      ]
+    },
+ 
     {
       "type": "text_with_icon",
       "name": "Text with icon",
@@ -1113,7 +1223,19 @@
             {
               "value": "world",
               "label": "World"
-            }
+            },
+            {
+              "value": "king-cup1",
+              "label": "King Cup1"
+            },
+            {
+              "value": "king-cup2",
+              "label": "King Cup2"
+            },
+            {
+              "value": "king-cup3",
+              "label": "King Cup3"
+            },
           ],
           "default": "chat"
         },

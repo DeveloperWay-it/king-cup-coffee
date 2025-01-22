@@ -38,7 +38,7 @@
     "custom_main_collection_88bxD8": {
       "type": "custom_main-collection",
       "settings": {
-        "products_per_page": 6,
+        "products_per_page": 24,
         "infinite_scroll_enabled": false
       }
     },

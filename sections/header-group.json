@@ -18,7 +18,7 @@
           "type": "announcement_text",
           "settings": {
             "announcement_text_1": "<p>Consegna gratuita a 60€ - Spedizioni in 24/48 h</p>",
-            "announcement_text_2": "",
+            "announcement_text_2": "<p>SPEDIAMO GIORNALMENTE TUTTI I GIORNO</p>",
             "announcement_text_3": "",
             "alignment": "center"
           }
@@ -26,7 +26,7 @@
         "phone_number_qLDD6F": {
           "type": "phone_number",
           "settings": {
-            "phone_number": "<p>numero verde: 800 642 543</p>",
+            "phone_number": "<p><strong>numero verde: 800 642 543</strong></p>",
             "alignment": "left"
           }
         }
@@ -64,7 +64,7 @@
           "type": "megamenu",
           "settings": {
             "megamenu_menu_item": "I Nostri Prodotti",
-            "megamenu_title": "Catalog",
+            "megamenu_title": "I Nostri Prodotti",
             "image_ratio": "square",
             "links_alignment": "left",
             "featured_image_1": "shopify://shop_images/ginseng-volto-radice.i64537-kJGsA5C-w431-h311-l1-r1.png",
@@ -76,11 +76,14 @@
           "type": "linklist_with_icons",
           "settings": {
             "linklist_icons_menu_item": "Naviga Per Formato",
-            "icon_image_1": "shopify://shop_images/4.png",
-            "icon_image_2": "shopify://shop_images/5.png",
-            "icon_image_3": "shopify://shop_images/1.png",
-            "icon_image_4": "shopify://shop_images/2.png",
-            "icon_image_5": "shopify://shop_images/3.png"
+            "icon_image_1": "shopify://shop_images/Formato_Solubile.svg",
+            "icon_image_2": "shopify://shop_images/Formato_Nespresso.svg",
+            "icon_image_3": "shopify://shop_images/Capsule_compatibili_Nescaf_Dolce_Gusto.svg",
+            "icon_image_4": "shopify://shop_images/Formato_Lavazza.svg",
+            "icon_image_5": "shopify://shop_images/Cialde_E.S.E._44mm.svg",
+            "icon_image_6": "shopify://shop_images/Filtri.svg",
+            "icon_image_7": "shopify://shop_images/Formato_Freeze.svg",
+            "icon_image_8": "shopify://shop_images/Formato_tutti.svg"
           }
         }
       },
@@ -97,7 +100,7 @@
         "logo_max_width": 50,
         "logo_max_width_mobile": 50,
         "logo_size": 32,
-        "main_nav": "test-menu",
+        "main_nav": "main-menu",
         "nav_alignment": "center",
         "show_desktop_icons": true
       }

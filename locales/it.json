@@ -69,7 +69,7 @@
       "page": "Pagina {{ number }}",
       "next": "Pagina successiva",
       "previous": "Pagina precedente"
-    },
+    }
   },
   "blogs": {
     "search": {
@@ -163,7 +163,7 @@
       "empty": "Collezione vuota",
       "no_matches": "Questa raccolta è vuota",
       "clear_all_tags": "Cancella tutto",
-      "shop_all":"acquista tutto",
+      "shop_all": "acquista tutto",
       "save": "Save",
       "save_to_html": "Risparmia fino a {{ savings }}",
       "items": "Item(s)",
@@ -195,7 +195,7 @@
       "date_ascending": "Date, old to new"
     },
     "filter": {
-      "filter":"Filtro",
+      "filter": "Filtro",
       "clear_all": "Cancella tutto",
       "filter_button": "Filtro",
       "filters_selected": "{{ count }} selezionato",
@@ -203,7 +203,18 @@
       "no_results": "Nessun risultato",
       "use_fewer_filters_html": "Nessun risultato. Usa meno filtri o <a class=\"{{ class }}\" href=\"{{ link }}\">Cancella tutto</a>",
       "type_to_filter": "Digita per filtrare",
-      "match_all":"Seleziona tutte"
+      "match_all": "Seleziona tutte",
+      "shop_by_size": "",
+      "shop_by_color": "",
+      "shop_by_material": "",
+      "all": "Tutti",
+      "from": "Da",
+      "filter_and_sort": "Filtra e ordina",
+      "filtering_by_label": "",
+      "max_price": "",
+      "reset": "Reset",
+      "sort_by_placeholder": "",
+      "use_fewer_filters": ""
     }
   },
   "customer": {
@@ -233,7 +244,7 @@
       "address1": "Indirizzo - campo 1",
       "address2": "Indirizzo - campo 2",
       "city": "Città",
-      "country": "Paese\/Area geografica",
+      "country": "Paese/Area geografica",
       "province": "Provincia",
       "zip": "CAP",
       "phone": "Numero di telefono",
@@ -276,7 +287,7 @@
       "discount": "Sconto",
       "shipping": "Spedizione",
       "tax": "Imposta",
-      "total":"totale",
+      "total": "totale",
       "details": {
         "product": "Prodotto",
         "sku": "SKU",
@@ -321,7 +332,7 @@
       "view_full": "Dettagli",
       "sale_price": "Prezzo di vendita",
       "regular_price": "Prezzo di listino",
-      "view_all":"Visualizza tutto"
+      "view_all": "Visualizza tutto"
     },
     "product": {
       "designer": "Designer",
@@ -342,12 +353,12 @@
       "view_cart": "Visualizza carrello",
       "continue": "Continua lo shopping",
       "quantity": "Quantità",
-      "required":"necessario",
+      "required": "richiesto",
       "product_details": "I dettagli",
       "product_info": "Informazioni sul prodotto",
       "product_type": "Tipo di prodotto",
       "brand": "Marchio",
-      "product":"Prodotto",
+      "product": "Prodotto",
       "collection": "Collezione",
       "product_description": "Descrizione del prodotto",
       "product_more_details": "In profondità",
@@ -368,8 +379,7 @@
         "title": "Titolo del prodotto",
         "subtitle": "Piccolo sottotitolo con i dettagli del prodotto"
       },
-      "choose_option": "Scegli opzione",
-      "required": "richiesto"
+      "choose_option": "Scegli opzione"
     },
     "product_pickup_availability": {
       "view_store_info": "Visualizza informazioni",
@@ -441,7 +451,8 @@
       "message_label": "Messaggio (facoltativo)",
       "message": "Messaggio",
       "max_characters": "Massimo {{ max_chars }} caratteri",
-      "send_on_label": "invia il"
+      "send_on_label": "invia il",
+      "email_label_optional_for_no_js_behavior": ""
     }
   },
   "social": {

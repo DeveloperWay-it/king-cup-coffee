@@ -32,12 +32,12 @@
         "image_m9eWmF": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
-            "mobile_image": "shopify://shop_images/Caffe_Nocciola_1_1_2.png",
-            "heading": "Doppia quantità per la qualità di sempre",
-            "subheading": "",
-            "link": "shopify://collections/all",
-            "button_text": "Scopri di più",
+            "image": "shopify://shop_images/ginseng-solubile-grande-dolce-5_1_11zon.webp",
+            "mobile_image": "shopify://shop_images/ginseng-solubile-grande-dolce-5_1_11zon.webp",
+            "heading": "L'originale ricetta del caffè al ginseng dalla Malesia.",
+            "subheading": "<p>Aggiungi 120ml di acqua calda e gustalonella tua tazza preferita.</p>",
+            "link": "shopify://collections/caffe-al-ginseng",
+            "button_text": "SCORPILO SUBITO",
             "second_link": "",
             "second_button_text": "Button 2 text",
             "overlay_color": "#000000",
@@ -56,39 +56,10 @@
             "caption_vertical": 50,
             "text_align": "center"
           }
-        },
-        "image_QkdeMh": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Caffe_Nocciola_1_1.png",
-            "mobile_image": "shopify://shop_images/Caffe_Nocciola_1_1_2.png",
-            "heading": "Slide image title",
-            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
-            "link": "shopify://collections/all",
-            "button_text": "Scopri di più",
-            "second_link": "",
-            "second_button_text": "Button 2 text",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "align_content": "center",
-            "align_content_mobile": "left",
-            "slide_text_color": "#ffffff",
-            "slide_button_color": "#ffffff",
-            "slide_button_bg": "#000000",
-            "caption_background": "#a18167",
-            "mobile_slide_button_bg": "#000000",
-            "mobile_caption_background": "#a18167",
-            "hide_caption_background": false,
-            "reverse_content": false,
-            "caption_horizontal": 50,
-            "caption_vertical": 50,
-            "text_align": "center"
-          }
         }
       },
       "block_order": [
-        "image_m9eWmF",
-        "image_QkdeMh"
+        "image_m9eWmF"
       ],
       "settings": {
         "full_width": true,
@@ -116,7 +87,7 @@
             "image": "shopify://shop_images/HP_-_Spedizione_gratis_sopra_i_60.svg",
             "link": "",
             "title": "SPEDIZIONE GRATIS SOPRA I 60€",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "subheading": "<p>Sfrutta la spedizione gratuita per tutti gli ordini superiore ai 60€</p>"
           }
         },
         "text_block_PcXNnD": {
@@ -126,7 +97,7 @@
             "image": "shopify://shop_images/clock_4.png",
             "link": "",
             "title": "SPEDIZIONI RAPIDE IN 24/48H",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "subheading": "<p>Spediamo giornalmente tutti gli ordini che arrivano entro le 13:00</p>"
           }
         },
         "text_block_DzWFKC": {
@@ -136,7 +107,7 @@
             "image": "shopify://shop_images/HP_-_Pagamenti_sicuri.svg",
             "link": "",
             "title": "PAGAMENTI SICURI E CERTIFICATI",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "subheading": "<p>Zero truffe grazie al nostro certificato di sicurezza</p>"
           }
         },
         "text_block_yCbfp4": {
@@ -146,7 +117,7 @@
             "image": "shopify://shop_images/HP_-_Supporto_h24.svg",
             "link": "",
             "title": "ONLINE SUPPORT",
-            "subheading": "<p>Pair icon with text on store details.</p>"
+            "subheading": "<p>Servizio Live Chat diretto con il nostro centro operativo</p>"
           }
         }
       },
@@ -159,7 +130,7 @@
       "settings": {
         "title": "",
         "text_align": "center",
-        "size": 50,
+        "size": 40,
         "color_scheme": "1",
         "section_padding": "both"
       }
@@ -199,6 +170,7 @@
         "countdown_kBqdRN",
         "button_gFFUCH"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "image": "shopify://shop_images/Ginseng_zucchero_di_canna_Lavazza_1.jpg",
@@ -233,63 +205,85 @@
     "scrolling_text_gcUMKf": {
       "type": "scrolling-text",
       "blocks": {
-        "text_twHqyp": {
+        "text_MatRpA": {
           "type": "text",
           "settings": {
             "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
-            "image": "shopify://shop_images/carrefour-logo-1-1_1.png",
+            "image": "shopify://shop_images/esselunga.png",
             "icon_both_sides": false
           }
         },
-        "text_nKKGmc": {
+        "text_JBKCjr": {
           "type": "text",
           "settings": {
             "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
-            "image": "shopify://shop_images/955bad005fd1ccc8675e2e4aa6f5da5b_1.png",
+            "image": "shopify://shop_images/IPERAL.png",
             "icon_both_sides": false
           }
         },
-        "text_EggBGx": {
+        "text_HgJiMX": {
           "type": "text",
           "settings": {
             "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
-            "image": "shopify://shop_images/Iper_La_grande_I_Logo.svg_3.png",
+            "image": "shopify://shop_images/BENNET.png",
             "icon_both_sides": false
           }
         },
-        "text_UWytiQ": {
+        "text_H3cggK": {
           "type": "text",
           "settings": {
             "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
-            "image": "shopify://shop_images/Logo_Ipercoop_2.png",
+            "image": "shopify://shop_images/conad.jpg",
             "icon_both_sides": false
           }
         },
-        "text_WFMDHE": {
+        "text_YBqtCN": {
           "type": "text",
           "settings": {
             "scrolling_text": "",
             "text_style": "filled",
             "icon": "chat",
-            "image": "shopify://shop_images/Logo-extended.Tigros.svg_3.png",
+            "image": "shopify://shop_images/IPER_la_grande_I.png",
+            "icon_both_sides": false
+          }
+        },
+        "text_HdAgRe": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "",
+            "text_style": "filled",
+            "icon": "chat",
+            "image": "shopify://shop_images/Iper_Tosano.jpg",
+            "icon_both_sides": false
+          }
+        },
+        "text_A3DqCd": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "",
+            "text_style": "filled",
+            "icon": "chat",
+            "image": "shopify://shop_images/IL_GIGANTE.jpg",
             "icon_both_sides": false
           }
         }
       },
       "block_order": [
-        "text_twHqyp",
-        "text_nKKGmc",
-        "text_EggBGx",
-        "text_UWytiQ",
-        "text_WFMDHE"
+        "text_MatRpA",
+        "text_JBKCjr",
+        "text_HgJiMX",
+        "text_H3cggK",
+        "text_YBqtCN",
+        "text_HdAgRe",
+        "text_A3DqCd"
       ],
       "custom_css": [
         ".scrolling__text--wrapper {margin-bottom: 100px;}"
@@ -309,7 +303,7 @@
         "featured_collection_kfprRh": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "caffe-al-ginseng",
             "collection_custom_image": "shopify://shop_images/Frame_7.png",
             "product_image": false
           }
@@ -317,7 +311,7 @@
         "featured_collection_P9FMrj": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "zenzero-e-limone",
             "collection_custom_image": "shopify://shop_images/Frame_7_1.png",
             "product_image": false
           }
@@ -325,7 +319,7 @@
         "featured_collection_P4kEnE": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "the-matcha",
             "collection_custom_image": "shopify://shop_images/Group_1.png",
             "product_image": false
           }
@@ -333,7 +327,7 @@
         "featured_collection_jEX3fJ": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "golden-milk",
             "collection_custom_image": "shopify://shop_images/Group_1_1.png",
             "product_image": false
           }
@@ -341,7 +335,7 @@
         "featured_collection_CbdcQi": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "cappuccino-al-ginseng",
             "collection_custom_image": "shopify://shop_images/Frame_7_2.png",
             "product_image": false
           }
@@ -349,7 +343,7 @@
         "featured_collection_kbp9Qg": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "caffe-espresso",
             "collection_custom_image": "shopify://shop_images/Frame_7_3.png",
             "product_image": false
           }
@@ -357,7 +351,7 @@
         "featured_collection_4kwCAp": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "filtri",
             "collection_custom_image": "shopify://shop_images/Frame_7_4.png",
             "product_image": false
           }
@@ -365,7 +359,7 @@
         "featured_collection_npnyyq": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "freeze",
             "collection_custom_image": "shopify://shop_images/Group_1_2.png",
             "product_image": false
           }
@@ -373,7 +367,7 @@
         "featured_collection_JdNYdC": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "cioccolata-light",
             "collection_custom_image": "shopify://shop_images/Group_1_3.png",
             "product_image": false
           }
@@ -381,7 +375,7 @@
         "featured_collection_JyD3Qd": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "kit-accessori",
             "collection_custom_image": "shopify://shop_images/Group_1_4.png",
             "product_image": false
           }
@@ -406,31 +400,55 @@
       ],
       "settings": {
         "title": "La nostra gamma di prodotti",
-        "subtitle": "Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.",
+        "subtitle": "Le nostre bevande, selezionate con cura, sono pensate per soddisfare ogni palato e per accompagnarti nei momenti di relax o nelle pause più intense.",
         "items_per_row": 5,
         "section_padding": "both"
+      }
+    },
+    "scrolling_text_GwJ37X": {
+      "type": "scrolling-text",
+      "blocks": {
+        "text_wUct7f": {
+          "type": "text",
+          "settings": {
+            "scrolling_text": "<p>Inizia il viaggio all’original gusto</p>",
+            "text_style": "filled",
+            "icon": "none",
+            "icon_both_sides": false
+          }
+        }
+      },
+      "block_order": [
+        "text_wUct7f"
+      ],
+      "custom_css": [
+        ".global__section {margin-top: -6px;}"
+      ],
+      "settings": {
+        "text_size": 20,
+        "speed": 15,
+        "icon_height": 20,
+        "padding": 30,
+        "color": "#ffffff",
+        "background": "#000000"
       }
     },
     "bestsellers_KXbceH": {
       "type": "bestsellers",
       "settings": {
         "heading": "Best Sellers",
-        "heading_size": 32,
+        "heading_size": 30,
         "mobile_heading_size": 28,
-        "collection": "zenzero"
+        "collection": "best-seller"
       }
     },
-    "featured_collection_WqzhHx": {
-      "type": "featured-collection",
+    "bestsellers_8Ge9TC": {
+      "type": "bestsellers",
       "settings": {
-        "title": "Featured collection",
-        "collection": "",
-        "display_type": "carousel",
-        "items_per_row": 3,
-        "mobile_items_per_row": "2",
-        "items_per_page": 7,
-        "show_view_all": true,
-        "section_padding": "both"
+        "heading": "Filtri",
+        "heading_size": 30,
+        "mobile_heading_size": 28,
+        "collection": "filtri"
       }
     },
     "image_with_text_qpLBCV": {
@@ -502,6 +520,57 @@
         "section_padding": "both"
       }
     },
+    "custom_slideshow_JYLq8t": {
+      "type": "custom_slideshow",
+      "blocks": {
+        "image_XVyhBN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Chi_siamo_3_3_11zon.webp",
+            "mobile_image": "shopify://shop_images/Chi_siamo_3_3_11zon.webp",
+            "heading": "Un viaggio  all’origine del gusto",
+            "subheading": "<p>Dal 2012, selezioniamo da tutto il mondo le migliori ricette da produttori artigianali, portando la massima qualità e un gusto inconfondibile nella tua tazza.</p>",
+            "link": "shopify://pages/chi-siamo",
+            "button_text": "CHI SIAMO",
+            "second_link": "",
+            "second_button_text": "Button 2 text",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "align_content": "left",
+            "align_content_mobile": "center",
+            "slide_text_color": "#ffffff",
+            "slide_button_color": "#ffffff",
+            "slide_button_bg": "#292929",
+            "caption_background": "#ae775c",
+            "mobile_slide_button_bg": "#000000",
+            "mobile_caption_background": "#a18167",
+            "hide_caption_background": false,
+            "reverse_content": true,
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_XVyhBN"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_autoplay": false,
+        "slider_speed": 5,
+        "pager": "dots",
+        "slideshow_size": "natural",
+        "desktop_height": 800,
+        "mobile_height": 700,
+        "caption_below": true,
+        "slide_heading_size": 42,
+        "mobile_slide_heading_size": 28,
+        "subheading_size": 18,
+        "mobile_subheading_size": 12,
+        "section_padding": "none"
+      }
+    },
     "logo_list_j4bkR4": {
       "type": "logo-list",
       "blocks": {
@@ -556,95 +625,16 @@
         "section_padding": "both"
       }
     },
-    "custom_slideshow_JYLq8t": {
-      "type": "custom_slideshow",
-      "blocks": {
-        "image_XVyhBN": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/IMG_1414-Modifica_1.jpg",
-            "mobile_image": "shopify://shop_images/IMG_1414-Modifica_1.jpg",
-            "heading": "Doppia quantità per la qualità di sempre",
-            "subheading": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
-            "link": "shopify://collections/all",
-            "button_text": "Scopri di più",
-            "second_link": "",
-            "second_button_text": "Button 2 text",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "align_content": "left",
-            "align_content_mobile": "center",
-            "slide_text_color": "#ffffff",
-            "slide_button_color": "#ffffff",
-            "slide_button_bg": "#292929",
-            "caption_background": "#ae775c",
-            "mobile_slide_button_bg": "#000000",
-            "mobile_caption_background": "#a18167",
-            "hide_caption_background": false,
-            "reverse_content": true,
-            "caption_horizontal": 50,
-            "caption_vertical": 50,
-            "text_align": "center"
-          }
-        }
-      },
-      "block_order": [
-        "image_XVyhBN"
-      ],
-      "settings": {
-        "full_width": true,
-        "enable_autoplay": false,
-        "slider_speed": 5,
-        "pager": "dots",
-        "slideshow_size": "natural",
-        "desktop_height": 800,
-        "mobile_height": 700,
-        "caption_below": true,
-        "slide_heading_size": 42,
-        "mobile_slide_heading_size": 28,
-        "subheading_size": 18,
-        "mobile_subheading_size": 12,
-        "section_padding": "none"
-      }
-    },
-    "scrolling_text_GwJ37X": {
-      "type": "scrolling-text",
-      "blocks": {
-        "text_wUct7f": {
-          "type": "text",
-          "settings": {
-            "scrolling_text": "<p>Doppia quantità per la qualita di sempre</p>",
-            "text_style": "outlined",
-            "icon": "none",
-            "icon_both_sides": false
-          }
-        }
-      },
-      "block_order": [
-        "text_wUct7f"
-      ],
-      "custom_css": [
-        ".global__section {margin-top: -6px;}"
-      ],
-      "settings": {
-        "text_size": 20,
-        "speed": 15,
-        "icon_height": 20,
-        "padding": 30,
-        "color": "#ffffff",
-        "background": "#d6bbad"
-      }
-    },
     "image_and_product_cards_HCViPR": {
       "type": "image-and-product-cards",
       "custom_css": [
         ".img-and-product-cards-container {margin-top: 150px;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Caffe_Nocciola_1_2.png",
-        "heading": "Doppia quantità per la qualita di sempre",
-        "description": "BUNDELE & SAVE",
-        "button_text": "aggiungi al carrello",
+        "image": "shopify://shop_images/banner_ginseng-desk_1_11zon.webp",
+        "heading": "L’unico Ginseng dalla Malesia",
+        "description": "CAFFÈ AL GINSENG",
+        "button_text": "SCOPRILO SUBITO",
         "heading_size": 32,
         "subheading_size": 18,
         "button_size": 18,
@@ -652,10 +642,10 @@
         "mobile_subheading_size": 14,
         "mobile_button_size": 12,
         "button_link": "shopify://blogs/news",
-        "product_1": "confezione-caffe-prova-1",
-        "product_2": "confezione-caffe-prova-1-copia",
-        "product_3": "confezione-caffe-prova-1-copia-copia",
-        "product_4": "confezione-caffe-prova-1"
+        "product_1": "caffe-al-ginseng-20-bustine-solubili-con-zucchero-di-canna",
+        "product_2": "caffe-al-ginseng-20-bustine-solubili-da-zuccherare",
+        "product_3": "caffe-al-ginseng-con-zucchero-di-canna-capsule-nespresso®",
+        "product_4": "caffe-al-ginseng-da-zuccherare-capsule-nespresso®"
       }
     },
     "featured_blog_fiRnGA": {
@@ -682,13 +672,13 @@
     "rich_text_wW3DQ3",
     "scrolling_text_gcUMKf",
     "custom_collection_list_4RW7nh",
+    "scrolling_text_GwJ37X",
     "bestsellers_KXbceH",
-    "featured_collection_WqzhHx",
+    "bestsellers_8Ge9TC",
     "image_with_text_qpLBCV",
     "testimonials_AUEU9y",
-    "logo_list_j4bkR4",
     "custom_slideshow_JYLq8t",
-    "scrolling_text_GwJ37X",
+    "logo_list_j4bkR4",
     "image_and_product_cards_HCViPR",
     "featured_blog_fiRnGA"
   ]

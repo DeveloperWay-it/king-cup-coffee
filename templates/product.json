@@ -26,49 +26,34 @@
           "type": "price",
           "settings": {}
         },
-        "text_with_icon_Jz4Qnw": {
-          "type": "text_with_icon",
+        "text_with_icon_new_GELFwP": {
+          "type": "text_with_icon_new",
           "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
+            "icon_image": "{{ product.metafields.custom.product_icon1.value }}",
+            "text_new_icon": "<p>{{ product.metafields.custom.product_text1.value }}</p>",
+            "text_align_text": "left"
           }
         },
-        "text_with_icon_Lnb6tc": {
-          "type": "text_with_icon",
+        "text_with_icon_new_ALFtrb": {
+          "type": "text_with_icon_new",
           "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
+            "icon_image": "{{ product.metafields.custom.product_icon2.value }}",
+            "text_new_icon": "<p>{{ product.metafields.custom.product_text2.value }}</p>",
+            "text_align_text": "left"
           }
         },
-        "text_with_icon_NMtTey": {
-          "type": "text_with_icon",
+        "text_with_icon_new_JGcXVK": {
+          "type": "text_with_icon_new",
           "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
+            "icon_image": "{{ product.metafields.custom.product_icon3.value }}",
+            "text_new_icon": "<p>{{ product.metafields.custom.product_text3.value }}</p>",
+            "text_align_text": "left"
           }
         },
-        "text_with_icon_m4i6x6": {
-          "type": "text_with_icon",
-          "settings": {
-            "icon": "chat",
-            "text": "<p>Pair an icon with text</p>",
-            "text_align": "left"
-          }
-        },
-        "description_JzXQMm": {
-          "type": "description",
-          "settings": {
-            "show_as_accordion": true,
-            "default_open_accordion": true
-          }
-        },
-        "metafield_XFA8tC": {
+        "metafield_jKGUCU": {
           "type": "metafield",
           "settings": {
-            "text": "Confezione da 50 capsule ➡"
+            "text": "{{ product.metafields.custom.descrizione_breve | metafield_tag }}"
           }
         },
         "quantity": {
@@ -82,7 +67,7 @@
         "buttons": {
           "type": "buttons",
           "settings": {
-            "show_price_in_button": true,
+            "show_price_in_button": false,
             "show_gift_card_recipient": false
           }
         },
@@ -94,19 +79,18 @@
             "text_align": "left"
           }
         },
-        "metafield_jKGUCU": {
-          "type": "metafield",
-          "settings": {
-            "text": ""
-          }
-        },
         "accordion_content_YCXTQC": {
           "type": "accordion_content",
           "settings": {
             "accordion_heading": "Dettagli prodotto",
             "page": "",
-            "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": true
+            "richtext": "{{ product.description }}",
+            "default_open_accordion": false,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "accordion_content_HfEAfr": {
@@ -114,8 +98,13 @@
           "settings": {
             "accordion_heading": "Ingredienti",
             "page": "",
-            "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": false
+            "richtext": "{{ product.metafields.custom.ingredienti | metafield_tag }}",
+            "default_open_accordion": false,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "accordion_content_D3QwGy": {
@@ -123,17 +112,27 @@
           "settings": {
             "accordion_heading": "Come si prepara",
             "page": "",
-            "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": false
+            "richtext": "{{ product.metafields.custom.come_si_prepara | metafield_tag }}",
+            "default_open_accordion": false,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "accordion_content_83JQYX": {
           "type": "accordion_content",
           "settings": {
             "accordion_heading": "Spedizione e reso",
-            "page": "",
-            "richtext": "<p>Enter the content to use inside the accordion panel selected.</p>",
-            "default_open_accordion": false
+            "page": "spedizioni",
+            "richtext": "",
+            "default_open_accordion": false,
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": "",
+            "text_5": ""
           }
         },
         "complementary_products_3Vwimk": {
@@ -148,26 +147,26 @@
         "title",
         "subtitle",
         "price",
-        "text_with_icon_Jz4Qnw",
-        "text_with_icon_Lnb6tc",
-        "text_with_icon_NMtTey",
-        "text_with_icon_m4i6x6",
-        "description_JzXQMm",
-        "metafield_XFA8tC",
+        "text_with_icon_new_GELFwP",
+        "text_with_icon_new_ALFtrb",
+        "text_with_icon_new_JGcXVK",
+        "metafield_jKGUCU",
         "quantity",
         "variants",
         "buttons",
         "text_with_icon_GTrkzD",
-        "metafield_jKGUCU",
         "accordion_content_YCXTQC",
         "accordion_content_HfEAfr",
         "accordion_content_D3QwGy",
         "accordion_content_83JQYX",
         "complementary_products_3Vwimk"
       ],
+      "custom_css": [
+        ".btn-secondary{padding-top: 0px!important}"
+      ],
       "settings": {
         "form_bg_color": "#ffffff",
-        "gallery_style": "scroll_gallery",
+        "gallery_style": "thumbnail_gallery",
         "thumbnail_position": "bottom",
         "large_product_media": false,
         "grid_two_up": false,
@@ -249,7 +248,7 @@
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "product_recommendations_heading": "Related Products",
+        "product_recommendations_heading": "Ti potrebbe interessare anche",
         "items_per_row": 4,
         "items_shown": 4,
         "section_padding": "both"

@@ -43,7 +43,7 @@
   margin: 0;
 }
 
-.blog-template .article-loop__date .article-loop__date__icon {
+.article-loop__date .article-loop__date__icon {
   width: 12px;
   fill: var(--text-color-light);
   position: relative;

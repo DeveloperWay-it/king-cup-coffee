@@ -40,7 +40,7 @@
                         {%- when 'image' -%}
                           {{ filter_value.display.value | image_url: width: 25 | image_tag: alt: filter_value.display.value.alt }}
                         {%- else -%}
-                          <img class="default-icon" src="{{ filter_value.label | handleize | append: '.png' | asset_url }}" />
+                          <img class="default-icon" src="{{ filter_value.label | handleize | append: '.png' | asset_url }}" style="height: 50px"/>
                       {%- endcase -%}
                     </span>
                     <span class="filter-label">{{ filter_value.label }}</span>

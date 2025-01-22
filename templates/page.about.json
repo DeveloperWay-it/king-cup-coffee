@@ -12,14 +12,16 @@
     "164149044837a86c50": {
       "type": "rich-text",
       "settings": {
-        "title": "Welcome",
-        "rich_text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+        "title": "Inizia il viaggio all’original gusto",
+        "rich_text": "<p>Ogni tazza è un invito a <strong>scoprire un mondo di sapori autentici</strong> e <strong>emozioni uniche</strong>. Con i nostri prodotti, ogni sorso diventa un viaggio alla ricerca del <strong>gusto perfetto</strong>, dove la <strong>qualità degli ingredienti</strong> e l'<strong>arte della preparazione</strong> si fondono per offrire un'esperienza senza pari.</p><p><br/>Che tu stia cercando il <strong>calore avvolgente</strong> di un tè pregiato, la <strong>cremosità</strong> di un caffè al ginseng, o l'<strong>intensità</strong> di un caffè aromatico, ogni tazza è un passo verso la scoperta di una tradizione che si rinnova ogni giorno. Le nostre bevande, selezionate con cura, sono pensate per <strong>soddisfare ogni palato</strong> e per accompagnarti nei momenti di <strong>relax</strong> o nelle pause più <strong>intense</strong>.</p>",
         "heading_size": 40,
-        "text_size": 24,
+        "text_size": 15,
+        "mobile_heading_size": 40,
+        "mobile_text_size": 20,
         "page": "",
         "alignment": "a-center",
         "content_width": 60,
-        "section_padding": "both",
+        "section_padding": "none",
         "color_scheme": "none"
       }
     },
@@ -28,7 +30,9 @@
       "disabled": true,
       "settings": {
         "full_width": true,
-        "banner_height": 400
+        "banner_height": 400,
+        "heading_text_color": "#ffffff",
+        "show_breadcrumbs": true
       }
     },
     "main": {
@@ -41,74 +45,64 @@
     "1641490461c13a3bdb": {
       "type": "image-with-text",
       "settings": {
+        "iwt_image": "shopify://shop_images/Chi_siamo_1_1_11zon.webp",
         "iwt_layout": "image_left",
-        "iwt_heading": "Heading",
-        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+        "iwt_heading": "La famiglia King Cup",
+        "iwt_text": "<p><strong>Dal 2012, selezioniamo da tutto il mondo le migliori ricette da produttori artigianali, portando la massima qualità e un gusto inconfondibile nella tua tazza.King Cup</strong> è un’azienda <strong>leader nel mercato</strong> dell’importazione e distribuzione di caffè, bevande solubili e capsule compatibili, che si distingue per la sua continua <strong>innovazione</strong> e per l’attenzione al <strong>consumatore</strong>.</p><p><br/>Fin dalla sua nascita, <strong>King Cup</strong> ha messo al centro il consumatore, ricercando e garantendo l’eccellenza in ogni fase del processo produttivo. La nostra missione è rendere accessibili i prodotti più attuali e di tendenza, mantenendo al contempo il <strong>gusto autentico</strong> e originale di ogni ricetta. In ogni prodotto, infatti, poniamo sempre in primo piano la <strong>salute del consumatore</strong>.</p>",
         "iwt_button": "Button",
         "iwt_link": "",
         "show_box_shadow": false,
-        "color_scheme": "1",
-        "iwt_section_height": 600,
+        "color_scheme": "2",
+        "iwt_section_height": 700,
         "section_padding": "none"
       }
     },
     "1641490467976bd7d5": {
       "type": "image-with-text",
       "settings": {
+        "iwt_image": "shopify://shop_images/Chi_siamo_2_2_11zon.webp",
         "iwt_layout": "image_right",
-        "iwt_heading": "Heading",
-        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
+        "iwt_heading": "Il viaggio",
+        "iwt_text": "<p>In ogni bevanda c'è una <strong>storia</strong>, fatta di ingredienti scelti con <strong>passione</strong> e <strong>competenza</strong>. Il nostro obiettivo è offrirti non solo un prodotto, ma un vero e proprio <strong>viaggio sensoriale</strong>: il <strong>profumo</strong> che inebria, il <strong>gusto</strong> che avvolge, il <strong>calore</strong> che conforta. Dalla preparazione alla degustazione, ogni tazza ti guida alla scoperta di una nuova <strong>dimensione di piacere</strong>.</p>",
         "iwt_button": "Button",
         "iwt_link": "",
         "show_box_shadow": false,
         "color_scheme": "1",
-        "iwt_section_height": 600,
+        "iwt_section_height": 700,
         "section_padding": "none"
       }
     },
-    "scrolling_text_Yd9Ezn": {
-      "type": "scrolling-text",
-      "blocks": {
-        "text_RkLaxn": {
-          "type": "text",
-          "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
-            "text_style": "filled",
-            "icon": "chat",
-            "icon_both_sides": false
-          }
-        },
-        "text_CNYWYt": {
-          "type": "text",
-          "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
-            "text_style": "filled",
-            "icon": "chat",
-            "icon_both_sides": false
-          }
-        },
-        "text_FfRihD": {
-          "type": "text",
-          "settings": {
-            "scrolling_text": "<p>Scrolling text</p>",
-            "text_style": "filled",
-            "icon": "chat",
-            "icon_both_sides": false
-          }
-        }
-      },
-      "block_order": [
-        "text_RkLaxn",
-        "text_CNYWYt",
-        "text_FfRihD"
-      ],
+    "image_with_text_WygFjE": {
+      "type": "image-with-text",
       "settings": {
-        "text_size": 20,
-        "speed": 15,
-        "icon_height": 20,
-        "padding": 30,
-        "color": "#000",
-        "background": "#a18167"
+        "iwt_image": "shopify://shop_images/Chi_siamo_3_3_11zon.webp",
+        "iwt_layout": "image_left",
+        "iwt_heading": "",
+        "iwt_text": "<p>UN VIAGGIO SENSORIALE</p><p></p><p>In ogni bevanda c'è una <strong>storia</strong>, fatta di ingredienti scelti con <strong>passione</strong> e <strong>competenza</strong>. Il nostro obiettivo è offrirti non solo un prodotto, ma un vero e proprio <strong>viaggio sensoriale</strong>: il <strong>profumo</strong> che inebria, il <strong>gusto</strong> che avvolge, il <strong>calore</strong> che conforta. Dalla preparazione alla degustazione, ogni tazza ti guida alla scoperta di una nuova <strong>dimensione di piacere</strong>.</p><p></p><p>_</p><p></p><p>PER OGNI MOMENTO DELLA GIORNATA</p><p>Che tu stia iniziando la giornata con un <strong>caffè energizzante</strong> o cercando un momento di <strong>pausa</strong> con una <strong>tisana rilassante</strong>, le nostre bevande sono pensate per adattarsi a ogni tua esigenza. Ogni prodotto è stato selezionato per accompagnarti nei tuoi momenti più importanti, regalando <strong>benessere</strong> e <strong>soddisfazione</strong> in ogni sorso.<br/><strong>Inizia anche tu il viaggio all'originale gusto</strong>: una tazza alla volta, alla ricerca della <strong>perfezione</strong>.</p>",
+        "iwt_button": "Button",
+        "iwt_link": "",
+        "show_box_shadow": false,
+        "color_scheme": "2",
+        "iwt_section_height": 700,
+        "section_padding": "none"
+      }
+    },
+    "contact_form_zDkPPn": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contattaci",
+        "width": 60,
+        "section_padding": "both",
+        "cf_show_company_name": false,
+        "cf_show_address": false,
+        "cf_show_website_url": false,
+        "cf_show_phone": true,
+        "cf_show_custom_field_one": false,
+        "cf_custom_field_one": "Custom field one",
+        "cf_custom_field_one_type": "input",
+        "cf_show_custom_field_two": false,
+        "cf_custom_field_two": "Custom field two",
+        "cf_custom_field_two_type": "input"
       }
     },
     "featured_blog_qEj8N3": {
@@ -207,7 +201,8 @@
     "main",
     "1641490461c13a3bdb",
     "1641490467976bd7d5",
-    "scrolling_text_Yd9Ezn",
+    "image_with_text_WygFjE",
+    "contact_form_zDkPPn",
     "featured_blog_qEj8N3",
     "text_with_icons_F6gKBj"
   ]
