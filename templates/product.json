@@ -20,21 +20,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "loox_reviews_loox_rating_VYdDjV": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "contentSize": 16,
-            "pattern": "",
-            "hideText": false,
-            "alignment": "",
-            "layout": "",
-            "textColor": "",
-            "starColor": "",
-            "showAllReviews": false,
-            "looxOpenFloatingWidget": false,
-            "emptyRatingWidget": false
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
@@ -43,6 +28,21 @@
           "type": "subtitle",
           "settings": {
             "subtitle": ""
+          }
+        },
+        "loox_reviews_loox_rating_VYdDjV": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "",
+            "hideText": false,
+            "alignment": "left",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
           }
         },
         "price": {
@@ -81,7 +81,10 @@
         },
         "quantity": {
           "type": "quantity",
-          "settings": {}
+          "settings": {
+            "show_label": false,
+            "quantity_icon": "{{ product.metafields.custom.product_icon1.value }}"
+          }
         },
         "variants": {
           "type": "variants",
@@ -167,9 +170,9 @@
         }
       },
       "block_order": [
-        "loox_reviews_loox_rating_VYdDjV",
         "title",
         "subtitle",
+        "loox_reviews_loox_rating_VYdDjV",
         "price",
         "text_with_icon_new_GELFwP",
         "text_with_icon_new_ALFtrb",

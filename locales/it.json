@@ -463,6 +463,7 @@
     }
   },
   "date_formats": {
-    "month_date_year": "%B %d %Y"
+    "month_date_year": "%B %d %Y",
+    "date_month_year": "%d %B %Y"
   }
 }

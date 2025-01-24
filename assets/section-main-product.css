@@ -261,7 +261,7 @@
 }
 
 .product__section--main .product__quantity--selector {
-/*  border: 1px solid var(--dotted-color);*/
+ border: 1px solid var(--dotted-color);
   /*display: inline-block;*/
   min-width: 110px;
   text-align: center;
@@ -790,9 +790,9 @@
   border-top: solid 0.8px var(--dotted-color);
   position: relative;
 }
-.product__section--main .product__quantity {
+/* .product__section--main .product__quantity {
   border-bottom: solid 0.8px var(--dotted-color);
-}
+} */
 .product-form__input--dropdown .form__label,
 .product__section--main .product__quantity-label,
 .product-template__lineitem-properties label {
@@ -823,6 +823,30 @@
 }
 .product__section--main .product__quantity.border--active {
   border-top: solid 0.8px var(--dotted-color);
+}
+
+
+.product__section--main .product__attributes {
+  display: flex;
+  align-items: center;
+}
+.product__section--main .product__attributes .product__attributes-icon {
+  width: 30px;
+height: 28px;
+}
+
+.product__section--main .product__attributes .product__attributes-text {
+ font-size: 10px
+}
+
+@media screen and (min-width: 768px) {
+  
+  .product__section--main .metafield-rich_text_field {
+    margin-top: 65px;
+  }
+  .product__section--main .product__attributes .product__attributes-text {
+    font-size: 14px;
+   }
 }
 
 .product__section--popup-trigger {
@@ -949,6 +973,11 @@
   margin-bottom: 0!important;
   padding: 0 0;
   vertical-align: middle;
+}
+
+.product__price span {
+  font-size: 32px;
+  font-weight: 700;
 }
 
 /*---- Recipient form ----*/
@@ -1094,7 +1123,7 @@
 .product__section-right.layout--swatches .product__price {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 .product__section-right.layout--swatches .product__price .product__price-label {
@@ -1177,6 +1206,13 @@
   border-bottom: 0 !important;
   margin-left: 20px;
   padding: 0 !important;
+}
+
+.product-block--quantity {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* ---- Payment icons ---- */

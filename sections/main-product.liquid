@@ -266,6 +266,14 @@
                     product_type: 'product',
 
                   %}
+                  <div class="product__attributes">
+                    <div class="product__attributes-icon">
+                      <img src="{{ block.settings.quantity_icon | img_url: 'small' }}" alt="Icon Image">
+                    </div>
+                    <div class="product__attributes-text">
+                      {{ product.metafields.custom.quantita }}
+                    </div>
+                  </div>
                 </div><!-- /.product-block -->
               {% endunless %}
 
@@ -667,7 +675,20 @@
       "type": "quantity",
       "name": "Quantity",
       "limit": 1,
-      "settings": []
+      "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_label",
+        "label": "Show label?",
+        "default": false
+      },
+      {
+          "type": "image_picker",
+          "id": "quantity_icon",
+          "label": "Image",
+          "info": "Or choose an global image or metafield image"
+        }
+      ]
     },
     {
       "type": "buttons",
