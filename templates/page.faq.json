@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "breadcrumbs_ac7q6t": {
+      "type": "breadcrumbs",
+      "settings": {
+        "alignment": "a-left",
+        "font_size": 18,
+        "section_padding": "none"
+      }
+    },
     "banner": {
       "type": "banner-image",
       "settings": {
@@ -187,6 +195,7 @@
     }
   },
   "order": [
+    "breadcrumbs_ac7q6t",
     "banner",
     "main",
     "accordion_FcrPKE",

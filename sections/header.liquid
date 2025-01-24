@@ -151,7 +151,7 @@
         {% if section.settings.logo_homepage != blank and template == 'index' %}
           <a class="mobile-nav__img-logo-home inline-block lh0 mb0 shrink-wrap" href="{{ routes.root_url }}">{{ section.settings.logo_homepage | image_url: width: 500 | image_tag: loading: 'eager' }}</a>
         {% elsif section.settings.logo != blank %}
-          <a class="mobile-nav__img-logo inline-block lh0 mb0 shrink-wrap" href="{{ routes.root_url }}">{{ section.settings.logo | image_url: width: 500 | image_tag: loading: 'eager' }}</a>
+          <a class="mobile-nav__img-logo inline-block lh0 mb0 shrink-wrap" href="{{ routes.root_url }}">{{ section.settings.logo_mobile | image_url: width: 500 | image_tag: loading: 'eager' }}</a>
         {% else %}
           <a class="mobile-nav__text-logo inline-block v-center m0" href="{{ routes.root_url }}">{{ shop.name }}</a>
         {% endif %}
@@ -215,6 +215,11 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo image"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_mobile",
+      "label": "Logo mobile"
     },
     {
       "type": "image_picker",

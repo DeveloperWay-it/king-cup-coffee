@@ -179,10 +179,9 @@ ul.filters-list.filter-list__product-type {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: start;
   list-style: none;
   padding: 0;
-  gap: 15px;
 }
 
 ul.filters-list.filter-list__product-type input[type="radio"] {
@@ -201,9 +200,15 @@ ul.filters-list.filter-list__product-type .filter-item label {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  padding: 10px;
+  padding: 0px;
   transition: all 0.3s ease;
   border-radius: 5px;
+}
+
+@media screen and (min-width: 1200px){
+  ul.filters-list.filter-list__product-type .filter-item label {
+  padding: 10px;
+}
 }
 
 /* Immagine all'interno del filtro */

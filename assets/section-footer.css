@@ -224,3 +224,51 @@ body.buttons--layer .section-footer button.btn-outline.disclosure__button:hover:
 .section-footer .footer-logo {
   max-width:  200px;
 }
+/* Nuovo footer */
+
+.footer-menus {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-menu {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-menu h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-menu ul li {
+  margin-bottom: 5px;
+}
+
+.footer-menu ul li a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-menu ul li a:hover {
+}
+
+/* Responsività per mobile */
+@media (max-width: 768px) {
+  .footer-menus {
+    flex-direction: column;
+  }
+
+  .footer-menu {
+    text-align: left;
+  }
+}
+.footer-bottom {margin-top: 50px}

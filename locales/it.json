@@ -164,7 +164,7 @@
       "no_matches": "Questa raccolta è vuota",
       "clear_all_tags": "Cancella tutto",
       "shop_all": "acquista tutto",
-      "save": "Save",
+      "save": "Risparmi",
       "save_to_html": "Risparmia fino a {{ savings }}",
       "items": "Item(s)",
       "item_count": {
@@ -326,7 +326,7 @@
   "products": {
     "general": {
       "new": "Nuovo",
-      "sale": "Vendita",
+      "sale": "In sconto",
       "sold": "Esaurito",
       "from": "A partire dal",
       "view_full": "Dettagli",

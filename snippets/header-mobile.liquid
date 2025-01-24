@@ -18,7 +18,7 @@
   <div class="site-logo mobile-nav__logo-wrapper span-6 md-span-6 sm-span-4 auto a-center v-center">
     {% if section.settings.logo != blank %}
       <a class="mobile-nav__img-logo mb0 lh0 inline-block v-center" href="{{ routes.root_url }}">
-        {{ section.settings.logo | image_url: width: 800 | image_tag: loading: 'eager' }}
+        {{ section.settings.logo_mobile | image_url: width: 800 | image_tag: loading: 'eager' }}
       </a>
     {% endif %}
   </div>

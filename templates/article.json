@@ -9,16 +9,36 @@
  */
 {
   "sections": {
+    "breadcrumbs_iXEGnN": {
+      "type": "breadcrumbs",
+      "settings": {
+        "alignment": "a-left",
+        "font_size": 18,
+        "section_padding": "none"
+      }
+    },
     "banner": {
       "type": "banner-image",
-      "settings": {}
+      "settings": {
+        "full_width": true,
+        "banner_height": 400,
+        "heading_text_color": "#ffffff",
+        "show_breadcrumbs": true
+      }
     },
     "main": {
       "type": "main-article",
-      "settings": {}
+      "settings": {
+        "show_date": true,
+        "show_author": true,
+        "show_feat_image": false,
+        "show_sidebar": true,
+        "center_heading": false
+      }
     }
   },
   "order": [
+    "breadcrumbs_iXEGnN",
     "banner",
     "main"
   ]

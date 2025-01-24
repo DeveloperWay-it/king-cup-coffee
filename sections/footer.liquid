@@ -2,34 +2,17 @@
 <link rel="preload" href="{{ 'section-footer.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ 'section-footer.css' | asset_url }}"></noscript>
 
-{% comment %} Footer Logic {% endcomment %}
-{%- liquid
-  assign locale_selector = false
-  assign currency_selector = false
-
-  if section.settings.show_country_selector and localization.available_countries.size > 1
-    assign currency_selector = true
-  endif
-
-  if section.settings.show_locale_selector and shop.published_locales.size > 1
-    assign locale_selector = true
-  endif
--%}
-
-{% comment %} Footer Template {% endcomment %}
 <footer
   class="section-footer pt10 pb7"
   data-section-id="{{ section.id }}"
   data-section-type="footer-section"
   data-section-loaded="false">
+  
   <section class="top-footer grid__wrapper">
     <div class="span-4 auto">
       {% if section.settings.footer_logo != blank %}
         <a class="footer-logo mb4 lh0 inline-block" href="{{ routes.root_url }}">
-          {% render 'helper-image'
-            type: section.settings.footer_logo,
-            width: 800
-          %}
+          {% render 'helper-image' type: section.settings.footer_logo, width: 800 %}
         </a>
       {% endif %}
       {% if section.settings.footer_text != blank %}
@@ -38,145 +21,53 @@
       {% if section.settings.show_social %}
         {% render 'snip-footer-social-icons' %}
       {% endif %}
-      {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
-        <div class="footer__follow-on-shop mt1 mb5">
-          {{ shop | login_button: action: 'follow' }}
-        </div>
-      {%- endif -%} 
     </div>
-  </section>
-  <section class="bottom-footer grid__wrapper">
-    <div class="left-footer span-6 auto a-left v-end">
-      {% if section.settings.footer_nav != blank %}
-        <ul class="inline-block mb0">
-          {% for link in linklists[section.settings.footer_nav].links %}
-            <li class="mr3">
-              <a href="{{ link.url }}">
-                {{ link.title }}
-              </a>
-            </li>
+        <div class="footer-menus span-8 auto">
+      <div class="footer-menu">
+        <h4><strong>{{ section.settings.menu_1_title }}</strong></h4>
+        <ul>
+          {% for link in linklists[section.settings.footer_menu_1].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
         </ul>
-      {% endif %}
-    </div>
-    <div class="right-footer span-6 auto a-right v-end">
-      {%- if locale_selector or currency_selector -%}
-        <div class="span-12 auto bottom-footer__localization mb4">
-          {%- if locale_selector -%}
-            <div class="localization__language mx2 mb3 sm-mx0 sm-mr2">
-              <noscript>
-                {%- form 'localization', id: 'FooterLanguageFormNoScript', class: 'localization-form' -%}
-                  <div class="localization-form__select inline-block v-center">
-                    <h2 class="visually-hidden" id="FooterLanguageLabelNoScript">{{ 'general.language.dropdown_label' | t }}</h2>
-                    <select class="localization-selector link" name="locale_code" aria-labelledby="FooterLanguageLabelNoScript">
-                      <option value="" disabled>{{ 'general.language.dropdown_label' | t }}</option>
-                      {%- for language in localization.available_languages -%}
-                        <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {%- if language.iso_code == localization.language.iso_code %} selected{% endif %}>
-                          {{ language.endonym_name | capitalize }}
-                        </option>
-                      {%- endfor -%}
-                    </select>
-                  </div>
-                  <button class="localization-form__noscript-btn button mb0 btn-as-link inline-block v-center">
-                    {% render 'snip-icons',
-                       wrapper: '.section-top-bar__lang',
-                       type: 'theme',
-                       icon: 'checkmark',
-                       size: '12px',
-                       fill: 'var(--footer-bg)',
-                       hover: 'var(--footer-bg)' %}
-                  </button>
-                {%- endform -%}
-              </noscript>
-
-              <div data-localization-form>
-                {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
-                  <div class="no-js-hidden">
-                    <h2 class="visually-hidden" id="FooterLanguageLabel">{{ 'general.language.dropdown_label' | t }}</h2>
-                    <div class="disclosure">
-                      <button type="button" class="disclosure__button localization-form__select btn-outline" aria-label="Choose language" aria-expanded="false" aria-controls="FooterLanguageList" aria-describedby="FooterLanguageLabel">
-                        {{ localization.language.endonym_name | capitalize }}
-                      </button>
-                      <ul id="FooterLanguageList" role="list" class="disclosure__list" hidden>
-                        {%- for language in localization.available_languages -%}
-                          <li class="disclosure__item" tabindex="-1">
-                            <a class="disclosure__link {% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %}" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
-                              {{ language.endonym_name | capitalize }}
-                            </a>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    </div>
-                    <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
-                  </div>
-                {%- endform -%}
-              </div>
-            </div>
-          {%- endif -%}
-          {%- if currency_selector -%}
-            <div class="localization__currency mx2 mb3 sm-mx0">
-              <noscript>
-                {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form' -%}
-                  <div class="localization-form__select inline-block v-center">
-                    <h2 class="visually-hidden" id="FooterCountryLabelNoScript">{{ 'general.currency.dropdown_label' | t }}</h2>
-                    <select class="localization-selector link" name="country_code" aria-labelledby="FooterCountryLabelNoScript">
-                      <option value="" disabled>{{ 'general.currency.dropdown_label' | t }}</option>
-                      {%- for country in localization.available_countries -%}
-                        <option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
-                          {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
-                        </option>
-                      {%- endfor -%}
-                    </select>
-                  </div>
-                  <button class="localization-form__noscript-btn button mb0 btn-as-link inline-block v-center">
-                    {% render 'snip-icons',
-                       wrapper: '.bottom-footer__localization',
-                       type: 'theme',
-                       icon: 'checkmark',
-                       size: '12px',
-                       fill: 'var(--footer-bg)',
-                       hover: 'var(--footer-bg)' %}
-                  </button>
-                {%- endform -%}
-              </noscript>
-              <div data-localization-form>
-                {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
-                  <div class="no-js-hidden">
-                    <h2 class="visually-hidden" id="FooterCountryLabel">{{ 'general.currency.dropdown_label' | t }}</h2>
-                    <div class="disclosure">
-                      <button type="button" class="disclosure__button localization-form__select localization-selector btn-outline" aria-label="Choose country" aria-expanded="false" aria-controls="FooterCountryList" aria-describedby="FooterCountryLabel">
-                        {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})
-                      </button>
-                      <ul id="FooterCountryList" role="list" class="disclosure__list" hidden>
-                        {%- for country in localization.available_countries -%}
-                          <li class="disclosure__item" tabindex="-1">
-                            <a class="disclosure__link {% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %}" href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
-                              {{ country.name }} <span class="localization-form__currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
-                            </a>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    </div>
-                    <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
-                  </div>
-                {%- endform -%}
-              </div>
-            </div>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
-      {% if section.settings.show_credit_cards %}
-        <div class="payment-methods mb6">
-          {% for type in shop.enabled_payment_types %}
-            {{ type | payment_type_svg_tag: class:'payment-icon' }}
+      </div>
+      <div class="footer-menu">
+        <h4><strong>{{ section.settings.menu_2_title }}</strong></h4>
+        <ul>
+          {% for link in linklists[section.settings.footer_menu_2].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
-        </div>
-      {% endif %}
-      <div class="copyright">
-        <small>{% if section.settings.show_copyright %}<a href="{{ routes.root_url }}">&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}</a> •{% endif %} Via Angelo Ramazzotti, 24 - 20900 Monza (MB) - P.I. 03412400131 - C.S. € 10.000,00 i.v.
- </small> | <a href="https://www.iubenda.com/privacy-policy/7775888" class="iubenda-nostyle iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script> | <a href="https://www.iubenda.com/privacy-policy/7775888/cookie-policy" class="iubenda-nostyle iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+        </ul>
+      </div>
+      <div class="footer-menu">
+        <h4><strong>{{ section.settings.menu_3_title }}</strong></h4>
+        <ul>
+          {% for link in linklists[section.settings.footer_menu_3].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
+  </section>
+
+  <section class="footer-bottom grid__wrapper">
+    <div class="copyright span-12 auto a-center">
+      <small>
+        {% if section.settings.show_copyright %}
+          <a href="{{ routes.root_url }}">&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}</a> •
+        {% endif %}
+        Via Angelo Ramazzotti, 24 - 20900 Monza (MB) - P.I. 03412400131 - C.S. € 10.000,00 i.v.
+      </small>
+      | <a href="https://www.iubenda.com/privacy-policy/7775888" title="Privacy Policy">Privacy Policy</a>
+      | <a href="https://www.iubenda.com/privacy-policy/7775888/cookie-policy" title="Cookie Policy">Cookie Policy</a>
+    </div>
+    {% if section.settings.show_credit_cards %}
+      <div class="payment-methods span-12 auto a-center">
+        {% for type in shop.enabled_payment_types %}
+          {{ type | payment_type_svg_tag: class:'payment-icon' }}
+        {% endfor %}
+      </div>
+    {% endif %}
   </section>
 </footer>
 
@@ -221,7 +112,43 @@
       "id": "footer_nav",
       "label": "Footer menu",
       "default":"footer"
-    },
+    },{
+  "type": "text",
+  "id": "menu_1_title",
+  "label": "Titolo menu 1",
+  "default": "INFO E-COMMERCE"
+},
+{
+  "type": "link_list",
+  "id": "footer_menu_1",
+  "label": "Menu Info E-commerce",
+  "default": "footer"
+},
+{
+  "type": "text",
+  "id": "menu_2_title",
+  "label": "Titolo menu 2",
+  "default": "LINK UTILI"
+},
+{
+  "type": "link_list",
+  "id": "footer_menu_2",
+  "label": "Menu Link Utili",
+  "default": "footer"
+},
+{
+  "type": "text",
+  "id": "menu_3_title",
+  "label": "Titolo menu 3",
+  "default": "PRODOTTI"
+},
+{
+  "type": "link_list",
+  "id": "footer_menu_3",
+  "label": "Menu Prodotti",
+  "default": "footer"
+},
+
     {
       "type": "checkbox",
       "id": "show_credit_cards",

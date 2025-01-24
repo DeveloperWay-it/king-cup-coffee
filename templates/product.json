@@ -9,9 +9,32 @@
  */
 {
   "sections": {
+    "breadcrumbs_iqpJqW": {
+      "type": "breadcrumbs",
+      "settings": {
+        "alignment": "a-left",
+        "font_size": 18,
+        "section_padding": "none"
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
+        "loox_reviews_loox_rating_VYdDjV": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -144,6 +167,7 @@
         }
       },
       "block_order": [
+        "loox_reviews_loox_rating_VYdDjV",
         "title",
         "subtitle",
         "price",
@@ -162,7 +186,7 @@
         "complementary_products_3Vwimk"
       ],
       "custom_css": [
-        ".btn-secondary{padding-top: 0px!important}"
+        ".btn-secondary {padding-top: 0px !important;}"
       ],
       "settings": {
         "form_bg_color": "#ffffff",
@@ -172,6 +196,29 @@
         "grid_two_up": false,
         "click_to_enlarge": true,
         "enable_video_looping": false
+      }
+    },
+    "1737648699ef278c8f": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_a6VzCC": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_a6VzCC"
+      ],
+      "settings": {
+        "full_width": true,
+        "section_padding": "both"
       }
     },
     "newsletter_WCQdVW": {
@@ -336,7 +383,9 @@
     }
   },
   "order": [
+    "breadcrumbs_iqpJqW",
     "main",
+    "1737648699ef278c8f",
     "newsletter_WCQdVW",
     "product-details",
     "accordion_VhdmWw",

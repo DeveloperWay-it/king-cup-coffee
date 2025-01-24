@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "breadcrumbs_AUnxg7": {
+      "type": "breadcrumbs",
+      "settings": {
+        "alignment": "a-left",
+        "font_size": 18,
+        "section_padding": "none"
+      }
+    },
     "banner": {
       "type": "banner-image",
       "settings": {
@@ -26,6 +34,7 @@
     }
   },
   "order": [
+    "breadcrumbs_AUnxg7",
     "banner",
     "main"
   ]

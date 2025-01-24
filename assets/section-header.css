@@ -457,6 +457,9 @@ span.js-cart-count.icon-only:hover {
   cursor: pointer;
 }
 
+.megamenu .subsublink-container li {
+  display: block;
+}
 
 .section-header ul.header__navigation .megamenu-sublink-image {
   display: none;

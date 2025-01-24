@@ -19,6 +19,14 @@
         "banner_height_mobile": 300
       }
     },
+    "breadcrumbs_AmrhtK": {
+      "type": "breadcrumbs",
+      "settings": {
+        "alignment": "a-left",
+        "font_size": 14,
+        "section_padding": "none"
+      }
+    },
     "rich_text_Rern3e": {
       "type": "rich-text",
       "settings": {
@@ -144,6 +152,7 @@
   },
   "order": [
     "banner",
+    "breadcrumbs_AmrhtK",
     "rich_text_Rern3e",
     "custom_main_collection_88bxD8",
     "main",

@@ -94,3 +94,5 @@
         padding: 7px;
     }
 }
+@media (min-width: 760px) {
+.menu-item{margin-bottom: 20px}}

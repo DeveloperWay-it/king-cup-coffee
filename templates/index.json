@@ -304,7 +304,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "caffe-al-ginseng",
-            "collection_custom_image": "shopify://shop_images/Frame_7.png",
+            "collection_custom_image": "shopify://shop_images/ginseng_6_11zon.webp",
             "product_image": false
           }
         },
@@ -312,7 +312,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "zenzero-e-limone",
-            "collection_custom_image": "shopify://shop_images/Frame_7_1.png",
+            "collection_custom_image": "shopify://shop_images/zenzero-limone_10_11zon.webp",
             "product_image": false
           }
         },
@@ -320,7 +320,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "the-matcha",
-            "collection_custom_image": "shopify://shop_images/Group_1.png",
+            "collection_custom_image": "shopify://shop_images/matcha_9_11zon.webp",
             "product_image": false
           }
         },
@@ -328,7 +328,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "golden-milk",
-            "collection_custom_image": "shopify://shop_images/Group_1_1.png",
+            "collection_custom_image": "shopify://shop_images/golden-milk_7_11zon.webp",
             "product_image": false
           }
         },
@@ -336,7 +336,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "cappuccino-al-ginseng",
-            "collection_custom_image": "shopify://shop_images/Frame_7_2.png",
+            "collection_custom_image": "shopify://shop_images/cappuccino_2_11zon.webp",
             "product_image": false
           }
         },
@@ -344,7 +344,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "caffe-espresso",
-            "collection_custom_image": "shopify://shop_images/Frame_7_3.png",
+            "collection_custom_image": "shopify://shop_images/espresso_4_11zon.webp",
             "product_image": false
           }
         },
@@ -352,7 +352,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "filtri",
-            "collection_custom_image": "shopify://shop_images/Frame_7_4.png",
+            "collection_custom_image": "shopify://shop_images/infusi_8_11zon.webp",
             "product_image": false
           }
         },
@@ -360,7 +360,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "freeze",
-            "collection_custom_image": "shopify://shop_images/Group_1_2.png",
+            "collection_custom_image": "shopify://shop_images/freeze_5_11zon.webp",
             "product_image": false
           }
         },
@@ -368,7 +368,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "cioccolata-light",
-            "collection_custom_image": "shopify://shop_images/Group_1_3.png",
+            "collection_custom_image": "shopify://shop_images/cioccolata_3_11zon.webp",
             "product_image": false
           }
         },
@@ -528,7 +528,7 @@
           "settings": {
             "image": "shopify://shop_images/Chi_siamo_3_3_11zon.webp",
             "mobile_image": "shopify://shop_images/Chi_siamo_3_3_11zon.webp",
-            "heading": "Un viaggio  all’origine del gusto",
+            "heading": "Un viaggio all’origine del gusto",
             "subheading": "<p>Dal 2012, selezioniamo da tutto il mondo le migliori ricette da produttori artigianali, portando la massima qualità e un gusto inconfondibile nella tua tazza.</p>",
             "link": "shopify://pages/chi-siamo",
             "button_text": "CHI SIAMO",
@@ -648,10 +648,45 @@
         "product_4": "caffe-al-ginseng-da-zuccherare-capsule-nespresso®"
       }
     },
+    "1737648932d18b8524": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_LeWacU": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1100,
+            "borderRadius": 8,
+            "itemsPerView": 4,
+            "mobileItemsPerView": 1,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "0.72",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#FFFFFF",
+            "arrows_iconColor": "#9A9A9A",
+            "shadow": "offset-dark",
+            "border_active": false,
+            "border_width": 2,
+            "border_color": "#000000",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_LeWacU"
+      ],
+      "settings": {
+        "full_width": true,
+        "section_padding": "both"
+      }
+    },
     "featured_blog_fiRnGA": {
       "type": "featured-blog",
       "settings": {
-        "title": "Featured Blog",
+        "title": "Scopri il nostro blog",
         "blog": "news",
         "items_per_page": 3,
         "items_per_row": 3,
@@ -676,6 +711,7 @@
     "bestsellers_KXbceH",
     "bestsellers_8Ge9TC",
     "image_with_text_qpLBCV",
+    "1737648932d18b8524",
     "testimonials_AUEU9y",
     "custom_slideshow_JYLq8t",
     "logo_list_j4bkR4",

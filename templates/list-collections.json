@@ -9,20 +9,39 @@
  */
 {
   "sections": {
+    "breadcrumbs_twYtVV": {
+      "type": "breadcrumbs",
+      "settings": {
+        "alignment": "a-left",
+        "font_size": 18,
+        "section_padding": "none"
+      }
+    },
     "banner": {
       "type": "banner-image",
-      "settings": {}
+      "settings": {
+        "full_width": true,
+        "banner_height": 400,
+        "heading_text_color": "#ffffff",
+        "show_breadcrumbs": true
+      }
     },
     "main": {
       "type": "main-list-collections",
-      "settings": {}
+      "settings": {
+        "text": "<p>Add some descriptive text to your all collections page.</p>"
+      }
     },
     "grid": {
       "type": "main-list-collections-all",
-      "settings": {}
+      "settings": {
+        "items_per_row": 3,
+        "items_per_page": 15
+      }
     }
   },
   "order": [
+    "breadcrumbs_twYtVV",
     "banner",
     "main",
     "grid"

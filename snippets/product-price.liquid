@@ -33,11 +33,6 @@ Usage:
 {% endcapture %}
 
 <div class="product__price">
-   <div class="product__price-label">
-     {{ 'cart.general.price' | t }}:
-   </div>
-   <div class="product__price-value">
      {{ price }}
-   </div>
 </div>
 {%- render 'product-unit-price', variant: current_variant, product_info_align: 'a-center' -%}
