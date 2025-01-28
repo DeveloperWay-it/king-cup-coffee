@@ -28,6 +28,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "page_alignment": "a-left"
       }

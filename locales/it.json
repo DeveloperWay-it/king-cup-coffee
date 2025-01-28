@@ -101,7 +101,7 @@
       "your_email": "Indirizzo Email",
       "your_comment": "Commenta",
       "moderated": "Si prega di notare che, prima di essere pubblicati, i commenti devono essere approvati.",
-      "post": "Pubblica commentot",
+      "post": "Pubblica commento",
       "success_moderated": "Il tuo commento è stato pubblicato. Lo pubblicheremo fra poco, il nostro blog è soggetto a moderazione.",
       "success": "Il tuo commento è stato pubblicato! Grazie!",
       "comments_with_count": {
@@ -414,17 +414,17 @@
       "secs": "sec"
     },
     "search": {
-      "no_results": "No Results",
-      "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
+      "no_results": "Nessun risultato",
+      "no_results_html": "La tua ricerca per \"{{ terms }}\" non ha dato nessun risultato.",
       "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",
-      "title": "Search our store",
-      "placeholder": "Search",
-      "products": "Products",
-      "articles": "Articles",
-      "pages": "Pages",
-      "search_for": "Search for “{{ terms }}”",
-      "vendor": "Vendor",
-      "suggestions": "Suggestions"
+      "title": "Cerca",
+      "placeholder": "Cerca",
+      "products": "Prodotti",
+      "articles": "Articoli",
+      "pages": "Pagine",
+      "search_for": "Cerca per “{{ terms }}”",
+      "vendor": "Venduto da",
+      "suggestions": "Suggerimenti"
     }
   },
   "gift_cards": {

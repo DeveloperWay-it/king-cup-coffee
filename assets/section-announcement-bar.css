@@ -115,3 +115,41 @@
 .js-carousel .announcement--text p {
   padding: 0 20px;
 }
+/*---- nuovo css ----*/
+@media screen and (max-width: 768px) {
+  .section-top-bar__wrapper .grid__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-top-bar__wrapper .section-top-bar__one,
+  .section-top-bar__wrapper .section-top-bar__three {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .section-top-bar__wrapper .section-top-bar__one .phone-link,
+  .section-top-bar__wrapper .section-top-bar__three .js-carousel {
+    display: block;
+    width: 100%;
+  }
+
+  .section-top-bar__wrapper .section-top-bar__one a,
+  .section-top-bar__wrapper .section-top-bar__three .announcement--text p {
+    font-size: 16px; /* Adatta la dimensione se necessario */
+    text-align: center;
+  }
+
+  /* Nasconde i pulsanti di navigazione del carosello su mobile */
+  .section-top-bar__wrapper .section-top-bar__three .flickity-prev-next-button {
+    display: none !important;
+  }
+
+  /* Aggiustamento padding per il numero di telefono */
+  .section-top-bar__wrapper .section-top-bar__one {
+    padding-top: 0px;
+  }
+}

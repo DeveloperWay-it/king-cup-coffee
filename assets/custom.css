@@ -93,6 +93,9 @@
     .icon-item {
         padding: 7px;
     }
+  .grid__wrapper {min-width: 100%!important}
+
 }
 @media (min-width: 760px) {
-.menu-item{margin-bottom: 20px}}
+.menu-item{margin-bottom: 20px}
+}

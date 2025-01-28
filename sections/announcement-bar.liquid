@@ -21,7 +21,7 @@
   endfor
 -%}
 {% comment %} Announcement Template {% endcomment %}
-<div class="section-top-bar__wrapper sm-hide js-top-bar"
+<div class="section-top-bar__wrapper js-top-bar"
   data-section-id="{{ section.id }}"
   data-asset-url="{{ 'carousel.js' | asset_url }}"
   data-section-type="announcement-bar">
@@ -30,7 +30,11 @@
       {%- case block.type -%}
         {%- when 'phone_number' -%}
           <div id="block-{{ block.id }}" class="section-top-bar__one one span-2 auto a-{{ block.settings.alignment }}">
-            <div class="px3">{{ block.settings.phone_number }}</div>
+<div class="px3" style="font-weight: bold !Important; color: #B1CA84 !Important">
+  <a href="{{ block.settings.url }}" class="phone-link" style="font-weight: bold !Important; color: #B1CA84 !Important">
+    {{ block.settings.phone_number }}
+  </a>
+</div>
           </div>
         {%- when 'shop_note' -%}
           <div id="block-{{ block.id }}" class="section-top-bar__two two span-3 auto a-{{ block.settings.alignment }}">
@@ -100,14 +104,22 @@
       {%- endcase -%}
     {%- endfor -%}
   </div>
-  <style>
-    .section-top-bar__wrapper a,
-    .section-top-bar__wrapper p {
-      color: var(--announcement-text);
-      font-size: {{ section.settings.announcement_text_size }}px !important;
-      margin-bottom: 0;
-    }
-  </style>
+<style>
+  .section-top-bar__wrapper a,
+  .section-top-bar__wrapper p {
+    color: var(--announcement-text);
+    font-size: {{ section.settings.announcement_text_size }}px !important;
+    margin-bottom: 0;
+  }
+  .phone-link {
+    color: {{ section.blocks | where: 'type', 'phone_number' | first | dig: 'settings', 'phone_number_color' }};
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .phone-link:hover {
+    text-decoration: underline;
+  }
+</style>
 </div>
 {% schema %}
 {
@@ -137,6 +149,17 @@
            "label": "Phone number",
            "default": "<p>777-777-7777</p>"
          },
+         {
+            "type": "color",
+            "id": "phone_number_color",
+            "label": "Phone number color",
+            "default": "#000000"
+          },
+             {
+      "type": "url",
+      "id": "url",
+      "label": "Button link"
+    },
          {
            "type": "select",
            "id": "alignment",

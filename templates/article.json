@@ -30,7 +30,7 @@
       "type": "main-article",
       "settings": {
         "show_date": true,
-        "show_author": true,
+        "show_author": false,
         "show_feat_image": false,
         "show_sidebar": true,
         "center_heading": false

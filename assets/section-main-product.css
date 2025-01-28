@@ -4,7 +4,6 @@
 
 /* Product Form Price */
 .product__section--main .product__price-container {
-  font-size: var(--h3-size);
   display: inline-block;
 }
 

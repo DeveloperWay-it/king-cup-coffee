@@ -25,10 +25,16 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "footer_text": "<p><strong>King cup italia srl<br/></strong>T<a href=\"tel:+390399208776\">+39 039 92 08 776<br/></a>M<a href=\"tel:+ 39 338 65 48 008\" target=\"_blank\" title=\"tel:+ 39 338 65 48 008\">+ 39 338 65 48 008<br/></a>Numero verde <a href=\"tel:800642543\" target=\"_blank\"><strong>800 642 543</strong></a><br/><a href=\"mailto:support@kingcupcoffee.eu\" target=\"_blank\">support@kingcupcoffee.eu<br/></a>WhatsApp <a href=\"https://api.whatsapp.com/send?phone=3662976385\"><strong>+ 39 366 29 76 385</strong></a></p>",
+        "footer_text": "<p><strong>King cup italia srl<br/></strong>T<a href=\"tel:+390399208776\" target=\"_blank\">+39 039 92 08 776<br/></a>M<a href=\"tel:+ 39 338 65 48 008\" target=\"_blank\" title=\"tel:+ 39 338 65 48 008\">+ 39 338 65 48 008<br/></a>Numero verde <a href=\"tel:800642543\" target=\"_blank\"><strong>800 642 543</strong><br/></a>support@kingcupcoffee.eu<br/>WhatsApp <a href=\"https://api.whatsapp.com/send?phone=3662976385\" target=\"_blank\"><strong>+ 39 366 29 76 385</strong></a></p>",
         "show_social": true,
         "enable_follow_on_shop": true,
         "footer_nav": "footer",
+        "menu_1_title": "INFO E-COMMERCE",
+        "footer_menu_1": "footer",
+        "menu_2_title": "PRODOTTI",
+        "footer_menu_2": "prodotti",
+        "menu_3_title": "",
+        "footer_menu_3": "",
         "show_credit_cards": true,
         "show_copyright": true,
         "show_locale_selector": true,

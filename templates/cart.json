@@ -13,7 +13,9 @@
       "type": "banner-image",
       "settings": {
         "full_width": true,
-        "banner_height": 400
+        "banner_height": 400,
+        "heading_text_color": "#ffffff",
+        "show_breadcrumbs": true
       }
     },
     "main": {
@@ -24,12 +26,14 @@
     },
     "image-with-text": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "iwt_layout": "image_left",
         "iwt_heading": "Heading",
-        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.<\/p>",
+        "iwt_text": "<p>Pair text with an image to give focus to your chosen content. Add details on availability, style, or even provide a review.</p>",
         "iwt_button": "Button",
         "iwt_link": "",
+        "show_box_shadow": false,
         "color_scheme": "1",
         "iwt_section_height": 500,
         "section_padding": "both"

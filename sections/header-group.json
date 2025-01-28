@@ -26,7 +26,9 @@
         "phone_number_qLDD6F": {
           "type": "phone_number",
           "settings": {
-            "phone_number": "<p><strong>numero verde: 800 642 543</strong></p>",
+            "phone_number": "<p>numero verde: 800 642 543</p>",
+            "phone_number_color": "#b1ca84",
+            "url": "tel:800642543",
             "alignment": "left"
           }
         }
@@ -97,6 +99,7 @@
         "logo_align_left": true,
         "enable_sticky": true,
         "logo": "shopify://shop_images/9484639cfa5c5828c99bc0b4f51b7d75.png",
+        "logo_mobile": "shopify://shop_images/logo-king-cup-mobile.png",
         "logo_max_width": 50,
         "logo_max_width_mobile": 50,
         "logo_size": 32,

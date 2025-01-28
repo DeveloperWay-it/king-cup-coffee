@@ -13,8 +13,8 @@
       "type": "main-collection-banner",
       "settings": {
         "full_width": true,
-        "image": "shopify://shop_images/Rectangle_90.png",
-        "mobile_image": "shopify://shop_images/Rectangle_90_1.png",
+        "image": "{{ collection.image }}",
+        "mobile_image": "{{ collection.image }}",
         "banner_height": 500,
         "banner_height_mobile": 300
       }
@@ -141,6 +141,7 @@
         "text_block_zNfGzV",
         "text_block_LU8BWM"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "text_align": "center",

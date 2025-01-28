@@ -116,7 +116,7 @@
     "featured_blog_qEj8N3": {
       "type": "featured-blog",
       "settings": {
-        "title": "Featured Blog",
+        "title": "Articoli del blog",
         "blog": "news",
         "items_per_page": 3,
         "items_per_row": 3,
@@ -194,6 +194,7 @@
         "text_block_gchQBP",
         "text_block_h7eywx"
       ],
+      "disabled": true,
       "settings": {
         "title": "Text with Icons",
         "text_align": "center",
