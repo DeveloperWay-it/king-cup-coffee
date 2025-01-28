@@ -923,7 +923,7 @@
     "scheme_3_text": "#ffffff",
     "scheme_3_button_bg": "#faf4e8",
     "scheme_3_button_text": "#a18167",
-    "cart_type": "drawer",
+    "cart_type": "modal_cart",
     "show_tax_note": true,
     "show_shipping_note": true,
     "show_shipping_countdown": false,
