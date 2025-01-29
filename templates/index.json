@@ -351,7 +351,7 @@
         "featured_collection_4kwCAp": {
           "type": "featured_collection",
           "settings": {
-            "collection": "filtri",
+            "collection": "infusi-tisane-tea",
             "collection_custom_image": "shopify://shop_images/infusi_8_11zon.webp",
             "product_image": false
           }
@@ -448,7 +448,7 @@
         "heading": "Filtri",
         "heading_size": 30,
         "mobile_heading_size": 28,
-        "collection": "filtri"
+        "collection": "infusi-tisane-tea"
       }
     },
     "image_with_text_qpLBCV": {
