@@ -36,7 +36,7 @@
             "mobile_image": "shopify://shop_images/ginseng-solubile-grande-dolce-5_1_11zon.webp",
             "heading": "L'originale ricetta del caffè al ginseng dalla Malesia.",
             "subheading": "<p>Aggiungi 120ml di acqua calda e gustalo nella tua tazza preferita.</p>",
-            "link": "shopify://collections/caffe-al-ginseng",
+            "link": "shopify://collections/caffe-al-ginseng-vendita-online",
             "button_text": "SCORPILO SUBITO",
             "second_link": "",
             "second_button_text": "Button 2 text",
@@ -303,7 +303,7 @@
         "featured_collection_kfprRh": {
           "type": "featured_collection",
           "settings": {
-            "collection": "caffe-al-ginseng",
+            "collection": "caffe-al-ginseng-vendita-online",
             "collection_custom_image": "shopify://shop_images/ginseng_6_11zon.webp",
             "product_image": false
           }
@@ -677,7 +677,7 @@
         "mobile_heading_size": 24,
         "mobile_subheading_size": 14,
         "mobile_button_size": 12,
-        "button_link": "shopify://collections/caffe-al-ginseng",
+        "button_link": "shopify://collections/caffe-al-ginseng-vendita-online",
         "product_1": "caffe-al-ginseng-20-bustine-solubili-con-zucchero-di-canna",
         "product_2": "caffe-al-ginseng-20-bustine-solubili-da-zuccherare",
         "product_3": "caffe-al-ginseng-con-zucchero-di-canna-capsule-nespresso®",
