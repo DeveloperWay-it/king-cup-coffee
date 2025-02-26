@@ -72,6 +72,16 @@ ul.header__navigation a,
   .section-header .cart-link svg {
     margin-right: 0 !important;
   }
+
+  .section-header .mobile-nav__mobile-header {
+    padding: 0;
+  }
+
+  .section-header__mobile > .grid__wrapper {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
 }
 
 @media (min-width: 768px) {
