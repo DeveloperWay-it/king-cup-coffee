@@ -13,3 +13,21 @@
 .section-richtext .a-left .rte p {
  text-align: left;
 }
+
+.section-richtext .a-center-mobile .rte,
+.section-richtext .a-center-mobile .rte p {
+  text-align: center;
+}
+.section-richtext .a-left-mobile .rte,
+.section-richtext .a-left-mobile .rte p {
+ text-align: left;
+}
+
+.section-richtext .section-heading.a-center-mobile,
+.section-richtext .section-heading.a-center-mobile{
+  text-align: center;
+}
+.section-richtext .section-heading.a-left-mobile,
+.section-richtext .section-heading.a-left-mobile{
+ text-align: left;
+}
