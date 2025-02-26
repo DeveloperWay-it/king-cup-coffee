@@ -23,7 +23,7 @@
 
 .product-card .product-image {
 	width: 100%;
-	aspect-ratio: 301 / 371;
+	aspect-ratio: 1;
 	display: flex;
 	flex: 1 100%;
 	align-items: center;

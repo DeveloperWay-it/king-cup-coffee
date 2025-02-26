@@ -69,6 +69,13 @@
 	flex: 1;
 }
 
+@media screen and (max-width: 768px) {
+	.bestseller_section .product-card .product-text {
+		flex: 1 100%;
+	}
+	
+}
+
 /* .bestseller_section .product-card .product-text {
 	padding: 10px 13px;
 	display: flex;
