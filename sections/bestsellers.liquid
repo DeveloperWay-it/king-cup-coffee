@@ -2,7 +2,14 @@
   rel="preload"
   href="{{ 'custom_bestsellers.css' | asset_url }}"
   as="style"
-  onload="this.onload=null;this.rel='stylesheet'">
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="preload"
+  href="{{ 'custom_product-card.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript>
   <link rel="stylesheet" href="{{ 'custom_bestsellers.css' | asset_url }}">
 </noscript>
@@ -19,7 +26,7 @@
     font-weight: bold;
     text-align: center;
     letter-spacing: normal;
-    margin-bottom: 60px;  
+    margin-bottom: 60px;
   }
 
   @media screen and (max-width: 740px) {
@@ -37,9 +44,7 @@
     <div class="swiper-wrapper">
       {% for product in section.settings.collection.products %}
         <div class="swiper-slide">
-          {% render 'product-card'
-            , product: product
-            , add_quantity_selector: true %}
+          {% render 'product-card', product: product, add_quantity_selector: true %}
         </div>
       {% endfor %}
     </div>
@@ -71,55 +76,52 @@
       1024: {
         slidesPerView: 4,
       },
-    }
+    },
   });
 </script>
 
-
 {% schema %}
-  {
-    "name": "Bestseller section",
-    "tag": "section",
-    "class": "bestseller-section",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading",
-        "default": "Best Sellers"
-      },
-      {
-        "type": "range",
-        "id": "heading_size",
-        "min": 12,
-        "max": 64,
-        "step": 1,
-        "unit": "px",
-        "label": "Heading size",
-        "default": 32
-      },
-      {
-        "type": "range",
-        "id": "mobile_heading_size",
-        "min": 12,
-        "max": 64,
-        "step": 1,
-        "unit": "px",
-        "label": "Heading size on mobile",
-        "default": 28
-      },
-      {
-        "id": "collection",
-        "type": "collection",
-        "label": "Collection"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Bestseller section "
-      }
-    ]
-
-  }
-
+{
+  "name": "Bestseller section",
+  "tag": "section",
+  "class": "bestseller-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 12,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "min": 12,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size on mobile",
+      "default": 28
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bestseller section "
+    }
+  ]
+}
 {% endschema %}

@@ -111,17 +111,26 @@
             assign md_render = 'calc(100vw / ' | append: grid_items | append: ')'
             assign lg_render = 'calc(1600px / ' | append: grid_items | append: ')'
           -%}
-          <a class="inline-block mb0 w100" href="{{ article.url }}">
+          <a class="article-image-frame inline-block mb0 w100" href="{{ article.url }}">
             <span class="category info-category">{{ unique_categories }}</span>
-            {% render 'helper-image',
-              type: article.image,
-              sm_render: sm_render,
-              md_render: md_render,
-              lg_render: lg_render,
-              loading: loading,
-              fetchpriority: fetchpriority,
-              width: 600
-            %}
+            {% comment %}
+              {% render 'helper-image',
+                type: article.image,
+                sm_render: sm_render,
+                md_render: md_render,
+                lg_render: lg_render,
+                loading: loading,
+                fetchpriority: fetchpriority,
+                width: 600
+              %}
+            {% endcomment %}
+            <img
+              src="{{ article.image | image_url }}"
+              width="{{ article.image.width }}"
+              height="{{ article.image.height }}"
+              alt="{{ article.title }}"
+              loading="{{ loading }}"
+            >
           </a>
         {%- elsif article.content != blank and article.content contains '<img' -%}
           {%- assign has_image = true -%}

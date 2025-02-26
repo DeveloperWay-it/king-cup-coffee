@@ -44,6 +44,7 @@
 }
 
 .product-card .product-text {
+	position: relative;
 	padding: 10px 13px;
 	display: flex;
 	flex-direction: column;
@@ -53,24 +54,58 @@
 	flex: 1;
 }
 
+.product-card .discount-box {
+	position: absolute;
+	top: -25px;
+	left: 0;
+	right: 0;
+	background: #970c0c;
+	color: white;
+	width: fit-content;
+	margin: auto;
+	padding: 4px 10px;
+}
+
+@media screen and (min-width: 769px) {
+	.product-card .discount-box {
+		top: -30px;
+	}
+}
+
 .product-card .product-text h3 {
 	font-size: 17px;
 	line-height: 24px;
 	/* font-weight: 700; */
-	font-family: "Iowan" !important;
-	font-family: var(--heading-family);
+	/* font-family: "Iowan" !important; */
+	font-family: var(--main-family);
+	font-weight: unset;
 	letter-spacing: normal;
 	margin: 0;
 }
 
+.product-card .product-text .prices {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	margin-top: auto;
+	margin-bottom: 25px;
+	padding-top: 10px;
+ }
+
+ .product-card .product-text .price-compare {
+	margin: 0;
+	color: grey;
+	text-decoration: line-through;
+ }
+
 .product-card .product-text .price {
 	font-size: 20px;
 	line-height: 25px;
-	font-weight: 800;
-	margin-top: auto;
-	margin-bottom: 25px;
-	font-family: "Assistant";
-	padding-top: 10px;
+	font-family: var(--main-family);
+	margin: 0;
 }
 
 .product-card .product-form {
