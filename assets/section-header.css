@@ -56,6 +56,10 @@ ul.header__navigation a,
   z-index: 20;
 }
 
+.section-header ul.header__navigation li[aria-expanded="true"] span {
+  font-weight: bold;
+}
+
 .section-header ul.header__navigation a,
 .section-header ul.header__cart-links__wrapper.cart-link-topbar-false a,
 .section-header ul.header__navigation a span {
