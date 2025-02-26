@@ -130,6 +130,14 @@
     max-width: 100%;
     text-align: center;
   }
+  
+  .section-top-bar__wrapper [id*="block-phone_number"] {
+    padding: 0;
+  }
+
+  .section-top-bar__wrapper [id*="block-phone_number"] .px3 {
+    display: none;
+  }
 
   .section-top-bar__wrapper .section-top-bar__one .phone-link,
   .section-top-bar__wrapper .section-top-bar__three .js-carousel {
