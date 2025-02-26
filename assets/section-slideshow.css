@@ -150,6 +150,12 @@
 	margin-bottom: 0;
 }
 
+@media screen and (max-width: 768px) {
+	.slideshow__caption h2.slideshow__title {
+		font-size: 30px;
+	}
+}
+
 .slide__buttons {
 	display: flex;
 	column-gap: 10px;
