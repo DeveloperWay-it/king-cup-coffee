@@ -202,6 +202,11 @@ document.querySelectorAll('.megamenu-sublink').forEach(function(sublink) {
   sublink.addEventListener('click', function(event) {
     event.preventDefault(); // Previene il comportamento predefinito del link
 
+    document.querySelectorAll('.megamenu-sublink').forEach(function(sl) {
+      sl.style.fontWeight = "normal";
+    })
+    sublink.style.fontWeight = "bold";
+
     // Nascondi tutti i megamenu-subsublink
     document.querySelectorAll('.megamenu-subsublink').forEach(function(subsub) {
       subsub.style.display = 'none';
