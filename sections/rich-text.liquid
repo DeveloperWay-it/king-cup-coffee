@@ -1,10 +1,14 @@
 {% comment %} Rich Text Assets {% endcomment %}
-<link rel="preload" href="{{ 'section-rich-text.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link
+  rel="preload"
+  href="{{ 'section-rich-text.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript><link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}"></noscript>
 
 {% comment %} Rich Text logic {% endcomment %}
 {%- liquid
-
   assign section_padding = ''
   if section.settings.section_padding == 'top'
     assign section_padding = 'pb0'
@@ -13,7 +17,6 @@
   elsif section.settings.section_padding == 'none'
     assign section_padding = 'mt0 pb0'
   endif
-
 -%}
 
 {% comment %} Rich Text Template {% endcomment %}
@@ -21,24 +24,31 @@
   class="global__section section-richtext rich-text-{{ section.id }} {{ section_padding }}"
   data-section-id="{{ section.id }}"
   data-section-type="rich-text"
-  data-section-loaded="false">
-
+  data-section-loaded="false"
+>
   <div class="grid__wrapper edge py9">
-    {% render 'snip-headings', align: section.settings.alignment, classes: 'animate--text delay--1 px4', grid: 'span-12' %}
+    {% render 'snip-headings',
+      align: section.settings.alignment,
+      align_mobile: section.settings.mobile_alignment,
+      classes: 'animate--text delay--1 px4',
+      grid: 'span-12'
+    %}
 
     {% if section.settings.page != blank or section.settings.rich_text != blank %}
-      <div class="span-12 auto {{ section.settings.alignment }} px4">
+      <div class="span-12 auto {{ section.settings.alignment }} {{ section.settings.mobile_alignment }} px4">
         <div class="pages-content animate--text delay--2">
           {% if section.settings.page != blank %}
-          {% assign feat_page = pages[section.settings.page] %}
-          {{ feat_page.content }}
-        {% else %}
-          <div class="rte">
-            {{ section.settings.rich_text }}
-          </div>
+            {% assign feat_page = pages[section.settings.page] %}
+            {{ feat_page.content }}
+          {% else %}
+            <div class="rte">
+              {{ section.settings.rich_text }}
+            </div>
           {% endif %}
-        </div><!-- /.pages-content -->
-      </div><!-- /.span-12.auto -->
+        </div>
+        <!-- /.pages-content -->
+      </div>
+      <!-- /.span-12.auto -->
     {% endif %}
   </div>
   <style>
@@ -101,7 +111,6 @@
     }
   </style>
 </div>
-
 
 {% schema %}
 {
@@ -183,14 +192,30 @@
       "default": "a-center"
     },
     {
-      "type":      "range",
-      "id":        "content_width",
-      "min":       10,
-      "max":       100,
-      "step":      5,
-      "unit":      "%",
-      "label":     "Content width",
-      "default":   60
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Mobile Alignment",
+      "options": [
+        {
+          "value": "a-left-mobile",
+          "label": "Left"
+        },
+        {
+          "value": "a-center-mobile",
+          "label": "Center"
+        }
+      ],
+      "default": "a-center-mobile"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Content width",
+      "default": 60
     },
     {
       "type": "select",
@@ -224,7 +249,7 @@
       "type": "select",
       "id": "color_scheme",
       "label": "Color scheme",
-      "default":"1",
+      "default": "1",
       "options": [
         {
           "value": "none",
@@ -245,9 +270,9 @@
       ]
     }
   ],
-  "presets":[
+  "presets": [
     {
-      "name":"Rich text"
+      "name": "Rich text"
     }
   ],
   "disabled_on": {
