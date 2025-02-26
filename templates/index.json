@@ -43,7 +43,7 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "align_content": "left",
-            "align_content_mobile": "center",
+            "align_content_mobile": "left",
             "slide_text_color": "#ffffff",
             "slide_button_color": "#ffffff",
             "slide_button_bg": "#a18167",
@@ -84,7 +84,6 @@
           "type": "text_block",
           "settings": {
             "icon": "chat",
-            "image": "shopify://shop_images/HP_-_Spedizione_gratis_sopra_i_60.svg",
             "link": "",
             "title": "SPEDIZIONE GRATIS SOPRA I 60€",
             "subheading": "<p>Sfrutta la spedizione gratuita per tutti gli ordini superiore ai 60€</p>"
@@ -104,7 +103,6 @@
           "type": "text_block",
           "settings": {
             "icon": "chat",
-            "image": "shopify://shop_images/HP_-_Pagamenti_sicuri.svg",
             "link": "",
             "title": "PAGAMENTI SICURI E CERTIFICATI",
             "subheading": "<p>Zero truffe grazie al nostro certificato di sicurezza</p>"
@@ -114,7 +112,6 @@
           "type": "text_block",
           "settings": {
             "icon": "chat",
-            "image": "shopify://shop_images/HP_-_Supporto_h24.svg",
             "link": "",
             "title": "ONLINE SUPPORT",
             "subheading": "<p>Servizio Live Chat diretto con il nostro centro operativo</p>"
