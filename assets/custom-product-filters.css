@@ -264,6 +264,13 @@ ul.filters-list.filter-list__product-type .radio-button .content {
 
 ul.filters-list.filter-list__product-type .radio-button .filter-icon {
   margin-bottom: 8px;
+  width: 50px;
+  height: 50px;
+}
+
+ul.filters-list.filter-list__product-type .radio-button .filter-icon img{
+  width: 50px;
+  height: 100%;
 }
 
 ul.filters-list.filter-list__product-type .radio-button .color-circle {

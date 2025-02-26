@@ -16,6 +16,7 @@
 
 .main-collection_product-type-filters {
   grid-area: product-types;
+  grid-column-start: 1;
 }
 
 .main-collection_filters {

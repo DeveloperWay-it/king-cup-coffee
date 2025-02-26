@@ -1226,6 +1226,31 @@ height: 28px;
   cursor: inherit;
 }
 
+.product-icons-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product-icons-block .text-with-icon-horizontal {
+  flex: 0 1 50%;
+}
+
+.product-icons-block .product-template__text-with-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.product-icons-block .product-template__text-with-icon .new_icon__icon{
+  display: flex;
+  align-items: center;
+  width: 45px;
+}
+
+.product-icons-block .product-template__text-with-icon .new_icon__icon img {
+  width: 45px;
+}
+
 /* ---- Text with icon ---- */
 
 .product-template__text-with-icon {

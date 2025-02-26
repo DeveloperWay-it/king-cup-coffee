@@ -1,7 +1,9 @@
 {% comment %} Product Page Logic {% endcomment %}
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
-  assign first_3d_model = product.media | where: "media_type", "model" | first
+  assign first_3d_model = product.media | where: 'media_type', 'model' | first
+  assign icons_blocks = section.blocks | where: 'type', 'text_with_icon_new'
+  assign icons_block_rendered = false
 
   assign thumbnail_position = section.settings.thumbnail_position
   assign click_to_enlarge = section.settings.click_to_enlarge
@@ -14,7 +16,7 @@
   endif
 
   unless current_variant.available
-   assign call_to_action = 'products.product.sold_out' | t
+    assign call_to_action = 'products.product.sold_out' | t
   endunless
 
   if settings.product_show_payment_button
@@ -22,9 +24,9 @@
   endif
 
   if product.media.size < 1
-   assign is_single_image = true
+    assign is_single_image = true
   else
-   assign is_single_image = false
+    assign is_single_image = false
   endif
 
   assign media_grid_class = 'span-6'
@@ -39,17 +41,17 @@
   assign has_plyr = false
   assign has_ytv = false
   for media in product.media
-    if media.media_type == "video"
+    if media.media_type == 'video'
       assign has_plyr = true
       assign has_video = true
       continue
     endif
-    if media.media_type == "external_video"
+    if media.media_type == 'external_video'
       assign has_ytv = true
       assign has_video = true
       continue
     endif
-    if media.media_type == "model"
+    if media.media_type == 'model'
       assign has_media = true
       continue
     endif
@@ -95,21 +97,64 @@
     assign button_text = 'products.product.add_to_cart' | t
   endif
 
-  assign product_form_id = 'product-form-' | append: section.id 
-
+  assign product_form_id = 'product-form-' | append: section.id
 -%}
 
+{% capture product_icons_block %}
+  {% if icons_blocks.size > 0 %}
+    {% for block in icons_blocks %}
+      <div class="text-with-icon-horizontal">
+        {% if block.settings.text_new_icon != blank %}
+          <div
+            class="product-template__text-with-icon icon-block a-{{ block.settings.text_align_text }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="new_icon__icon">
+              <img src="{{ block.settings.icon_image | img_url: 'small' }}" alt="Icon Image">
+            </div>
+            <div class="text-with-new-icon">
+              {{ block.settings.text_new_icon }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endcapture %}
+
 {% comment %} Product Page Assets {% endcomment %}
-<link rel="preload" href="{{ 'section-main-product.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link
+  rel="preload"
+  href="{{ 'section-main-product.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript><link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}"></noscript>
-<link rel="preload" href="{{ 'component-accordions.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link
+  rel="preload"
+  href="{{ 'component-accordions.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript><link rel="stylesheet" href="{{ 'component-accordions.css' | asset_url }}"></noscript>
 
 {%- if has_media -%}
-  <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
+  <link
+    id="ModelViewerStyle"
+    rel="stylesheet"
+    href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+    media="print"
+    onload="this.media='all'"
+  >
 {%- endif -%}
 {%- if has_plyr -%}
-  <link id="PlyrViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/shopify-plyr/v1.0/shopify-plyr.css" media="print" onload="this.media='all'">
+  <link
+    id="PlyrViewerStyle"
+    rel="stylesheet"
+    href="https://cdn.shopify.com/shopifycloud/shopify-plyr/v1.0/shopify-plyr.css"
+    media="print"
+    onload="this.media='all'"
+  >
 {%- endif -%}
 
 {% capture product_gallery_config %}{
@@ -136,8 +181,11 @@
 
 {% comment %} Product Page Template {% endcomment %}
 <section
-  class="product-page
-  product-template product__section--main section-{{ section.id }} section__product-template-{{ section.id }}" id="product-{{ product.id }}"
+  class="
+    product-page
+    product-template product__section--main section-{{ section.id }} section__product-template-{{ section.id }}
+  "
+  id="product-{{ product.id }}"
   data-product-id="{{ product.id }}"
   data-section-id="{{ section.id }}"
   data-url="{{ product.url }}"
@@ -147,37 +195,38 @@
   data-product-model="{{ has_media }}"
   {{ gallery_attribute }}
   {% if section.settings.click_to_enlarge %}
-  data-click-to-enlarge="true".
+    data-click-to-enlarge="true".
   {% endif %}
   data-asset-url="{{ 'section-product.js' | asset_url }}"
   data-product-complementary-products="true"
-  data-initial-variant="{{ current_variant.featured_media.id }}">
-
+  data-initial-variant="{{ current_variant.featured_media.id }}"
+>
   {% render 'product-json', product: product %}
 
-  <div class="product-top grid__wrapper cg7 sm-cg0 pt10 pb5 scroll-gallery--{{ is_grid }}">
-    <article data-product-gallery
+  <div class="product-top grid__wrapper cg7 sm-cg0 pt6 pb5 scroll-gallery--{{ is_grid }}">
+    <article
+      data-product-gallery
       class="product__section-images product-photos {{ media_grid_class }} sm-span-12 auto v-start {{ gallery_classes }} single_image--{{ is_single_image }}"
-      data-product-single-media-group 
-      data-gallery-config='{{ product_gallery_config }}'>
+      data-product-single-media-group
+      data-gallery-config="{{ product_gallery_config }}"
+    >
       {%- if section.settings.gallery_style == 'thumbnail_gallery' -%}
         {% render 'product-image-gallery',
           product: product,
           thumbnail_position: thumbnail_position,
           click_to_enlarge: click_to_enlarge,
-          enable_video_looping: enable_video_looping %}
+          enable_video_looping: enable_video_looping
+        %}
       {%- else -%}
-        {%
-          render 'product-scroll-gallery',
+        {% render 'product-scroll-gallery',
           product: product,
           click_to_enlarge: click_to_enlarge,
           enable_video_looping: enable_video_looping
-      %}
+        %}
       {%- endif -%}
     </article>
 
     {%- liquid
-
       assign form_id_to_title = true
       assign popup_count = 0
       for block in section.blocks
@@ -198,10 +247,8 @@
         assign layout = 'block'
         assign margin = 'ml0 mr0'
       endif
-
     -%}
 
-    
     <article class="product__section-right layout--{{ settings.product_variants }} {{ form_grid_class }} sm-span-12 auto v-start">
       <div class="sm-px6">
         {% for block in section.blocks %}
@@ -212,10 +259,10 @@
                 {{ block.settings.text }}
               </div>
             {% when 'title' %}
-              <h1 
-                class="h2 lh1 pt2 mb4" 
+              <h1
+                class="h2 lh1 pt2 mb4"
                 {% if form_id_to_title %}
-                id="{{ product_form_id }}"
+                  id="{{ product_form_id }}"
                 {% endif %}
                 {{ block.shopify_attributes }}
               >
@@ -230,22 +277,19 @@
               {% endif %}
             {% when 'price' %}
               <div class="product-block product-block--{{ block.type }}" {{ block.shopify_attributes }}>
-                {%
-                  render 'product-price',
-                  current_variant: current_variant,
-                  product: product
-                %}
+                {% render 'product-price', current_variant: current_variant, product: product %}
                 {%- form 'product', product, id: 'product-form-installment' -%}
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <div class="spi-banner" {{ block.shopify_attributes }}>
                     {{ form | payment_terms }}
-                  </div><!-- /#spi-banner -->
+                  </div>
+                  <!-- /#spi-banner -->
                 {%- endform -%}
-              </div><!-- /div.product-block -->
+              </div>
+              <!-- /div.product-block -->
             {% when 'variants' %}
               <div class="product-block product-block--{{ block.type }}" {{ block.shopify_attributes }}>
-                {%
-                  render 'product-variants',
+                {% render 'product-variants',
                   product: product,
                   block: block,
                   section: section,
@@ -256,31 +300,31 @@
             {% when 'quantity' %}
               {% unless product.gift_card? %}
                 <div class="product-block product-block--{{ block.type }}" {{ block.shopify_attributes }}>
-                  {%
-                    render 'product-quantity',
+                  {% render 'product-quantity',
                     product: product,
                     block: block,
                     section: section,
                     product_form_config: product_form_config,
                     current_variant: current_variant,
-                    product_type: 'product',
-
+                    product_type: 'product'
                   %}
-                  {% comment %}<div class="product__attributes">
-                    <div class="product__attributes-icon">
-                      <img src="{{ block.settings.quantity_icon | img_url: 'small' }}" alt="Icon Image">
+                  {% comment %}
+                    <div class="product__attributes">
+                      <div class="product__attributes-icon">
+                        <img src="{{ block.settings.quantity_icon | img_url: 'small' }}" alt="Icon Image">
+                      </div>
+                      <div class="product__attributes-text">
+                        {{ product.metafields.custom.quantita }}
+                      </div>
                     </div>
-                    <div class="product__attributes-text">
-                      {{ product.metafields.custom.quantita }}
-                    </div>
-                  </div>{% endcomment %}
-                </div><!-- /.product-block -->
+                  {% endcomment %}
+                </div>
+                <!-- /.product-block -->
               {% endunless %}
 
             {% when 'buttons' %}
               <div {{ block.shopify_attributes }}>
-                {%
-                  render 'product-buttons',
+                {% render 'product-buttons',
                   product: product,
                   type: section,
                   product_type: 'product',
@@ -306,8 +350,7 @@
                         {{ product.description }}
                       {% endif %}
                     {% endcapture %}
-                    {%
-                      render 'accordion-item',
+                    {% render 'accordion-item',
                       accordion_heading_capture: accordion_heading_capture,
                       accordion_content_capture: accordion_content_capture,
                       default_open: block.settings.default_open_accordion,
@@ -315,20 +358,19 @@
                     %}
                   </div>
                 {% else %}
-                <div class="product-template__description rte pt2 mb2" {{ block.shopify_attributes }}>
-                  <p class="label mb3">{{ 'products.product.product_info' | t }}</p>
-                  {% if product.description contains '[#' %}
-                    {{ product.description | split: '[#' | first }}
-                  {% else %}
-                    {{ product.description }}
-                  {% endif %}
-                </div>
+                  <div class="product-template__description rte pt2 mb2" {{ block.shopify_attributes }}>
+                    <p class="label mb3">{{ 'products.product.product_info' | t }}</p>
+                    {% if product.description contains '[#' %}
+                      {{ product.description | split: '[#' | first }}
+                    {% else %}
+                      {{ product.description }}
+                    {% endif %}
+                  </div>
                 {% endif %}
               {%- endif -%}
             {% when 'accordion_content' %}
-
               {% liquid
-                assign has_content = false 
+                assign has_content = false
                 if block.settings.page != blank
                   assign has_content = true
                 endif
@@ -338,148 +380,142 @@
               %}
 
               {% if has_content %}
-              <div
-                class="product-blocks__block product-blocks__block--accordion-item {% if block.settings.show_as_accordion %}product-blocks__block--accordion-item{% endif %}"
-                {{ block.shopify_attributes }}>
-                {%- liquid
+                <div
+                  class="product-blocks__block product-blocks__block--accordion-item {% if block.settings.show_as_accordion %}product-blocks__block--accordion-item{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- liquid
+                    assign accordion_header = block.settings.accordion_heading
+                    assign accordion_content = blank
 
-                  assign accordion_header = block.settings.accordion_heading
-                  assign accordion_content = blank
+                    assign accordion_page = block.settings.page
+                    if accordion_page == blank
+                      assign accordion_page = pages[block.settings.page]
+                    endif
 
-                  assign accordion_page = block.settings.page
-                  if accordion_page == blank
-                    assign accordion_page = pages[block.settings.page]
-                  endif
+                    assign accordion_content = accordion_page.content
 
-                  assign accordion_content = accordion_page.content
-
-                  if accordion_content == blank
-                    assign accordion_content = block.settings.richtext
-                  endif
-
-                -%}
-                {% capture accordion_heading_capture %}
+                    if accordion_content == blank
+                      assign accordion_content = block.settings.richtext
+                    endif
+                  -%}
+                  {% capture accordion_heading_capture %}
                   {{ block.settings.accordion_heading }}
                 {% endcapture %}
-                {% capture accordion_content_capture %}
+                  {% capture accordion_content_capture %}
                   {{ accordion_content }}
                 {% endcapture %}
-                {%
-                  render 'accordion-item',
-                  accordion_heading_capture: accordion_heading_capture,
-                  accordion_content_capture: accordion_content_capture,
-                  default_open: block.settings.default_open_accordion,
-                  unique_id: block.id,
-                  accordion_icon1: block.settings.icon_1,
-                  accordion_icon_title1: block.settings.text_1,
-                  accordion_icon2: block.settings.icon_2,
-                  accordion_icon_title2: block.settings.text_2,
-                  accordion_icon3: block.settings.icon_3,
-                  accordion_icon_title3: block.settings.text_3,
-                  accordion_icon4: block.settings.icon_4,
-                  accordion_icon_title4: block.settings.text_4,
-                  accordion_icon5: block.settings.icon_5,
-                  accordion_icon_title5: block.settings.text_5
-                %}
-              </div><!-- /.product-blocks__block--accordion-item -->
+                  {% render 'accordion-item',
+                    accordion_heading_capture: accordion_heading_capture,
+                    accordion_content_capture: accordion_content_capture,
+                    default_open: block.settings.default_open_accordion,
+                    unique_id: block.id,
+                    accordion_icon1: block.settings.icon_1,
+                    accordion_icon_title1: block.settings.text_1,
+                    accordion_icon2: block.settings.icon_2,
+                    accordion_icon_title2: block.settings.text_2,
+                    accordion_icon3: block.settings.icon_3,
+                    accordion_icon_title3: block.settings.text_3,
+                    accordion_icon4: block.settings.icon_4,
+                    accordion_icon_title4: block.settings.text_4,
+                    accordion_icon5: block.settings.icon_5,
+                    accordion_icon_title5: block.settings.text_5
+                  %}
+                </div>
+                <!-- /.product-blocks__block--accordion-item -->
               {% endif %}
 
-
             {% when 'payment_icons' %}
-              <div class="product-template__payment-icons pt5 pb5 mt5 mb5"
-                  style="background-color:{{ block.settings.background_color }};" {{ block.shopify_attributes }}>
+              <div
+                class="product-template__payment-icons pt5 pb5 mt5 mb5"
+                style="background-color:{{ block.settings.background_color }};"
+                {{ block.shopify_attributes }}
+              >
                 {% if block.settings.title != blank %}
                   <h5>{{ block.settings.title | escape }}</h5>
                 {% endif %}
                 {% for type in shop.enabled_payment_types %}
-                  {{ type | payment_type_svg_tag: class:'payment-icon' }}
+                  {{ type | payment_type_svg_tag: class: 'payment-icon' }}
                 {% endfor %}
-              </div> 
-
-        <!-- ****text_with_icon_new code***-->
-             {% when 'text_with_icon_new' %}
-           
-            <div class="text-with-icon-horizontal">
-              {% if block.settings.text_new_icon != blank %}
-              <div class="product-template__text-with-icon icon-block a-{{ block.settings.text_align_text }}" {{ block.shopify_attributes }}>
-                <div class="new_icon__icon">
-                   <img src="{{ block.settings.icon_image | img_url: 'small' }}" alt="Icon Image">
-                  
-                </div>
-                <div class="text-with-new-icon">
-                {{ block.settings.text_new_icon }}
-                </div>
               </div>
+
+              <!-- ****text_with_icon_new code*** -->
+            {% when 'text_with_icon_new' %}
+              {% if icons_blocks.size > 0 and icons_block_rendered == false %}
+                <div class="product-icons-block">
+                  {{ product_icons_block }}
+                </div>
+                {% assign icons_block_rendered = true %}
               {% endif %}
-            </div>
-              
-    
+
             {%- when 'text_with_icon' -%}
               {% liquid
                 assign type = 'apollo'
                 assign icon = block.settings.icon
                 case icon
-                  when 'burger', 'cafe', 'cake', 'camera', 'cookie', 'croissant', 'desktop', 'diamond', 'dry-cleaning', 'favorite', 'finger-print', 'flower', 'forest', 'gaming', 'headphones', 'health', 'ice-cream', 'laptop', 'laundry', 'liquor', 'lock', 'mic', 'mobile-phone', 'nature', 'new-release', 'pets', 'pizza', 'plant', 'rabbit', 'radio', 'savings', 'shield', 'sustainable', 'take-out', 'trophy', 'tv', 'washing-machine', 'watch', 'wine', 'world','king-cup1','king-cup2','king-cup3'
-                  assign type = 'theme'
+                  when 'burger', 'cafe', 'cake', 'camera', 'cookie', 'croissant', 'desktop', 'diamond', 'dry-cleaning', 'favorite', 'finger-print', 'flower', 'forest', 'gaming', 'headphones', 'health', 'ice-cream', 'laptop', 'laundry', 'liquor', 'lock', 'mic', 'mobile-phone', 'nature', 'new-release', 'pets', 'pizza', 'plant', 'rabbit', 'radio', 'savings', 'shield', 'sustainable', 'take-out', 'trophy', 'tv', 'washing-machine', 'watch', 'wine', 'world', 'king-cup1', 'king-cup2', 'king-cup3'
+                    assign type = 'theme'
                 endcase
               %}
               {% if block.settings.text != blank %}
-                <div class="product-template__text-with-icon mt3 mb3 a-{{ block.settings.text_align }}" {{ block.shopify_attributes }}>
+                <div
+                  class="product-template__text-with-icon mt3 mb3 a-{{ block.settings.text_align }}"
+                  {{ block.shopify_attributes }}
+                >
                   <div class="product--text-with-icon__icon">
-                  {% render 'snip-icons',
-                     wrapper: '.product-form__text-icon',
-                     type: type,
-                     icon: icon,
-                     size: '20px' %}
-                    </div>
-                    <div class="product--text-with-icon__text">
-                      {{ block.settings.text }}
-                    </div>
+                    {% render 'snip-icons', wrapper: '.product-form__text-icon', type: type, icon: icon, size: '20px' %}
+                  </div>
+                  <div class="product--text-with-icon__text">
+                    {{ block.settings.text }}
+                  </div>
                 </div>
               {% endif %}
             {%- when 'product_customization' -%}
-              {%
-                render 'product-customizations',
-                block: block,
-                section:section,
-                product:product
-              %}
+              {% render 'product-customizations', block: block, section: section, product: product %}
             {% when 'social_share' %}
               <div class="product-template__social-share pt2 pb2 a-center" {{ block.shopify_attributes }}>
                 <p class="inline-block mb0 mr3 v-center">{{ 'products.product.social_share' | t }}</p>
                 {% render 'snip-social-sharing',
                   share_title: product.title,
                   share_permalink: product.url,
-                  share_image: product %}
+                  share_image: product
+                %}
               </div>
             {% when 'popup' %}
+              {%- liquid
+                assign page = blank
+                assign has_image = false
+                assign has_text = false
+                assign has_page = false
+                assign has_content = false
 
-               {%- liquid
-
-                 assign page = blank
-                 assign has_image = false
-                 assign has_text = false
-                 assign has_page = false
-                 assign has_content = false
-
-                 if block.settings.page != blank
-                   assign has_page = true
-                   assign popup_content = block.settings.page.content
-                   assign has_content = true
-                 elsif block.settings.image != blank
+                if block.settings.page != blank
+                  assign has_page = true
+                  assign popup_content = block.settings.page.content
+                  assign has_content = true
+                elsif block.settings.image != blank
                   assign has_image = true
                   assign has_content = true
-                 elsif block.settings.text != blank
+                elsif block.settings.text != blank
                   assign has_text = true
                   assign popup_content = block.settings.text
                   assign has_content = true
-                 endif
+                endif
+              -%}
 
-               -%}
-
-               {% if has_content %}
-                <div class="product__section--popup pt2 mb2 {{ margin }} {{ block.settings.alignment }}" style="display:  {{ layout }};">
-                  <button class="product__section--popup-trigger btn-as-link js-modal-open" type="button" name="button" data-wau-modal-target="popup-content" >{{ block.settings.title }}</button>
+              {% if has_content %}
+                <div
+                  class="product__section--popup pt2 mb2 {{ margin }} {{ block.settings.alignment }}"
+                  style="display:  {{ layout }};"
+                >
+                  <button
+                    class="product__section--popup-trigger btn-as-link js-modal-open"
+                    type="button"
+                    name="button"
+                    data-wau-modal-target="popup-content"
+                  >
+                    {{ block.settings.title }}
+                  </button>
                 </div>
                 <div data-wau-modal-content="popup-content" style="display: none">
                   {%- if has_image -%}
@@ -489,16 +525,11 @@
                     {{ popup_content }}
                   {%- endif -%}
                 </div>
-               {% endif %}
+              {% endif %}
 
             {% when 'complementary_products' %}
               <div class="product-template__complementary-products pt2 pb2" {{ block.shopify_attributes }}>
-                {%
-                  render 'complementary-products',
-                  block: block,
-                  section: section,
-                  product: product
-                %}
+                {% render 'complementary-products', block: block, section: section, product: product %}
               </div>
             {% when '@app' %}
               <div class="product__section--app pt2 mb2" {{ block.shopify_attributes }}>
@@ -508,8 +539,6 @@
         {% endfor %}
       </div>
     </article>
-
-    
   </div>
   <style>
     {% if section.settings.show_selected_border %}
@@ -540,7 +569,7 @@
     <script type="text/javascript">
       // Youtube API callback
       function onYouTubeIframeAPIReady() {
-        setTimeout(function() {
+        setTimeout(function () {
           ProductVideo.loadVideos('youtube');
         }, 600);
       }
@@ -583,7 +612,7 @@
       "type": "select",
       "id": "thumbnail_position",
       "label": "Thumbnail position",
-      "info":"Thumbnail gallery only",
+      "info": "Thumbnail gallery only",
       "options": [
         {
           "value": "right",
@@ -676,13 +705,13 @@
       "name": "Quantity",
       "limit": 1,
       "settings": [
-      {
-        "type": "checkbox",
-        "id": "show_label",
-        "label": "Show label?",
-        "default": false
-      },
-      {
+        {
+          "type": "checkbox",
+          "id": "show_label",
+          "label": "Show label?",
+          "default": false
+        },
+        {
           "type": "image_picker",
           "id": "quantity_icon",
           "label": "Image",
@@ -759,8 +788,7 @@
       "type": "accordion_content",
       "name": "Accordion content",
       "limit": 5,
-      "settings":
-      [
+      "settings": [
         {
           "type": "text",
           "id": "accordion_heading",
@@ -786,57 +814,56 @@
           "info": "Accordion item is open by default when the page loads",
           "default": false
         },
-           {
-        "type": "image_picker",
-        "label": "Icon 1",
-        "id": "icon_1"
-      },
-      {
-        "type": "text",
-        "label": "Text 1",
-        "id": "text_1"
-      },
-      {
-        "type": "image_picker",
-        "label": "Icon 2",
-        "id": "icon_2"
-      },
-      {
-        "type": "text",
-        "label": "Text 2",
-        "id": "text_2"
-      },
-      {
-        "type": "image_picker",
-        "label": "Icon 3",
-        "id": "icon_3"
-      },
-      {
-        "type": "text",
-        "label": "Text 3",
-        "id": "text_3"
-      },
-      {
-        "type": "image_picker",
-        "label": "Icon 4",
-        "id": "icon_4"
-      },
-      {
-        "type": "text",
-        "label": "Text 4",
-        "id": "text_4"
-      },
-      {
-        "type": "image_picker",
-        "label": "Icon 5",
-        "id": "icon_5"
-      },
-      {
-        "type": "text",
-        "label": "Text 5",
-        "id": "text_5"
-      }
-        
+        {
+          "type": "image_picker",
+          "label": "Icon 1",
+          "id": "icon_1"
+        },
+        {
+          "type": "text",
+          "label": "Text 1",
+          "id": "text_1"
+        },
+        {
+          "type": "image_picker",
+          "label": "Icon 2",
+          "id": "icon_2"
+        },
+        {
+          "type": "text",
+          "label": "Text 2",
+          "id": "text_2"
+        },
+        {
+          "type": "image_picker",
+          "label": "Icon 3",
+          "id": "icon_3"
+        },
+        {
+          "type": "text",
+          "label": "Text 3",
+          "id": "text_3"
+        },
+        {
+          "type": "image_picker",
+          "label": "Icon 4",
+          "id": "icon_4"
+        },
+        {
+          "type": "text",
+          "label": "Text 4",
+          "id": "text_4"
+        },
+        {
+          "type": "image_picker",
+          "label": "Icon 5",
+          "id": "icon_5"
+        },
+        {
+          "type": "text",
+          "label": "Text 5",
+          "id": "text_5"
+        }
       ]
     },
     {
@@ -957,7 +984,7 @@
         }
       ]
     },
-    
+
     // add new text with icon new
     {
       "type": "text_with_icon_new",
@@ -968,14 +995,14 @@
           "id": "icon_image",
           "label": "Image",
           "info": "Or choose an global image or metafield image"
-        }, 
+        },
         {
           "type": "richtext",
           "id": "text_new_icon",
           "label": "Text",
           "default": "<p>Pair text with icon new</p>"
         },
-         {
+        {
           "type": "text_alignment",
           "id": "text_align_text",
           "label": "Text alignment",
@@ -983,7 +1010,7 @@
         }
       ]
     },
- 
+
     {
       "type": "text_with_icon",
       "name": "Text with icon",
@@ -1256,7 +1283,7 @@
             {
               "value": "king-cup3",
               "label": "King Cup3"
-            },
+            }
           ],
           "default": "chat"
         },
