@@ -1,16 +1,21 @@
 {% comment %} Collection List Assets {% endcomment %}
-<link rel="preload" href="{{ 'component-collection-grid.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link
+  rel="preload"
+  href="{{ 'component-collection-grid.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript><link rel="stylesheet" href="{{ 'component-collection-grid.css' | asset_url }}"></noscript>
 
 {% comment %} Collection List Logic {% endcomment %}
 {%- liquid
   case section.settings.items_per_row
-  when 5
-    assign items_per_row = 'span-2 auto'
-  when 2
-    assign items_per_row = 'span-5 auto'
-  when 1
-    assign items_per_row = 'span-10'
+    when 5
+      assign items_per_row = 'span-2 auto'
+    when 2
+      assign items_per_row = 'span-5 auto'
+    when 1
+      assign items_per_row = 'span-10'
   endcase
 
   assign section_padding = ''
@@ -48,11 +53,11 @@
   class="section-collection-list collection-list-{{ section.id }} global__section {{ section_padding }}"
   data-section-id="{{ section.id }}"
   data-section-type="collection-list"
-  data-section-loaded="false">
-
+  data-section-loaded="false"
+>
   <div class="grid__wrapper--10 cg6 sm-cg3 mb4 rg0">
     {% render 'snip-headings', align: heading_align, grid: 'span-12', url: routes.collection_url %}
-    <div class="rte span-12" style="text-align: center;">
+    <div class="rte span-12" style="text-align: center; width: 100%; max-width: 865px;">
       <p>{{ section.settings.subtitle }}</p>
     </div>
   </div>
@@ -65,8 +70,7 @@
       {% for block in section.blocks %}
         {% assign collection = collections[block.settings.collection] %}
         {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-        {%
-          render 'collection-grid-item',
+        {% render 'collection-grid-item',
           collection: collection,
           items_per_row: items_per_row,
           grid_items: section.settings.items_per_row,
@@ -79,10 +83,9 @@
           item_padding: item_padding,
           has_dropshadow: has_dropshadow,
           show_count: show_count
-         %}
+        %}
       {% endfor %}
     {% endif %}
-
   </div>
 </div>
 
@@ -166,8 +169,7 @@
   "presets": [
     {
       "name": "Custom Collection list",
-      "settings": {
-      },
+      "settings": {},
       "blocks": [
         {
           "type": "featured_collection"
