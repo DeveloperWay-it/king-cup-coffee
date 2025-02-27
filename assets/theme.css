@@ -404,8 +404,6 @@ img {
 
 .box-ratio img {
   display: block;
-  width: unset !important;
-  height: unset !important;
   object-fit: cover;
   animation: fadeInAnimation ease 3s;
   animation-iteration-count:1;
