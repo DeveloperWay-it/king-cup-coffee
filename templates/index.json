@@ -32,7 +32,7 @@
         "image_m9eWmF": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/ginseng-solubile-grande-dolce-5_1_11zon.webp",
+            "image": "shopify://shop_images/ginseng-solubile-grande-dolce-5_11zon.webp",
             "mobile_image": "shopify://shop_images/ginseng-solubile-grande-dolce-5_1_11zon.webp",
             "heading": "L'originale ricetta del caffè al ginseng dalla Malesia.",
             "subheading": "<p>Aggiungi 120ml di acqua calda e gustalo nella tua tazza preferita.</p>",
@@ -194,6 +194,7 @@
         "mobile_text_size": 20,
         "page": "",
         "alignment": "a-center",
+        "mobile_alignment": "a-center-mobile",
         "content_width": 60,
         "section_padding": "both",
         "color_scheme": "1"
