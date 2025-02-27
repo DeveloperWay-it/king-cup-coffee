@@ -1,11 +1,16 @@
 {% comment %} Slideshow Assets {% endcomment %}
-<link rel="preload" href="{{ 'section-slideshow.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link
+  rel="preload"
+  href="{{ 'section-slideshow.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
 <noscript><link rel="stylesheet" href="{{ 'section-slideshow.css' | asset_url }}"></noscript>
 
 {% comment %} Slideshow Logic {% endcomment %}
 {%- liquid
   if section.settings.full_width
-    assign full_width =  'edge'
+    assign full_width = 'edge'
   endif
 
   assign section_padding = ''
@@ -41,7 +46,6 @@
 
   assign desktop_height = section.settings.desktop_height
   assign mobile_height = section.settings.mobile_height
-
 -%}
 
 {% style %}
@@ -65,7 +69,7 @@
 
      /*
      #shopify-section-{{ section.id }} .slideshow__slide {
-      flex-direction: column;  
+      flex-direction: column;
      }
       */
    }
@@ -88,6 +92,14 @@
 
     #shopify-section-{{ section.id }} .slideshow__slide-image {
       flex: 0 1 50%;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow__slide-image .box-ratio {
+      padding-bottom: 100% !important;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow__slide-image .box-ratio img {
+      aspect-ratio: 0.9;
     }
 
     #shopify-section-{{ section.id }} .slideshow__caption {
@@ -166,16 +178,16 @@
         }
       }
   {% endfor %}
-
 {% endstyle %}
 
 {% comment %} Slideshow Template {% endcomment %}
 <div
-class="global__section section-slideshow {{ section_padding }}"
-data-section-id="{{ section.id }}"
-data-asset-url="{{ 'carousel.js' | asset_url }}"
-data-section-loaded="false"
-data-section-type="carousel">
+  class="global__section section-slideshow {{ section_padding }}"
+  data-section-id="{{ section.id }}"
+  data-asset-url="{{ 'carousel.js' | asset_url }}"
+  data-section-loaded="false"
+  data-section-type="carousel"
+>
   <div class="grid__wrapper {{ full_width }}">
     <div class="main-carousel span-12">
       {% capture slideshow_config %}{
@@ -190,93 +202,94 @@ data-section-type="carousel">
      }{% endcapture %}
 
       {% if section.blocks.size > 0 %}
-      <div class="slideshow flickity__section js-carousel{% if fixed_height %} is-fixed_height{% endif %}" id="slideshow--{{ section.id }}" data-flickity='{{ slideshow_config }}'>
-        {% for block in section.blocks %}
+        <div
+          class="slideshow flickity__section js-carousel{% if fixed_height %} is-fixed_height{% endif %}"
+          id="slideshow--{{ section.id }}"
+          data-flickity="{{ slideshow_config }}"
+        >
+          {% for block in section.blocks %}
+            {% liquid
+              assign has_image = false
+              assign has_image_link = false
+              assign has_button = false
+              assign has_button_2 = false
+              assign has_heading = false
+              assign has_subheading = false
+              assign has_button_text = false
+              assign has_caption = false
+              assign align_text = block.settings.text_align
+              assign hide_caption_background = false
 
-        {% liquid
+              if block.settings.image != blank
+                assign has_image = true
+              endif
 
-          assign has_image = false
-          assign has_image_link = false
-          assign has_button = false
-          assign has_button_2 = false
-          assign has_heading = false
-          assign has_subheading = false
-          assign has_button_text = false
-          assign has_caption = false
-          assign align_text = block.settings.text_align
-          assign hide_caption_background = false
+              if block.settings.link != blank and block.settings.button_text == blank and block.settings.second_button_text == blank
+                assign has_image_link = true
+              endif
 
-          if block.settings.image != blank
-            assign has_image = true
-          endif
+              if block.settings.link != blank and block.settings.button_text != blank
+                assign has_button = true
+              endif
 
-          if block.settings.link != blank and block.settings.button_text == blank and block.settings.second_button_text == blank
-            assign has_image_link = true
-          endif
+              if block.settings.second_link != blank and block.settings.second_button_text != blank
+                assign has_button_2 = true
+              endif
 
-          if block.settings.link != blank and block.settings.button_text != blank
-            assign has_button = true
-          endif
+              if block.settings.heading != blank
+                assign has_heading = true
+              endif
+              if block.settings.subheading != blank
+                assign has_subheading = true
+              endif
+              if has_heading or has_subheading or has_button
+                assign has_caption = true
+              endif
 
-          if block.settings.second_link != blank and block.settings.second_button_text != blank
-            assign has_button_2 = true
-          endif
+              assign main_image = block.settings.image
+              assign mobile_image = block.settings.mobile_image
+              assign image_box_ratio = main_image.height | append: '.0' | times: 1 | divided_by: main_image.width | times: 100 | append: '%'
+              assign mobile_image_box_ratio = mobile_image.height | append: '.0' | times: 1 | divided_by: mobile_image.width | times: 100 | append: '%'
 
-          if block.settings.heading != blank
-            assign has_heading = true
-          endif
-          if block.settings.subheading != blank
-            assign has_subheading = true
-          endif
-          if has_heading or has_subheading or has_button
-            assign has_caption = true
-          endif
+              if mobile_image != blank
+                assign mobile_class = 'sm-hide'
+              else
+                assign mobile_class = ''
+              endif
 
-          assign main_image = block.settings.image
-          assign mobile_image = block.settings.mobile_image
-          assign image_box_ratio = main_image.height | append: ".0" | times: 1 | divided_by: main_image.width | times: 100 | append: "%"
-          assign mobile_image_box_ratio = mobile_image.height | append: ".0" | times: 1 | divided_by: mobile_image.width | times: 100 | append: "%"
+              if block.settings.hide_caption_background
+                assign hide_caption_background = true
+              endif
+            -%}
 
-          if mobile_image != blank
-            assign mobile_class = 'sm-hide'
-          else
-            assign mobile_class = ''
-          endif
-
-          if block.settings.hide_caption_background
-            assign hide_caption_background = true
-          endif
-
-        -%}
-
-          <div
-            id="slide--{{ block.id }}"
-            data-block-id="{{ block.id }}"
-            class="slide--{{ block.id }} slideshow__slide{% if has_image == false %} slideshow__slide-onboard{% endif %} {% if block.settings.reverse_content %}row-reverse{% endif %}"
-            data-slider-index="{{ forloop.index0 }}"
-            data-slide-index="{{ forloop.index0 }}"
-            {{ block.shopify_attributes }}
-          >
-
-            {% if has_image_link %}<a href="{{ block.settings.link }}">{% endif %}
+            <div
+              id="slide--{{ block.id }}"
+              data-block-id="{{ block.id }}"
+              class="slide--{{ block.id }} slideshow__slide{% if has_image == false %} slideshow__slide-onboard{% endif %} {% if block.settings.reverse_content %}row-reverse{% endif %}"
+              data-slider-index="{{ forloop.index0 }}"
+              data-slide-index="{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}
+            >
+              {% if has_image_link %}<a href="{{ block.settings.link }}">{% endif %}
               <div class="slideshow__slide-image">
                 {% if has_image %}
                   {% liquid
-                    assign fetchpriority = "auto"
-                    assign loading = "lazy"
+                    assign fetchpriority = 'auto'
+                    assign loading = 'lazy'
                     if section.index == 1 and forloop.first
                       assign fetchpriority = 'high'
                       assign loading = 'eager'
                     endif
                   %}
                   {% render 'helper-image',
-                     type: block.settings.image,
-                     sm_render: '100vw',
-                     md_render: '100vw',
-                     lg_render: '100vw',
-                     loading: loading,
-                     fetchpriority: fetchpriority,
-                     class: mobile_class %}
+                    type: block.settings.image,
+                    sm_render: '100vw',
+                    md_render: '100vw',
+                    lg_render: '100vw',
+                    loading: loading,
+                    fetchpriority: fetchpriority,
+                    class: mobile_class
+                  %}
                 {% else %}
                   {% capture current %}{% cycle 1, 2 %}{% endcapture %}
                   {%- assign placeholder = 'lifestyle-' | append: current -%}
@@ -287,105 +300,111 @@ data-section-type="carousel">
 
                 {% if mobile_image != blank %}
                   {% render 'helper-image',
-                     type: block.settings.mobile_image,
-                     sm_render: '100vw',
-                     md_render: '100vw',
-                     lg_render: '100vw',
-                     loading: loading,
-                     fetchpriority: fetchpriority,
-                     class: 'md-lg-hide' %}
+                    type: block.settings.mobile_image,
+                    sm_render: '100vw',
+                    md_render: '100vw',
+                    lg_render: '100vw',
+                    loading: loading,
+                    fetchpriority: fetchpriority,
+                    class: 'md-lg-hide'
+                  %}
                 {% endif %}
               </div>
-            {% if has_image_link %}</a>{% endif %}
+              {% if has_image_link %}</a>{% endif %}
 
-
-            {% if has_caption %}
-            <div class="slideshow__caption slide-{{ block.id }}{% if caption_below %} caption--below__image{% endif %}{% if hide_caption_background %} hide_caption_background{% endif %}">
-              <div class="slideshow__caption-wrapper a-{{ align_text }}">
-                {% if has_heading %}
-                  <h2 class="slideshow__title slide-animate delay--1">{{ block.settings.heading | escape }}</h2>
-                {% endif %}
-                {% if has_subheading %}
-                  <div class="rte mb0 slide-animate delay--2">
-                    {{ block.settings.subheading }}
-                  </div>
-                {% endif %}
-                {% if has_button or has_button_2 %}
-                  <div class="slide__buttons slideshow__btn-wrapper slide-animate delay--3">
-                    {% if has_button %}
-                      <a class="button section-slideshow__button btn-outline relative inline-block" href="{{ block.settings.link }}">
-                       {{ block.settings.button_text | escape }}
-                      </a>
+              {% if has_caption %}
+                <div class="slideshow__caption slide-{{ block.id }}{% if caption_below %} caption--below__image{% endif %}{% if hide_caption_background %} hide_caption_background{% endif %}">
+                  <div class="slideshow__caption-wrapper a-{{ align_text }}">
+                    {% if has_heading %}
+                      <h2 class="slideshow__title slide-animate delay--1">{{ block.settings.heading | escape }}</h2>
                     {% endif %}
-                    {% if has_button_2 %}
-                      <a class="button section-slideshow__button btn-outline relative inline-block" href="{{ block.settings.second_link }}">
-                        {{ block.settings.second_button_text | escape }}
-                      </a>
+                    {% if has_subheading %}
+                      <div class="rte mb0 slide-animate delay--2">
+                        {{ block.settings.subheading }}
+                      </div>
+                    {% endif %}
+                    {% if has_button or has_button_2 %}
+                      <div class="slide__buttons slideshow__btn-wrapper slide-animate delay--3">
+                        {% if has_button %}
+                          <a
+                            class="button section-slideshow__button btn-outline relative inline-block"
+                            href="{{ block.settings.link }}"
+                          >
+                            {{ block.settings.button_text | escape }}
+                          </a>
+                        {% endif %}
+                        {% if has_button_2 %}
+                          <a
+                            class="button section-slideshow__button btn-outline relative inline-block"
+                            href="{{ block.settings.second_link }}"
+                          >
+                            {{ block.settings.second_button_text | escape }}
+                          </a>
+                        {% endif %}
+                      </div>
                     {% endif %}
                   </div>
-                {% endif %}
-              </div>
-            </div>
-            {% endif %}
-            {% style %}
-              .slideshow__caption.slide-{{ block.id }} {
-                {%comment%}
-                top: {{ block.settings.caption_vertical }}%;
-                left: {{ block.settings.caption_horizontal }}%;
-                -webkit-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
-                -ms-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
-                -moz-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
-                -o-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
-                transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
-                {%endcomment%}
-                position: relative;
-              }
-              @media only screen and (max-width: 768px) {
-                {% if mobile_image != blank %}
+                </div>
+              {% endif %}
+              {% style %}
+                .slideshow__caption.slide-{{ block.id }} {
                   {%comment%}
-                  .slide--{{ block.id }} .slideshow__slide-image {
-                    {% if fixed_height %}
-                      padding-bottom: var(--mobile-section-height) !important;
-                    {% endif %}
-                  }
+                  top: {{ block.settings.caption_vertical }}%;
+                  left: {{ block.settings.caption_horizontal }}%;
+                  -webkit-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
+                  -ms-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
+                  -moz-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
+                  -o-transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
+                  transform: translate(-{{ block.settings.caption_horizontal }}%, -{{ block.settings.caption_vertical }}%);
                   {%endcomment%}
-                {% else %}
-                  .slide--{{ block.id }} .slideshow__slide-image .box-ratio {
-                    padding-bottom: {{ image_box_ratio }} !important;
-                  }
-                  .slide--{{ block.id }} .slideshow__slide-image img {
-                    object-fit: cover;
-                    object-position: center;
-                  }
-                  .slide--{{ block.id }} .slideshow__slide-image {
-                    display: block;
-                  }
-                {% endif %}
-                {% if caption_below %}
-                  .slideshow__slide .slideshow__caption.slide-{{ block.id }} {
-                    position: relative;
-                    width: 100%;
-                    top: unset;
-                    left: unset;
-                    transform: translate(0, 0);
-                  }
-                  .slideshow__slide.image .slideshow__caption.slide-{{ block.id }} .slideshow__caption-wrapper {
-                    width: 100%;
-                  }
-                  {% if has_image == false and mobile_image == blank %}
-                    .slideshow__slide-image svg {
+                  position: relative;
+                }
+                @media only screen and (max-width: 768px) {
+                  {% if mobile_image != blank %}
+                    {%comment%}
+                    .slide--{{ block.id }} .slideshow__slide-image {
                       {% if fixed_height %}
-                      height: var(--mobile-section-height) !important;
-                      {% else %}
-                      height: 400px !important;
+                        padding-bottom: var(--mobile-section-height) !important;
                       {% endif %}
                     }
+                    {%endcomment%}
+                  {% else %}
+                    .slide--{{ block.id }} .slideshow__slide-image .box-ratio {
+                      padding-bottom: {{ image_box_ratio }} !important;
+                    }
+                    .slide--{{ block.id }} .slideshow__slide-image img {
+                      object-fit: cover;
+                      object-position: center;
+                    }
+                    .slide--{{ block.id }} .slideshow__slide-image {
+                      display: block;
+                    }
                   {% endif %}
-                {% endif %}
-            {% endstyle %}
-          </div>
-        {% endfor %}
-      </div>
+                  {% if caption_below %}
+                    .slideshow__slide .slideshow__caption.slide-{{ block.id }} {
+                      position: relative;
+                      width: 100%;
+                      top: unset;
+                      left: unset;
+                      transform: translate(0, 0);
+                    }
+                    .slideshow__slide.image .slideshow__caption.slide-{{ block.id }} .slideshow__caption-wrapper {
+                      width: 100%;
+                    }
+                    {% if has_image == false and mobile_image == blank %}
+                      .slideshow__slide-image svg {
+                        {% if fixed_height %}
+                        height: var(--mobile-section-height) !important;
+                        {% else %}
+                        height: 400px !important;
+                        {% endif %}
+                      }
+                    {% endif %}
+                  {% endif %}
+              {% endstyle %}
+            </div>
+          {% endfor %}
+        </div>
       {% endif %}
     </div>
     {% if section.blocks.size == 0 %}
@@ -474,7 +493,7 @@ data-section-type="carousel">
           "id": "overlay_color",
           "label": "Image overlay color",
           "default": "#000000",
-          "info":"Adding an overlay helps text to appear over images"
+          "info": "Adding an overlay helps text to appear over images"
         },
         {
           "type": "range",
@@ -679,7 +698,7 @@ data-section-type="carousel">
       "type": "checkbox",
       "id": "caption_below",
       "label": "Mobile captions below images",
-      "info":"Changes caption position to show below the image with theme default text and background color"
+      "info": "Changes caption position to show below the image with theme default text and background color"
     },
     {
       "type": "header",
