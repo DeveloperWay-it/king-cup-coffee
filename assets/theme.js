@@ -1714,7 +1714,7 @@ Shopify.CountryProvinceSelector.prototype = {
       return Function.prototype.bind.apply(console.log, args);
   }
 
-  log("Foodie Version 5.2.0 by Underground", {bar: 1})();
+  log("Foodie Version 5.2.1 by Underground", {bar: 1})();
 })();
 
 (function initModals() {
