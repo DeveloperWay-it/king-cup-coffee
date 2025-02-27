@@ -53,6 +53,7 @@
 .post-title a {
   font-family: var(--main-family);
   font-weight: 800;
+  font-size: var(--h1-size);
 }
 
 .category {
