@@ -319,13 +319,14 @@ data-section-type="carousel">
               </div>
             {% if has_image_link %}</a>{% endif %}
 
-            {% if shop.metafields.loox["global_stats"] %}
-{% assign looxstats = shop.metafields.loox["global_stats"] | split: ',' %} 
-<div class="loox-rating loox-rating-hp" data-rating="{{ looxstats[0] }}" data-raters="{{ looxstats[1] }}"></div> 
-{% endif %}
+            
             {% if has_caption %}
             <div class="slideshow__caption slide-{{ block.id }}{% if caption_below %} caption--below__image{% endif %}{% if hide_caption_background %} hide_caption_background{% endif %}">
               <div class="slideshow__caption-wrapper a-{{ align_text }}">
+                {% if shop.metafields.loox["global_stats"] %}
+{% assign looxstats = shop.metafields.loox["global_stats"] | split: ',' %} 
+<div class="loox-rating loox-rating-hp" data-rating="{{ looxstats[0] }}" data-raters="{{ looxstats[1] }}"></div> 
+{% endif %}
                 {% if has_heading %}
                   <h2 class="slideshow__title slide-animate delay--1">{{ block.settings.heading | escape }}</h2>
                 {% endif %}
