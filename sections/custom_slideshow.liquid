@@ -57,6 +57,14 @@
     --h2-size: calc({{ section.settings.slide_heading_size }}px - ({{ section.settings.slide_heading_size }}px * 0.15));
   }
 
+  #shopify-section-{{ section.id }} .slideshow__slide-image .box-ratio {
+      padding-bottom: 100% !important;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow__slide-image .box-ratio img {
+      aspect-ratio: 0.9;
+    }
+
   @media (max-width: 740px) {
      #shopify-section-{{ section.id }} {
        --font-size: calc({{ section.settings.mobile_subheading_size }}px - ({{ section.settings.mobile_subheading_size }}px * 0.15));
@@ -88,14 +96,6 @@
 
     #shopify-section-{{ section.id }} .slideshow__slide-image {
       flex: 0 1 50%;
-    }
-
-    #shopify-section-{{ section.id }} .slideshow__slide-image .box-ratio {
-      padding-bottom: 100% !important;
-    }
-
-    #shopify-section-{{ section.id }} .slideshow__slide-image .box-ratio img {
-      aspect-ratio: 0.9;
     }
 
     #shopify-section-{{ section.id }} .slideshow__caption {
