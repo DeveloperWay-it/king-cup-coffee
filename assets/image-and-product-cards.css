@@ -53,7 +53,7 @@
 	width: 100%;
 }
 
-.row .product-column .product-cards .product-card a {
+.row .product-column .product-cards .product-card a.product-image {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
@@ -74,7 +74,7 @@
 	flex: 1;
 }
 
-.row .product-column .product-cards .product-card .product-text h3 {
+.row .product-column .product-cards .product-card .product-text .product-title {
 	font-size: 17px;
 	line-height: 24px;
 	/* font-weight: 700; */

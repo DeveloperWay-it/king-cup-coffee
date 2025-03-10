@@ -190,7 +190,6 @@ ul.filters-list.filter-list__product-type input[type="radio"] {
 
 ul.filters-list.filter-list__product-type .filter-item {
   height: 100%;
-  flex: 1;
 }
 
 /* Contenitore stilizzato per ogni radio button */

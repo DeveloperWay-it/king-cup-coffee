@@ -52,6 +52,7 @@
             "mobile_caption_background": "#a18167",
             "hide_caption_background": false,
             "reverse_content": true,
+            "enable_ratings": true,
             "caption_horizontal": 50,
             "caption_vertical": 50,
             "text_align": "center"
@@ -61,6 +62,10 @@
       "block_order": [
         "image_m9eWmF"
       ],
+      "custom_css": [
+        ".loox-rating-label {color: white !important;}",
+        "svg.loox-icon {width: 1.3rem; height: 1.3rem;}"
+      ],
       "settings": {
         "full_width": true,
         "enable_autoplay": false,
@@ -68,7 +73,7 @@
         "pager": "dots",
         "slideshow_size": "natural",
         "desktop_height": 800,
-        "mobile_height": 700,
+        "mobile_height": 600,
         "caption_below": true,
         "slide_heading_size": 42,
         "mobile_slide_heading_size": 28,
@@ -84,6 +89,7 @@
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/spedizioni_gratis.svg",
             "link": "",
             "title": "SPEDIZIONE GRATIS SOPRA I 60€",
             "subheading": "<p>Sfrutta la spedizione gratuita per tutti gli ordini superiore ai 60€</p>"
@@ -93,7 +99,7 @@
           "type": "text_block",
           "settings": {
             "icon": "clock",
-            "image": "shopify://shop_images/clock_4.png",
+            "image": "shopify://shop_images/spedizioni_rapide.svg",
             "link": "",
             "title": "SPEDIZIONI RAPIDE IN 24/48H",
             "subheading": "<p>Spediamo giornalmente tutti gli ordini che arrivano entro le 13:00</p>"
@@ -103,6 +109,7 @@
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/pagamenti_sicuri.svg",
             "link": "",
             "title": "PAGAMENTI SICURI E CERTIFICATI",
             "subheading": "<p>Zero truffe grazie al nostro certificato di sicurezza</p>"
@@ -112,6 +119,7 @@
           "type": "text_block",
           "settings": {
             "icon": "chat",
+            "image": "shopify://shop_images/supporto.svg",
             "link": "",
             "title": "ONLINE SUPPORT",
             "subheading": "<p>Servizio Live Chat diretto con il nostro centro operativo</p>"
@@ -433,6 +441,9 @@
     },
     "bestsellers_KXbceH": {
       "type": "bestsellers",
+      "custom_css": [
+        "{margin-top: 50px;}"
+      ],
       "settings": {
         "heading": "Best Sellers",
         "heading_size": 30,
@@ -580,6 +591,7 @@
             "mobile_caption_background": "#a18167",
             "hide_caption_background": false,
             "reverse_content": true,
+            "enable_ratings": false,
             "caption_horizontal": 50,
             "caption_vertical": 50,
             "text_align": "center"

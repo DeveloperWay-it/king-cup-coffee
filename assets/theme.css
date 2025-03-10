@@ -736,7 +736,7 @@ svg.lg {
 h1, h1 a, .h1, .h1 a, h2, h2 a, .h2, .h2 a, h3, h3 a, .h3, .h3 a, h4, h4 a, .h4, .h4 a, h5, h5 a, .h5, .h5 a, h6, h6 a, .h6, .h6 a {
   color: var(--text-color);
   /* font-family: var(--heading-family); */
-  font-family: 'Iowan';
+  font-family: 'Iowan' !important;
   font-style: var(--heading-style);
   font-weight: var(--heading-weight);
   letter-spacing: var(--heading-spacing);

@@ -841,7 +841,7 @@ height: 28px;
 @media screen and (min-width: 768px) {
   
   .product__section--main .metafield-rich_text_field {
-    margin-top: 65px;
+    margin-top: 20px;
   }
   .product__section--main .product__attributes .product__attributes-text {
     font-size: 14px;
@@ -976,7 +976,7 @@ height: 28px;
 
 .product__price span {
   font-size: 32px;
-  font-weight: 700;
+/*   font-weight: 700; */
 }
 
 /*---- Recipient form ----*/

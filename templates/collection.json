@@ -29,15 +29,19 @@
     },
     "rich_text_Rern3e": {
       "type": "rich-text",
+      "custom_css": [
+        "@media screen and (min-width: 768px){.section-heading {padding-left: 0px;}}"
+      ],
       "settings": {
         "title": "{{ collection.title }}",
-        "rich_text": "{{ section.settings.page.content }}",
+        "rich_text": "<p>{{ collection.metafields.custom.descrizione_breve | metafield_tag }}</p>",
         "heading_size": 42,
         "text_size": 18,
         "mobile_heading_size": 24,
         "mobile_text_size": 12,
         "page": "",
-        "alignment": "a-center",
+        "alignment": "a-left",
+        "mobile_alignment": "a-left-mobile",
         "content_width": 60,
         "section_padding": "none",
         "color_scheme": "1"

@@ -465,5 +465,12 @@
   "date_formats": {
     "month_date_year": "%B %d %Y",
     "date_month_year": "%d %B %Y"
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "optional_company_label": "P.Iva e Ragione sociale per ricevere la fattura"
+      }
+    }
   }
 }

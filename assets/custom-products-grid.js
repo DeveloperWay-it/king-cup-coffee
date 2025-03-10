@@ -64,6 +64,7 @@ class ProductsGrid extends HTMLElement {
           this.pagination.setAttribute('data-next-page', newPagination.getAttribute('data-next-page'));
         } else {
           this.pagination.removeAttribute('data-next-page'); // Nessuna pagina successiva
+          this.loadProductsButton.style.display = 'none';
         }
 
         this.loadingIndicator.style.display = 'none';

@@ -7,7 +7,7 @@
       {% endif %}
     ></div>
   </a>
-  <div class="product-text">
+  <div class="product-text" >
     {% if product.compare_at_price > product.price %}
       {% assign savings = product.compare_at_price | minus: product.price %}
       <div class="discount-box">
@@ -15,7 +15,7 @@
       </div>
     {% endif %}
 
-    <h3>{{ product.title }}</h3>
+    <a class="h3 product-title" href="{{ product.url }}">{{ product.title }}</a>
     <div class="prices">
       {% if product.compare_at_price != blank and product.compare_at_price > product.price %}
         <p class="price-compare">{{ product.compare_at_price | money }}</p>
