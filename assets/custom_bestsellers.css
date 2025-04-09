@@ -30,7 +30,7 @@
 	flex: 1 100%;
 }
 
-.bestseller_section .product-card a.product-image {
+.bestseller_section .product-card a {
 	display: flex;
 	flex-direction: column;
 	margin: 0;

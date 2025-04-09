@@ -52,7 +52,6 @@
             "mobile_caption_background": "#a18167",
             "hide_caption_background": false,
             "reverse_content": true,
-            "enable_ratings": true,
             "caption_horizontal": 50,
             "caption_vertical": 50,
             "text_align": "center"
@@ -442,7 +441,7 @@
     "bestsellers_KXbceH": {
       "type": "bestsellers",
       "custom_css": [
-        "{margin-top: 50px;}"
+        "{margin-top: 50px}"
       ],
       "settings": {
         "heading": "Best Sellers",
@@ -591,7 +590,6 @@
             "mobile_caption_background": "#a18167",
             "hide_caption_background": false,
             "reverse_content": true,
-            "enable_ratings": false,
             "caption_horizontal": 50,
             "caption_vertical": 50,
             "text_align": "center"

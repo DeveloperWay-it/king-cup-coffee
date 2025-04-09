@@ -22,8 +22,6 @@
 
 <link rel="preload" href="{{ 'component-product-grid.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ 'component-product-grid.css' | asset_url }}"></noscript>
-<link rel="preload" href="{{ 'custom_product-card.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}"></noscript>
 
 {% comment %} Product Recommendations Template {% endcomment %}
 <div
@@ -36,7 +34,7 @@
           {% render 'snip-headings', grid: 'span-12', align: heading_align, heading: section.settings.product_recommendations_heading %}
         </div>
 
-        <div class="product-loop grid__wrapper">
+        <div class="product-loop grid__wrapper cg6 sm-cg3 rg9">
           {%- for product in recommendations.products limit: section.settings.items_shown -%}
           {%- liquid
 
@@ -53,14 +51,12 @@
 
           -%}
 
-{% comment %}             {% render 'product-loop',
+            {% render 'product-loop',
               product: product,
               grid_items: section.settings.items_per_row,
               index: forloop.index,
               product_info_align: 'a-center',
-              items_per_row: items_per_row %} {% endcomment %}
-
-              {% render 'product-card', product: product, add_quantity_selector: true %}
+              items_per_row: items_per_row %}
           {%- endfor -%}
         </div>
       </div>

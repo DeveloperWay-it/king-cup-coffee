@@ -10,7 +10,7 @@
 	flex: 1 100%;
 }
 
-.product-card a.product-image {
+.product-card a {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
@@ -72,7 +72,7 @@
 	}
 }
 
-.product-card .product-text .product-title {
+.product-card .product-text h3 {
 	font-size: 17px;
 	line-height: 24px;
 	/* font-weight: 700; */

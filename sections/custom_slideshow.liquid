@@ -323,7 +323,7 @@ data-section-type="carousel">
             {% if has_caption %}
             <div class="slideshow__caption slide-{{ block.id }}{% if caption_below %} caption--below__image{% endif %}{% if hide_caption_background %} hide_caption_background{% endif %}">
               <div class="slideshow__caption-wrapper a-{{ align_text }}">
-                {% if shop.metafields.loox["global_stats"] and block.settings.enable_ratings %}
+                {% if shop.metafields.loox["global_stats"] %}
 {% assign looxstats = shop.metafields.loox["global_stats"] | split: ',' %} 
 <div class="loox-rating loox-rating-hp" data-rating="{{ looxstats[0] }}" data-raters="{{ looxstats[1] }}"></div> 
 {% endif %}
@@ -596,11 +596,6 @@ data-section-type="carousel">
           "type": "checkbox",
           "id": "reverse_content",
           "label": "Reverse content of the slide"
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_ratings",
-          "label": "Enable ratings"
         },
         {
           "type": "range",
