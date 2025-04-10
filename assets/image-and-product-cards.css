@@ -78,8 +78,7 @@
 	font-size: 17px;
 	line-height: 24px;
 	/* font-weight: 700; */
-	/* font-family: "Iowan" !important; */
-	font-family: "Libre Baskerville" !important;
+	font-family: "Iowan" !important;
 	font-family: var(--heading-family);
 	letter-spacing: normal;
 	margin: 0;
@@ -157,8 +156,7 @@
 	font-weight: 700px;
 	line-height: 57px;
 	margin-bottom: 0px;
-	/* font-family: "Iowan" !important; */
-	font-family: "Libre Baskerville" !important;
+	font-family: "Iowan" !important;
 }
 
 .image-column .button {
