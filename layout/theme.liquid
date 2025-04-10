@@ -15,12 +15,42 @@
     {%- endunless -%}
 
     {% style %}
-        @font-face {
+        /* @font-face {
         font-family: 'Iowan';
         src: url('{{ "Iowan_Old_Style.woff2" | asset_url }}') format('woff2'),
              url('{{ "Iowan_Old_Style.woff" | asset_url }}') format('woff');
         font-weight: normal;
         font-style: normal;
+        font-display: swap;
+      } */
+
+      @font-face {
+        font-family: 'Libre Baskerville';
+        src: url('{{ "LibreBaskerville-Regular.ttf" | asset_url }}') format('ttf'),
+            url('{{ "LibreBaskerville-Regular.woff2" | asset_url }}') format('woff2'),
+            url('{{ "LibreBaskerville-Regular.woff" | asset_url }}') format('woff');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Libre Baskerville';
+        src: url('{{ "LibreBaskerville-Bold.ttf" | asset_url }}') format('ttf'),
+            url('{{ "LibreBaskerville-Bold.woff2" | asset_url }}') format('woff2'),
+            url('{{ "LibreBaskerville-Bold.woff" | asset_url }}') format('woff');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Libre Baskerville';
+        src: url('{{ "LibreBaskerville-Italic.ttf" | asset_url }}') format('ttf'),
+            url('{{ "LibreBaskerville-Italic.woff2" | asset_url }}') format('woff2'),
+            url('{{ "LibreBaskerville-Italic.woff" | asset_url }}') format('woff');
+        font-weight: 400;
+        font-style: italic;
         font-display: swap;
       }
     {% endstyle %}
