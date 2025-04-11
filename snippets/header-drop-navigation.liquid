@@ -156,7 +156,7 @@
                           {% for sub_link in link.links %}
                             <a id="megamenu-image-{{ forloop.index }}" class="megamenu-sublink-image mega-dropdown__image-wrapper" href="{{ sub_link.url }}">
                                   {% render 'helper-image',
-                                  type: sub_link.object.featured_image,
+                                  type: sub_link.object.custom.immagine_menu,
                                   sm_render: '360px',
                                   md_render: '360px',
                                   lg_render: '360px',
