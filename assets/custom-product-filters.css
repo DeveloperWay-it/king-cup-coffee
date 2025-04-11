@@ -289,6 +289,95 @@ ul.filters-list.filter-list__product-type .radio-button input:disabled + .conten
 
 
 
+
+
+
+
+ul.filters-list.collection-filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  list-style: none;
+  padding: 0;
+}
+
+
+ul.filters-list.collection-filters .filter-item {
+  height: 100%;
+}
+
+/* Contenitore stilizzato per ogni radio button */
+ul.filters-list.filter-list__product-type .filter-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 0px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 1200px){
+  ul.filters-list.filter-list__product-type .filter-label {
+  padding: 10px;
+}
+}
+
+/* Immagine all'interno del filtro */
+ul.filters-list.collection-filters img {
+  width: 50px; /* Dimensione dell'immagine */
+  height: 50px;
+  object-fit: contain; /* Adatta l'immagine senza distorcerla */
+  margin-bottom: 5px;
+}
+
+/* Testo del filtro */
+ul.filters-list.collection-filters span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+
+ul.filters-list.collection-filters .content {
+  display: flex;
+  flex-direction: column;
+}
+
+ul.filters-list.collection-filters .radio-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+ul.filters-list.collection-filters .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid transparent;
+  border-radius: 0px;
+  text-align: center;
+  transition: border-color 0.3s ease, text-decoration 0.3s ease;
+}
+ul.filters-list.collection-filters .filter-icon {
+  margin-bottom: 8px;
+  width: 50px;
+  height: 50px;
+}
+
+ul.filters-list.collection-filters .filter-icon img{
+  width: 50px;
+  height: 100%;
+}
+
+
+
+
 /* Price Ranges */
 
 /* Contenitore dello slider */

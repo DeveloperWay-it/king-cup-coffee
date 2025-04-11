@@ -1,0 +1,20 @@
+<products-filters data-section-id="{{ section.id }}">
+  <div>
+    <ul class="collection-filters filters-list">
+      {%- for collection in collection.metafields.custom.collezioni_correlate.value -%}
+
+          <li class="filter-item">
+            <a class="radio-button" href="{{ collection.url }}">
+              <div class="content">
+                  <span class="filter-icon">
+                    <img class="default-icon" src="{{ collection.metafields.custom.handle_icona.value | handleize | append: '.png' | asset_url }}" style="height: 50px; width: 50px"/>
+                    </span>
+                <span class="filter-label">{{ collection.metafields.custom.handle_icona.value }}</span>
+              </div>
+              
+            </a>
+          </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</products-filters>

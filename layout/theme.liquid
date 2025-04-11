@@ -15,12 +15,55 @@
     {%- endunless -%}
 
     {% style %}
-        @font-face {
+/*         @font-face {
         font-family: 'Iowan';
         src: url('{{ "Iowan_Old_Style.woff2" | asset_url }}') format('woff2'),
              url('{{ "Iowan_Old_Style.woff" | asset_url }}') format('woff');
         font-weight: normal;
         font-style: normal;
+        font-display: swap;
+      } */
+
+        @font-face {
+        font-family: 'Iowan';
+        src: url('{{ "iowan-old-style-bt.ttf" | asset_url }}') format('ttf');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Iowan';
+        src: url('{{ "iowan-old-style-bold-bt.ttf" | asset_url }}') format('ttf');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Iowan';
+        src: url('{{ "iowan-old-style-black-bt.ttf" | asset_url }}') format('ttf');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Iowan';
+        src: url('{{ "iowan-old-style-italic-bt.ttf" | asset_url }}') format('ttf');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Iowan';
+        src: url('{{ "iowan-old-style-bold-italic-bt.ttf" | asset_url }}') format('ttf');
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Iowan';
+        src: url('{{ "iowan-old-style-black-italic-bt.ttf" | asset_url }}') format('ttf');
+        font-weight: 700;
+        font-style: italic;
         font-display: swap;
       }
     {% endstyle %}
