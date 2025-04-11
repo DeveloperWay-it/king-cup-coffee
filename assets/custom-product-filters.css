@@ -305,6 +305,7 @@ ul.filters-list.collection-filters {
 
 ul.filters-list.collection-filters .filter-item {
   height: 100%;
+  max-width: 200px;
 }
 
 /* Contenitore stilizzato per ogni radio button */
