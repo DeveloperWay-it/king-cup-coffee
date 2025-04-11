@@ -335,6 +335,9 @@ ul.filters-list.collection-filters span {
   ul.filters-list.collection-filters span {
   font-size: 16px;
   }
+  ul.filters-list.collection-filters .filter-item {
+  width: auto;
+  }
 }
 
 /* Immagine all'interno del filtro */
