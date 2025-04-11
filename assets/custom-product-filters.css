@@ -321,10 +321,20 @@ ul.filters-list.filter-list__product-type .filter-label {
   border-radius: 5px;
 }
 
+ul.filters-list.collection-filters span {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
 @media screen and (min-width: 1200px){
   ul.filters-list.filter-list__product-type .filter-label {
   padding: 10px;
 }
+  ul.filters-list.collection-filters span {
+  font-size: 16px;
+  }
 }
 
 /* Immagine all'interno del filtro */
@@ -336,12 +346,7 @@ ul.filters-list.collection-filters img {
 }
 
 /* Testo del filtro */
-ul.filters-list.collection-filters span {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
-}
+
 
 
 ul.filters-list.collection-filters .content {
