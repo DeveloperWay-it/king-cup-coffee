@@ -27,7 +27,7 @@
       <div class="grid__wrapper main-collection_grid">
         {% paginate collection.products by section.settings.products_per_page %}
           {% for product in collection.products %}
-            {% include 'product-card', product: product, , add_quantity_selector: true, classes: 'main-collection_grid-item' %}
+            {% include 'product-card', product: product, add_quantity_selector: true, classes: 'main-collection_grid-item' %}
           {% endfor %}
         {% endpaginate %}
       </div>
@@ -124,4 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     ]
   }
-{%endschema%}
+{%endschema%}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'product-card', product: product, , add_quantity_selector: true,
+    classes: 'main-collection_grid-item' %}"
+  to: "{% include 'product-card', product: product, add_quantity_selector: true, classes:
+    'main-collection_grid-item' %}"
+  position: 1664..1777
+{%- endcomment -%}

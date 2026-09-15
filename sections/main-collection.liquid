@@ -18,7 +18,7 @@
   endcase
 
   case section.settings.mobile_items_per_row
-    when: '1'
+    when nil
       assign mobile_per_row = 'sm-span-12'
     when '2'
       assign mobile_per_row = 'sm-span-6'
@@ -345,3 +345,13 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "    when: '1'"
+  to: "    when nil"
+  position: 877..889
+{% endcomment %}
